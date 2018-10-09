@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Práctica Operaciones con Números</title>
+    <link href="css/General.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Operaciones con Números</h1>
+    </header>
+
+    <section class="container">
+       <input type="text" placeholder="Introduzca una serie de números" id="num" />
+       <button type="button" onclick="Calcular()">Calcular</button>
+       <h2 id="res"></h2>
+    </section>
+    <script>
+        function Calcular() {
+            var num = document.getElementById('num').value;
+            var res = document.getElementById('res');
+            var aux = 0;
+            if (!isNaN(num)) {
+                for (i = 0; i < num.length; i++) {
+                    aux = aux + parseInt(num.charAt(i));
+                }
+                res.innerHTML = "Suma: " + aux + '<br>Media: ' + aux / num.length;
+            } else {
+                res.innerHTML = "Solo se admiten Números!";
+            }
+        }
+    </script>
+</body>
+</html>

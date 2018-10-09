@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Práctica 1</title>
+</head>
+<body>
+    <header>
+        <h1>Controles de Formulario</h1>
+    </header>
+    <section>
+        <form>
+            <article>
+                <b><p>lista con selección múltiple</p></b>
+                <select multiple size="5">
+                    <option value="rojo">Rojo</option>
+                    <option value="marrón">Marrón</option>
+                    <option value="verde">Verde</option>
+                    <option value="amarillo">Amarillo</option>
+                    <option value="naranja">Naranja</option>
+                </select>
+            </article>
+            <article>
+                <b><p>Control desplegable</p></b>
+                <label for="fav">Seleccione su sitio favorito</label>
+                <select id="fav">
+                    <option value="">Seleccione un elemento</option>
+                    <option value="madrid">Madrid</option>
+                    <option value="alencia">Valencia</option>
+                    <option value="andalucia">Andalucía</option>
+                </select>
+            </article>
+            <article>
+                <b><p>Controles CHECKBOX</p></b>
+                <fieldset>
+                    <legend>Seleccione sus deportes favoritos</legend>
+                    <ul>
+                        <li><input type="checkbox" value="futbol" id="cfutbol" /><label for="cfutbol">Futbol</label></li>
+                        <li><input type="checkbox" value="gimnasia" id="cgimnasia" /><label for="cgimnasia">Gimnasia</label></li>
+                        <li><input type="checkbox" value="petanca" id="cpetanca" /><label for="cpetanca">Petanca</label></li>
+                    </ul>
+                </fieldset>
+                <ul>
+                    <li><input type="checkbox" value="true" id="question" /><label for="question">¿Desea recibir información? SI/NO</label></li>
+                </ul>
+            </article>
+            <article>
+                <b><p>Control RANGE</p></b>
+                <input type="range" min="0" max="100" value="50" step="1" />
+            </article>
+            <article>
+                <b><p>Controles RADIO</p></b>
+                <ul>
+                    <li><input type="radio" value="rojo" name="radio" id="red" /><label for="radio">Rojo</label></li>
+                    <li><input type="radio" value="amarillo" name="radio" id="yellow" /><label for="radio">Amarillo</label></li>
+                </ul>
+            </article>
+            <article>
+                <b><p>Formulario</p></b>
+                <fieldset>
+                    <legend>Mi formulario principal</legend>
+                    <label for="name"><b>N</b>ombre</label>
+                    <input type="text" id="name" placeholder="Introduzca nombre" accesskey="N" />
+                </fieldset>
+                <label for="email">Introduzca su <b>M</b>ail</label>
+                <input type="email" id="email" accesskey="M" /><br />
+                <label for="date">Fecha de nacimiento</label>
+                <input type="date" id="date" /><br />
+                <input type="month" id="month" />
+                <input type="week" id="week" /><br />
+                <label for="name2"><b>N</b>ombre</label>
+                <input type="text" id="name2" placeholder="Introduzca nombre" />
+                <button type="submit" id="client">Enviar información Cliente</button>
+                <button type="submit" id="server">Enviar información Servidor</button>
+            </article>
+        </form>
+    </section>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿*{
+    padding:10px 10px;
+}
+body{
+  
+}
+header {
+    border: 1px solid #a7a6a6;
+    border-radius: 25px;
+    background-color: #808080;
+    text-align:center;
+    color:white;
+    margin-bottom:10px;
+}
+
+b{
+    padding:0px;
+}
+
+section {
+    border: 1px solid #a7a6a6;
+    border-radius: 25px;
+    background-color: #eeeeee;
+    text-align: center;
+}
+
+article {
+    border: 1px solid #a7a6a6;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    display: inline-grid;
+    width:55%;
+    background-color: white;
+  
+}
+
+a {
+    color: #00ce63;
+}
+
+a[href$=".com"] {
+    color: #56b7ff;
+}
+
+
+

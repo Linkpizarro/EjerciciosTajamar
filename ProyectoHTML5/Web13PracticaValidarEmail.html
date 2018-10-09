@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Práctica objetos</title>
+    <link href="css/General.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Validación de Email</h1>
+    </header>
+
+    <section class="container">
+       <input type="text" placeholder="Introduzca email" id="email" />
+        <button type="button" onclick="Validar()">Validar Email</button>
+        <h2 id="res"></h2>
+    </section>
+    <script>
+        function Validar() {          
+            var res = document.getElementById('res');
+            var email = document.getElementById('email').value;   
+            res.style.color = 'red';
+            if (email.indexOf(' ') == -1) {
+                if (email.indexOf('@')!=-1) {
+                    if (email.lastIndexOf('@') == email.indexOf('@')) {
+                        if (email.substr(0, email.indexOf('@') - 1).length > 0) {
+                            if (email.indexOf('.') != -1) {
+                                if (email.lastIndexOf('.') == email.indexOf('.')) {
+                                    if (email.substring(email.indexOf('@') + 1, email.indexOf('.')).length > 0) {
+                                        if (email.substr(email.indexOf('.') + 1, email.length - 1).length >= 2 && email.substr(email.indexOf('.'), email.length - 1).length <= 4) {
+                                            res.style.color = 'green';
+                                            res.innerHTML = 'Email Válido!';
+                                        } else {
+                                            res.innerHTML = '*El dominio debe tener entre 2 y 4 caracteres.';
+                                        }
+                                    } else {
+                                        res.innerHTML = '*Debe contener alguna refencia despues de "@".';
+                                    }
+                                } else {
+                                    res.innerHTML = '*Debe contener un solo ".".';
+                                }
+                            } else {
+                                res.innerHTML = '*Debe contener un ".".';
+                            }
+                        } else {
+                            res.innerHTML = '*Debe contener alguna referencia antes de "@".';
+                        }                 
+                    } else {
+                        res.innerHTML = '*Debe contener una sola "@".';
+                    }
+                } else {
+                    res.innerHTML = '*Debe contener una "@".';
+                }
+            } else {
+                res.innerHTML = '*No puede contener "espacios en blanco".';
+            }
+        }
+    </script>
+</body>
+</html>

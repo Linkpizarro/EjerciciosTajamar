@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript</title>
+    <style type="text/css">
+        button{
+            min-height:50px;
+            min-width:50px;
+        }
+        .col {
+            min-height: 50px;
+            min-width: 100px;
+        }
+
+        .row {
+            min-height: 100px;
+            min-width: 50px;
+        }
+
+        input {
+            min-height: 50px;
+            min-width: 200px;
+            border: 1px solid black;
+            background-color: aquamarine; 
+        }
+    </style>
+</head>
+<body>
+    <!--<input type="text" id="pantalla" style="min-height:10px;width:239px;border:1px solid black;background-color:aquamarine;" disabled/><br />
+    <label>Número 1</label>
+    <input type="number" id="n1" /><br />
+    <label>Número 2</label>
+    <input type="number" id="n2" /><br />
+    <button id="suma">Sumar</button>
+    <script src="js/js.js"></script>-->
+    <table>
+        <tbody>
+            <tr>
+                <th colspan="4">
+                    <input type="text" id="pantalla" disabled /><br />
+                </th>
+            </tr>
+            <tr>
+                <td><button value="c">C</button></td>
+                <td><button value="/">/</button></td>
+                <td><button value="*">*</button></td>
+                <td><button value="-">-</button></td>
+            </tr>
+            <tr>
+                <td><button value="7">7</button></td>
+                <td><button value="8">8</button></td>
+                <td><button value="9">9</button></td>
+                <td rowspan="2"><button class="row" value="+">+</button></td>
+            </tr>
+            <tr>
+                <td><button value="4">4</button></td>
+                <td><button value="5">5</button></td>
+                <td><button value="6">6</button></td>
+            </tr>
+            <tr>
+                <td><button value="1">1</button></td>
+                <td><button value="2">2</button></td>
+                <td><button value="3">3</button></td>
+                <td rowspan="2"><button class="row" value="enter">Enter</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="col" value="0">0</button></td>
+                <td><button value=".">.</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="js/js.js"></script>
+</body>
+   
+</html>
