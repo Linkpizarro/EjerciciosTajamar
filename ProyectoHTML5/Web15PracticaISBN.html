@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Práctica verificación de ISBN</title>
+    <link href="css/General.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Verificación de ISBN</h1>
+    </header>
+
+    <section class="container">
+       <input type="text" placeholder="Introduzca un ISBN" id="num" />
+       <button type="button" onclick="Validar()">Validar</button>
+       <h2 id="res"></h2>
+    </section>
+    <script>
+        function Validar() {
+            var num = document.getElementById('num').value;
+            var res = document.getElementById('res');
+            res.style.color = 'black';
+            var aux = 0;
+            if (num.length == 10) {
+                if (!isNaN(num) && num.indexOf('.') == -1 && num.indexOf('+') == -1 && num.indexOf('-') == -1) {
+                    for (i = 0; i < num.length; i++) {
+                        aux = aux + (parseInt(num.charAt(i)) * (i + 1));
+                    }
+                    if (aux % 11 == 0) {
+                        res.style.color = 'green';
+                        res.innerHTML = "ISBN correcto!";
+                    } else {
+                        res.style.color = 'red';
+                        res.innerHTML = "ISBN incorrecto!";
+                    }
+
+                } else {
+                    res.style.color = 'red';
+                    res.innerHTML = "El ISBN no puede contener caracteres no numéricos!";
+                }
+            } else {
+                res.style.color = 'red';
+                res.innerHTML = "El ISBN debe tener 10 dígitos!";
+            }
+
+        }
+    </script>
+</body>
+</html>
