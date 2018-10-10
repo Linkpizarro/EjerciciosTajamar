@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Práctica Eventos DOM</title>
+    <link href="css/General.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Practica Evento DOM</h1>
+    </header>
+    <section>
+        <article>
+            <h2>Sumar</h2>
+            <button type="button" value="66">66</button>
+            <button type="button" value="14">14</button>
+            <button type="button" value="8">8</button><br />
+            <p>Resultado:</p><br />
+            <h3></h3>
+        </article><br />
+        <article>
+            <h2>Cambia Imagenes a la vez</h2>
+            <button type="button" onclick="CambiarImagen()">Cambiar imagen</button><br /><br />
+            <img src="images/perro.jpg" />
+            <img src="images/perro.jpg" />
+            <img src="images/perro.jpg" />
+        </article><br />
+        <article>
+            <h2>Cambia imagen al pasar por encima con el ratón</h2>
+            <img src="images/perro2.jpg" />
+            <img src="images/perro2.jpg" />
+            <img src="images/perro2.jpg" />
+        </article>
+    </section>
+    <script>
+
+        //global
+        var art = document.getElementsByTagName('article');
+
+        function Sumar() {
+            if (!isNaN(parseInt(res_suma[0].innerHTML))) {     
+                res_suma[0].innerHTML = '' + (parseInt(res_suma[0].innerHTML) + parseInt(this.value)) + '';
+            } else {
+                res_suma[0].style.display = 'block';
+                res_suma[0].innerHTML = '0'; 
+                res_suma[0].innerHTML = '' + (parseInt(res_suma[0].innerHTML) + parseInt(this.value)) + '';
+            }  
+        }
+
+        //suma
+        var btn_suma = art[0].getElementsByTagName('button');
+        var res_suma = art[0].getElementsByTagName('h3');
+        for (var i = 0; i < btn_suma.length; i++) {
+            btn_suma[i].addEventListener('click', Sumar);
+        } 
+
+        function CambiarImagen() {
+            var res_img = art[1].getElementsByTagName('img');
+            for (var i = 0; i < res_img.length; i++) {
+                res_img[i].src = "images/perro2.jpg";
+            }      
+        }
+
+        var res_img_mouse = art[2].getElementsByTagName('img');
+        for (var i = 0; i < res_img_mouse.length; i++) {
+            res_img_mouse[i].addEventListener('mouseover', function () { this.src = 'images/perro.jpg';});
+            res_img_mouse[i].addEventListener('mouseout', function() {this.src = 'images/perro2.jpg'; });
+        }    
+    </script>
+</body>
+</html>
