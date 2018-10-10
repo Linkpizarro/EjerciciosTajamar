@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Eventos</title>
+    <link href="css/General.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Eventos</h1>
+    </header>
+    <section class="container">
+        <button type="button" value="on" id="btn_on">Botón On</button>
+        <button type="button" value="ev" id="btn_ev">Botón Evento</button>
+        <h2 id="res"></h2>
+    </section>
+    <script>
+
+        function Mostrar() {
+            if (this.value == 'ev') {
+                document.getElementById('res').innerHTML += "Has pulsado en botón de Evento<br>";
+            } else {
+                document.getElementById('res').innerHTML += "Has pulsado en botón de onAcción<br>";
+            }
+            
+           
+        }
+         
+        document.getElementById('btn_on').onclick = Mostrar;
+        document.getElementById('btn_ev').addEventListener('click', Mostrar);
+        document.getElementById('btn_ev').addEventListener('click', function () {
+            document.getElementById('res').innerHTML += "addEventListner tiene pila de llamadas y por eso puedes ver este mensaje.<br>";
+        });
+
+    </script>
+</body>
+</html>
