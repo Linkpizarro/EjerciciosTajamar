@@ -30,7 +30,7 @@
             <img src="images/perro2.jpg" />
             <img src="images/perro2.jpg" />
             <img src="images/perro2.jpg" />
-        </article>
+        </article><br />
         <article>
             <h2>Seleccione un tipo de imagen y marque un rango</h2>
             <label>Seleccione un tipo de imagen: </label>
@@ -41,6 +41,12 @@
             <label>Seleccione Un rango (0-10): </label>
             <input type="range" min="0" max="10" value="5" /><br />
             <div></div>
+        </article><br />
+        <article>
+            <h2>Sumar números aleatorios</h2>  
+            <div></div>
+            <p>Resultado:</p>
+            <h3></h3>
         </article>
     </section>
     <script>
@@ -91,7 +97,33 @@
         var range = art[3].getElementsByTagName('input');
         var cuadro = art[3].getElementsByTagName('div')[0];
         range[0].addEventListener('change', GenerarImagen);
-       
+
+        function OperarCheck() {
+
+            if (this.checked == true) {
+                res_check = res_check + parseInt(this.value);
+            } else {
+                res_check = res_check - parseInt(this.value);
+            }
+            document.getElementsByTagName('article')[4].getElementsByTagName('h3')[0].style.display = "block";
+            document.getElementsByTagName('article')[4].getElementsByTagName('h3')[0].innerHTML = res_check;
+        }
+        var res_check = 0;
+        for (var i = 0; i < 10; i++) {
+            var random = parseInt(Math.random() * 51);
+            var box = document.getElementsByTagName('article')[4].getElementsByTagName('div')[0];
+            var label = document.createElement('label');
+            var checkbox = document.createElement('input');
+            label.innerText =random+" ";
+            checkbox.setAttribute("type", "checkbox");
+            checkbox.setAttribute("value", random);
+            checkbox.addEventListener('click', OperarCheck);
+            box.appendChild(checkbox);
+            box.appendChild(label);
+            document.getElementsByTagName('article')[4].appendChild(box);
+        }
+
+
     </script>
 </body>
 </html>
