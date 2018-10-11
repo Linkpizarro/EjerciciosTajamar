@@ -31,6 +31,17 @@
             <img src="images/perro2.jpg" />
             <img src="images/perro2.jpg" />
         </article>
+        <article>
+            <h2>Seleccione un tipo de imagen y marque un rango</h2>
+            <label>Seleccione un tipo de imagen: </label>
+            <select>
+                <option value="images/perro.jpg">Perro</option>
+                <option value="images/perro2.jpg">Otro perro</option>
+            </select><br />
+            <label>Seleccione Un rango (0-10): </label>
+            <input type="range" min="0" max="10" value="5" /><br />
+            <div></div>
+        </article>
     </section>
     <script>
 
@@ -65,7 +76,22 @@
         for (var i = 0; i < res_img_mouse.length; i++) {
             res_img_mouse[i].addEventListener('mouseover', function () { this.src = 'images/perro.jpg';});
             res_img_mouse[i].addEventListener('mouseout', function() {this.src = 'images/perro2.jpg'; });
-        }    
+        }  
+
+        function GenerarImagen() {
+            cuadro.innerHTML = '';
+            for (var i = 0; i < range[0].value; i++) {
+                var new_img = document.createElement('img');
+                new_img.setAttribute("src", img_name[0].value);
+                cuadro.appendChild(new_img);
+            }
+        }
+
+        var img_name = art[3].getElementsByTagName('select');
+        var range = art[3].getElementsByTagName('input');
+        var cuadro = art[3].getElementsByTagName('div')[0];
+        range[0].addEventListener('change', GenerarImagen);
+       
     </script>
 </body>
 </html>
