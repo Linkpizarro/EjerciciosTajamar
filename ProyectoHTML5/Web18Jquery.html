@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Jquery</title>
+    <link href="css/General.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Practica Jquery</h1>
+    </header>
+    <section>
+        <article>
+            <p>Cambia imagen aleatoria cuando pasas por encima</p>
+            <img src="images/perro2.jpg" />
+            <img src="images/perro.jpg" />
+            <img src="images/perro3.jpg" />
+        </article><br />
+        <article>
+            <p>Cambia el css de un elemnto dinámicamente</p>
+            <h4>Soy un h4 que cambia de color</h4>
+        </article><br />
+        <article>
+            <p>Practica 1 JQuery</p>
+            <div>
+                <p style="cursor:pointer;">Parrafo 1</p>
+                <p>Parrafo 2</p>
+                <p style="cursor:pointer;">Parrafo 3</p>
+            </div><br />
+            <div>
+                <p style="cursor:pointer;">Parrafo 1</p>
+                <p>Parrafo 2</p>
+                <p>Parrafo 3</p>
+                <p style="cursor:pointer;">Parrafo 4</p>
+            </div>
+        </article><br />
+        <article>
+            <p>Valores y Textos de objetos</p>
+            <input type="text" placeholder="Escriba algo aquí" id="input1" />
+            <button type="button" id="boton1">Enviar</button><br />
+            <h4 id="res1"></h4>
+        </article><br />
+        <article>
+            <p>Collatz en una tabla</p>
+            <input type="number" placeholder="Introduzca un número entero y positivo" id="inputCollatz" />
+            <button type="button" id="botonCollatz">Mostrar Collatz</button><br />
+            <div id="collatz" style="margin:0 auto;"></div>
+        </article><br />
+        <article>
+            <p>Tabla dinámica</p>
+            1<input type="range" min="1" max="50" value="1" id="rangeDinamic" />50<br />
+            <input type="number" placeholder="Introduzca el número que desee multiplicar" id="numDinamic" /><br />
+            <button type="button" id="botonDinamic">Mostrar tabla de multiplicar</button><br /><br />
+            <div id="resDinamic" style="margin:0 auto;"></div>
+        </article><br />
+        <article>
+            <p>Drag and Drop</p>
+            <div>
+                <img class="draggable" src="images/perro3.jpg" />
+                <img class="draggable" src="images/perro.jpg" />
+                <img class="draggable" src="images/perro2.jpg" />
+            </div>
+        </article><br />
+        <article>
+            <p>Objetos Dinámicos</p>
+            <input type="text" placeholder="Escriba algo" id="txtTitle" />
+            <button type="button" id="btn_title">Generar Título</button><br /><br />
+            <div id="lienzo" style="width:200px;height:70px;background-color:aqua;margin:0 auto;"></div>
+        </article><br />
+        <article id="each">
+            <p>Clase .each()</p>
+            <button type="button" id="btn_each">Comenzar Acción</button>
+            <h4>Esto es una prueba de each</h4>
+            <h4>Esto es una prueba de each</h4>
+            <h4>Esto es una prueba de each</h4>
+            <h4>Esto es una prueba de each</h4>
+        </article><br />
+        <article id="practica2">
+            <p>Práctica 2</p>
+            <button type="button" id="btn_start">Iniciar</button>
+            <button type="button" id="btn_sumar" disabled>Sumar</button><br /><br />
+            <div>
+                <div id="blockText" style="height:25px;width:180px;margin:0 auto;border:1px solid;padding:3px 0px 0px 0px;"></div><br />
+                <div id="blockRes"  style="height:25px;width:100px;margin:0 auto;border:1px solid;padding:3px 0px 0px 0px;"></div>
+            </div>
+        </article>
+    </section>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            //Imagenes
+            $('section article img[class!=draggable]').mouseover(function () {
+
+                var images = ['images/perro.jpg', 'images/perro2.jpg', 'images/perro3.jpg'];
+                var num = Math.floor((Math.random() * 2) + 1);
+
+                while ($(this).attr('src') == images[num]) {
+                    num = Math.floor(Math.random() * 3);
+                }
+
+                $(this).attr('src', images[num]);
+
+            });
+
+            //Texto color
+            $('section article h4').click(function () {
+
+                if ($(this).css('color') == 'rgb(255, 0, 0)') {
+
+                    $(this).css('color', 'black');
+
+                } else {
+
+                    $(this).css('color', 'red');
+                }
+
+            });
+
+            //Practica 1
+            $('section article div p:first-child').click(function () {
+                $(this).css('color', 'red');
+            });
+            $('section article div p:last-child').click(function () {
+                $(this).css('color', 'blue');
+            });
+
+
+            //valores objetos
+            $('#boton1').click(function () {
+                $('#res1').text($('#input1').val());
+            });
+
+            //Collatz
+            $('#botonCollatz').click(function () {
+                var num = $('#inputCollatz').val();
+                $('#collatz').html('');
+                var table = '<table border="1"  style="margin:0 auto;"><tbody>';
+                if (!isNaN(num) && num > 0) {
+                    while (num != 1) {
+                        table += '<tr>';
+                        if (num % 2 == 0) {
+                            num = num / 2;
+                        }
+                        else {
+                            num = (num * 3) + 1;
+                        }
+                        table += '<td>' + num + '</td>';
+                    }
+                    table += '</tbody></table>';
+                    $('#collatz').html(table);
+                } else {
+                    $('#collatz').html('Número incorrecto');
+                }
+            });
+
+            //tabla dinámica
+            $('#botonDinamic').click(function () {
+                $('#resDinamic').html('');
+                $('#numDinamic').css('background-color', 'transparent');
+                var range = parseInt($('#rangeDinamic').val());
+                var number = parseInt($('#numDinamic').val());
+                if (!isNaN(number)) {
+                    var table = '<table style="margin:0 auto;" border="1px" ><tbody>';
+                    for (var i = 0; i < range; i++) {
+                        table += '<tr style="font-size:20px;"><td>' + number + " X " + (i + 1) + '</td><td>' + (number * (i + 1)) + '</td></tr>';
+                    }
+                    table += '</tbody></table>';
+                    $('#resDinamic').html(table);
+                    $('#resDinamic table tbody tr:even td'
+                    ).css('background-color', '#A4FF6A');
+                    $('#resDinamic table tbody tr:odd td').css('background-color', '#FF4646');
+                } else {
+                    $('#numDinamic').css('background-color', '#FF4646');
+                }
+            });
+
+            //Drag and Drop
+            $(function () {
+                $(".draggable").draggable();
+            });
+
+            //Objeto dinámico
+            $('#btn_title').click(function () {
+                $('#lienzo').append($('<h1>').text($('#txtTitle').val()));
+            });
+
+            //each
+            $('#btn_each').click(function () {
+                var colores = ['','red', 'yellow', 'pink', 'green', 'blue', 'purple'];
+                $('#each h4').each(function () {
+                    var colorNum = Math.floor((Math.random() * colores.length) + 1);
+                    $(this).css('color', colores[colorNum]);
+                    $(this).text(colores[colorNum]);
+                });
+            });
+
+            //Práctica 2
+            $('#btn_start').click(function () {
+                $('#blockText').html('');
+                $('#blockRes').html('');
+                for (var i = 0; i < 5; i++) {
+                    var ramd = Math.trunc((Math.random() * 99) + 1);
+                    if (i == 0) {
+                        $('#blockText').append($('<b>').html(ramd));
+                    } else {
+                        $('#blockText').append($('<span>').html(' + '));
+                        $('#blockText').append($('<b>').html(ramd));
+                    }
+                   
+                }
+                $('#btn_sumar').removeAttr("disabled");
+            });
+            $('#btn_sumar').click(function () {
+                $('#blockRes').html('');
+                var sumRes = 0;
+                $('#blockText b').each(function () {
+                    sumRes = sumRes + parseInt($(this).text());
+                });
+                $('#blockRes').html(sumRes);
+            });
+                
+        });
+    </script>
+</body>
+</html>
