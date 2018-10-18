@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<alumnos>
+    <alumno>
+		    <idalumno>1</idalumno>
+			<nombre>Nacho</nombre>
+		    <apellidos>Shum Llanos</apellidos>
+		    <nota>8</nota>
+    </alumno>
+    <alumno>
+		<idalumno>2</idalumno>
+        <nombre>Jose Maria</nombre>
+        <apellidos>Gutierrez</apellidos>
+        <nota>10</nota>
+    </alumno>
+    <alumno>
+		<idalumno>3</idalumno>	
+        <nombre>Fran</nombre>
+		<apellidos>Frances Burgues</apellidos>
+		<nota>9</nota>
+    </alumno>
+    <alumno>
+		<idalumno>4</idalumno>
+        <nombre>Lucia</nombre>
+		<apellidos>Ramos Serrano</apellidos>
+        <nota>8</nota>
+    </alumno>
+    <alumno>
+		<idalumno>5</idalumno>	
+        <nombre>Oscar</nombre>
+        <apellidos>Garcia Ronaldo</apellidos>
+        <nota>6</nota>
+    </alumno>
+    <alumno>
+		<idalumno>6</idalumno>	
+        <nombre>Adrian</nombre>
+        <apellidos>Ramos Zidane</apellidos>
+        <nota>10</nota>
+    </alumno>
+    <alumno>
+		<idalumno>7</idalumno>
+        <nombre>Carlos</nombre>
+		<apellidos>Tormo Sanchez</apellidos>
+		<nota>4</nota>
+    </alumno>
+    <alumno>
+		<idalumno>8</idalumno>
+        <nombre>Natalia</nombre>
+		<apellidos>Madras</apellidos>
+		<nota>9</nota>
+    </alumno>
+    <alumno>
+		<idalumno>9</idalumno>	
+        <nombre>Pedro</nombre>
+		<apellidos>Casales</apellidos>
+		<nota>7</nota>
+    </alumno>
+    <alumno>
+		<idalumno>10</idalumno>
+        <nombre>Ariana</nombre>
+		<apellidos>Escalante</apellidos>
+		<nota>3</nota>
+    </alumno>
+  <alumno>
+    <idalumno>11</idalumno>
+    <nombre>Sabrina</nombre>
+    <apellidos>Brujas</apellidos>
+    <nota>1</nota>
+  </alumno>
+  <alumno>
+    <idalumno>12</idalumno>
+    <nombre>David</nombre>
+    <apellidos>Valencia</apellidos>
+    <nota>5</nota>
+  </alumno>
+  <alumno>
+    <idalumno>13</idalumno>
+    <nombre>Sofia</nombre>
+    <apellidos>Prada</apellidos>
+    <nota>6</nota>
+  </alumno>
+  
+</alumnos>

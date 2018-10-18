@@ -4,6 +4,13 @@
     <meta charset="utf-8" />
     <title>Jquery</title>
     <link href="css/General.css" rel="stylesheet" />
+    <style>
+        #lienzoImg div:nth-child(1) img {
+            width: 100px;
+            height: 100px;
+            padding: 0px 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -81,8 +88,21 @@
             <button type="button" id="btn_sumar" disabled>Sumar</button><br /><br />
             <div>
                 <div id="blockText" style="height:25px;width:180px;margin:0 auto;border:1px solid;padding:3px 0px 0px 0px;"></div><br />
-                <div id="blockRes"  style="height:25px;width:100px;margin:0 auto;border:1px solid;padding:3px 0px 0px 0px;"></div>
+                <div id="blockRes" style="height:25px;width:100px;margin:0 auto;border:1px solid;padding:3px 0px 0px 0px;"></div>
             </div>
+        </article>
+        <article>
+            <p>CheckBox Operaciones</p>
+            <button type="button" id="btn_check">Generar Checkboxes</button><br /><br />
+            <div>
+                <div id="lienzoBox" style="height:50px;width:300px;margin:0 auto;border:1px solid;padding:3px 0px 0px 0px;"></div><br />
+                <div id="boxRes" style="height:25px;width:100px;margin:0 auto;border:1px solid;padding:3px 0px 0px 0px;">0</div>
+            </div>
+        </article><br />
+        <article>
+            <p>Imagenes asociadas</p>
+            1<input type="range" min="1" max="4" value="0" id="imgRange"/>4
+            <div id="lienzoImg" style="margin:0 auto;"></div><br />
         </article>
     </section>
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -212,6 +232,7 @@
                 }
                 $('#btn_sumar').removeAttr("disabled");
             });
+
             $('#btn_sumar').click(function () {
                 $('#blockRes').html('');
                 var sumRes = 0;
@@ -220,7 +241,51 @@
                 });
                 $('#blockRes').html(sumRes);
             });
-                
+
+            //CheckBox
+            $('#btn_check').click(function () {
+                $('#lienzoBox').html('');
+                $('#boxRes').html('0');
+                for (var i = 0; i < 5; i++) {
+                    var rand = Math.trunc((Math.random() * 99) + 1);
+                    $('#lienzoBox').append($('<input>', { type: 'checkbox', value: rand }));
+                    $('#lienzoBox').append($('<label>').text(rand+" "));
+                }
+                $('#lienzoBox input[type=checkbox]').click(function () {
+                    var total = parseInt($('#boxRes').text());
+                    if ($(this).is(':checked')) {
+                        total = total + parseInt($(this).val());
+                    } else {
+                        total = total - parseInt($(this).val());
+                    }
+                    $('#boxRes').text(total);
+                });
+            });
+
+            //Imágenes asociadas
+            $('#imgRange').change(function () {
+                $('#lienzoImg').html('');
+                var img = ['images/perro.jpg', 'images/perro2.jpg', 'images/perro3.jpg', 'images/fondo_tcap.jpg'];
+                var rand = Math.trunc(Math.random() * img.length);
+                $('#lienzoImg').append('<div>');
+                for (var i = 0; i < $('#imgRange').val(); i++) {
+                    $('#lienzoImg div:nth-child(1)').append($('<img>', { src: img[rand],"data-relation": 'elem' + (i + 1) }));
+                }
+                $('#lienzoImg').append('<div>');
+                for (var i = 0; i < $('#imgRange').val(); i++) {
+                    $('#lienzoImg div:nth-child(2)').append($('<button>', { value: 'img' + (i + 1), text: 'Imagen ' + (i + 1), "data-relation": 'elem' + (i + 1) })); 
+                }
+                $('#lienzoImg div:nth-child(2) button').each(function () {
+                    $(this).click(function () {
+                        var nrand = Math.trunc(Math.random() * img.length);
+                        while(img[nrand] == $('#lienzoImg div:nth-child(1) img[data-relation =' + $(this).data('relation') + ']').attr('src')) {
+                            nrand = Math.trunc(Math.random() * img.length);
+                        }
+                        $('#lienzoImg div:nth-child(1) img[data-relation =' + $(this).data('relation') + ']').attr('src', img[nrand]);
+                    });
+                });
+            });
+        
         });
     </script>
 </body>

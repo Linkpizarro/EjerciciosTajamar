@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Petición de datos</title>
+    <link href="css/General.css" rel="stylesheet" />
+    <style>
+
+        table,th,td{
+            border: 1px solid;
+            margin: 0 auto;
+        }
+
+        table tr td {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Petición de datos</h1>
+    </header>
+    <section>
+        <article>
+            <p>Leer XML local JS</p>
+            <button onclick="realizarPeticionXML()" type="button">Leer Datos XML</button>
+            <div id="empleados"></div>
+        </article><br />
+        <article>
+            <p>Leer XML local JQuery</p>
+            <button id="btn_jq" type="button">Leer Datos XML</button>
+            <div id="hospital">
+            </div>
+        </article><br>
+        <article>
+            <p>Buscar Tags</p>
+            <input type="text" id="apellidoBuscar" placeholder="Apellido que desee buscar" />
+            <button id="buscarApellido" type="button">Buscar</button>
+            <div id="resBusqueda"></div>
+        </article><br />
+        <article>
+            <p>Buscar Atributo</p>
+            <input type="number" id="deptBuscar" placeholder="Número de departamento" />
+            <button id="buscarDept" type="button">Buscar</button>
+            <div id="resDept"></div>
+        </article><br />
+        <article>
+            <p>Práctica 1</p>
+            <input type="text" id="inputLoc" placeholder="Introzuca una localidad" />
+            <button id="btnBuscarDept" type="button">Buscar departamento</button>
+            <div id="resBusquedaDept"></div>
+        </article><br />
+        <article>
+            <p>Práctica 2</p>
+            <label>Nota:</label>
+            <input type="number" id="inputNota" placeholder="Introduzca nota" />
+            <button id="btnBuscarAlumno" type="button">Buscar</button>
+            <div id="resAlumnos"></div>
+        </article><br />
+        <article>
+            <p>Práctica 3</p>
+            <label>Nota:</label>
+            <input type="number" id="inputNotaColor" placeholder="Introduzca nota" />
+            <button id="btnBuscarAlumnoColor" type="button">Buscar</button>
+            <div id="resAlumnosColor"><br />
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Nota</th>
+                    </tr>
+                </table>
+            </div>
+        </article>
+    </section>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        //JS
+        function realizarPeticionXML() {
+            document.getElementById('empleados').innerHTML = '';
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = leerDatosXML;
+            xhttp.open("GET", "xml/empleados.xml");
+            xhttp.send();
+        }
+
+        function leerDatosXML() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('empleados').innerHTML += '<br><h1>Empleados:</h1>';
+                for (var i = 0; i < this.responseXML.getElementsByTagName('APELLIDO').length; i++) {
+                    document.getElementById('empleados').innerHTML += this.responseXML.getElementsByTagName('APELLIDO')[i].childNodes[0].nodeValue + "<br>";
+                }
+
+            }
+        }
+  
+        $(document).ready(function () {
+            //JQuery
+            $('#btn_jq').click(function () {
+                $.get('xml/HOSPITAL_ATRIBUTOS.xml', function (docxml) {
+                    var datos = "<br><table><tr><th>Nombre</th><th>Dirección</th><th>Teléfono</th></tr>";
+                    $(docxml).find('HOSPITAL').each(function () {
+                        datos += '<tr><td>' + $(this).attr('NOMBRE') + "</td><td>" + $(this).attr('DIRECCION') + "</td><td>" + $(this).attr('TELEFONO') + "</td></tr>";
+                    });
+                    datos += '</table>';
+                    $('#hospital').html(datos);
+                    $('#hospital table tr td').click(function () {
+                        if ($(this).parent().css('background-color') == 'rgb(255, 235, 142)') {
+                            $(this).parent().css('background-color', 'transparent');
+                        } else {
+                            $(this).parent().css('background-color', 'rgb(255, 235, 142)');
+                        }    
+                    });
+                });
+            });
+
+            //Busqueda tags
+            $('#buscarApellido').click(function () {
+                $('#resBusqueda').html('');
+                $.get('xml/empleados.xml', function (docxml) {     
+                    var ocurrencia = $(docxml).find('APELLIDO:contains("' + $('#apellidoBuscar').val().toUpperCase() + '")');
+                    if (ocurrencia.length > 0) {
+                        var count = 0;
+                        for (var i = 0; i < ocurrencia.length; i++) {
+                            count++;
+                        }
+                        $('#resBusqueda').html(count + ' coincidencias con ese apellido.');
+                    } else {
+                        $('#resBusqueda').html('No hay ninguna coincidencia con ese apellido.');
+                    }
+                });
+            });
+
+            //Busqueda atributos
+            $('#buscarDept').click(function () {
+
+                $('#resDept').html('');
+                $.get('xml/departamentosatributos.xml', function (data) {
+
+                    var num = $('#deptBuscar').val();
+                    var filtro = 'DEPT[DEPT_NO='+num+']';
+                    var departamento = $(data).find(filtro);
+
+                    if (departamento.length > 0) {
+
+                        var nombre = departamento.first().find('DNOMBRE').text();
+                        var loc = departamento.first().find('LOC').text();
+                        $('#resDept').html('<br><b>Nombre:</b> ' + nombre + '<br><b>Localidad: </b>' + loc);
+
+                    } else {
+
+                        $('#resDept').html('No existe ese departamento.');
+                    }
+                });
+            });
+
+            //Practica 1
+            $('#btnBuscarDept').click(function () {
+
+                $('#resBusquedaDept').html('');
+
+                $.get('xml/departamentosetiquetas.xml', function (data) {
+
+                    var localidadIngresada = $('#inputLoc').val().toUpperCase();
+                    var departamento = $(data).find('DEPARTAMENTO');
+                    var deptLocalidad = departamento.find('LOCALIDAD:contains("' + localidadIngresada + '")');
+
+                    if (deptLocalidad.length > 0) {
+
+                        var html = '<br><table><tr><th>Número</th><th>Nombre</th><th>Localidad</th></tr>';
+                        var flag = 0;
+                        deptLocalidad.each(function () {
+
+                            if ($(this).text() == localidadIngresada) {
+
+                                html += '<tr><td>' + $(this).parent().find('NUMERO').text() + '</td>';
+                                html += '<td>' + $(this).parent().find('NOMBRE').text() + '</td>';
+                                html += '<td>' + $(this).text() + '</td></tr>';
+                                flag++;
+
+                            }
+
+                        });
+
+                        html += '</table>';
+
+                        if (flag != 0) {
+
+                            $('#resBusquedaDept').html(html);
+
+                        } else {
+
+                            $('#resBusquedaDept').html('<br><h2>No hay departamentos en esa localidad.</h2>');
+                        }
+                       
+
+                        $('table tr td').click(function () {
+
+                            if ($(this).parent().css('background-color') == 'rgb(255, 235, 142)') {
+
+                                $(this).parent().css('background-color', 'transparent');
+
+                            } else {
+
+                                $(this).parent().css('background-color', 'rgb(255, 235, 142)');
+                            }
+
+                        });
+
+                    } else {
+
+                        $('#resBusquedaDept').html('<br><h2>No hay departamentos en esa localidad.</h2>');
+
+                    }
+                    
+                   
+                });
+            });
+
+            //Práctica 2
+            $('#btnBuscarAlumno').click(function () {
+
+                $('#resAlumnos').html('');
+
+                $.get('xml/alumnos.xml', function (data) {
+
+                    var notaIngresada = parseInt($('#inputNota').val());
+                    var html = '<br><table><tr><th>Id</th><th>Nombre</th><th>Apellido</th><th>Nota</th></tr>';
+                    var flag = 0;
+
+                    $(data).find('alumno').each(function () {
+
+                        var nota = parseInt($(this).find('nota').text());
+
+                        if (nota >= notaIngresada || isNaN(notaIngresada)) {
+
+                            if (nota < 5) {
+
+                                html += '<tr style="background-color:lightcoral">';
+
+                            } else if (nota > 5) {
+
+                                html += '<tr style="background-color:lightgreen">';
+
+                            } else {
+
+                                html += '<tr style="background-color:lemonchiffon">';
+
+                            }
+
+                            html += '<td>' + $(this).find('idalumno').text() + '</td>';
+                            html += '<td>' + $(this).find('nombre').text() + '</td>';
+                            html += '<td>' + $(this).find('apellidos').text() + '</td>';
+                            html += '<td>' + $(this).find('nota').text() + '</td></tr>';
+                            flag++;
+
+                        }
+
+                    });
+
+                    if (flag > 0) {
+
+                        $('#resAlumnos').html(html);
+
+                    } else {
+
+                        $('#resAlumnos').html('<br><h2>No hay Alumnos con esa nota.</h2>');
+
+                    }
+                    
+                });
+
+            });
+
+            //práctica 3
+            $.get('xml/alumnos.xml', function (alumnos) {
+
+                $(alumnos).find('alumno').each(function () {
+
+                    var tr = $('<tr>');
+
+                    tr.append([
+
+                        $('<td>').text($(this).find('idalumno').text()),
+                        $('<td>').text($(this).find('nombre').text()),
+                        $('<td>').text($(this).find('apellidos').text()),
+                        $('<td>').text($(this).find('nota').text())
+
+                    ]);
+
+                    $('#resAlumnosColor table').append(tr);
+
+                });
+
+            });
+
+            $('#btnBuscarAlumnoColor').click(function () {
+
+                var filas = $('#resAlumnosColor table tr').length;
+      
+                for (var i = 1; i < filas; i++) {
+
+                    var valorNota = $('#resAlumnosColor table tr:nth-child(' + (i+1) + ') td:last-child()');
+                    var notaIngresada = parseInt($('#inputNotaColor').val());
+
+                    if (parseInt(valorNota.text()) >= notaIngresada) {
+
+                       valorNota.css('background-color', 'lightgreen');
+
+                    }
+
+                }
+
+            });
+
+        });
+
+
+    </script>
+</body>
+</html>
