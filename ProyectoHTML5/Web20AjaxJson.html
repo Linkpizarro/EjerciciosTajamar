@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Ajax & Json</title>
+    <link href="css/General.css" rel="stylesheet" />
+    <style>
+
+        table,th,td{
+            border: 1px solid;
+            margin: 0 auto;
+        }
+
+        table tr td {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ajax & Json</h1>
+    </header>
+    <section>
+        <article id="tareas">
+            <p>Lista de Tareas Json</p>
+        </article><br />
+        <article id="clientes">
+            <p>Clientes Json</p>
+        </article><br />
+        <article id="jugadores">
+            <p>Práctica 1</p>
+        </article><br />
+    </section>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        //ej 1
+        $(document).ready(function () {
+            $.getJSON("Json/tareas.json", function (data) {
+                var tabla = $('<table>');
+                $.each(data, function (key, value) {
+                   tabla.append($('<tr>').append($('<td>').text(value)));
+                });
+                $('#tareas').append(tabla);
+                $('#tareas').append($('<br>'));
+                $('#tareas').append($('<p>').text('Lista de tareas Ajax'));
+            });
+           
+            $.ajax({
+                "method": "GET",
+                "url": "Json/tareas.json",
+                "success": function (data) {
+                    var tabla = $('<table>');
+                    $.each(data, function (key, value) {
+                        tabla.append($('<tr>').append($('<td>').text(value)));
+                    });
+                    $('#tareas').append(tabla);
+                }
+            }); 
+
+            //ej 2    
+            $.getJSON("Json/clientessimples.json", function (data) {
+                var tabla = $('<table>');
+                $.each(data.clientes, function (keys, values) {
+                    $.each(this, function (key, value) {
+                        tabla.append($('<tr>').append($('<td>').text(value)));
+                    });
+                });
+                $('#clientes').append(tabla);
+                $('#clientes').append($('<br>'));
+                $('#clientes').append($('<p>').text('Clientes Ajax'));
+            });
+
+            $.ajax({
+                "method": "GET",
+                "url": "Json/clientessimples.json",
+                "success": function (data) {
+                    var tabla = $('<table>');
+                    $.each(data.clientes, function (index, cliente) {
+                        $.each(this, function (key, value) {
+                            tabla.append($('<tr>').append($('<td>').text(value)));
+                        });
+                    });
+                    $('#clientes').append(tabla);
+                }
+            }); 
+
+            //Práctica 1
+            $.getJSON("Json/jugadores.json", function (data) {
+                var select = $('<select>');
+                $.each(data.jugadores, function (index, jugador) {    
+                     select.append($('<option>').attr('value',index).text(jugador.nombre));
+                });
+                $('#jugadores').append($('<label>').text('Seleccione un Jugador:'));
+                $('#jugadores').append(select);
+                $('#jugadores').append($('<br>'));
+                $('#jugadores select').change(function () {
+                    $('#jugadores div').remove();
+                    var div = $('<div>');
+                    var index = $('#jugadores select').val();
+                    var nombre, numero, posicion, edad;
+                    $.each(data.jugadores[index], function (key, value) { 
+                        switch (key) {
+                            case 'nombre': nombre = $('<b>').append($('<h2>').text(value));break;
+                            case 'numero': numero = $('<h4>').text('Camiseta: '+value);break;
+                            case 'posicion':  posicion = $('<h4>').text('Posición: '+value);break;
+                            case 'edad': edad = $('<h4>').text('Edad: '+value);break;
+                        }
+                    });
+                    div.append([nombre,numero,posicion,edad]);
+                    $('#jugadores').append(div);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

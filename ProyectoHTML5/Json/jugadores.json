@@ -1,0 +1,149 @@
+{
+    "jugadores": 
+	[
+				{
+					"numero": 1,
+					"nombre": "Keylor Navas",
+					"posicion": "Portero",
+					"edad": 28
+				},
+				{
+					"numero": 4,
+					"nombre": "Sergio Ramos",
+					"posicion": "Defensa central",
+					"edad": 29
+				},
+				{
+					"numero": 12,
+					"nombre": "Marcelo",
+					"posicion": "Lateral Izquierdo",
+					"edad": 27
+				},
+				{
+					"numero": 15,
+					"nombre": "Carvajal",
+					"posicion": "Lateral Derecho",
+					"edad": 23
+				},
+				{
+					"numero": 2,
+					"nombre": "Varane",
+					"posicion": "Defensa central",
+					"edad": 22
+				},
+				{
+					"numero": 8,
+					"nombre": "Kross",
+					"posicion": "Medio Centro",
+					"edad": 25
+				},
+				{
+					"numero": 19,
+					"nombre": "Modric",
+					"posicion": "Volante Derecho",
+					"edad": 30
+				},
+				{
+					"numero": 10,
+					"nombre": "James",
+					"posicion": "Volante Izquierdo",
+					"edad": 24
+				},
+				{
+					"numero": 22,
+					"nombre": "Isco",
+					"posicion": "Centrocampista",
+					"edad": 23
+				},
+				{
+					"numero": 11,
+					"nombre": "Bale",
+					"posicion": "Extremo Derecho",
+					"edad": 26
+				},
+				{
+					"numero": 9,
+					"nombre": "Benzema",
+					"posicion": "Delantero Centro",
+					"edad": 27
+				},
+				{
+					"numero": 7,
+					"nombre": "Ronaldo",
+					"posicion": "Extremo Izquierdo",
+					"edad": 30
+				},
+				{
+					"numero": 1,
+					"nombre": "Ter Stegen",
+					"posicion": "Portero",
+					"edad": 28
+				},
+				{
+					"numero": 3,
+					"nombre": "Gerardo Piqué Bernabeu",
+					"posicion": "Defensa central",
+					"edad": 28
+				},
+				{
+					"numero": 2,
+					"nombre": "Douglas",
+					"posicion": "Lateral Izquierdo",
+					"edad": 23
+				},
+				{
+					"numero": 6,
+					"nombre": "Alves",
+					"posicion": "Lateral Derecho",
+					"edad": 31
+				},
+				{
+					"numero": 15,
+					"nombre": "Bartra",
+					"posicion": "Defensa central",
+					"edad": 22
+				},
+				{
+					"numero": 5,
+					"nombre": "Busquets",
+					"posicion": "Medio Centro",
+					"edad": 25
+				},
+				{
+					"numero": 8,
+					"nombre": "Iniesta",
+					"posicion": "Volante Derecho",
+					"edad": 30
+				},
+				{
+					"numero": 11,
+					"nombre": "Neymar",
+					"posicion": "Volante Izquierdo",
+					"edad": 24
+				},
+				{
+					"numero": 10,
+					"nombre": "Messi",
+					"posicion": "Centrocampista",
+					"edad": 28
+				},
+				{
+					"numero": 17,
+					"nombre": "Munir",
+					"posicion": "Extremo Derecho",
+					"edad": 26
+				},
+				{
+					"numero": 9,
+					"nombre": "Luis Suarez",
+					"posicion": "Delantero Centro",
+					"edad": 28
+				},
+				{
+					"numero": 7,
+					"nombre": "Arda Turan",
+					"posicion": "Extremo Izquierdo",
+					"edad": 28
+				}				
+	]
+}

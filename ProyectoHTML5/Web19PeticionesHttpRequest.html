@@ -15,6 +15,26 @@
             cursor: pointer;
         }
 
+        #p4 #box table {
+            width: 450px;
+            height: 190px;
+            background-color: #eee5de;
+            border-radius: 60px;
+            padding: 10px 10px;
+            margin: 10px auto;
+        }
+
+        #p4 #box table tr td {
+            border: none;
+        }
+
+        #p4 #box table tr td img {
+            width: 170px;
+            height: 170px;
+            border-radius: 205px;
+        } 
+
+
     </style>
 </head>
 <body>
@@ -63,7 +83,8 @@
             <label>Nota:</label>
             <input type="number" id="inputNotaColor" placeholder="Introduzca nota" />
             <button id="btnBuscarAlumnoColor" type="button">Buscar</button>
-            <div id="resAlumnosColor"><br />
+            <div id="resAlumnosColor">
+                <br />
                 <table>
                     <tr>
                         <th>Id</th>
@@ -73,7 +94,10 @@
                     </tr>
                 </table>
             </div>
-        </article>
+        </article><br />
+        <article id="p4">
+            <p>Práctica 4</p>    
+        </article>  
     </section>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script>
@@ -298,6 +322,7 @@
 
             $('#btnBuscarAlumnoColor').click(function () {
 
+                $('#resAlumnosColor table tr').css('background-color', 'transparent');
                 var filas = $('#resAlumnosColor table tr').length;
       
                 for (var i = 1; i < filas; i++) {
@@ -307,12 +332,55 @@
 
                     if (parseInt(valorNota.text()) >= notaIngresada) {
 
-                       valorNota.css('background-color', 'lightgreen');
+                        if (parseInt(valorNota.text()) > 5) {
+
+                            valorNota.parent().css('background-color', 'lightgreen');
+
+                        } else if (parseInt(valorNota.text()) < 5) {
+
+                            valorNota.parent().css('background-color', 'lightcoral');
+
+                        } else {
+
+                            valorNota.parent().css('background-color', 'lemonchiffon');
+
+                        }
+
+                       
 
                     }
 
                 }
 
+            });
+
+            //Práctica 4
+            $.get('xml/ClientesXML.xml', function (clientes) {
+                var select = $('<select>').attr('multiple','multiple');   
+                $(clientes).find('CLIENTE').each(function () {
+                    select.append($('<option>').attr('value', $(this).attr('IDCLIENTE')).text($(this).find('NOMBRE').text()));
+                });
+                $('#p4').append(select);
+                $('#p4 select').change(function () {
+                    $('#p4 #box').remove();
+                    var box = $('<div>').attr('id','box');
+                    var valSelect = $('#p4 select').val();
+                    for (var i = 0; i < valSelect.length; i++) {
+                        $(clientes).find('CLIENTE[IDCLIENTE=' + valSelect[i] + ']').each(function () {
+                            var tabla = $('<table>');
+                            tabla.append([
+                               $('<tr>').append($('<td>').attr('rowspan', '6').append($('<img>').attr('src', $(this).find('IMAGENCLIENTE').text()))),
+                               $('<tr>').append($('<td>').append($('<b>').text($(this).find('NOMBRE').text()))),
+                               $('<tr>').append($('<td>').text($(this).find('DIRECCION').text())),
+                               $('<tr>').append($('<td>').text($(this).find('CODIGOPOSTAL').text())),
+                               $('<tr>').append($('<td>').text($(this).find('EMAIL').text())),
+                               $('<tr>').append($('<td>').append($('<a>').attr({ href: $(this).find('PAGINAWEB').text(), target: "_blank" }).text($(this).find('PAGINAWEB').text())))
+                            ]);
+                            box.append(tabla);
+                        });
+                    }    
+                    $('#p4').append(box);
+                });
             });
 
         });
