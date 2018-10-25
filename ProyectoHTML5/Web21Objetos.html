@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Objetos</title>
+    <link href="css/General.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Objetos</h1>
+    </header>
+    <section>
+        <article>
+            <p></p>
+        </article><br />
+    </section>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var Matematicas = function (num) {
+                this.numero = num;
+                this.Multiplicar = function () {
+                    this.numero = this.numero * 2;
+                    return this.numero;
+                }
+            }
+            var mates = new Matematicas(7);
+            console.log(mates.Multiplicar());
+        });
+    </script>
+</body>
+</html>

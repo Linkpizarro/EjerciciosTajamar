@@ -5,16 +5,15 @@
     <title>Ajax & Json</title>
     <link href="css/General.css" rel="stylesheet" />
     <style>
-
-        table,th,td{
-            border: 1px solid;
-            margin: 0 auto;
+        .icono {
+            border: 2px solid;
+            border-radius: 100%;
+            padding: 0px 5px;
         }
-
-        table tr td {
-            cursor: pointer;
+        #resMasBuscados{
+            display:none;
+           
         }
-
     </style>
 </head>
 <body>
@@ -30,6 +29,19 @@
         </article><br />
         <article id="jugadores">
             <p>Práctica 1</p>
+        </article><br />
+        <article id="expresiones">
+            <p>Expresiones Regulaes</p>
+            <input type="text" placeholder="Introduzca DNI" id="dni" pattern="^[0-9]{8}[A-Z]{1}$" />
+            <button type="button" id="btnDNI">Validar DNI</button><br /><br />
+            <div id="resDNI" style="border:1px solid;width:300px;height:50px;margin:0 auto;box-shadow:10px 10px #808080;">
+                <p></p>
+            </div><br /><br />
+            <input type="text" placeholder="Introduzca Código Postal" id="cp" pattern="^(28){1}[0-9]{3}$" />
+            <button type="button" id="btnCP">Validar CP</button><br /><br />
+            <div id="resCP" style="border:1px solid;width:300px;height:50px;margin:0 auto;box-shadow:10px 10px #808080;">
+                <p></p>
+            </div><br />
         </article><br />
     </section>
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -93,25 +105,81 @@
                 });
                 $('#jugadores').append($('<label>').text('Seleccione un Jugador:'));
                 $('#jugadores').append(select);
+                //Práctica 2
+                var mb = $('<p>').css('cursor', 'pointer').attr('id','masBuscados');
+                mb.append([
+                    $('<span>').attr('class', 'icono').text('+'),
+                    $('<span>').text(' Más Buscados ')
+                ]);
+                $('#jugadores').append(mb);
+                var resmb = $('<div>').attr('id', 'resMasBuscados').hide();
+                $('#jugadores').append(resmb);
+                $('#jugadores #masBuscados').click(function () {
+                    $('#jugadores #datos').hide();
+                    var busquedas = window.localStorage; 
+                    $('#jugadores #resMasBuscados div').remove();
+                    if ($('#jugadores #resMasBuscados').css('display') == 'none') {
+                        $('#jugadores #resMasBuscados').show();
+                        var flag = 0;
+                        var busquedaJugador = $('<div>');
+                        $.each(busquedas, function (index, value) {
+                            if (flag < busquedas.length) {
+                                busquedaJugador.append($('<p>').text(index + " : " + value));
+                                flag++;
+                            }
+                        });
+                        $('#jugadores #resMasBuscados').append(busquedaJugador);
+                    } else {
+                        $('#jugadores #resMasBuscados').hide();
+                    }
+                });
+                //
                 $('#jugadores').append($('<br>'));
                 $('#jugadores select').change(function () {
-                    $('#jugadores div').remove();
-                    var div = $('<div>');
+                    $('#jugadores #resMasBuscados').hide();
+                    $('#jugadores #datos').remove();
+                    var div = $('<div>').attr('id','datos');
                     var index = $('#jugadores select').val();
-                    var nombre, numero, posicion, edad;
-                    $.each(data.jugadores[index], function (key, value) { 
-                        switch (key) {
-                            case 'nombre': nombre = $('<b>').append($('<h2>').text(value));break;
-                            case 'numero': numero = $('<h4>').text('Camiseta: '+value);break;
-                            case 'posicion':  posicion = $('<h4>').text('Posición: '+value);break;
-                            case 'edad': edad = $('<h4>').text('Edad: '+value);break;
-                        }
-                    });
-                    div.append([nombre,numero,posicion,edad]);
+                    var jugador = data.jugadores[index]; 
+                    div.append([
+                        $('<b>').append($('<h2>').text(jugador.nombre)),
+                        $('<h4>').text('Camiseta: ' + jugador.numero),
+                        $('<h4>').text('Posición: ' + jugador.posicion),
+                        $('<h4>').text('Edad: ' + jugador.edad)
+                    ]);          
                     $('#jugadores').append(div);
+                    //Práctica 2
+                    var busquedas = window.localStorage;
+                    var ocurrencia = parseInt(busquedas[jugador.nombre]);
+                    if (!isNaN(ocurrencia)) {
+                        busquedas[jugador.nombre] = parseInt(busquedas[jugador.nombre]) + 1;
+                    } else {
+                        busquedas.setItem(jugador.nombre, 1);
+                    }
+                    //
                 });
             });
+
+            //Expresiones Regulares
+            $('#expresiones #btnDNI').click(function () {
+                var reg = /^[0-9]{8}[A-Z]{1}$/;
+                if (reg.test($('#expresiones #dni').val())) {
+                    $('#expresiones #resDNI p').css('color', 'green').html('Válido');
+                } else {
+                    $('#expresiones #resDNI p').css('color', 'red').html('No válido');
+                }
+            });
+            $('#expresiones #btnCP').click(function () {
+                var reg = /^(28){1}[0-9]{3}$/;
+                if (reg.test($('#expresiones #cp').val())) {
+                    $('#expresiones #resCP p').css('color', 'green').html('Válido');
+                } else {
+                    $('#expresiones #resCP p').css('color', 'red').html('No válido');
+                }
+            });
+            
         });
+
     </script>
 </body>
 </html>
