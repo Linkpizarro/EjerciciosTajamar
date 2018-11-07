@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Prueba Web Sockets</title>
+    <style>
+        #box{
+            width:270px;
+            height:500px;
+            border:1px solid;
+            background-color:#00ff90;
+        }
+
+        #buttons{
+            padding:0px 25px;
+        }
+
+        #status{
+            color:gray;
+        }
+        .time{
+            color:blue;
+        }
+        .name{
+            color:#ff6a00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3 id="status">Estado: Disconnected</h3>
+    </header>
+    <section>
+        <div id="buttons">
+            <button type="button" id="open">Abrir conexión</button>
+            <button type="button" id="close">Cerrar conexión</button>
+        </div>
+        <div id="box">
+            <ul id="res"></ul>
+        </div>
+        <input type="text" id="msg" placeholder="Mensaje..." />
+        <button type="button" id="send">Enviar mensaje</button>
+    </section>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        var socket;
+        $(document).ready(function () {
+            $('#open').click(function () {
+                openSocket();
+            });
+            $('#send').click(function () {
+                socket.send('<span class="name">Daniel</span>: ' + $('#msg').val());
+                $('#msg').val('');
+                
+            });
+            $('#close').click(function () {
+                socket.close();
+            });
+
+        });
+
+        function openSocket() {
+            var url = "wss://echo.websocket.org";
+            socket = new WebSocket(url);
+            socket.onerror = function (event) {
+                $('#status').css('color','red').html('Se ha producido un error en la conexión.(' + socket.readyState + ')');
+            }
+            socket.onopen = function (event) {
+                $('#status').css('color', 'green').html('Estado: Connected');
+                socket.send('<span class="name">Daniel</span> se ha conectado');
+            }
+            socket.onmessage = function (event) {
+                var currentdate = new Date();
+                var datetime = currentdate.getHours() + ":" + currentdate.getMinutes();
+                $('#res').append($('<li>').html(event.data + ' <span class="time">' + datetime + '</span>'));
+            }
+            socket.onclose = function () {
+                $('#status').css('color', 'gray').html('Estado: Disconnected');
+            }
+
+        }
+    </script>
+</body>
+</html>

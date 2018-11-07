@@ -10,23 +10,12 @@
         <h1>Objetos</h1>
     </header>
     <section>
-        <article>
-            <p></p>
+        <article id='videoclub'>
+            <p>VideoClub</p>
         </article><br />
     </section>
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            var Matematicas = function (num) {
-                this.numero = num;
-                this.Multiplicar = function () {
-                    this.numero = this.numero * 2;
-                    return this.numero;
-                }
-            }
-            var mates = new Matematicas(7);
-            console.log(mates.Multiplicar());
-        });
-    </script>
+    <script src="js/objPeliculas.js"></script>
+    <script src="js/getObjPeliculas.js"></script>
 </body>
 </html>
