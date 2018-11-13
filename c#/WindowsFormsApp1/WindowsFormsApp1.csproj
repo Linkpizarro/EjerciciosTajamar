@@ -57,6 +57,12 @@
     <Compile Include="ClaseChar.Designer.cs">
       <DependentUpon>ClaseChar.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClasesYObjetos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClasesYObjetos.Designer.cs">
+      <DependentUpon>ClasesYObjetos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Colecciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,12 @@
     <Compile Include="ClaseString.Designer.cs">
       <DependentUpon>ClaseString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Eventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Eventos.Designer.cs">
+      <DependentUpon>Eventos.cs</DependentUpon>
+    </Compile>
     <Compile Include="PruebaMovimiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +116,9 @@
     <EmbeddedResource Include="ClaseString.resx">
       <DependentUpon>ClaseString.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClasesYObjetos.resx">
+      <DependentUpon>ClasesYObjetos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Colecciones.resx">
       <DependentUpon>Colecciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DiaSemana.resx">
       <DependentUpon>DiaSemana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Eventos.resx">
+      <DependentUpon>Eventos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PruebaMovimiento.resx">
       <DependentUpon>PruebaMovimiento.cs</DependentUpon>

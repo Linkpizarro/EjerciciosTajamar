@@ -49,6 +49,21 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.shopList = new System.Windows.Forms.ListBox();
+            this.btnInsert = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.product = new System.Windows.Forms.TextBox();
+            this.storageList = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnMoveSelected = new System.Windows.Forms.Button();
+            this.btnMoveAll = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.btnDown = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -262,11 +277,198 @@
             this.panel2.Size = new System.Drawing.Size(15, 322);
             this.panel2.TabIndex = 26;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Khaki;
+            this.panel3.Location = new System.Drawing.Point(14, 475);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1096, 10);
+            this.panel3.TabIndex = 27;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(293, 502);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 30);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Tienda";
+            // 
+            // shopList
+            // 
+            this.shopList.FormattingEnabled = true;
+            this.shopList.ItemHeight = 30;
+            this.shopList.Location = new System.Drawing.Point(258, 544);
+            this.shopList.Name = "shopList";
+            this.shopList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.shopList.Size = new System.Drawing.Size(185, 214);
+            this.shopList.TabIndex = 29;
+            this.shopList.SelectedIndexChanged += new System.EventHandler(this.shopList_SelectedIndexChanged);
+            // 
+            // btnInsert
+            // 
+            this.btnInsert.BackColor = System.Drawing.Color.LightGray;
+            this.btnInsert.Location = new System.Drawing.Point(15, 586);
+            this.btnInsert.Margin = new System.Windows.Forms.Padding(6);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(180, 34);
+            this.btnInsert.TabIndex = 30;
+            this.btnInsert.Text = "Insertar";
+            this.btnInsert.UseVisualStyleBackColor = false;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.LightGray;
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(15, 632);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(180, 34);
+            this.btnDelete.TabIndex = 31;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnModify
+            // 
+            this.btnModify.BackColor = System.Drawing.Color.LightGray;
+            this.btnModify.Enabled = false;
+            this.btnModify.Location = new System.Drawing.Point(15, 678);
+            this.btnModify.Margin = new System.Windows.Forms.Padding(6);
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Size = new System.Drawing.Size(180, 34);
+            this.btnModify.TabIndex = 32;
+            this.btnModify.Text = "Modificar";
+            this.btnModify.UseVisualStyleBackColor = false;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
+            // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.BackColor = System.Drawing.Color.LightGray;
+            this.btnDeleteAll.Enabled = false;
+            this.btnDeleteAll.Location = new System.Drawing.Point(15, 724);
+            this.btnDeleteAll.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(180, 34);
+            this.btnDeleteAll.TabIndex = 33;
+            this.btnDeleteAll.Text = "Limpiar";
+            this.btnDeleteAll.UseVisualStyleBackColor = false;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(51, 502);
+            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(116, 30);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Producto";
+            // 
+            // product
+            // 
+            this.product.Location = new System.Drawing.Point(15, 538);
+            this.product.Margin = new System.Windows.Forms.Padding(6);
+            this.product.Name = "product";
+            this.product.Size = new System.Drawing.Size(180, 37);
+            this.product.TabIndex = 35;
+            this.product.TextChanged += new System.EventHandler(this.product_TextChanged);
+            this.product.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.product_KeyPress);
+            // 
+            // storageList
+            // 
+            this.storageList.FormattingEnabled = true;
+            this.storageList.ItemHeight = 30;
+            this.storageList.Location = new System.Drawing.Point(754, 544);
+            this.storageList.Name = "storageList";
+            this.storageList.Size = new System.Drawing.Size(183, 214);
+            this.storageList.TabIndex = 36;
+            this.storageList.SelectedIndexChanged += new System.EventHandler(this.storageList_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(799, 502);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(113, 30);
+            this.label10.TabIndex = 37;
+            this.label10.Text = "Almacén";
+            // 
+            // btnMoveSelected
+            // 
+            this.btnMoveSelected.BackColor = System.Drawing.Color.LightGray;
+            this.btnMoveSelected.Enabled = false;
+            this.btnMoveSelected.Location = new System.Drawing.Point(462, 595);
+            this.btnMoveSelected.Margin = new System.Windows.Forms.Padding(6);
+            this.btnMoveSelected.Name = "btnMoveSelected";
+            this.btnMoveSelected.Size = new System.Drawing.Size(268, 34);
+            this.btnMoveSelected.TabIndex = 38;
+            this.btnMoveSelected.Text = "Mover Seleccionados";
+            this.btnMoveSelected.UseVisualStyleBackColor = false;
+            this.btnMoveSelected.Click += new System.EventHandler(this.btnMoveSelected_Click);
+            // 
+            // btnMoveAll
+            // 
+            this.btnMoveAll.BackColor = System.Drawing.Color.LightGray;
+            this.btnMoveAll.Enabled = false;
+            this.btnMoveAll.Location = new System.Drawing.Point(504, 641);
+            this.btnMoveAll.Margin = new System.Windows.Forms.Padding(6);
+            this.btnMoveAll.Name = "btnMoveAll";
+            this.btnMoveAll.Size = new System.Drawing.Size(180, 34);
+            this.btnMoveAll.TabIndex = 39;
+            this.btnMoveAll.Text = "Mover Todos";
+            this.btnMoveAll.UseVisualStyleBackColor = false;
+            this.btnMoveAll.Click += new System.EventHandler(this.btnMoveAll_Click);
+            // 
+            // btnUp
+            // 
+            this.btnUp.BackColor = System.Drawing.Color.LightGray;
+            this.btnUp.Enabled = false;
+            this.btnUp.Location = new System.Drawing.Point(978, 578);
+            this.btnUp.Margin = new System.Windows.Forms.Padding(6);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(135, 51);
+            this.btnUp.TabIndex = 40;
+            this.btnUp.Text = "Subir";
+            this.btnUp.UseVisualStyleBackColor = false;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // btnDown
+            // 
+            this.btnDown.BackColor = System.Drawing.Color.LightGray;
+            this.btnDown.Enabled = false;
+            this.btnDown.Location = new System.Drawing.Point(978, 645);
+            this.btnDown.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(135, 51);
+            this.btnDown.TabIndex = 41;
+            this.btnDown.Text = "Bajar";
+            this.btnDown.UseVisualStyleBackColor = false;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
             // Colecciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 481);
+            this.ClientSize = new System.Drawing.Size(1122, 780);
+            this.Controls.Add(this.btnDown);
+            this.Controls.Add(this.btnUp);
+            this.Controls.Add(this.btnMoveAll);
+            this.Controls.Add(this.btnMoveSelected);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.storageList);
+            this.Controls.Add(this.product);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.btnDeleteAll);
+            this.Controls.Add(this.btnModify);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnInsert);
+            this.Controls.Add(this.shopList);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -321,5 +523,20 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox shopList;
+        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnModify;
+        private System.Windows.Forms.Button btnDeleteAll;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox product;
+        private System.Windows.Forms.ListBox storageList;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnMoveSelected;
+        private System.Windows.Forms.Button btnMoveAll;
+        private System.Windows.Forms.Button btnUp;
+        private System.Windows.Forms.Button btnDown;
     }
 }

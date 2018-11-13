@@ -162,7 +162,7 @@ namespace WindowsFormsApp1
                 reverse += letras[i];
             }
             tiempo.Stop();
-            this.resCadena.Text = "Tiempo: " + tiempo.Elapsed.Milliseconds.ToString();
+            this.resCadena.Text = reverse;
         }
 
         private void invertirBuilder_Click(object sender, EventArgs e)

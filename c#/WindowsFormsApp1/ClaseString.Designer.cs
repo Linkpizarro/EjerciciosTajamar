@@ -201,7 +201,7 @@
             // 
             // resCadena
             // 
-            this.resCadena.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resCadena.Font = new System.Drawing.Font("Arial Black", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resCadena.Location = new System.Drawing.Point(426, 461);
             this.resCadena.Multiline = true;
             this.resCadena.Name = "resCadena";
