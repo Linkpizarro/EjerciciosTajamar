@@ -51,19 +51,73 @@
     <Compile Include="Calculadora.Designer.cs">
       <DependentUpon>Calculadora.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClaseChar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClaseChar.Designer.cs">
+      <DependentUpon>ClaseChar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Colecciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Colecciones.Designer.cs">
+      <DependentUpon>Colecciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Colores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Colores.Designer.cs">
       <DependentUpon>Colores.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClaseDateTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClaseDateTime.Designer.cs">
+      <DependentUpon>ClaseDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiaSemana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiaSemana.Designer.cs">
+      <DependentUpon>DiaSemana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClaseString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClaseString.Designer.cs">
+      <DependentUpon>ClaseString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PruebaMovimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PruebaMovimiento.Designer.cs">
+      <DependentUpon>PruebaMovimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Calculadora.resx">
       <DependentUpon>Calculadora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClaseChar.resx">
+      <DependentUpon>ClaseChar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClaseString.resx">
+      <DependentUpon>ClaseString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Colecciones.resx">
+      <DependentUpon>Colecciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Colores.resx">
       <DependentUpon>Colores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClaseDateTime.resx">
+      <DependentUpon>ClaseDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiaSemana.resx">
+      <DependentUpon>DiaSemana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PruebaMovimiento.resx">
+      <DependentUpon>PruebaMovimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

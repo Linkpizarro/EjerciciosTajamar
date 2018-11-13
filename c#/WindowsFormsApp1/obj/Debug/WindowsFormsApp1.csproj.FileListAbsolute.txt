@@ -8,3 +8,10 @@ C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFor
 C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Calculadora.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Colores.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.DiaSemana.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ClaseDateTime.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ClaseChar.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ClaseString.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.PruebaMovimiento.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Colecciones.resources
