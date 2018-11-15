@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace WindowsFormsApp1
         public Colecciones()
         {
             InitializeComponent();
+            MetodoArrayList();
         }
 
         //Lista
@@ -294,6 +296,33 @@ namespace WindowsFormsApp1
                 this.btnInsert.PerformClick();
             }
           
+        }
+
+        private void MetodoArrayList()
+        {
+            ArrayList antigua = new ArrayList();
+            antigua.Add(this.btn1);
+            antigua.Add(this.btn2);
+            antigua.Add(this.btn3);
+            antigua.Add(this.txt1);
+            antigua.Add("Esto es un String");
+            foreach (Object btn in antigua)
+            {
+                if(btn is Button)
+                {
+                    ((Button)btn).Text = "ArrayList";
+                }
+                
+            }
+
+            List<TextBox> generica = new List<TextBox>();
+            generica.Add(this.txt1);
+            generica.Add(this.txt2);
+            generica.Add(this.txt3);
+            foreach (TextBox caja in generica)
+            {
+                caja.Text = "Genérico";
+            }
         }
     }
 }

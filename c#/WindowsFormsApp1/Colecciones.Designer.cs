@@ -64,6 +64,13 @@
             this.btnMoveAll = new System.Windows.Forms.Button();
             this.btnUp = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btn1 = new System.Windows.Forms.Button();
+            this.btn2 = new System.Windows.Forms.Button();
+            this.btn3 = new System.Windows.Forms.Button();
+            this.txt3 = new System.Windows.Forms.TextBox();
+            this.txt2 = new System.Windows.Forms.TextBox();
+            this.txt1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -449,11 +456,83 @@
             this.btnDown.UseVisualStyleBackColor = false;
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Khaki;
+            this.panel4.Location = new System.Drawing.Point(17, 783);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1096, 10);
+            this.panel4.TabIndex = 42;
+            // 
+            // btn1
+            // 
+            this.btn1.BackColor = System.Drawing.Color.LightGray;
+            this.btn1.Location = new System.Drawing.Point(17, 814);
+            this.btn1.Margin = new System.Windows.Forms.Padding(6);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(180, 34);
+            this.btn1.TabIndex = 43;
+            this.btn1.Text = "Botón1";
+            this.btn1.UseVisualStyleBackColor = false;
+            // 
+            // btn2
+            // 
+            this.btn2.BackColor = System.Drawing.Color.LightGray;
+            this.btn2.Location = new System.Drawing.Point(17, 860);
+            this.btn2.Margin = new System.Windows.Forms.Padding(6);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(180, 34);
+            this.btn2.TabIndex = 44;
+            this.btn2.Text = "Botón2";
+            this.btn2.UseVisualStyleBackColor = false;
+            // 
+            // btn3
+            // 
+            this.btn3.BackColor = System.Drawing.Color.LightGray;
+            this.btn3.Location = new System.Drawing.Point(17, 906);
+            this.btn3.Margin = new System.Windows.Forms.Padding(6);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(180, 34);
+            this.btn3.TabIndex = 45;
+            this.btn3.Text = "Botón 3";
+            this.btn3.UseVisualStyleBackColor = false;
+            // 
+            // txt3
+            // 
+            this.txt3.Location = new System.Drawing.Point(209, 903);
+            this.txt3.Margin = new System.Windows.Forms.Padding(6);
+            this.txt3.Name = "txt3";
+            this.txt3.Size = new System.Drawing.Size(180, 37);
+            this.txt3.TabIndex = 46;
+            // 
+            // txt2
+            // 
+            this.txt2.Location = new System.Drawing.Point(209, 857);
+            this.txt2.Margin = new System.Windows.Forms.Padding(6);
+            this.txt2.Name = "txt2";
+            this.txt2.Size = new System.Drawing.Size(180, 37);
+            this.txt2.TabIndex = 47;
+            // 
+            // txt1
+            // 
+            this.txt1.Location = new System.Drawing.Point(209, 811);
+            this.txt1.Margin = new System.Windows.Forms.Padding(6);
+            this.txt1.Name = "txt1";
+            this.txt1.Size = new System.Drawing.Size(180, 37);
+            this.txt1.TabIndex = 48;
+            // 
             // Colecciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 780);
+            this.ClientSize = new System.Drawing.Size(1122, 950);
+            this.Controls.Add(this.txt1);
+            this.Controls.Add(this.txt2);
+            this.Controls.Add(this.txt3);
+            this.Controls.Add(this.btn3);
+            this.Controls.Add(this.btn2);
+            this.Controls.Add(this.btn1);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.btnDown);
             this.Controls.Add(this.btnUp);
             this.Controls.Add(this.btnMoveAll);
@@ -538,5 +617,12 @@
         private System.Windows.Forms.Button btnMoveAll;
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btn1;
+        private System.Windows.Forms.Button btn2;
+        private System.Windows.Forms.Button btn3;
+        private System.Windows.Forms.TextBox txt3;
+        private System.Windows.Forms.TextBox txt2;
+        private System.Windows.Forms.TextBox txt1;
     }
 }

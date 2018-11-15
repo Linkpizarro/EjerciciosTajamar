@@ -24,97 +24,25 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-        }
-
-        private void zero_Click(object sender, EventArgs e)
-        {
-            consoleBox.Text += "0";
-        }
-
-        private void one_Click(object sender, EventArgs e)
-        {
-            consoleBox.Text += "1";
-        }
-
-        private void two_Click(object sender, EventArgs e)
-        {
-            consoleBox.Text += "2";
-        }
-
-        private void three_Click(object sender, EventArgs e)
-        {
-            consoleBox.Text += "3";
-        }
-
-        private void four_Click(object sender, EventArgs e)
-        {
-            consoleBox.Text += "4";
-        }
-
-        private void five_Click(object sender, EventArgs e)
-        {
-            consoleBox.Text += "5";
-        }
-
-        private void six_Click(object sender, EventArgs e)
-        {
-            consoleBox.Text += "6";
-        }
-
-        private void seven_Click(object sender, EventArgs e)
-        {
-            consoleBox.Text += "7";
-        }
-
-        private void eight_Click(object sender, EventArgs e)
-        {
-            consoleBox.Text += "8";
-        }
-
-        private void nine_Click(object sender, EventArgs e)
-        {
-            consoleBox.Text += "9";
-        }
-
-        private void sumSing_Click(object sender, EventArgs e)
-        {
-            if (consoleBox.Text != "")
+            foreach (Button btn in this.keyBoard.Controls)
             {
-                num1 = double.Parse(consoleBox.Text);
-                consoleBox.Text = "";
-                sign = "+";  
+                int auxNum;
+                if (int.TryParse(btn.Text,out auxNum) || btn.Text == ",")
+                {
+                    btn.Click += PrintNumber;
+                }
+                else{
+                    if (btn.Text == "+" || btn.Text == "-" || btn.Text == "/" || btn.Text == "*")
+                    {
+                        btn.Click += Operate;
+                    }
+                }
             }
         }
 
-        private void resSign_Click(object sender, EventArgs e)
+        private void PrintNumber(Object sender,EventArgs e)
         {
-            if (consoleBox.Text != "")
-            {
-                num1 = double.Parse(consoleBox.Text);
-                consoleBox.Text = "";
-                sign = "-";
-            }
-        }
-
-        private void multSign_Click(object sender, EventArgs e)
-        {
-            if (consoleBox.Text != "")
-            {
-                num1 = double.Parse(consoleBox.Text);
-                consoleBox.Text = "";
-                sign = "*";
-            }
-        }
-
-        private void divSign_Click(object sender, EventArgs e)
-        {
-            if (consoleBox.Text != "")
-            {
-                num1 = double.Parse(consoleBox.Text);
-                consoleBox.Text = "";
-                sign = "/";
-            }
-
+            consoleBox.Text += ((Button)sender).Text;
         }
 
         private void calc_Click(object sender, EventArgs e)
@@ -129,8 +57,31 @@ namespace WindowsFormsApp1
                     case "*": consoleBox.Text = (num1 * num2).ToString(); break;
                     case "/": consoleBox.Text = (num1 / num2).ToString(); break;
                 }
+                num1 = 0;
+                num2 = 0;
             }
            
+        }
+
+        private void Operate(Object sender , EventArgs e)
+        {
+            if (consoleBox.Text != "")
+            {
+                if (num1 != 0)
+                {
+                    this.calc.PerformClick();
+                }
+                else
+                {
+                    num1 = double.Parse(consoleBox.Text);
+                    consoleBox.Text = "";
+                    sign = ((Button)sender).Text;
+                }
+            }
+            else
+            {
+                sign = ((Button)sender).Text;
+            }
         }
 
         private void consoleBox_TextChanged(object sender, EventArgs e)
@@ -142,6 +93,8 @@ namespace WindowsFormsApp1
         {
             consoleBox.Text = "";
             sign = "";
+            num1 = 0;
+            num2 = 0;
         }
 
         private void del1_Click(object sender, EventArgs e)

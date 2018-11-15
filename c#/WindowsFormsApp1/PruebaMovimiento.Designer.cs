@@ -39,15 +39,14 @@
             this.pictureBox1.Size = new System.Drawing.Size(957, 621);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // Game
+            // PruebaMovimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 645);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Game";
+            this.Name = "PruebaMovimiento";
             this.Text = "Game";
             this.Load += new System.EventHandler(this.Game_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);

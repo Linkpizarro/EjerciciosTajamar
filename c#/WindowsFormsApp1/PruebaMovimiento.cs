@@ -20,11 +20,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             lienzo = pictureBox1.CreateGraphics();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
+            
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
@@ -65,7 +61,9 @@ namespace WindowsFormsApp1
 
         private void Game_Load(object sender, EventArgs e)
         {
-           
+          
         }
+
+        
     }
 }
