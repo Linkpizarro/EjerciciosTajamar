@@ -86,5 +86,11 @@ namespace WindowsFormsApp1
             } 
            
         }
+
+        private void calculator_Click(object sender, EventArgs e)
+        {
+            Calculadora c = new Calculadora();
+            c.ShowDialog();
+        }
     }
 }

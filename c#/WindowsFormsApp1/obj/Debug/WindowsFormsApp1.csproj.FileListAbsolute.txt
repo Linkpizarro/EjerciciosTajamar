@@ -18,3 +18,7 @@ C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFor
 C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ClasesYObjetos.resources
 C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Eventos.resources
 C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.TablaMultiplicar.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Sorteo.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.SorteoIniciar.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.BuscaMinas.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.BuscaMinasSize.resources

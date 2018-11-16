@@ -45,6 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuscaMinas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscaMinas.Designer.cs">
+      <DependentUpon>BuscaMinas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscaMinasSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscaMinasSize.Designer.cs">
+      <DependentUpon>BuscaMinasSize.cs</DependentUpon>
+    </Compile>
     <Compile Include="Calculadora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,12 +119,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sorteo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sorteo.Designer.cs">
+      <DependentUpon>Sorteo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SorteoIniciar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SorteoIniciar.Designer.cs">
+      <DependentUpon>SorteoIniciar.cs</DependentUpon>
+    </Compile>
     <Compile Include="TablaMultiplicar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TablaMultiplicar.Designer.cs">
       <DependentUpon>TablaMultiplicar.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BuscaMinas.resx">
+      <DependentUpon>BuscaMinas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscaMinasSize.resx">
+      <DependentUpon>BuscaMinasSize.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Calculadora.resx">
       <DependentUpon>Calculadora.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +182,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Sorteo.resx">
+      <DependentUpon>Sorteo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SorteoIniciar.resx">
+      <DependentUpon>SorteoIniciar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TablaMultiplicar.resx">
       <DependentUpon>TablaMultiplicar.cs</DependentUpon>
     </EmbeddedResource>
