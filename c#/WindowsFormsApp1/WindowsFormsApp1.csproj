@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Año.cs" />
     <Compile Include="BuscaMinas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,12 +71,7 @@
     <Compile Include="ClaseChar.Designer.cs">
       <DependentUpon>ClaseChar.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClasesYObjetos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ClasesYObjetos.Designer.cs">
-      <DependentUpon>ClasesYObjetos.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Ability.cs" />
     <Compile Include="Colecciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +115,13 @@
       <DependentUpon>HundirLaFlota.cs</DependentUpon>
     </Compile>
     <Compile Include="Mes.cs" />
+    <Compile Include="BatallaPokemon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatallaPokemon.Designer.cs">
+      <DependentUpon>BatallaPokemon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pokemon.cs" />
     <Compile Include="PruebaMovimiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,9 +169,6 @@
     <EmbeddedResource Include="ClaseString.resx">
       <DependentUpon>ClaseString.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClasesYObjetos.resx">
-      <DependentUpon>ClasesYObjetos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Colecciones.resx">
       <DependentUpon>Colecciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +187,9 @@
     <EmbeddedResource Include="HundirLaFlota.resx">
       <DependentUpon>HundirLaFlota.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BatallaPokemon.resx">
+      <DependentUpon>BatallaPokemon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PruebaMovimiento.resx">
       <DependentUpon>PruebaMovimiento.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +201,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Sorteo.resx">
       <DependentUpon>Sorteo.cs</DependentUpon>
@@ -223,6 +227,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Squirtle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
