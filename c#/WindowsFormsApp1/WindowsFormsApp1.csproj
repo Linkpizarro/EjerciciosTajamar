@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -111,6 +112,13 @@
     <Compile Include="Eventos.Designer.cs">
       <DependentUpon>Eventos.cs</DependentUpon>
     </Compile>
+    <Compile Include="HundirLaFlota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HundirLaFlota.Designer.cs">
+      <DependentUpon>HundirLaFlota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mes.cs" />
     <Compile Include="PruebaMovimiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +144,12 @@
     </Compile>
     <Compile Include="TablaMultiplicar.Designer.cs">
       <DependentUpon>TablaMultiplicar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Temperatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Temperatura.Designer.cs">
+      <DependentUpon>Temperatura.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="BuscaMinas.resx">
       <DependentUpon>BuscaMinas.cs</DependentUpon>
@@ -170,6 +184,9 @@
     <EmbeddedResource Include="Eventos.resx">
       <DependentUpon>Eventos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HundirLaFlota.resx">
+      <DependentUpon>HundirLaFlota.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PruebaMovimiento.resx">
       <DependentUpon>PruebaMovimiento.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TablaMultiplicar.resx">
       <DependentUpon>TablaMultiplicar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Temperatura.resx">
+      <DependentUpon>Temperatura.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

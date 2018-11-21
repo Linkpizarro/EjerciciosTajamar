@@ -58,6 +58,7 @@
             this.Controls.Add(this.panel);
             this.Controls.Add(this.btnStart);
             this.Name = "BuscaMinas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BuscaMinas";
             this.ResumeLayout(false);
 

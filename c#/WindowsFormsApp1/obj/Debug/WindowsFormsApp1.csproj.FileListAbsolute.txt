@@ -22,3 +22,5 @@ C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFor
 C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.SorteoIniciar.resources
 C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.BuscaMinas.resources
 C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.BuscaMinasSize.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Temperatura.resources
+C:\Users\AlumnoMCSD\Desktop\Repositorio personal\EjerciciosTajamar\c#\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.HundirLaFlota.resources

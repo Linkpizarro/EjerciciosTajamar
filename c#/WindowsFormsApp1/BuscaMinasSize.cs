@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
     public partial class BuscaMinasSize : Form
     {
         public int hw = 0;
+        public int b = 0;
         public BuscaMinasSize()
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace WindowsFormsApp1
         private void btnPlay_Click(object sender, EventArgs e)
         {
             hw = int.Parse(this.height.Text);
+            b = int.Parse(this.bombers.Text);
             this.Close();
         }
     }

@@ -31,11 +31,13 @@
             this.btnPlay = new System.Windows.Forms.Button();
             this.height = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bombers = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnPlay
             // 
-            this.btnPlay.Location = new System.Drawing.Point(19, 106);
+            this.btnPlay.Location = new System.Drawing.Point(20, 166);
             this.btnPlay.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(209, 63);
@@ -65,17 +67,41 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Tamaño :";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Black", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 110);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(154, 38);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Bombas :";
+            // 
+            // bombers
+            // 
+            this.bombers.Font = new System.Drawing.Font("Arial Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bombers.Location = new System.Drawing.Point(175, 110);
+            this.bombers.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.bombers.Multiline = true;
+            this.bombers.Name = "bombers";
+            this.bombers.Size = new System.Drawing.Size(53, 48);
+            this.bombers.TabIndex = 4;
+            this.bombers.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // BuscaMinasSize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(245, 177);
+            this.ClientSize = new System.Drawing.Size(245, 244);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.bombers);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.height);
             this.Controls.Add(this.btnPlay);
             this.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "BuscaMinasSize";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BuscaMinasSize";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -87,5 +113,7 @@
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.TextBox height;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox bombers;
     }
 }
