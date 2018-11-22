@@ -72,6 +72,8 @@
       <DependentUpon>ClaseChar.cs</DependentUpon>
     </Compile>
     <Compile Include="Ability.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Colecciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +109,12 @@
     </Compile>
     <Compile Include="Eventos.Designer.cs">
       <DependentUpon>Eventos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ficheros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ficheros.Designer.cs">
+      <DependentUpon>Ficheros.cs</DependentUpon>
     </Compile>
     <Compile Include="HundirLaFlota.cs">
       <SubType>Form</SubType>
@@ -184,6 +192,9 @@
     <EmbeddedResource Include="Eventos.resx">
       <DependentUpon>Eventos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ficheros.resx">
+      <DependentUpon>Ficheros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HundirLaFlota.resx">
       <DependentUpon>HundirLaFlota.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,6 +241,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Squirtle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Personas.txt" />
+    <Content Include="bin\Debug\Productos.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
