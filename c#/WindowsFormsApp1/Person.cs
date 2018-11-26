@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Person
+    public class Person
     {
         String _Name;
         String _Surname;
         int _Age;
+
+        public Person()
+        {
+        }
         public Person(String Name, String Surname, int Age)
         {
             this._Name = Name;

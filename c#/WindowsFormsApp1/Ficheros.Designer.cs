@@ -46,6 +46,16 @@
             this.page = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.psurname = new System.Windows.Forms.TextBox();
+            this.btnDelAct = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.actors = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtSurname = new System.Windows.Forms.TextBox();
+            this.btnAddAct = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtAge = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // name
@@ -228,11 +238,121 @@
             this.psurname.TabIndex = 19;
             this.psurname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnDelAct
+            // 
+            this.btnDelAct.Location = new System.Drawing.Point(587, 917);
+            this.btnDelAct.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDelAct.Name = "btnDelAct";
+            this.btnDelAct.Size = new System.Drawing.Size(443, 43);
+            this.btnDelAct.TabIndex = 23;
+            this.btnDelAct.Text = "Borrar";
+            this.btnDelAct.UseVisualStyleBackColor = true;
+            this.btnDelAct.Click += new System.EventHandler(this.btnDelAct_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(758, 608);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 24);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Actores";
+            // 
+            // actors
+            // 
+            this.actors.FormattingEnabled = true;
+            this.actors.ItemHeight = 24;
+            this.actors.Location = new System.Drawing.Point(587, 638);
+            this.actors.Margin = new System.Windows.Forms.Padding(6);
+            this.actors.Name = "actors";
+            this.actors.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.actors.Size = new System.Drawing.Size(443, 268);
+            this.actors.TabIndex = 21;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(207, 736);
+            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 24);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "Apellido";
+            // 
+            // txtSurname
+            // 
+            this.txtSurname.Location = new System.Drawing.Point(174, 766);
+            this.txtSurname.Margin = new System.Windows.Forms.Padding(6);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(154, 29);
+            this.txtSurname.TabIndex = 29;
+            this.txtSurname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnAddAct
+            // 
+            this.btnAddAct.Location = new System.Drawing.Point(36, 917);
+            this.btnAddAct.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAddAct.Name = "btnAddAct";
+            this.btnAddAct.Size = new System.Drawing.Size(443, 43);
+            this.btnAddAct.TabIndex = 28;
+            this.btnAddAct.Text = "Añadir";
+            this.btnAddAct.UseVisualStyleBackColor = true;
+            this.btnAddAct.Click += new System.EventHandler(this.btnAddAct_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(208, 637);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 24);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Nombre";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(174, 667);
+            this.txtName.Margin = new System.Windows.Forms.Padding(6);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(154, 29);
+            this.txtName.TabIndex = 26;
+            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(217, 836);
+            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 24);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Edad";
+            // 
+            // txtAge
+            // 
+            this.txtAge.Location = new System.Drawing.Point(204, 866);
+            this.txtAge.Margin = new System.Windows.Forms.Padding(6);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(90, 29);
+            this.txtAge.TabIndex = 24;
+            this.txtAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Ficheros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1056, 577);
+            this.ClientSize = new System.Drawing.Size(1056, 972);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtSurname);
+            this.Controls.Add(this.btnAddAct);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtAge);
+            this.Controls.Add(this.btnDelAct);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.actors);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.psurname);
             this.Controls.Add(this.btnDelP);
@@ -281,5 +401,15 @@
         private System.Windows.Forms.TextBox page;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox psurname;
+        private System.Windows.Forms.Button btnDelAct;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox actors;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtSurname;
+        private System.Windows.Forms.Button btnAddAct;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtAge;
     }
 }
