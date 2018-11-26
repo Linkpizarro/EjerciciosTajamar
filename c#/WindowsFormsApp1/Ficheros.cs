@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Xml.Serialization;
 
 namespace WindowsFormsApp1
 {
@@ -17,15 +18,21 @@ namespace WindowsFormsApp1
         List<Product> productsList = new List<Product>();
         String personPath = "./Personas.txt";
         List<Person> personsList = new List<Person>();
+        String actorPath = "./Actores.txt";
+        List<Person> actorsList = new List<Person>();
+        XmlSerializer serializer;
 
         public Ficheros()
         {
             InitializeComponent();
+            this.serializer = new XmlSerializer(typeof(List<Person>));
         }
+
         private void Ficheros_Load(object sender, EventArgs e)
         {
-            CreateProductsList();
-            ShowData();
+            ShowData();      
+            ShowDataP();
+            ShowDataA();
         }
 
         //Productos
@@ -263,6 +270,62 @@ namespace WindowsFormsApp1
             CreatePersonsList();
             ClearDataP();
             ShowDataP();
+        }
+
+        //Actores
+        private void WriteA()
+        {
+            StreamWriter writer = new StreamWriter(actorPath);
+            Person p = new Person(this.txtName.Text, this.txtSurname.Text, int.Parse(this.txtAge.Text));
+            actorsList.Add(p);        
+            this.serializer.Serialize(writer, actorsList);
+            writer.Flush();
+            writer.Close();
+        }
+        private void ReadA()
+        {
+            StreamReader reader = new StreamReader(actorPath);
+            actorsList.Clear();
+
+            actorsList = (List<Person>)serializer.Deserialize(reader);
+            reader.Close();
+           
+        }
+        private void ClearDataA()
+        {
+            this.actors.Items.Clear();
+            this.txtName.Text = "";
+            this.txtSurname.Text = "";
+            this.txtAge.Text = "";
+        }
+        private void ShowDataA()
+        {
+            ReadA();
+            foreach (Person p in actorsList)
+            {
+                this.actors.Items.Add(p.Name + " " + p.Surname + " -> " + p.Age + " Años.");
+            }
+        }
+        private void DelActorsList()
+        {
+            actorsList.RemoveAt(this.actors.SelectedIndex);
+            WriteA();
+        }
+        private void btnAddAct_Click(object sender, EventArgs e)
+        {
+            if (!(this.txtName is null) && !(this.txtSurname is null) && !(this.txtAge is null))
+            {
+                WriteA();
+                ClearDataA();
+                ShowDataA();
+            }
+        }
+
+        private void btnDelAct_Click(object sender, EventArgs e)
+        {
+            DelActorsList();
+            ClearDataA();
+            ShowDataA();
         }
     }
 }

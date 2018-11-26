@@ -72,6 +72,7 @@
       <DependentUpon>ClaseChar.cs</DependentUpon>
     </Compile>
     <Compile Include="Ability.cs" />
+    <Compile Include="Coche.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Colecciones.cs">
@@ -138,6 +139,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerializeImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerializeImage.Designer.cs">
+      <DependentUpon>SerializeImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sorteo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +221,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SerializeImage.resx">
+      <DependentUpon>SerializeImage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sorteo.resx">
       <DependentUpon>Sorteo.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +253,8 @@
     <None Include="bin\Debug\Squirtle.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Coches.txt" />
+    <Content Include="bin\Debug\Actores.txt" />
     <Content Include="bin\Debug\Personas.txt" />
     <Content Include="bin\Debug\Productos.txt" />
   </ItemGroup>
