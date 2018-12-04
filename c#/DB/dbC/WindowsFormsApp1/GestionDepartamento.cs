@@ -32,7 +32,13 @@ namespace WindowsFormsApp1
             this.com.Connection = this.con;
             this.com.CommandType = CommandType.Text;
             ids = new List<int>();
+            this.con.InfoMessage += Con_InfoMessage; ;
             ShowDept();
+        }
+
+        private void Con_InfoMessage(object sender, SqlInfoMessageEventArgs e)
+        {
+            this.msg.Text = e.Message;
         }
 
         private void ShowDept()
@@ -115,10 +121,13 @@ namespace WindowsFormsApp1
             ShowDept();
         }
 
+ 
+
         private void InsertDept()
         {
             if (ValidateData())
             {
+                this.msg.Text = "";
                 String sql = "INSERTDEPT";
                 SqlParameter parn = new SqlParameter("@N",int.Parse(this.no.Text));
                 SqlParameter pard = new SqlParameter("@DN", this.name.Text);
@@ -156,6 +165,7 @@ namespace WindowsFormsApp1
 
                 this.con.Open();
                 int afectados = this.com.ExecuteNonQuery();
+                this.msg.Text = afectados.ToString();
 
                 this.com.Parameters.Clear();
                 this.reader.Close();
@@ -187,7 +197,7 @@ namespace WindowsFormsApp1
 
                     this.con.Open();
                     int afectados = this.com.ExecuteNonQuery();
-
+                    this.msg.Text = afectados.ToString();
                     this.com.Parameters.Clear();
                     this.reader.Close();
                     this.con.Close();
@@ -211,6 +221,12 @@ namespace WindowsFormsApp1
         private void btnModify_Click(object sender, EventArgs e)
         {
             UpdateDept();
+        }
+
+        private void search_Click(object sender, EventArgs e)
+        {
+            ClearData();
+            this.deptList.SelectedIndex = -1;
         }
     }
 }

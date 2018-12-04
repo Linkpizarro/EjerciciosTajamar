@@ -51,6 +51,7 @@
     <Compile Include="Buscador.Designer.cs">
       <DependentUpon>Buscador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Connect.cs" />
     <Compile Include="EliminarEnfermos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +64,12 @@
     <Compile Include="GestionDepartamento.Designer.cs">
       <DependentUpon>GestionDepartamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionHospital.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionHospital.Designer.cs">
+      <DependentUpon>GestionHospital.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModificarDoctor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +78,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="pruebaConexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pruebaConexion.Designer.cs">
+      <DependentUpon>pruebaConexion.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Buscador.resx">
       <DependentUpon>Buscador.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GestionDepartamento.resx">
       <DependentUpon>GestionDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionHospital.resx">
+      <DependentUpon>GestionHospital.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModificarDoctor.resx">
       <DependentUpon>ModificarDoctor.cs</DependentUpon>
@@ -92,6 +108,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="pruebaConexion.resx">
+      <DependentUpon>pruebaConexion.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
