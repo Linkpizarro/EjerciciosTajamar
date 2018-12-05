@@ -78,11 +78,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="pruebaConexion.cs">
+    <Compile Include="GestionBDHospitales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pruebaConexion.Designer.cs">
-      <DependentUpon>pruebaConexion.cs</DependentUpon>
+    <Compile Include="GestionBDHospitales.Designer.cs">
+      <DependentUpon>GestionBDHospitales.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Buscador.resx">
       <DependentUpon>Buscador.cs</DependentUpon>
@@ -108,8 +108,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="pruebaConexion.resx">
-      <DependentUpon>pruebaConexion.cs</DependentUpon>
+    <EmbeddedResource Include="GestionBDHospitales.resx">
+      <DependentUpon>GestionBDHospitales.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
