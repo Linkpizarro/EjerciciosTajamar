@@ -26,12 +26,31 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void GenerarTextBox()
+        {
+            this.dataZone.Controls.Clear();
+            foreach (String item in c.GetNameColumn(this.tablas.SelectedItem.ToString()))
+            {
+                TextBox tbx = new TextBox();
+                Label l = new Label();
+                l.Size = new Size(175,24);
+                l.TextAlign = ContentAlignment.MiddleCenter;
+                l.Text = item + ":";
+                tbx.Size = new Size(155, 24);
+                tbx.Tag = item;
+                this.dataZone.Controls.Add(l);
+                this.dataZone.Controls.Add(tbx);
+            }
+
+        }
+
         private void GenerarCheckBox()
         {
             this.columnsZone.Controls.Clear();
             foreach (String item in c.GetNameColumn(this.tablas.SelectedItem.ToString()))
             {
                 CheckBox bx = new CheckBox();
+                bx.Size = new Size(170, 24);
                 bx.Text = item;
                 bx.Checked = true;
                 bx.Click += Consultar;
@@ -111,6 +130,7 @@ namespace WindowsFormsApp1
         {
             CargarColumnas();
             GenerarCheckBox();
+            GenerarTextBox();
             Mostrar();
         }
         private void value_TextChanged(object sender, EventArgs e)

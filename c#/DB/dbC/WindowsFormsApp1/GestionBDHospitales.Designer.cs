@@ -40,6 +40,7 @@
             this.columnsZone = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.dataZone = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             this.list.Location = new System.Drawing.Point(508, 48);
             this.list.Margin = new System.Windows.Forms.Padding(6);
             this.list.Name = "list";
-            this.list.Size = new System.Drawing.Size(472, 324);
+            this.list.Size = new System.Drawing.Size(472, 372);
             this.list.TabIndex = 0;
             // 
             // value
@@ -73,6 +74,7 @@
             this.label1.Size = new System.Drawing.Size(105, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "Parámetro";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -146,7 +148,7 @@
             // columnsZone
             // 
             this.columnsZone.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.columnsZone.Location = new System.Drawing.Point(508, 381);
+            this.columnsZone.Location = new System.Drawing.Point(15, 328);
             this.columnsZone.Name = "columnsZone";
             this.columnsZone.Size = new System.Drawing.Size(472, 91);
             this.columnsZone.TabIndex = 12;
@@ -171,11 +173,20 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Datos";
             // 
+            // dataZone
+            // 
+            this.dataZone.BackColor = System.Drawing.Color.Teal;
+            this.dataZone.Location = new System.Drawing.Point(999, 48);
+            this.dataZone.Name = "dataZone";
+            this.dataZone.Size = new System.Drawing.Size(359, 371);
+            this.dataZone.TabIndex = 15;
+            // 
             // GestionBDHospitales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 486);
+            this.ClientSize = new System.Drawing.Size(1370, 436);
+            this.Controls.Add(this.dataZone);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.columnsZone);
@@ -209,5 +220,6 @@
         private System.Windows.Forms.FlowLayoutPanel columnsZone;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.FlowLayoutPanel dataZone;
     }
 }

@@ -17,11 +17,12 @@ namespace WindowsFormsApp1
 
         public Connect(String db)
         {
-            this.strCon = "Data Source = LOCALHOST;" +
-            " Initial Catalog = "+ db +";" +
-            " Persist Security Info = True;" +
-            "User ID = SA;" +
-            "Password = 'MCSD2018'";
+            //this.strCon = "Data Source = LOCALHOST;" +
+            //" Initial Catalog = "+ db +";" +
+            //" Persist Security Info = True;" +
+            //"User ID = SA;" +
+            //"Password = 'MCSD2018'";
+            this.strCon = "Data Source=LOCALHOST\\SQLEXPRESS;Initial Catalog="+db+";Integrated Security=True";
             this.con = new SqlConnection(this.strCon);
             this.com = new SqlCommand();
             this.com.Connection = this.con;
