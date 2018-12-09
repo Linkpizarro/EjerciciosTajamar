@@ -52,6 +52,12 @@
       <DependentUpon>Buscador.cs</DependentUpon>
     </Compile>
     <Compile Include="Connect.cs" />
+    <Compile Include="EjercicioEMP-DEPT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EjercicioEMP-DEPT.Designer.cs">
+      <DependentUpon>EjercicioEMP-DEPT.cs</DependentUpon>
+    </Compile>
     <Compile Include="EliminarEnfermos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </Compile>
     <EmbeddedResource Include="Buscador.resx">
       <DependentUpon>Buscador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EjercicioEMP-DEPT.resx">
+      <DependentUpon>EjercicioEMP-DEPT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EliminarEnfermos.resx">
       <DependentUpon>EliminarEnfermos.cs</DependentUpon>
