@@ -21,12 +21,12 @@ namespace WindowsFormsApp1
         public EjercicioEMP_DEPT()
         {
             InitializeComponent();
-            //this.strCon = "Data Source = LOCALHOST;" +
-            //" Initial Catalog = HOSPITAL;" +
-            //" Persist Security Info = True;" +
-            //"User ID = SA;" +
-            //"Password = 'MCSD2018'";
-            this.strCon = "Data Source=LOCALHOST\\SQLEXPRESS;Initial Catalog= HOSPITAL;Integrated Security=True";
+            this.strCon = "Data Source = LOCALHOST;" +
+            " Initial Catalog = HOSPITAL;" +
+            " Persist Security Info = True;" +
+            "User ID = SA;" +
+            "Password = 'MCSD2018'";
+            //this.strCon = "Data Source=LOCALHOST\\SQLEXPRESS;Initial Catalog= HOSPITAL;Integrated Security=True";
             this.con = new SqlConnection(this.strCon);
             this.com = new SqlCommand();
             this.com.Connection = this.con;
@@ -51,6 +51,7 @@ namespace WindowsFormsApp1
 
             this.reader.Close();
             this.con.Close();
+            
         }
 
         private void LimpiarDatosEmpleados()
@@ -58,6 +59,22 @@ namespace WindowsFormsApp1
             this.sal.Text = "";
             this.job.Text = "";
             this.dept.SelectedIndex = -1;
+        }
+
+        private void Habilitar()
+        {
+            this.sal.Enabled = true;
+            this.job.Enabled = true;
+            this.btnModify.Enabled = true;
+            this.btnDrop.Enabled = true;
+        }
+
+        private void DesHabilitar()
+        {
+            this.sal.Enabled = false;
+            this.job.Enabled = false;
+            this.btnModify.Enabled = false;
+            this.btnDrop.Enabled = false;
         }
 
         private void MostrarEmpleados()
@@ -117,6 +134,7 @@ namespace WindowsFormsApp1
         {
             if (cbxDept.SelectedIndex != -1)
             {
+                DesHabilitar();
                 MostrarEmpleados();
                 MostrarDatosGenerales();
             }
@@ -150,7 +168,16 @@ namespace WindowsFormsApp1
 
         private void empleados_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MostrarDatosEmpleados();
+            if (this.empleados.SelectedIndex != -1)
+            {
+                Habilitar();
+                MostrarDatosEmpleados();
+            }
+            else
+            {
+                DesHabilitar();
+            }
+           
         }
 
         private void ModificarEmpleado()
@@ -185,9 +212,10 @@ namespace WindowsFormsApp1
         {
             if (this.empleados.SelectedIndex != -1)
             {
-                if (int.Parse(this.sal.Text) >= 0 && this.job.Text != "")
+                if (this.sal.Text != "" && int.Parse(this.sal.Text) >= 0 && this.job.Text != "")
                 {
                     ModificarEmpleado();
+                    DesHabilitar();
                 }
             }
         }
@@ -216,7 +244,29 @@ namespace WindowsFormsApp1
 
         private void btnDrop_Click(object sender, EventArgs e)
         {
-            EliminarEmpleado();
+            if (this.cbxDept.SelectedIndex != -1 && this.empleados.SelectedIndex != -1)
+            {
+                EliminarEmpleado();
+                DesHabilitar();
+            }
+           
+        }
+
+        private void sal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void job_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

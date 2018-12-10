@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EjercicioEMP_DEPT());
+            Application.Run(new EjercicioEspecialidad_Doctor());
         }
     }
 }

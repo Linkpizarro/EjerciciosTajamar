@@ -52,11 +52,18 @@
       <DependentUpon>Buscador.cs</DependentUpon>
     </Compile>
     <Compile Include="Connect.cs" />
+    <Compile Include="Doctor.cs" />
     <Compile Include="EjercicioEMP-DEPT.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EjercicioEMP-DEPT.Designer.cs">
       <DependentUpon>EjercicioEMP-DEPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EjercicioEspecialidad-Doctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EjercicioEspecialidad-Doctor.Designer.cs">
+      <DependentUpon>EjercicioEspecialidad-Doctor.cs</DependentUpon>
     </Compile>
     <Compile Include="EliminarEnfermos.cs">
       <SubType>Form</SubType>
@@ -76,6 +83,7 @@
     <Compile Include="GestionHospital.Designer.cs">
       <DependentUpon>GestionHospital.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperEspecialidad-Doctor.cs" />
     <Compile Include="ModificarDoctor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EjercicioEMP-DEPT.resx">
       <DependentUpon>EjercicioEMP-DEPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EjercicioEspecialidad-Doctor.resx">
+      <DependentUpon>EjercicioEspecialidad-Doctor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EliminarEnfermos.resx">
       <DependentUpon>EliminarEnfermos.cs</DependentUpon>
