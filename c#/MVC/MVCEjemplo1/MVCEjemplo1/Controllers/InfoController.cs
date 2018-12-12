@@ -14,11 +14,26 @@ namespace MVCEjemplo1.Controllers
         {
             return View();
         }
-        // GET: ControllerView 
+        // GET: Business 
         public ActionResult Business()
         {
             Connect n = new Connect();
             return View(n.GetData("GETEMPRESAS", "Empresa"));
         }
+        //GET: BusinessInfo
+        public ActionResult BusinessInfo(String id)
+        {
+            Connect n = new Connect();
+            Client c = n.GetCliente("GETCLIENTE",id);
+            return View(c);
+        }
+        //POST: UpdateBusiness
+        [HttpPost]
+        public ActionResult UpdateBusiness()
+        {
+            return View();
+        }
+
+
     }
 }

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Información de " + ViewBag.Name;
+}
+
+<h2>@ViewBag.Title</h2>
+<form method="post">
+    <label>Empresa:</label>
+    <input type="text" id="name" value="@Model.Emp" />
+    <label>Contacto:</label>
+    <input type="text" id="contact" value="@Model.Cont" />
+    <button type="submit" id="btnModify">Modificar</button>
+</form>
+

@@ -47,6 +47,37 @@ namespace MVCEjemplo1.Models
 
             return result;
         }
+        public Client GetCliente(String sql,String name)
+        {
+            SqlParameter par = new SqlParameter("@N", name);
+            this.com.Parameters.Add(par);
+            this.com.Connection = this.con;
+            this.com.CommandText = sql;
+            this.com.CommandType = System.Data.CommandType.StoredProcedure;
+
+            this.con.Open();
+            this.reader = this.com.ExecuteReader();
+            Client result = new Client();
+            this.reader.Read();
+
+            String cc = this.reader["CodigoCliente"].ToString();
+            String n = this.reader["Empresa"].ToString();
+            String con = this.reader["Contacto"].ToString();
+            String car = this.reader["Cargo"].ToString();
+            String ciu = this.reader["Ciudad"].ToString();
+            long tel = long.Parse(this.reader["Telefono"].ToString());
+            result.CodCli = cc;
+            result.Emp = n;
+            result.Cont = con;
+            result.Car = car;
+            result.Ciu = ciu;
+            result.Tel = tel;
+
+            this.com.Parameters.Clear();
+            this.reader.Close();
+            this.con.Close();
+            return result;
+        }
 
     }
 }

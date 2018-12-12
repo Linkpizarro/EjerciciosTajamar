@@ -7,9 +7,9 @@
 <ul>
     @foreach (String item in Model)
     {
-        <li>
-            @item
-        </li>
+    <li>
+        @Html.ActionLink(item, "BusinessInfo", "Info",new { id = item },null)
+    </li>
     }
 </ul>
 
