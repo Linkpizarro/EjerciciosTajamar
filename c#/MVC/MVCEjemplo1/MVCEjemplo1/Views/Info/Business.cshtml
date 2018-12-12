@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Empresas";
+}
+
+<h2>@ViewBag.Title</h2>
+<ul>
+    @foreach (String item in Model)
+    {
+        <li>
+            @item
+        </li>
+    }
+</ul>
+
+
