@@ -4,11 +4,11 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<form method="post">
+<form method="post" action="">
     <label>Empresa:</label>
-    <input type="text" id="name" value="@Model.Emp" />
+    <input class="form-control" type="text" id="name" value="@Model.Emp" />
     <label>Contacto:</label>
-    <input type="text" id="contact" value="@Model.Cont" />
+    <input class="form-control" type="text" id="contact" value="@Model.Cont" />
     <button type="submit" id="btnModify">Modificar</button>
 </form>
 
