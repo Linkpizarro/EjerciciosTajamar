@@ -4,11 +4,19 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<form method="post" action="">
+<form method="post" action="~/Info/UpdateBussiness" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" id="id" value="@Model.Emp" />
     <label>Empresa:</label>
     <input class="form-control" type="text" id="name" value="@Model.Emp" />
     <label>Contacto:</label>
     <input class="form-control" type="text" id="contact" value="@Model.Cont" />
-    <button type="submit" id="btnModify">Modificar</button>
+    <label>Cargo:</label>
+    <input class="form-control" type="text" id="car" value="@Model.Car" />
+    <label>Ciudad:</label>
+    <input class="form-control" type="text" id="city" value="@Model.Ciu" />
+    <label>Teléfono:</label>
+    <input class="form-control" type="tel" id="tel" value="@Model.Tel" />
+    <br />
+    <input class="form-control" type="submit" id="btnModify" value="Modificar" />
 </form>
 

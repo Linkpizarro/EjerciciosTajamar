@@ -78,6 +78,31 @@ namespace MVCEjemplo1.Models
             this.con.Close();
             return result;
         }
+        public void ModificarCliente(String sql,String nombre, String empresa, String cargo, String contacto, String ciudad, String telefono)
+        {
+            SqlParameter par = new SqlParameter("@N", nombre);
+            this.com.Parameters.Add(par);
+            SqlParameter par2 = new SqlParameter("@EM", empresa);
+            this.com.Parameters.Add(par2);
+            SqlParameter par3 = new SqlParameter("@CA", cargo);
+            this.com.Parameters.Add(par3);
+            SqlParameter par4 = new SqlParameter("@CO", contacto);
+            this.com.Parameters.Add(par4);
+            SqlParameter par5 = new SqlParameter("@CI", ciudad);
+            this.com.Parameters.Add(par5);
+            SqlParameter par6 = new SqlParameter("@TE", telefono);
+            this.com.Parameters.Add(par6);
+            this.com.Connection = this.con;
+            this.com.CommandText = sql;
+            this.com.CommandType = System.Data.CommandType.StoredProcedure;
+
+            this.con.Open();
+            int afec = this.com.ExecuteNonQuery();
+
+            this.com.Parameters.Clear();
+            this.reader.Close();
+            this.con.Close();
+        }
 
     }
 }

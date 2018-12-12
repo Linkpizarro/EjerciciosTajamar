@@ -27,10 +27,12 @@ namespace MVCEjemplo1.Controllers
             Client c = n.GetCliente("GETCLIENTE",id);
             return View(c);
         }
-        //POST: UpdateBusiness
+        //POST: UpdateBussiness
         [HttpPost]
-        public ActionResult UpdateBusiness()
+        public ActionResult UpdateBussiness(String id,String emp,String cont,String car,String ciu,String tel)
         {
+            Connect n = new Connect();
+            n.ModificarCliente("MODIFICARCLIENTE", id,emp,car,cont,ciu,tel);
             return View();
         }
 
