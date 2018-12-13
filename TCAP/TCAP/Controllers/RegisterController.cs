@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCAP.Models;
 
 namespace TCAP.Controllers
 {
@@ -10,7 +11,7 @@ namespace TCAP.Controllers
     {
         // GET: Register
         public ActionResult Index()
-        {
+        { 
             return View();
         }
     }
