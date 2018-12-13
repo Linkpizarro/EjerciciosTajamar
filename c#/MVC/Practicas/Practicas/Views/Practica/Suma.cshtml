@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Suma";
+}
+
+
+<h1>Suma</h1>
+<form method="Post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">Número 1:</label>
+        <input type="number" class="form-control" name="n1" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Número 2:</label>
+        <input type="number" class="form-control" name="n2" />
+    </div>
+    <div class="form-group">
+        <input type="submit" class="form-control btn-primary" name="btnSumar" value="Sumar" />
+    </div>
+</form>
+@if (!(@ViewBag.Total is null))
+{
+    <h3>Total: @ViewBag.Total</h3>
+}
+    <button class="btn-warning">@Html.ActionLink("Atrás", "Index", "Practica")</button>
+
+
+
+
+

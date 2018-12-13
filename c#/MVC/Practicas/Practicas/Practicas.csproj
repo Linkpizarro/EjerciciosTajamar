@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{45BCEE82-D0E3-416F-A203-FC934C26BFE3}</ProjectGuid>
+    <ProjectGuid>{77410374-500C-4DB4-9D53-30ACB63ED245}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MVCEjemplo1</RootNamespace>
-    <AssemblyName>MVCEjemplo1</AssemblyName>
+    <RootNamespace>Practicas</RootNamespace>
+    <AssemblyName>Practicas</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -101,14 +101,19 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Practica\Suma.cshtml" />
+    <Content Include="Views\Practica\EnlacesRandom.cshtml" />
+    <Content Include="Views\Practica\TablaMultiplicar.cshtml" />
+    <Content Include="Views\Practica\TablaMultiplicarObjeto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\InfoController.cs" />
+    <Compile Include="Controllers\PracticaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Practica.cs" />
+    <Compile Include="Models\TablaMultiplicar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,9 +124,8 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Practica\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Info\Index.cshtml" />
-    <Content Include="Views\Info\Car.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -145,9 +149,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57512</DevelopmentServerPort>
+          <DevelopmentServerPort>50513</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57512/</IISUrl>
+          <IISUrl>http://localhost:50513/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

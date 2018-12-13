@@ -1,0 +1,16 @@
+﻿@model MVCEjemplo1.Models.Car
+@{
+    ViewBag.Title = "Car";
+}
+
+<h2>Car</h2>
+<form method="post" action="~/Info/Car">
+    <input type="text" name="Brand" />
+    <input type="text" name="Model" />
+    <input type="submit" id="btnenviar" />
+</form>
+@if (Model != null)
+{
+    <h2>Marca: @Model.Brand</h2>
+    <h2>Modelo: @Model.Model</h2>
+}

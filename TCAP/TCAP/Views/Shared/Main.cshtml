@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
+    <link href="~/Content/materialize.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body class="@ViewBag.Class" style="font-family: 'ZCOOL KuaiLe', cursive !important;">
+    @if (ViewBag.HeaderFooter)
+    {
+        <nav>
+            <div class="nav-wrapper">
+                <a href="" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="">Sass</a></li>
+                    <li><a href="">Components</a></li>
+                    <li><a href="">JavaScript</a></li>
+                </ul>
+            </div>
+         </nav>
+    }
+    @RenderBody()
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/materialize.min.js"></script>
+</body>
+</html>

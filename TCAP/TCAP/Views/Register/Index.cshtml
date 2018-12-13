@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Registro";
+    ViewBag.Class = "transparent";
+    ViewBag.HeaderFooter = false;
+}
+
+<center>
+    <div class="container">
+        <div class="row"></div>
+        <div class="z-depth-1 grey lighten-4" style="display: inline-block; padding: 35px; border: 1px solid #EEE;">
+            <h5 class="black-text">@ViewBag.Title</h5>
+            <form class="col s12" method="post">
+                <div class='row'>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <input class='validate' type='text' name='name' id='name' />
+                            <label for='name'>Nombre</label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <input class='validate' type='text' name='surname' id='surname' />
+                            <label for='surname'>Apellidos</label>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <input class='validate' type='email' name='email' id='email' />
+                            <label for='email'>Email</label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <input class='validate' type='password' name='password' id='password' />
+                            <label for='password'>Contraseña</label>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <input class='validate' type='text' name='country' id='country' />
+                            <label for='country'>Localidad</label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <input class='validate' type='number' name='cp_zip' id='cp_zip' />
+                            <label for='cp_zip'>Código postal</label>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <label>
+                                <input type='radio' name='user' id='player' value="player" />
+                                <span>Jugador</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <label>
+                                <input type='radio' name='user' id='client' value="client" />
+                                <span>Cliente</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class='row'>
+                    <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect amber black-text'
+                            style="font-family: 'ZCOOL KuaiLe', cursive !important;">
+                        Registrarse
+                    </button>
+                </div>
+            </form>
+            <a href="~/Login/Index" class="orange-text">¿Ya tienes una cuenta? Inicia sesión ahora.</a>
+        </div>
+        <div class="row"></div>
+    </div>
+</center>
+

@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "EnlacesRandom";
+    Random r = new Random();
+}
+
+<h1>EnlacesRandom</h1>
+<ul>
+    @for (int i = 0; i < 5; i++)
+    {
+        int n = r.Next(1, 99);
+        <li>
+            @Html.ActionLink(n.ToString(), "EnlacesRandom", "Practica", new { num = n }, null)
+        </li>
+    }
+</ul>
+@if (!(ViewBag.Res is null))
+{
+    <h2>Resultado: @ViewBag.Res</h2>
+}
+    <button class="btn-warning">@Html.ActionLink("Atrás", "Index", "Practica")</button>
