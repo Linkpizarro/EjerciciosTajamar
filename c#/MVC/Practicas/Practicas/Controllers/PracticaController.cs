@@ -64,5 +64,32 @@ namespace Practicas.Controllers
             ViewBag.NumList = p.GetTablaMultiplicarObjeto(p.NoNull(num));
             return View();
         }
+
+        // GET: VideoYoutube
+        public ActionResult VideoYoutube()
+        {
+            return View();
+        }
+        // POST: VideoYoutube
+        [HttpPost]
+        public ActionResult VideoYoutube(String url,String type)
+        {
+            ViewBag.Html = p.GetVideo(url,type);
+            return View();
+        }
+
+        // GET: VideoYoutubeSelect
+        public ActionResult VideoYoutubeSelect()
+        {
+            return View(p.CreateSelectVideo());
+        }
+        // POST: VideoYoutubeSelect
+        [HttpPost]
+        public ActionResult VideoYoutubeSelect(String url)
+        {
+            ViewBag.Html = p.GetVideo(url);
+            return View(p.CreateSelectVideo());
+        }
+        
     }
 }

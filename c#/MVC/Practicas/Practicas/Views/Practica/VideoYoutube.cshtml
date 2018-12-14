@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "VideoYoutube";
+}
+
+<h2>Video</h2>
+<form method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">ULR</label>
+        <input type="text" class="form-control" name="url"/>
+    </div>
+    <div class="form-group">
+        <input type="checkbox" name="type" value="vimeo.com"/>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="form-control btn-danger" value="Ver Video"/>
+    </div>
+</form>
+<br />
+<button class="btn-warning">@Html.ActionLink("Atrás", "Index", "Practica")</button>
+<br />
+<br />
+<div class="row text-center">
+    <div class="col-10 text-center">
+        @Html.Raw(ViewBag.Html)
+    </div>
+</div>
+
+

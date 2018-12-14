@@ -114,6 +114,7 @@
     </Compile>
     <Compile Include="Models\Practica.cs" />
     <Compile Include="Models\TablaMultiplicar.cs" />
+    <Compile Include="Models\Video.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +127,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Practica\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Practica\VideoYoutube.cshtml" />
+    <Content Include="Views\Practica\VideoYoutubeSelect.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
