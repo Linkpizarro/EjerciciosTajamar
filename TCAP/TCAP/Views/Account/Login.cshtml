@@ -7,21 +7,25 @@
     <div class="container">
         <div class="row"></div>
         <div class="z-depth-1 grey lighten-4" style="display: inline-block; padding: 35px; border: 1px solid #EEE;">
-            @if (!(ViewBag.Info is null))
+            @if (!(ViewBag.Error is null))
             {
-                <p class="red-text">@ViewBag.Info</p>
+                <p class="red-text">@ViewBag.Error</p>
+            }
+            else if (!(ViewBag.Success is null))
+            {
+                <p class="green-text">@ViewBag.Success</p>
             }
             <h5 class="black-text">@ViewBag.Title</h5>
-            <form class="col s12" action="" method="post">
+            <form class="col s12" method="post">
                 <div class='row'>
                     <div class='input-field col s12'>
-                        <input class='validate' type='email' name='email' id='email' />
+                        <input class='validate' type='email' name='email' id='email' required />
                         <label for='email'>Email</label>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='input-field col s12'>
-                        <input class='validate' type='password' name='password' id='password' />
+                        <input class='validate' type='password' name='password' id='password' required />
                         <label for='password'>Contraseña</label>
                     </div>
                     <label style='float: right;'>
@@ -36,7 +40,7 @@
                     </button>
                 </div>
             </form>
-            <a href="~/Register/Index" class="orange-text">¿Aún sin cuenta? Regístrate ahora</a><br />
+            <a href="~/Account/Register" class="orange-text">¿Aún sin cuenta? Regístrate ahora</a><br />
             <a href="~/Home/Index" class="green-text">Volver a Home</a>
         </div>
         <div class="row"></div>

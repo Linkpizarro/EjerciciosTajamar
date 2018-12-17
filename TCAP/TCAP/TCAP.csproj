@@ -128,17 +128,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Class\CifradoAsimetrico.cs" />
-    <Compile Include="Models\Class\Connect.cs" />
-    <Compile Include="Models\Helpers\HelperLogin.cs" />
-    <Compile Include="Models\Helpers\HelperRegister.cs" />
+    <Compile Include="Models\Helpers\HelperAccount.cs" />
     <Compile Include="Models\Class\Player.cs" />
     <Compile Include="Models\Class\User.cs" />
     <Compile Include="Models\Class\Hashing.cs" />
@@ -152,11 +149,12 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutNoHeaderFooter.cshtml" />
     <Content Include="Views\User\Home.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

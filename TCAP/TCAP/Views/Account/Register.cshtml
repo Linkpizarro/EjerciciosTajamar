@@ -8,14 +8,16 @@
     <div class="container">
         <div class="row"></div>
         <div class="z-depth-1 grey lighten-4" style="display: inline-block; padding: 35px; border: 1px solid #EEE;">
-            @if (!(ViewBag.Info is null))
+            @if (!(ViewBag.Error is null))
             {
-                <p class="green-text">
-                    @ViewBag.Info
-                </p>
+                <p class="red-text">@ViewBag.Error</p>
+            }
+            else if (!(ViewBag.Success is null))
+            {
+                <p class="green-text">@ViewBag.Success</p>
             }
             <h5 class="black-text">@ViewBag.Title</h5>
-            <form class="col s12" method="post" action="">
+            <form class="col s12" method="post">
                 <div class='row'>
                     <div class="col s6">
                         <div class='input-field col s12'>
@@ -84,7 +86,7 @@
                     </button>
                 </div>
             </form>
-            <a href="~/Login/Index" class="orange-text">¿Ya tienes una cuenta? Inicia sesión ahora.</a><br />
+            <a href="~/Account/Login" class="orange-text">¿Ya tienes una cuenta? Inicia sesión ahora.</a><br />
             <a href="~/Home/Index" class="green-text">Volver a Home</a>
         </div>
         <div class="row"></div>

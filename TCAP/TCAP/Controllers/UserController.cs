@@ -9,8 +9,9 @@ namespace TCAP.Controllers
     public class UserController : Controller
     {
         // GET: User
-        public ActionResult Home()
+        public ActionResult Home(int rol)
         {
+            ViewBag.Rol = rol;
             return View();
         }
     }

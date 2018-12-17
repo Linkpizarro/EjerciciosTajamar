@@ -13,6 +13,7 @@
 </head>
 <body style="font-family: 'ZCOOL KuaiLe', cursive !important;">
 
+
     <nav class="nav-extended light-green darken-1">
         <div class="nav-background">
             <div class="pattern active" style="background-image: url('../../Media/img/nav.jpg');background-repeat: no-repeat;"></div>
@@ -23,13 +24,40 @@
             </div>
         </div>
     </nav>
-    <div class="menu">
-        <ul>
-            <li>@Html.ActionLink("Home","Index","Home")</li>
-            <li>@Html.ActionLink("Inicio de Sesión", "Login", "Account")</li>
-            <li>@Html.ActionLink("Regístrate", "Register", "Account")</li>
-        </ul>
-    </div>
+    @if (ViewBag.Rol == 1)
+    {
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="">
+                        <div class="chip client">
+                            <img src="~/Media/img/user/user.png" alt="Contact Person">
+                            Daniel Pizarro
+                        </div>
+                    </a>
+                </li>
+                <li><a href="">Mis Establecimientos</a></li>
+                <li><a href="">Tikets</a></li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="">
+                        <div class="chip user">
+                            <img src="~/Media/img/user/user.png" alt="Contact Person">
+                            Daniel Pizarro
+                        </div>
+                    </a>
+                </li>
+                <li><a href="">Partidas</a></li>
+                <li><a href="">Conexión</a></li>
+            </ul>
+        </div>
+    }
 
     @RenderBody()
 
@@ -63,10 +91,10 @@
             </div>
         </div>
     </footer>
-    
+
 
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/materialize.min.js"></script>
-    @RenderSection("carousel", false)
 </body>
 </html>
+
