@@ -57,7 +57,7 @@
                     <div class="col s6">
                         <div class='input-field col s12'>
                             <label>
-                                <input type='radio' name='user' id='player' value="player" />
+                                <input type='radio' name='user' id='player' value="2" />
                                 <span>Jugador</span>
                             </label>
                         </div>
@@ -65,7 +65,7 @@
                     <div class="col s6">
                         <div class='input-field col s12'>
                             <label>
-                                <input type='radio' name='user' id='client' value="client" />
+                                <input type='radio' name='user' id='client' value="1" />
                                 <span>Cliente</span>
                             </label>
                         </div>
@@ -80,13 +80,6 @@
                 </div>
             </form>
             <a href="~/Login/Index" class="orange-text">¿Ya tienes una cuenta? Inicia sesión ahora.</a>
-            @*@if (!(Model is null))
-            {
-                <p class="black-text">@Model.Name --------- @Model.Password</p>
-            }*@
-            @*<p class="black-text">Mensaje: @ViewBag.Mensaje</p>*@
-            @*<p class="black-text">Cifrado: @ViewBag.Cifrado</p>
-            <p class="black-text">Descifrado: @ViewBag.Descifrado</p>*@
         </div>
         <div class="row"></div>
     </div>

@@ -72,9 +72,9 @@ namespace Practicas.Controllers
         }
         // POST: VideoYoutube
         [HttpPost]
-        public ActionResult VideoYoutube(String url,String type)
+        public ActionResult VideoYoutube(String url)
         {
-            ViewBag.Html = p.GetVideo(url,type);
+            ViewBag.Html = p.GetVideo(url);
             return View();
         }
 

@@ -10,6 +10,7 @@ namespace TCAP.Controllers
 {
     public class RegisterController : Controller
     {
+        HelperRegister h = new HelperRegister();
         // GET: Register
         public ActionResult Index()
         {
@@ -32,10 +33,8 @@ namespace TCAP.Controllers
         public ActionResult Index(String user,String name,String surname,String email,String password,
             String country,String cp_zip)
         {
-            //Player p = new Player();
-            //p.Name = name;
-            //p.Password = Hashing.HashPassword(password);
-            return View();
+            h.InsertUser(user, name, surname, email, password, country, cp_zip);
+            return View("Login");
         }
     }
 }

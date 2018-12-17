@@ -55,7 +55,7 @@ namespace Practicas.Models
             }
             return n;
         }
-        public String GetVideo(String url,String type) {
+        public String GetVideo(String url) {
             String code;
             if (url.Contains('='))
             {
@@ -72,11 +72,7 @@ namespace Practicas.Models
                     code = url;
                 }
             }
-            if (type != "vimeo.com")
-            {
-                type = "youtube.com";
-            }
-            String html = "<iframe width='600px' height='500px' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' src = 'https://www.'"+type+"/embed/" + code+ "?controls=1&autoplay=1'></ iframe >";
+            String html = "<iframe width='600px' height='500px' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' src = 'https://www.youtube.com/embed/" + code+ "?controls=1&autoplay=1'></ iframe >";
             return html;
         }
         public List<Video> CreateSelectVideo()
