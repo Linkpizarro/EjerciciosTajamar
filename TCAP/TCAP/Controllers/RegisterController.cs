@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TCAP.Models;
+using TCAP.Models.Helpers;
 using System.Text;
 
 namespace TCAP.Controllers
@@ -34,7 +35,8 @@ namespace TCAP.Controllers
             String country,String cp_zip)
         {
             h.InsertUser(user, name, surname, email, password, country, cp_zip);
-            return View("Login");
+            ViewBag.Info = "Se ha registrado correctamente";
+            return View();
         }
     }
 }

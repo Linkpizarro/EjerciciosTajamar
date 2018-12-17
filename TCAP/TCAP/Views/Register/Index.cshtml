@@ -1,26 +1,31 @@
 ﻿@model TCAP.Models.Player
 @{
     ViewBag.Title = "Registro";
-    ViewBag.Class = "transparent";
-    ViewBag.HeaderFooter = false;
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
 }
 
 <center>
     <div class="container">
         <div class="row"></div>
         <div class="z-depth-1 grey lighten-4" style="display: inline-block; padding: 35px; border: 1px solid #EEE;">
+            @if (!(ViewBag.Info is null))
+            {
+                <p class="green-text">
+                    @ViewBag.Info
+                </p>
+            }
             <h5 class="black-text">@ViewBag.Title</h5>
             <form class="col s12" method="post" action="">
                 <div class='row'>
                     <div class="col s6">
                         <div class='input-field col s12'>
-                            <input class='validate' type='text' name='name' id='name' />
+                            <input class='validate' type='text' name='name' id='name' required />
                             <label for='name'>Nombre</label>
                         </div>
                     </div>
                     <div class="col s6">
                         <div class='input-field col s12'>
-                            <input class='validate' type='text' name='surname' id='surname' />
+                            <input class='validate' type='text' name='surname' id='surname' required />
                             <label for='surname'>Apellidos</label>
                         </div>
                     </div>
@@ -28,13 +33,13 @@
                 <div class='row'>
                     <div class="col s6">
                         <div class='input-field col s12'>
-                            <input class='validate' type='email' name='email' id='email' />
+                            <input class='validate' type='email' name='email' id='email' required />
                             <label for='email'>Email</label>
                         </div>
                     </div>
                     <div class="col s6">
                         <div class='input-field col s12'>
-                            <input class='validate' type='password' name='password' id='password' />
+                            <input class='validate' type='password' name='password' id='password' required />
                             <label for='password'>Contraseña</label>
                         </div>
                     </div>
@@ -42,13 +47,13 @@
                 <div class='row'>
                     <div class="col s6">
                         <div class='input-field col s12'>
-                            <input class='validate' type='text' name='country' id='country' />
+                            <input class='validate' type='text' name='country' id='country' required />
                             <label for='country'>Localidad</label>
                         </div>
                     </div>
                     <div class="col s6">
                         <div class='input-field col s12'>
-                            <input class='validate' type='number' name='cp_zip' id='cp_zip' />
+                            <input class='validate' type='number' name='cp_zip' id='cp_zip' required />
                             <label for='cp_zip'>Código postal</label>
                         </div>
                     </div>
@@ -57,7 +62,7 @@
                     <div class="col s6">
                         <div class='input-field col s12'>
                             <label>
-                                <input type='radio' name='user' id='player' value="2" />
+                                <input type='radio' name='user' id='player' value="2" required />
                                 <span>Jugador</span>
                             </label>
                         </div>
@@ -65,7 +70,7 @@
                     <div class="col s6">
                         <div class='input-field col s12'>
                             <label>
-                                <input type='radio' name='user' id='client' value="1" />
+                                <input type='radio' name='user' id='client' value="1" required />
                                 <span>Cliente</span>
                             </label>
                         </div>
@@ -79,7 +84,8 @@
                     </button>
                 </div>
             </form>
-            <a href="~/Login/Index" class="orange-text">¿Ya tienes una cuenta? Inicia sesión ahora.</a>
+            <a href="~/Login/Index" class="orange-text">¿Ya tienes una cuenta? Inicia sesión ahora.</a><br />
+            <a href="~/Home/Index" class="green-text">Volver a Home</a>
         </div>
         <div class="row"></div>
     </div>

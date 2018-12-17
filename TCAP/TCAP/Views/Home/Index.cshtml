@@ -3,6 +3,16 @@
     ViewBag.Title = "Principal";
     ViewBag.HeaderFooter = true;
 }
+@section carousel
+{
+    <script>
+        $(document).ready(function () {
+            $('.carousel').carousel();
+            $('.carousel.carousel-slider').carousel({ fullWidth: true });
+            $('.collapsible').collapsible();
+        });
+    </script>
+}
 <div class="carousel carousel-slider">
     <a class="carousel-item grab" href=""><img src="~/Media/img/nav.jpg" /></a>
     <a class="carousel-item grab" href=""><img src="~/Media/img/img1.png" /></a>

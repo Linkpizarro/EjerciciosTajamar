@@ -1,13 +1,16 @@
 ﻿
 @{
     ViewBag.Title = "Inicio de Sesión";
-    ViewBag.Class = "transparent";
-    ViewBag.HeaderFooter = false;
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
 }
 <center>
     <div class="container">
         <div class="row"></div>
         <div class="z-depth-1 grey lighten-4" style="display: inline-block; padding: 35px; border: 1px solid #EEE;">
+            @if (!(ViewBag.Info is null))
+            {
+                <p class="red-text">@ViewBag.Info</p>
+            }
             <h5 class="black-text">@ViewBag.Title</h5>
             <form class="col s12" action="" method="post">
                 <div class='row'>
@@ -33,7 +36,8 @@
                     </button>
                 </div>
             </form>
-            <a href="~/Register/Index" class="orange-text">¿Aún sin cuenta? Regístrate ahora</a>
+            <a href="~/Register/Index" class="orange-text">¿Aún sin cuenta? Regístrate ahora</a><br />
+            <a href="~/Home/Index" class="green-text">Volver a Home</a>
         </div>
         <div class="row"></div>
     </div>

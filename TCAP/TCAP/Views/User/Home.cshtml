@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<main>
+    <div class="row">
+        <div class="col s6 center-align">
+            <a href="createParty.php"><button type="submit" class="col s12 btn btn-large waves-effect black-text user darken-4">Crear</button></a>
+        </div>
+        <div class="col s6 center-align">
+            <a href="searchParty.php"><button type="submit" class="col s12 btn btn-large waves-effect black-text amber">Buscar</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 center-align">
+            <h3>Tus partidas</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col s12">
+            <table class="highlight s10">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Lugar</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-target="modal1" class="modal-trigger" style="cursor: pointer;">
+                        <td>04/05/2018</td>
+                        <td>BAR Los jardines</td>
+                        <td class="red-text"><i class="fas fa-times"></i></td>
+                    </tr>
+                    <tr>
+                        <td>09/06/2018</td>
+                        <td>BAR Los jardines</td>
+                        <td class="green-text"><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>15/06/2018</td>
+                        <td>BAR El rincón de mariano</td>
+                        <td class="yellow-text"><i class="fas fa-clock"></i></td>
+                    </tr>
+                    <tr>
+                        <td>15/11/2018</td>
+                        <td>BAR El bodegón</td>
+                        <td><i class="fas fa-minus"></i></td>
+                    </tr>
+                </tbody>
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>Modal Header</h4>
+                        <p>A bunch of text</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
+                </div>
+            </table>
+        </div>
+    </div>
+</main>

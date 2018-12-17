@@ -53,5 +53,34 @@ namespace TCAP.Models
             this.com.Parameters.Clear();
             this.con.Close();
         }
+
+        public String SelectUser(String sql,User u)
+        {
+            SqlParameter e = new SqlParameter("@E", u.Email);
+            this.com.Parameters.Add(e);
+            SqlParameter p = new SqlParameter("@P", u.Password);
+            this.com.Parameters.Add(p);
+         
+            this.com.Connection = this.con;
+            this.com.CommandText = sql;
+            this.com.CommandType = System.Data.CommandType.StoredProcedure;
+            this.con.Open();
+            this.reader = this.com.ExecuteReader();
+            this.reader.Read();
+            String result;
+            if (this.reader.HasRows)
+            {
+               result = this.reader["PASSWORD_USER"].ToString();
+            }
+            else
+            {
+                result = "";
+            }
+            this.com.Parameters.Clear();
+            this.reader.Close();
+            this.con.Close();
+
+            return result;
+        }
     }
 }

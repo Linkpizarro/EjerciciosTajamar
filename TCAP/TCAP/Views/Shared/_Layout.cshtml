@@ -1,0 +1,72 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="~/Content/materialize.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body style="font-family: 'ZCOOL KuaiLe', cursive !important;">
+
+    <nav class="nav-extended light-green darken-1">
+        <div class="nav-background">
+            <div class="pattern active" style="background-image: url('../../Media/img/nav.jpg');background-repeat: no-repeat;"></div>
+        </div>
+        <div class="nav-wrapper container">
+            <div class="nav-header center">
+                <img src="~/Media/img/tcap_logo.png" width="240vh" height="140vh">
+            </div>
+        </div>
+    </nav>
+    <div class="menu">
+        <ul>
+            <li>@Html.ActionLink("Home","Index","Home")</li>
+            <li>@Html.ActionLink("Inicio de Sesión", "Index", "Login")</li>
+            <li>@Html.ActionLink("Regístrate", "Index", "Register")</li>
+        </ul>
+    </div>
+
+    @RenderBody()
+
+    <footer class="page-footer light-green darken-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12 center">
+                    <img src="~/Media/img/tcap_logo_black.png" style="width: 240px;height: 140px;">
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Más información</h5>
+                    <ul>
+                        <li>C/ Calle falsa 123</li>
+                        <li>Springfield (EEUU)</li>
+                        <li>tcap_info@gmail.com</li>
+                        <li>+34 685 625 366</li>
+                        <li style="font-size: 30px;">
+                            <a class='white-text' href=""><i class="fab fa-facebook"></i></a>
+                            <a class='white-text' href=""><i class="fab fa-instagram" style="padding: 0px 10px;"></i></a>
+                            <a class='white-text' href=""><i class="fab fa-twitter" style="padding: 0px 10px;"></i></a>
+                            <a class='white-text' href=""><i class="fab fa-telegram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2018 Copyright
+                <a class="grey-text text-lighten-4 right" href="#!">Más enlaces</a>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/materialize.min.js"></script>
+    @RenderSection("carousel", false)
+</body>
+</html>

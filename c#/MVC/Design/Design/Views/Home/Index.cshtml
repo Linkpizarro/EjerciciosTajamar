@@ -1,7 +1,23 @@
-﻿
+﻿@model Design.Models.Departamento
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+<form method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">Número de departamento</label>
+        <input class="form-control" type="number" name="dept_no" />
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="submit" value="Mostrar" />
+    </div>
+</form>
+@if (!(Model is null))
+{
+    <h1>Departamentos</h1>
+    <ul>
+        <li>Número : @Model.Numero</li>
+        <li>Nombre : @Model.Nombre</li>
+        <li>Localidad : @Model.Localidad</li>
+    </ul>
+}
 
