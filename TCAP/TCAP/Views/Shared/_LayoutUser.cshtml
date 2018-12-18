@@ -24,40 +24,6 @@
             </div>
         </div>
     </nav>
-    @if (ViewBag.Rol == 1)
-    {
-        <div class="menu">
-            <ul>
-                <li>
-                    <a href="">
-                        <div class="chip client">
-                            <img src="~/Media/img/user/user.png" alt="Contact Person">
-                            Daniel Pizarro
-                        </div>
-                    </a>
-                </li>
-                <li><a href="">Mis Establecimientos</a></li>
-                <li><a href="">Tikets</a></li>
-            </ul>
-        </div>
-    }
-    else
-    {
-        <div class="menu">
-            <ul>
-                <li>
-                    <a href="">
-                        <div class="chip user">
-                            <img src="~/Media/img/user/user.png" alt="Contact Person">
-                            Daniel Pizarro
-                        </div>
-                    </a>
-                </li>
-                <li><a href="">Partidas</a></li>
-                <li><a href="">Conexión</a></li>
-            </ul>
-        </div>
-    }
 
     @RenderBody()
 

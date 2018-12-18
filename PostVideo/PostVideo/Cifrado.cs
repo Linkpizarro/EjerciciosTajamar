@@ -16,5 +16,16 @@ namespace PostVideo
         {
             InitializeComponent();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            this.folderDialog.ShowDialog();
+
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

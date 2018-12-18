@@ -15,15 +15,27 @@ namespace TCAP.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            if (!(TempData["Success"] is null))
+            {
+                ViewBag.Success = TempData["Success"].ToString();
+            }
+
             return View();
         }
         // POST: Login
         [HttpPost]
         public ActionResult Login(String email, String password)
         {
-            if (h.ValidateLogin(email,password))
+            User u = h.Login(email, password);
+            if (!(u.Email is null) && u.Rol == 1)
             {
-                return RedirectToAction("Home", "User",new {rol = 2});
+                TempData["obj"] = u;
+                return RedirectToAction("Home", "Client");
+            }
+            else if (!(u.Email is null) && u.Rol == 2)
+            {
+                TempData["obj"] = u;
+                return RedirectToAction("Home", "Player");
             }
             else
             {
@@ -41,16 +53,23 @@ namespace TCAP.Controllers
         public ActionResult Register(String user, String name, String surname, String email, String password,
             String country, String cp_zip)
         {
-            if (h.InsertUser(user,name,surname,email,password,country,cp_zip))
+            if (h.Register(user,name,surname,email,password,country,cp_zip))
             {
-                ViewBag.Success = "Se ha registrado correctamente.";
-                return View("Login");
+                TempData["Success"] = "Se ha registrado correctamente.";
+                return RedirectToAction("Login","Account");
             }
             else
             {
                 ViewBag.Error = "Se ha Producido un error en el registro... Intentelo mas tarde.";
                 return View();
             }
+        }
+        //GET: PlayerConfirm
+        public ActionResult PlayerConfirm(String token)
+        {
+            User u = new User();
+            u = h.ValidateToken(token);
+            return View(u);
         }
     }
 }

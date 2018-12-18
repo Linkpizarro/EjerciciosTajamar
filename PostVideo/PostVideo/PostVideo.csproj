@@ -51,6 +51,8 @@
     <Compile Include="Cifrado.Designer.cs">
       <DependentUpon>Cifrado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Crypting.cs" />
+    <Compile Include="Hashing.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Cifrado.resx">

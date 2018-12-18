@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCAP.Models;
 
 namespace TCAP.Controllers
 {
-    public class UserController : Controller
+    public class ClientController : Controller
     {
-        // GET: User
-        public ActionResult Home(int rol)
+        // GET: Home
+        public ActionResult Home()
         {
-            ViewBag.Rol = rol;
-            return View();
+            return View(TempData["obj"]);
         }
     }
 }

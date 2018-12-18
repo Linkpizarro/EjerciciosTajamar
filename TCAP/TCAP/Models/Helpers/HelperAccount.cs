@@ -21,6 +21,23 @@ namespace TCAP.Models.Helpers
             this.com.Connection = this.con;
             this.com.CommandType = System.Data.CommandType.Text;
         }
+        private String CreateToken()
+        {
+            int longitud = 12;
+            const string alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            String key = "";
+            Random rnd = new Random();
+
+            for (int i = 0; i < longitud; i++)
+            {
+                int indice = rnd.Next(alfabeto.Length);
+                key += alfabeto[indice];
+            }
+
+            String token = Hashing.HashPassword(key);
+
+            return token;
+        }
         private Boolean ValidateField(String field)
         {
             if (field is null)
@@ -29,10 +46,10 @@ namespace TCAP.Models.Helpers
             }
             return true;
         }
-        public Boolean InsertUser(String user, String name, String surname, String email, String password,
+        public Boolean Register(String user, String name, String surname, String email, String password,
            String country, String cp_zip)
         {
-            String sql = "INSERTUSER";
+            String sql = "REGISTER";
             SqlParameter r = new SqlParameter("@ROL", user);
             this.com.Parameters.Add(r);
             SqlParameter n = new SqlParameter("@N", name);
@@ -49,8 +66,9 @@ namespace TCAP.Models.Helpers
             this.com.Parameters.Add(cp);
 
             this.com.Connection = this.con;
-            this.com.CommandType = System.Data.CommandType.StoredProcedure;
             this.com.CommandText = sql;
+            this.com.CommandType = System.Data.CommandType.StoredProcedure;
+
             this.con.Open();
 
             int afec = this.com.ExecuteNonQuery();
@@ -60,14 +78,15 @@ namespace TCAP.Models.Helpers
 
             if (afec > 0)
             {
+                Token(email, CreateToken());
                 return true;
             }
 
             return false;
         }
-        public Boolean ValidateLogin(String email, String password)
+        public User Login(String email, String password)
         {
-            String sql = "SELECTUSER";
+            String sql = "LOGON";
             SqlParameter e = new SqlParameter("@E", email);
             this.com.Parameters.Add(e);
             SqlParameter p = new SqlParameter("@P",password);
@@ -79,29 +98,71 @@ namespace TCAP.Models.Helpers
 
             this.reader = this.com.ExecuteReader();
             this.reader.Read();
-            String result = null;
+            User result = new User();
 
             if (this.reader.HasRows)
             {
-                result = this.reader["PASSWORD_USER"].ToString();
+                if (Hashing.ValidatePassword(password, this.reader["PASSWORD_USER"].ToString()))
+                {
+                    result.Rol = int.Parse(this.reader["ID_ROL"].ToString());
+                    result.Name = this.reader["NAME_USER"].ToString();
+                    result.Surname = this.reader["SURNAME_USER"].ToString();
+                    result.Email = this.reader["EMAIL_USER"].ToString();
+                }
             }
 
             this.com.Parameters.Clear();
             this.reader.Close();
             this.con.Close();
-            if(!(result is null))
-            {
-                if (Hashing.ValidatePassword(password, result))
-                {
-                    return true;
-                }
 
-                return false;
-                
+            return result;
+
+        }        
+        public void Token(String email,String token)
+        {
+            String sql = "TOKEN";
+            SqlParameter e = new SqlParameter("@E", email);
+            this.com.Parameters.Add(e);
+            SqlParameter t = new SqlParameter("@T", token);
+            this.com.Parameters.Add(t);
+            this.com.Connection = this.con;
+            this.com.CommandText = sql;
+            this.com.CommandType = System.Data.CommandType.StoredProcedure;
+
+            this.con.Open();
+            int afect = this.com.ExecuteNonQuery();
+
+            this.com.Parameters.Clear();
+            this.con.Close();
+
+        }
+        public User ValidateToken(String token)
+        {
+            String sql = "CONFIRM";
+            SqlParameter e = new SqlParameter("@T", token);
+            this.com.Parameters.Add(e);
+            this.com.Connection = this.con;
+            this.com.CommandText = sql;
+            this.com.CommandType = System.Data.CommandType.StoredProcedure;
+            this.con.Open();
+
+            this.reader = this.com.ExecuteReader();
+            this.reader.Read();
+            User result = new User();
+
+            if (this.reader.HasRows)
+            {
+                result.Rol = int.Parse(this.reader["ID_ROL"].ToString());
+                result.Name = this.reader["NAME_USER"].ToString();
+                result.Surname = this.reader["SURNAME_USER"].ToString();
+                result.UserId = int.Parse(this.reader["ID_USER"].ToString());  
             }
 
-            return false;
+            this.com.Parameters.Clear();
+            this.reader.Close();
+            this.con.Close();
 
+            return result;
         }
     }
 }
