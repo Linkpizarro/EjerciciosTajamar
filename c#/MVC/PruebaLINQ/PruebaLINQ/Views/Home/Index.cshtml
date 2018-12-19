@@ -1,0 +1,41 @@
+﻿@model List<PruebaLINQ.Models.DEPT>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Departamentos</h2>
+<form method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">Número</label>
+        <input type="numbre" class="form-control" name="dept_no" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Nombre</label>
+        <input type="text" class="form-control" name="dnombre" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Localidad</label>
+        <input type="text" class="form-control" name="loc" />
+    </div>
+    <div class="form-group">
+        <input type="submit" class="form-control" />
+    </div>
+</form>
+@if (!(Model is null)){
+    <table class="table">
+        <tr>
+            <th>Nº</th>
+            <th>Nombre</th>
+            <th>Localidad</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DEPT_NO</td>
+                <td>@item.DNOMBRE</td>
+                <td>@item.LOC</td>
+            </tr>
+        }
+    </table>
+}
+
+

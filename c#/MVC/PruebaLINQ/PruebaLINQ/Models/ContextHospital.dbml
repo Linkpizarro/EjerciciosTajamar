@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HOSPITAL" Class="ContextHospitalDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=LOCALHOST;Initial Catalog=HOSPITAL;Persist Security Info=True;User ID=SA" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CadenaTajamar" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DEPT" Member="DEPTs">
+    <Type Name="DEPT">
+      <Column Name="DEPT_NO" Type="System.Int32" DbType="Int" IsPrimaryKey="true" CanBeNull="true" />
+      <Column Name="DNOMBRE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LOC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EMP" Member="EMPs">
+    <Type Name="EMP">
+      <Column Name="EMP_NO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="APELLIDO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OFICIO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DIR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FECHA_ALT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SALARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="COMISION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DEPT_NO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
