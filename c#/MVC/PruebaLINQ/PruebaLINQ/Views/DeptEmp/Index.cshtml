@@ -1,0 +1,55 @@
+﻿@model List<PruebaLINQ.Models.EMP>
+@{
+    ViewBag.Title = "Index";
+}
+
+<form method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">Departamnetos</label>
+        <select class="form-control" name="dept">
+            <option value="null">Seleccione un Departamento</option>
+            @foreach (var item in ViewBag.dept)
+            {
+                if (ViewBag.select == item)
+                {
+                    <option value="@item" selected>@item</option>
+                }
+                else
+                {
+                    <option value="@item">@item</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="form-control" value="Mostrar" />
+    </div>
+</form>
+@if (!(Model is null))
+{
+    <h2>Empleados</h2>
+    <table class="table">
+        <tr>
+            <th>Apellido</th>
+            <th>Oficio</th>
+            <th>Salario</th>
+            <th>Opciones</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.APELLIDO</td>
+                <td>@item.OFICIO</td>
+                <td>@item.SALARIO</td>
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="emp_no" value="@item.EMP_NO" />
+                        <input type="submit" name="del" class="btn btn-danger" value="Eliminar" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+

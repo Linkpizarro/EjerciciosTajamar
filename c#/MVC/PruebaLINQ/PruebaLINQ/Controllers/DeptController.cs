@@ -7,9 +7,9 @@ using PruebaLINQ.Models;
 
 namespace PruebaLINQ.Controllers
 {
-    public class HomeController : Controller
+    public class DeptController : Controller
     {
-        HelperHome h = new HelperHome();
+        HelperDept h = new HelperDept();
         // GET: Index
         public ActionResult Index()
         {
@@ -19,7 +19,14 @@ namespace PruebaLINQ.Controllers
         [HttpPost]
         public ActionResult Index(String dept_no,String dnombre,String loc)
         {
-            h.SetDept(dept_no, dnombre, loc);
+            if (dnombre is null && loc is null)
+            {
+                h.DelDept(dept_no);
+            }
+            else
+            {
+                h.SetDept(dept_no, dnombre, loc);
+            }
             return View(h.GetAllDept());
         }
     }

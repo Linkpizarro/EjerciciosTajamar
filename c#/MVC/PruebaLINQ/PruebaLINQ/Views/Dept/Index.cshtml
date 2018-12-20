@@ -1,0 +1,73 @@
+﻿@model List<PruebaLINQ.Models.DEPT>
+@{
+    ViewBag.Title = "Index";
+}
+<p id="open" class="text-primary" style="cursor:pointer;">Añadir Nuevo Departamento</p>
+<form id="insert" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label">Número</label>
+        <input type="number" class="form-control" name="dept_no" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Nombre</label>
+        <input type="text" class="form-control" name="dnombre" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Localidad</label>
+        <input type="text" class="form-control" name="loc" />
+    </div>
+    <div class="form-group">
+        <input type="submit" name="insert" class="form-control" value="Añadir" />
+    </div>
+</form>
+<p id="close" class="text-danger" style="cursor:pointer;">Cerrar</p>
+
+@if (!(Model is null))
+{
+    <h2>Departamentos</h2>
+    <table class="table">
+        <tr>
+            <th>Nº</th>
+            <th>Nombre</th>
+            <th>Localidad</th>
+            <th>Opciones</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DEPT_NO</td>
+                <td>@item.DNOMBRE</td>
+                <td>@item.LOC</td>
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="dept_no" value="@item.DEPT_NO" />
+                        <input type="submit" name="del" class="btn btn-danger" value="Eliminar" />
+                    </form>
+
+                </td>
+            </tr>
+        }
+    </table>
+    @section AbrirInsert
+        {
+        <script>
+            $(document).ready(function () {
+                $("#insert").hide();
+                $("#close").hide();
+                $("#open").click(function () {
+                    $("#open").hide();
+                    $("#insert").show();
+                    $("#close").show();
+                });
+                $("#close").click(function () {
+                    $("#open").show();
+                    $("#insert").hide();
+                    $("#close").hide();
+                });
+            });
+        </script>
+    }
+
+}
+
+

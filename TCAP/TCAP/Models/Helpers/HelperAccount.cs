@@ -12,7 +12,9 @@ namespace TCAP.Models.Helpers
         SqlConnection con;
         SqlCommand com;
         SqlDataReader reader;
-
+        TCAPContextDataContext c;
+        //CAMBIAR TODO A LINQ Y SIN USAR PROCEDURES
+        //REALIZAR AQUÍ LA VALIDACIÓN
         public HelperAccount()
         {
             String connect = ConfigurationManager.ConnectionStrings["HomeConnection"].ConnectionString;
@@ -20,6 +22,7 @@ namespace TCAP.Models.Helpers
             this.com = new SqlCommand();
             this.com.Connection = this.con;
             this.com.CommandType = System.Data.CommandType.Text;
+            c = new TCAPContextDataContext();
         }
         private String CreateToken()
         {
@@ -136,32 +139,38 @@ namespace TCAP.Models.Helpers
             this.con.Close();
 
         }
-        public User ValidateToken(String token)
+        public List<Object> ValidateToken(String token)
         {
-            String sql = "CONFIRM";
-            SqlParameter e = new SqlParameter("@T", token);
-            this.com.Parameters.Add(e);
-            this.com.Connection = this.con;
-            this.com.CommandText = sql;
-            this.com.CommandType = System.Data.CommandType.StoredProcedure;
-            this.con.Open();
+            //String sql = "CONFIRM";
+            //SqlParameter e = new SqlParameter("@T", token);
+            //this.com.Parameters.Add(e);
+            //this.com.Connection = this.con;
+            //this.com.CommandText = sql;
+            //this.com.CommandType = System.Data.CommandType.StoredProcedure;
+            //this.con.Open();
 
-            this.reader = this.com.ExecuteReader();
-            this.reader.Read();
-            User result = new User();
+            //this.reader = this.com.ExecuteReader();
+            //this.reader.Read();
+            //User result = new User();
 
-            if (this.reader.HasRows)
-            {
-                result.Rol = int.Parse(this.reader["ID_ROL"].ToString());
-                result.Name = this.reader["NAME_USER"].ToString();
-                result.Surname = this.reader["SURNAME_USER"].ToString();
-                result.UserId = int.Parse(this.reader["ID_USER"].ToString());  
-            }
+            //if (this.reader.HasRows)
+            //{
+            //    result.Rol = int.Parse(this.reader["ID_ROL"].ToString());
+            //    result.Name = this.reader["NAME_USER"].ToString();
+            //    result.Surname = this.reader["SURNAME_USER"].ToString();
+            //    result.UserId = int.Parse(this.reader["ID_USER"].ToString());  
+            //}
 
-            this.com.Parameters.Clear();
-            this.reader.Close();
-            this.con.Close();
+            //this.com.Parameters.Clear();
+            //this.reader.Close();
+            //this.con.Close();
 
+            //return result;
+            List<Object> result = new List<Object>();
+            //String error = null;
+            //CONFIRMResult linq = c.CONFIRM(token, ref error).FirstOrDefault();
+            //result.Add(linq);
+            //result.Add(error);
             return result;
         }
     }

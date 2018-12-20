@@ -67,9 +67,7 @@ namespace TCAP.Controllers
         //GET: PlayerConfirm
         public ActionResult PlayerConfirm(String token = null)
         {
-            User u = new User();
-            u = h.ValidateToken(token);
-            return View(u);
+            return View();
         }
     }
 }

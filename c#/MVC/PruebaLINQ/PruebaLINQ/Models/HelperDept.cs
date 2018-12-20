@@ -5,36 +5,21 @@ using System.Web;
 
 namespace PruebaLINQ.Models
 {
-    public class HelperHome
+    public class HelperDept
     {
         ContextHospitalDataContext c;
 
-        public HelperHome()
+        public HelperDept()
         {
             this.c = new ContextHospitalDataContext();
         }
         public List<DEPT> GetAllDept()
         {
             var linq = from datos in c.DEPTs
+                       orderby datos.DEPT_NO ascending
                        select datos;
 
             return linq.ToList();
-        }
-
-        public List<DEPT> GetDeptByLoc(String loc)
-        {
-            var linq = from data in c.DEPTs
-                       where data.LOC == loc
-                       select data;
-
-            if (linq.Count() == 0)
-            {
-                return null;
-            }
-            else
-            {
-                return linq.ToList();
-            }
         }
 
         public void SetDept(String dept_no,String dnombre,String loc)
@@ -45,6 +30,18 @@ namespace PruebaLINQ.Models
             dept.LOC = loc;
             c.DEPTs.InsertOnSubmit(dept);
             c.SubmitChanges();
+        }
+
+        public void DelDept(String dept_no)
+        {
+
+            DEPT dept = (from datos in c.DEPTs
+                       where datos.DEPT_NO == int.Parse(dept_no)
+                       select datos).First();
+
+            c.DEPTs.DeleteOnSubmit(dept);
+            c.SubmitChanges();
+
         }
     }
 }

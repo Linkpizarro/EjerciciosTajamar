@@ -57,6 +57,7 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -139,6 +140,11 @@
     <Compile Include="Models\CifradoAsimetrico.cs" />
     <Compile Include="Models\Helpers\HelperAccount.cs" />
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\TCAPContext.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TCAPContext.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Hashing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -148,6 +154,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Models\TCAPContext.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>TCAPContext.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\TCAPContext.dbml.layout">
+      <DependentUpon>TCAPContext.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -168,6 +182,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

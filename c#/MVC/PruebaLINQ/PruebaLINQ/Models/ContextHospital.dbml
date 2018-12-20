@@ -9,7 +9,7 @@
   </Table>
   <Table Name="dbo.EMP" Member="EMPs">
     <Type Name="EMP">
-      <Column Name="EMP_NO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EMP_NO" Type="System.Int32" DbType="Int" IsPrimaryKey="true" CanBeNull="true" />
       <Column Name="APELLIDO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="OFICIO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DIR" Type="System.Int32" DbType="Int" CanBeNull="true" />

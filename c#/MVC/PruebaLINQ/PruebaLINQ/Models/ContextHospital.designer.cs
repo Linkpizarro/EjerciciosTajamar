@@ -33,6 +33,9 @@ namespace PruebaLINQ.Models
     partial void InsertDEPT(DEPT instance);
     partial void UpdateDEPT(DEPT instance);
     partial void DeleteDEPT(DEPT instance);
+    partial void InsertEMP(EMP instance);
+    partial void UpdateEMP(EMP instance);
+    partial void DeleteEMP(EMP instance);
     #endregion
 		
 		public ContextHospitalDataContext() : 
@@ -193,8 +196,10 @@ namespace PruebaLINQ.Models
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EMP")]
-	public partial class EMP
+	public partial class EMP : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private System.Nullable<int> _EMP_NO;
 		
@@ -212,11 +217,34 @@ namespace PruebaLINQ.Models
 		
 		private System.Nullable<int> _DEPT_NO;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEMP_NOChanging(System.Nullable<int> value);
+    partial void OnEMP_NOChanged();
+    partial void OnAPELLIDOChanging(string value);
+    partial void OnAPELLIDOChanged();
+    partial void OnOFICIOChanging(string value);
+    partial void OnOFICIOChanged();
+    partial void OnDIRChanging(System.Nullable<int> value);
+    partial void OnDIRChanged();
+    partial void OnFECHA_ALTChanging(System.Nullable<System.DateTime> value);
+    partial void OnFECHA_ALTChanged();
+    partial void OnSALARIOChanging(System.Nullable<int> value);
+    partial void OnSALARIOChanged();
+    partial void OnCOMISIONChanging(System.Nullable<int> value);
+    partial void OnCOMISIONChanged();
+    partial void OnDEPT_NOChanging(System.Nullable<int> value);
+    partial void OnDEPT_NOChanged();
+    #endregion
+		
 		public EMP()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMP_NO", DbType="Int")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EMP_NO", DbType="Int", IsPrimaryKey=true)]
 		public System.Nullable<int> EMP_NO
 		{
 			get
@@ -227,7 +255,11 @@ namespace PruebaLINQ.Models
 			{
 				if ((this._EMP_NO != value))
 				{
+					this.OnEMP_NOChanging(value);
+					this.SendPropertyChanging();
 					this._EMP_NO = value;
+					this.SendPropertyChanged("EMP_NO");
+					this.OnEMP_NOChanged();
 				}
 			}
 		}
@@ -243,7 +275,11 @@ namespace PruebaLINQ.Models
 			{
 				if ((this._APELLIDO != value))
 				{
+					this.OnAPELLIDOChanging(value);
+					this.SendPropertyChanging();
 					this._APELLIDO = value;
+					this.SendPropertyChanged("APELLIDO");
+					this.OnAPELLIDOChanged();
 				}
 			}
 		}
@@ -259,7 +295,11 @@ namespace PruebaLINQ.Models
 			{
 				if ((this._OFICIO != value))
 				{
+					this.OnOFICIOChanging(value);
+					this.SendPropertyChanging();
 					this._OFICIO = value;
+					this.SendPropertyChanged("OFICIO");
+					this.OnOFICIOChanged();
 				}
 			}
 		}
@@ -275,7 +315,11 @@ namespace PruebaLINQ.Models
 			{
 				if ((this._DIR != value))
 				{
+					this.OnDIRChanging(value);
+					this.SendPropertyChanging();
 					this._DIR = value;
+					this.SendPropertyChanged("DIR");
+					this.OnDIRChanged();
 				}
 			}
 		}
@@ -291,7 +335,11 @@ namespace PruebaLINQ.Models
 			{
 				if ((this._FECHA_ALT != value))
 				{
+					this.OnFECHA_ALTChanging(value);
+					this.SendPropertyChanging();
 					this._FECHA_ALT = value;
+					this.SendPropertyChanged("FECHA_ALT");
+					this.OnFECHA_ALTChanged();
 				}
 			}
 		}
@@ -307,7 +355,11 @@ namespace PruebaLINQ.Models
 			{
 				if ((this._SALARIO != value))
 				{
+					this.OnSALARIOChanging(value);
+					this.SendPropertyChanging();
 					this._SALARIO = value;
+					this.SendPropertyChanged("SALARIO");
+					this.OnSALARIOChanged();
 				}
 			}
 		}
@@ -323,7 +375,11 @@ namespace PruebaLINQ.Models
 			{
 				if ((this._COMISION != value))
 				{
+					this.OnCOMISIONChanging(value);
+					this.SendPropertyChanging();
 					this._COMISION = value;
+					this.SendPropertyChanged("COMISION");
+					this.OnCOMISIONChanged();
 				}
 			}
 		}
@@ -339,8 +395,32 @@ namespace PruebaLINQ.Models
 			{
 				if ((this._DEPT_NO != value))
 				{
+					this.OnDEPT_NOChanging(value);
+					this.SendPropertyChanging();
 					this._DEPT_NO = value;
+					this.SendPropertyChanged("DEPT_NO");
+					this.OnDEPT_NOChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
