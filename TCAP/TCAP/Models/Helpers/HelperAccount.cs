@@ -161,8 +161,6 @@ namespace TCAP.Models.Helpers
                            select data).FirstOrDefault();
 
                 u.STATUS_USER = 2;
-
-                c.USERS.Add(u);
                 c.SaveChanges();
 
                 PLAYERS p = new PLAYERS()

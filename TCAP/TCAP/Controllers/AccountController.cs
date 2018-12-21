@@ -11,6 +11,10 @@ namespace TCAP.Controllers
 {
     public class AccountController : Controller
     {
+
+        //NO HYA VALIDACIONES FIABLES
+        //SOLO PUEDO CONFIRMAR JUGADORES.
+        //HAY QUE CAMBIAR LA ESTRUCTURA DEL CONFIRM
         HelperAccount h = new HelperAccount();
         // GET: Login
         public ActionResult Login()

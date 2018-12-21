@@ -109,7 +109,9 @@ select * from users
 select * from tokens
 select * from clients
 select * from players
-update users set STATUS_USER = 1
+delete from users
+delete from players
+update users set STATUS_USER = 2
 UPDATE TOKENS SET END_TOKEN = DATEADD(MINUTE,15,CURRENT_TIMESTAMP)
 /*
 ALTER PROCEDURE CONFIRM(@T TEXT,@ERROR NVARCHAR(255) = NULL OUTPUT)
