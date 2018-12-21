@@ -12,7 +12,7 @@ namespace TCAP.Controllers
         // GET: Home
         public ActionResult Home()
         {
-            return View(TempData["obj"]);
+            return View(TempData["Player"]);
         }
     }
 }

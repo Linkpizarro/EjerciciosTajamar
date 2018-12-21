@@ -1,0 +1,123 @@
+﻿@model TCAP.Models.USERS
+@{
+    ViewBag.Title = "UserConfirm";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+<center>
+    <div class="container">
+        <div class="row"></div>
+        <div class="z-depth-1 grey lighten-4" style="display: inline-block; padding: 35px; border: 1px solid #EEE;">
+
+            @if (!(Model is null))
+            {
+                if (Model.ID_ROL == 1)
+                {
+                    //formulario de client
+                    <h5 class="black-text">Hola Cliente @Model.NAME_USER</h5>
+                    <form class="col s12" method="post">
+                        <input type='hidden' name='token' id='token' value="@ViewBag.Token" />
+                        <div class='row'>
+                            <div class="col s2">
+                            </div>
+                            <div class="col s8">
+                                <div class='input-field col s12'>
+                                    <input class='validate' type='text' name='dni' id='dni' required />
+                                    <label for='dni'>DNI</label>
+                                </div>
+                            </div>
+                            <div class="col s2">
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="col s6">
+                                <div class='input-field col s12'>
+                                    <input class='validate' type='tel' name='telephone' id='telephone' />
+                                    <label for='telephone'>Teléfono</label>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class='input-field col s12'>
+                                    <input class='validate' type='tel' name='mobile' id='mobile' />
+                                    <label for='mobile'>Móvil</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class='row'>
+                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect client black-text'
+                                    style="font-family: 'ZCOOL KuaiLe', cursive !important;">
+                                Confirmar
+                            </button>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    //formulario  de player
+                    <h5 class="black-text">Hola Jugador @Model.NAME_USER</h5>
+                    <form class="col s12" method="post">
+                        <input type='hidden' name='token' id='token' value="@ViewBag.Token" />
+                        <div class='row'>
+                            <div class="col s3">
+                            </div>
+                            <div class="col s6">
+                                <div class='input-field col s12'>
+                                    <input class='validate' type='text' name='nickname' id='nickname' required />
+                                    <label for='nickname'>Nick</label>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="col s6">
+                                <div class='input-field col s12'>
+                                    <input class='validate' type='number' name='age' id='age' />
+                                    <label for='age'>Edad</label>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class='input-field col s12'>
+                                    <label>
+                                        <input type='radio' name='sex' value="F" />
+                                        <span>Mujer</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class='input-field col s12'>
+                                    <label>
+                                        <input type='radio' name='sex' value="M" />
+                                        <span>Hombre</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="col s12">
+                                <div class='input-field col s12'>
+                                    <textarea name='description' id='description' style="width: 492px; height: 112px;">
+                                    </textarea>
+                                    <label for='description'>Descripción Personal</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class='row'>
+                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect user black-text'
+                                    style="font-family: 'ZCOOL KuaiLe', cursive !important;">
+                                Confirmar
+                            </button>
+                        </div>
+                    </form>
+                }
+            }
+            else
+            {
+                <h1 class="red-text">@ViewBag.Error</h1>
+            }
+
+        </div>
+        <div class="row"></div>
+    </div>
+</center>

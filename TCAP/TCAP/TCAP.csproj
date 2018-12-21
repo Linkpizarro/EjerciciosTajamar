@@ -130,6 +130,16 @@
     <Content Include="Media\img\tcap_logo_black.png" />
     <Content Include="Media\img\user\noImage.png" />
     <Content Include="Media\img\user\user.png" />
+    <Content Include="Models\TcapContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TcapContext.edmx</DependentUpon>
+      <LastGenOutput>TcapContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TcapContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TcapContext.edmx</DependentUpon>
+      <LastGenOutput>TcapContext.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\materialize.js" />
     <Content Include="Scripts\materialize.min.js" />
@@ -146,8 +156,53 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CifradoAsimetrico.cs" />
+    <Compile Include="Models\CLIENTS.cs">
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Helpers\HelperAccount.cs" />
     <Compile Include="Models\Hashing.cs" />
+    <Compile Include="Models\PARTICPANTS.cs">
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PARTIES.cs">
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PLAYERS.cs">
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PUBS.cs">
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ROLES.cs">
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STATUSES.cs">
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TcapContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TcapContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TcapContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TcapContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TcapContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TICKETS.cs">
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TOKENS.cs">
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERS.cs">
+      <DependentUpon>TcapContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +210,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <EntityDeploy Include="Models\TcapContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TcapContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TcapContext.edmx.diagram">
+      <DependentUpon>TcapContext.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -165,7 +227,7 @@
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
     <Content Include="Views\Client\Home.cshtml" />
     <Content Include="Views\Player\Home.cshtml" />
-    <Content Include="Views\Account\PlayerConfirm.cshtml" />
+    <Content Include="Views\Account\UserConfirm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

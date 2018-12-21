@@ -15,10 +15,10 @@ namespace TCAP.Controllers
         // GET: Login
         public ActionResult Login()
         {
-            //if (!(TempData["Success"] is null))
-            //{
-            //    ViewBag.Success = TempData["Success"].ToString();
-            //}
+            if (!(TempData["Success"] is null))
+            {
+                ViewBag.Success = TempData["Success"].ToString();
+            }
 
             return View();
         }
@@ -26,22 +26,23 @@ namespace TCAP.Controllers
         [HttpPost]
         public ActionResult Login(String email, String password)
         {
-            //User u = h.Login(email, password);
-            //if (!(u.Email is null) && u.Rol == 1)
-            //{
-            //    TempData["obj"] = u;
-            //    return RedirectToAction("Home", "Client");
-            //}
-            //else if (!(u.Email is null) && u.Rol == 2)
-            //{
-            //    TempData["obj"] = u;
-            //    return RedirectToAction("Home", "Player");
-            //}
-            //else
-            //{
-            //    ViewBag.Error = "El email o la contraseña son incorrectos.";
-            //    return View();
-            //}
+            List<Object> result = h.Login(email,password);
+
+            if (!(result[0] is null))
+            {
+                if (((USERS)result[0]).ID_ROL == 1)
+                {
+                    TempData["Client"] = result[0];
+                    return RedirectToAction("Home", "Client");
+                }
+                else
+                {
+                    TempData["Player"] = result[0];
+                    return RedirectToAction("Home", "Player");
+                }
+            }
+
+            ViewBag.Error = result[1];
             return View();
         }
         // GET: Register
@@ -51,25 +52,44 @@ namespace TCAP.Controllers
         }
         //POST: Register
         [HttpPost]
-        public ActionResult Register(String user, String name, String surname, String email, String password,
-            String country, String cp_zip)
+        public ActionResult Register(String user, String name, String surname, String email, String password)
         {
-            //if (h.Register(user,name,surname,email,password,country,cp_zip))
-            //{
-            //    TempData["Success"] = "Se ha registrado correctamente.";
-            //    return RedirectToAction("Login","Account");
-            //}
-            //else
-            //{
-            //    ViewBag.Error = "Se ha Producido un error en el registro... Intentelo mas tarde.";
-            //    return View();
-            //}
+            if (h.Register(user,name,surname,email,password))
+            {
+                TempData["Success"] = "Registro completado.Se ha enviado un email de confirmación.";
+                return RedirectToAction("Login", "Account");
+            }
+            ViewBag.Error = "Se ha producido un error en el registro.";
             return View();
         }
-        //GET: PlayerConfirm
-        public ActionResult PlayerConfirm(String token = null)
+        //GET: UserConfirm
+        public ActionResult UserConfirm(String token = null)
         {
-            return View();
+            List<Object> result = h.Confirm(token);
+            if (result[0] is null)
+            {
+                ViewBag.Error = result[1];
+            }
+            else
+            {
+                ViewBag.Token = token;
+            }
+           
+            return View(result[0]);
+           
+        }
+        //POST: UserConfirm
+        [HttpPost]
+        public ActionResult UserConfirm(String token,String nickname,String age,String sex,String description)
+        {
+            if (h.ConfirmConfirm(token,nickname,age,sex,description))
+            {
+                TempData["Success"] = "Ha confirmado Su cuenta Correctamente.";
+                return RedirectToAction("Login", "Account");
+            }
+
+            ViewBag.Error = "Se ha producido un error.";
+            return RedirectToAction("UserConfirm","Account",new {token = token});
         }
     }
 }
