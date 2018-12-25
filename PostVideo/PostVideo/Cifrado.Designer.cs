@@ -28,28 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.folderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.privateKeyE = new System.Windows.Forms.TextBox();
+            this.publicKeyE = new System.Windows.Forms.TextBox();
             this.text = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.encrypt = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.privateKeyD = new System.Windows.Forms.TextBox();
+            this.publicKeyD = new System.Windows.Forms.TextBox();
             this.textEncrypt = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.decrypt = new System.Windows.Forms.Button();
             this.btnRead = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.publicKeyE = new System.Windows.Forms.TextBox();
-            this.privateKeyE = new System.Windows.Forms.TextBox();
-            this.publicKeyD = new System.Windows.Forms.TextBox();
-            this.privateKeyD = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.fileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +58,6 @@
             this.panel1.BackColor = System.Drawing.Color.PapayaWhip;
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.privateKeyE);
             this.panel1.Controls.Add(this.publicKeyE);
             this.panel1.Controls.Add(this.text);
@@ -72,6 +70,38 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(594, 683);
             this.panel1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(224, 451);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 24);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Clave Privada";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(224, 361);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(137, 24);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Clave Pública";
+            // 
+            // privateKeyE
+            // 
+            this.privateKeyE.Location = new System.Drawing.Point(216, 478);
+            this.privateKeyE.Name = "privateKeyE";
+            this.privateKeyE.Size = new System.Drawing.Size(150, 29);
+            this.privateKeyE.TabIndex = 16;
+            // 
+            // publicKeyE
+            // 
+            this.publicKeyE.Location = new System.Drawing.Point(216, 391);
+            this.publicKeyE.Name = "publicKeyE";
+            this.publicKeyE.Size = new System.Drawing.Size(150, 29);
+            this.publicKeyE.TabIndex = 15;
             // 
             // text
             // 
@@ -101,6 +131,7 @@
             this.encrypt.TabIndex = 12;
             this.encrypt.Text = "Cifrar";
             this.encrypt.UseVisualStyleBackColor = true;
+            this.encrypt.Click += new System.EventHandler(this.encrypt_Click);
             // 
             // btnSearch
             // 
@@ -141,6 +172,38 @@
             this.panel2.Size = new System.Drawing.Size(594, 683);
             this.panel2.TabIndex = 1;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(225, 123);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(137, 24);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Clave Privada";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(225, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(137, 24);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Clave Pública";
+            // 
+            // privateKeyD
+            // 
+            this.privateKeyD.Location = new System.Drawing.Point(209, 150);
+            this.privateKeyD.Name = "privateKeyD";
+            this.privateKeyD.Size = new System.Drawing.Size(165, 29);
+            this.privateKeyD.TabIndex = 16;
+            // 
+            // publicKeyD
+            // 
+            this.publicKeyD.Location = new System.Drawing.Point(209, 50);
+            this.publicKeyD.Name = "publicKeyD";
+            this.publicKeyD.Size = new System.Drawing.Size(165, 29);
+            this.publicKeyD.TabIndex = 15;
+            // 
             // textEncrypt
             // 
             this.textEncrypt.Location = new System.Drawing.Point(32, 391);
@@ -169,6 +232,7 @@
             this.decrypt.TabIndex = 12;
             this.decrypt.Text = "Descifrar";
             this.decrypt.UseVisualStyleBackColor = true;
+            this.decrypt.Click += new System.EventHandler(this.decrypt_Click);
             // 
             // btnRead
             // 
@@ -191,78 +255,9 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Leer :";
             // 
-            // publicKeyE
+            // fileDialog
             // 
-            this.publicKeyE.Location = new System.Drawing.Point(216, 391);
-            this.publicKeyE.Name = "publicKeyE";
-            this.publicKeyE.Size = new System.Drawing.Size(150, 29);
-            this.publicKeyE.TabIndex = 15;
-            // 
-            // privateKeyE
-            // 
-            this.privateKeyE.Location = new System.Drawing.Point(216, 478);
-            this.privateKeyE.Name = "privateKeyE";
-            this.privateKeyE.Size = new System.Drawing.Size(150, 29);
-            this.privateKeyE.TabIndex = 16;
-            // 
-            // publicKeyD
-            // 
-            this.publicKeyD.Location = new System.Drawing.Point(209, 50);
-            this.publicKeyD.Name = "publicKeyD";
-            this.publicKeyD.Size = new System.Drawing.Size(165, 29);
-            this.publicKeyD.TabIndex = 15;
-            // 
-            // privateKeyD
-            // 
-            this.privateKeyD.Location = new System.Drawing.Point(209, 150);
-            this.privateKeyD.Name = "privateKeyD";
-            this.privateKeyD.Size = new System.Drawing.Size(165, 29);
-            this.privateKeyD.TabIndex = 16;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 24);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "label5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(224, 361);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(137, 24);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Clave Pública";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(224, 451);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 24);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Clave Privada";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(225, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(137, 24);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Clave Pública";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(225, 123);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(137, 24);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Clave Privada";
+            this.fileDialog.FileName = "openFileDialog1";
             // 
             // Cifrado
             // 
@@ -284,8 +279,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.FolderBrowserDialog folderDialog;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox text;
         private System.Windows.Forms.Label label2;
@@ -300,13 +293,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox privateKeyE;
         private System.Windows.Forms.TextBox publicKeyE;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox privateKeyD;
         private System.Windows.Forms.TextBox publicKeyD;
+        private System.Windows.Forms.OpenFileDialog fileDialog;
     }
 }
 
