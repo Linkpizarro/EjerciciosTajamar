@@ -104,6 +104,8 @@ namespace TCAP.Models.Helpers
                 c.SaveChanges();
 
                 //envio de email aqui.
+                SMTPService smtp = new SMTPService();
+                smtp.SendEmail(u.EMAIL_USER, t.VALUE_TOKEN);
 
                 return true;
             }

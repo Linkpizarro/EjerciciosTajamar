@@ -1,0 +1,73 @@
+﻿@using Lambda.Models
+@model List<EMP>
+@{
+    ViewBag.Title = "Departamentos";
+}
+<center>
+    <h2>Departamentos</h2>
+    <form method="post">
+        <div class="form-group">
+            <select class="form-control" name="dept">
+                <option value="">Seleccione un Departamento</option>
+                @foreach (var item in ViewBag.Depts)
+                {
+                    if (ViewBag.Old == item)
+                    {
+                        <option value="@item" selected>@item</option>
+                    }
+                    else
+                    {
+                        <option value="@item">@item</option>
+                    }
+
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="form-control  btn-primary" value="Mostrar Resumen" />
+        </div>
+    </form>
+    @if (!(Model is null))
+    {
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-8">
+                    <h3>Empleados</h3>
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Nº Empleado</th>
+                            <th>@Html.ActionLink("Apellido", "Departamentos","Emp",new {dept = ViewBag.Old,order = 2},null)</th>
+                            <th>Salario</th>
+                        </tr>
+                        @foreach (EMP item in Model)
+                        {
+                            <tr>
+                                <td>@item.EMP_NO</td>
+                                <td>@item.APELLIDO</td>
+                                <td>@item.SALARIO</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <h3>Resumen</h3>
+                    <table class="table table-bordered" style="background-color:#ffe787;">
+                        <tr>
+                            <th>Nº Personas</th>
+                            <th>Máximo Salario</th>
+                            <th>Suma Salarial</th>
+                            <th>Media Salarial</th>
+                        </tr>
+                        <tr>
+                            <td>@ViewBag.Resumen.Personas</td>
+                            <td>@ViewBag.Resumen.MaxSalario</td>
+                            <td>@ViewBag.Resumen.SumSalario</td>
+                            <td>@ViewBag.Resumen.MedSalario</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</center>
