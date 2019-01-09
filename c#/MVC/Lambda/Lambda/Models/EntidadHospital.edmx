@@ -26,9 +26,30 @@
           <Property Name="COMISION" Type="int" />
           <Property Name="DEPT_NO" Type="int" />
         </EntityType>
+        <EntityType Name="ENFERMO">
+          <Key>
+            <PropertyRef Name="INSCRIPCION" />
+          </Key>
+          <Property Name="INSCRIPCION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" />
+          <Property Name="DIRECCION" Type="nvarchar" MaxLength="50" />
+          <Property Name="FECHA_NAC" Type="datetime" />
+          <Property Name="S" Type="nvarchar" MaxLength="50" />
+          <Property Name="NSS" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="ELIMINARENFERMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="INSCRIPCION" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MOSTRAREMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MOSTRAREMPLEADOPAGINADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MAX" Type="int" Mode="In" />
+          <Parameter Name="MIN" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MOSTRARENFERMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="HOSPITALModelStoreContainer">
           <EntitySet Name="DEPT" EntityType="Self.DEPT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EMP" EntityType="Self.EMP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ENFERMO" EntityType="Self.ENFERMO" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -50,6 +71,16 @@
         <EntityContainer Name="HOSPITALEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="EMP" EntityType="Self.EMP" />
           <EntitySet Name="DEPT" EntityType="HOSPITALModel.DEPT" />
+          <EntitySet Name="ENFERMO" EntityType="HOSPITALModel.ENFERMO" />
+          <FunctionImport Name="ELIMINARENFERMO">
+          <Parameter Name="INSCRIPCION" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MOSTRARENFERMO" EntitySet="ENFERMO" ReturnType="Collection(HOSPITALModel.ENFERMO)" />
+          <FunctionImport Name="MOSTRAREMPLEADO" ReturnType="Collection(HOSPITALModel.MOSTRAREMPLEADO_Result)" />
+          <FunctionImport Name="MOSTRAREMPLEADOPAGINADO" ReturnType="Collection(HOSPITALModel.MOSTRAREMPLEADOPAGINADO_Result)">
+            <Parameter Name="MAX" Mode="In" Type="Int32" />
+            <Parameter Name="MIN" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="DEPT">
           <Key>
@@ -59,6 +90,32 @@
           <Property Name="DNOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LOC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="ENFERMO">
+          <Key>
+            <PropertyRef Name="INSCRIPCION" />
+          </Key>
+          <Property Name="INSCRIPCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_NAC" Type="DateTime" Precision="3" />
+          <Property Name="S" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NSS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="MOSTRAREMPLEADO_Result">
+          <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OFICIO" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SALARIO" Nullable="true" />
+          <Property Type="String" Name="DNOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LOC" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="MOSTRAREMPLEADOPAGINADO_Result">
+          <Property Type="Int64" Name="POSICION" Nullable="true" />
+          <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OFICIO" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SALARIO" Nullable="true" />
+          <Property Type="String" Name="DNOMBRE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LOC" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -88,6 +145,43 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ENFERMO">
+            <EntityTypeMapping TypeName="HOSPITALModel.ENFERMO">
+              <MappingFragment StoreEntitySet="ENFERMO">
+                <ScalarProperty Name="NSS" ColumnName="NSS" />
+                <ScalarProperty Name="S" ColumnName="S" />
+                <ScalarProperty Name="FECHA_NAC" ColumnName="FECHA_NAC" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="INSCRIPCION" ColumnName="INSCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ELIMINARENFERMO" FunctionName="HOSPITALModel.Store.ELIMINARENFERMO" />
+          <FunctionImportMapping FunctionImportName="MOSTRARENFERMO" FunctionName="HOSPITALModel.Store.MOSTRARENFERMO" />
+          <FunctionImportMapping FunctionImportName="MOSTRAREMPLEADO" FunctionName="HOSPITALModel.Store.MOSTRAREMPLEADO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HOSPITALModel.MOSTRAREMPLEADO_Result">
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="OFICIO" ColumnName="OFICIO" />
+                <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
+                <ScalarProperty Name="DNOMBRE" ColumnName="DNOMBRE" />
+                <ScalarProperty Name="LOC" ColumnName="LOC" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MOSTRAREMPLEADOPAGINADO" FunctionName="HOSPITALModel.Store.MOSTRAREMPLEADOPAGINADO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HOSPITALModel.MOSTRAREMPLEADOPAGINADO_Result">
+                <ScalarProperty Name="POSICION" ColumnName="POSICION" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="OFICIO" ColumnName="OFICIO" />
+                <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
+                <ScalarProperty Name="DNOMBRE" ColumnName="DNOMBRE" />
+                <ScalarProperty Name="LOC" ColumnName="LOC" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

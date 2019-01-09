@@ -15,6 +15,7 @@
                     //formulario de client
                     <h5 class="black-text">Hola Cliente @Model.NAME_USER</h5>
                     <form class="col s12" method="post">
+                        <input type='hidden' name='rol' id='rol' value="@Model.ID_ROL" />
                         <input type='hidden' name='token' id='token' value="@ViewBag.Token" />
                         <div class='row'>
                             <div class="col s2">
@@ -56,6 +57,7 @@
                     //formulario  de player
                     <h5 class="black-text">Hola Jugador @Model.NAME_USER</h5>
                     <form class="col s12" method="post">
+                        <input type='hidden' name='rol' id='rol' value="@Model.ID_ROL" />
                         <input type='hidden' name='token' id='token' value="@ViewBag.Token" />
                         <div class='row'>
                             <div class="col s3">

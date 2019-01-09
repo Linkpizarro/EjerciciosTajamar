@@ -11,6 +11,24 @@ namespace Lambda.Controllers
     {
 
         HelperEmp h = new HelperEmp();
+        //GET : Empleados
+        public ActionResult Empleados(int max = 5,int min = 0)
+        {
+            List<MOSTRAREMPLEADO_Result> empleados = h.GetEmp();
+            List<MOSTRAREMPLEADOPAGINADO_Result> empleadosPaginado = h.GetEmpPag(max,min);
+            ViewBag.Top = empleados.Count;
+            ViewBag.Max = max;
+            if (empleados.Count % 5 != 0)
+            {
+                ViewBag.Pag = (empleados.Count / 5) + 1;
+            }
+            else
+            {
+                ViewBag.Pag = empleados.Count / 5;
+            }
+            
+            return View(empleadosPaginado);
+        }
 
         // GET: Oficios
         public ActionResult Oficios()

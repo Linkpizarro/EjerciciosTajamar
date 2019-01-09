@@ -12,6 +12,8 @@ namespace Lambda.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class HOSPITALEntities : DbContext
     {
@@ -27,5 +29,43 @@ namespace Lambda.Models
     
         public virtual DbSet<EMP> EMP { get; set; }
         public virtual DbSet<DEPT> DEPT { get; set; }
+        public virtual DbSet<ENFERMO> ENFERMO { get; set; }
+    
+        public virtual int ELIMINARENFERMO(Nullable<int> iNSCRIPCION)
+        {
+            var iNSCRIPCIONParameter = iNSCRIPCION.HasValue ?
+                new ObjectParameter("INSCRIPCION", iNSCRIPCION) :
+                new ObjectParameter("INSCRIPCION", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ELIMINARENFERMO", iNSCRIPCIONParameter);
+        }
+    
+        public virtual ObjectResult<ENFERMO> MOSTRARENFERMO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ENFERMO>("MOSTRARENFERMO");
+        }
+    
+        public virtual ObjectResult<ENFERMO> MOSTRARENFERMO(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ENFERMO>("MOSTRARENFERMO", mergeOption);
+        }
+    
+        public virtual ObjectResult<MOSTRAREMPLEADO_Result> MOSTRAREMPLEADO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MOSTRAREMPLEADO_Result>("MOSTRAREMPLEADO");
+        }
+    
+        public virtual ObjectResult<MOSTRAREMPLEADOPAGINADO_Result> MOSTRAREMPLEADOPAGINADO(Nullable<int> mAX, Nullable<int> mIN)
+        {
+            var mAXParameter = mAX.HasValue ?
+                new ObjectParameter("MAX", mAX) :
+                new ObjectParameter("MAX", typeof(int));
+    
+            var mINParameter = mIN.HasValue ?
+                new ObjectParameter("MIN", mIN) :
+                new ObjectParameter("MIN", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MOSTRAREMPLEADOPAGINADO_Result>("MOSTRAREMPLEADOPAGINADO", mAXParameter, mINParameter);
+        }
     }
 }

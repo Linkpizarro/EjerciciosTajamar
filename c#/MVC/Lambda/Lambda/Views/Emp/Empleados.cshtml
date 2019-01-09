@@ -1,0 +1,56 @@
+﻿@model List<Lambda.Models.MOSTRAREMPLEADOPAGINADO_Result>
+@{
+    ViewBag.Title = "Empleados";
+}
+<center>
+    <h2>Empleados</h2>
+    <hr />
+    <table class="table table-hover">
+        <tr>
+            <th>Apellido</th>
+            <th>Oficio</th>
+            <th>Salario</th>
+            <th>Departamento</th>
+            <th>Localidad</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.APELLIDO</td>
+            <td>@item.OFICIO</td>
+            <td>@item.SALARIO</td>
+            <td>@item.DNOMBRE</td>
+            <td>@item.LOC</td>
+        </tr>
+        }
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="padding:10px;">
+                @if (ViewBag.Max > 5)
+                {
+                    @Html.ActionLink("<", "Empleados", "Emp", new { max = ViewBag.Max - 5, min = (ViewBag.Max - 10) }, new { @style = "padding-left:10px;color:black;cursor:pointer;" })
+                }
+                else
+                {
+                    <a style="padding-left:10px;color:gray;cursor:auto;text-decoration:none;"><</a>
+                }
+                @for (int i = 0; i < ViewBag.Pag; i++)
+                {
+                    int top = (5 * (i + 1));
+                    @Html.ActionLink("|" + (i + 1) + "|", "Empleados", "Emp", new { max = top, min = (top - 5) }, new { @style = "padding-left:10px;color:black;cursor:pointer;" })
+                }
+                @if (ViewBag.Max < ViewBag.Top)
+                {
+                    @Html.ActionLink(">", "Empleados", "Emp", new { max = ViewBag.Max + 5, min = ViewBag.Max }, new { @style = "padding-left:10px;color:black;cursor:pointer;" })
+                }
+                else
+                {
+                    <a style="padding-left:10px;color:gray;cursor:auto;text-decoration:none;">></a>
+                }
+            </h3>
+        </div>
+    </div>
+</center>
+
+

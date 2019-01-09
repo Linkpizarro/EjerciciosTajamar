@@ -1,0 +1,44 @@
+﻿@model List<Lambda.Models.ENFERMO> 
+@{
+    ViewBag.Title = "Enfermos";
+}
+<center>
+    <h2>Enfermos</h2>
+    <hr />
+    @if (!(ViewBag.Error is null))
+    {
+        <div class="alert-danger">@ViewBag.Error</div>
+        <hr />
+    }
+    else if (!(ViewBag.Success is null))
+    {
+        <div class="alert-success">@ViewBag.Success</div>
+        <hr />
+    }
+    <table class="table table-hover">
+        <tr>
+            <th>Nº Inscripción</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Dirección</th>
+            <tr>Acción</tr>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.INSCRIPCION</td>
+                <td>@item.APELLIDO</td>
+                <td>@item.FECHA_NAC</td>
+                <td>@item.DIRECCION</td>
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="inscripcion" value="@item.INSCRIPCION" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+</center>
+
+

@@ -36,9 +36,9 @@
                     <h3>Empleados</h3>
                     <table class="table table-hover">
                         <tr>
-                            <th>Nº Empleado</th>
-                            <th>@Html.ActionLink("Apellido", "Departamentos","Emp",new {dept = ViewBag.Old,order = 2},null)</th>
-                            <th>Salario</th>
+                            <th>@Html.ActionLink("Nº Empleado", "Departamentos", "Emp", new { dept = ViewBag.Old, order = 1 }, null)</th>
+                            <th>@Html.ActionLink("Apellido", "Departamentos", "Emp", new { dept = ViewBag.Old, order = 2 }, null)</th>
+                            <th>@Html.ActionLink("Salario", "Departamentos", "Emp", new { dept = ViewBag.Old, order = 3 }, null)</th>
                         </tr>
                         @foreach (EMP item in Model)
                         {

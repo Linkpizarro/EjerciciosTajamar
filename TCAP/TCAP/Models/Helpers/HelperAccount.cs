@@ -31,13 +31,18 @@ namespace TCAP.Models.Helpers
 
             return token;
         }
-        private Boolean ValidateField(String field)
+        private Boolean ValidateField(String field,int max,int min)
         {
-            if (field is null)
+            if (!(field is null) && field != "" )
             {
-                return false;
+                if (field.Length < max && field.Length > min)
+                {
+                    return true;
+                }
             }
-            return true;
+
+            return false;
+           
         }
         private int ExistsEmail(String email)
         {
@@ -143,7 +148,7 @@ namespace TCAP.Models.Helpers
             return result;
 
         }
-        public Boolean ConfirmConfirm(String token,String nickname, String age, String sex, String description)
+        public Boolean PlayerConfirm(String token,String nickname, String age, String sex, String description)
         {
             int id = (from data in c.TOKENS
                      where data.VALUE_TOKEN.Contains(token)
@@ -180,10 +185,45 @@ namespace TCAP.Models.Helpers
 
                 c.PLAYERS.Add(p);
                 c.SaveChanges();
+           
 
-  
+                return true;
+            }
 
- 
+            return false;
+        }
+        public Boolean ClientConfirm(String token, String dni, String telephone, String mobile)
+        {
+            int id = (from data in c.TOKENS
+                      where data.VALUE_TOKEN.Contains(token)
+                      select data.ID_USER).FirstOrDefault();
+
+            if (id != 0)
+            {
+                TOKENS t = (from data in c.TOKENS
+                            where data.VALUE_TOKEN.Contains(token)
+                            select data).FirstOrDefault();
+
+                c.TOKENS.Remove(t);
+                c.SaveChanges();
+
+                USERS u = (from data in c.USERS
+                           where data.ID_USER == id
+                           select data).FirstOrDefault();
+
+                u.STATUS_USER = 2;
+                c.SaveChanges();
+
+                CLIENTS x = new CLIENTS()
+                {
+                    ID_USER = id,
+                    DNI_CLIENT = dni,
+                    TELEPHONE_CLIENT = telephone,
+                    MOBILE_CLIENT = mobile
+                };
+
+                c.CLIENTS.Add(x);
+                c.SaveChanges();
 
                 return true;
             }

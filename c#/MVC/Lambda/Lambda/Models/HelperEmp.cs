@@ -13,6 +13,16 @@ namespace Lambda.Models
         {
             entidad = new HOSPITALEntities();
         }
+        public List<MOSTRAREMPLEADO_Result> GetEmp()
+        {
+            var empleados = entidad.MOSTRAREMPLEADO();
+            return empleados.ToList();
+        }
+        public List<MOSTRAREMPLEADOPAGINADO_Result> GetEmpPag(int max,int min)
+        {
+           var empleados = entidad.MOSTRAREMPLEADOPAGINADO(max,min);
+           return empleados.ToList();
+        }
 
         public List<String> GetOficios()
         {
@@ -81,6 +91,8 @@ namespace Lambda.Models
 
             return res;
         }
+
+
     }
 
 }

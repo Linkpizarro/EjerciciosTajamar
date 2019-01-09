@@ -12,9 +12,9 @@ namespace TCAP.Controllers
     public class AccountController : Controller
     {
 
-        //NO HYA VALIDACIONES FIABLES
+        //NO HAY VALIDACIONES FIABLES
         //SOLO PUEDO CONFIRMAR JUGADORES.
-        //HAY QUE CAMBIAR LA ESTRUCTURA DEL CONFIRM
+
         HelperAccount h = new HelperAccount();
         // GET: Login
         public ActionResult Login()
@@ -64,6 +64,10 @@ namespace TCAP.Controllers
                 return RedirectToAction("Login", "Account");
             }
             ViewBag.Error = "Se ha producido un error en el registro.";
+            ViewBag.OldUser = user;
+            ViewBag.OldName = name;
+            ViewBag.OldSurname = surname;
+            ViewBag.OldEmail = email;
             return View();
         }
         //GET: UserConfirm
@@ -84,14 +88,32 @@ namespace TCAP.Controllers
         }
         //POST: UserConfirm
         [HttpPost]
-        public ActionResult UserConfirm(String token,String nickname,String age,String sex,String description)
+        public ActionResult UserConfirm(String rol,String token,String nickname,String age,String sex,String description,
+            String dni,String telephone,String mobile)
         {
-            if (h.ConfirmConfirm(token,nickname,age,sex,description))
-            {
-                TempData["Success"] = "Ha confirmado Su cuenta Correctamente.";
-                return RedirectToAction("Login", "Account");
-            }
+            //Faltan los old...
 
+            if (rol == "1")
+            {
+                //Falta validaciones de los campos aquí...
+
+                if (h.ClientConfirm(token, dni, telephone, mobile))
+                {
+                    TempData["Success"] = "Ha confirmado Su cuenta Correctamente.";
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+            else
+            {
+                //Falta validaciones de los campos aquí...
+
+                if (h.PlayerConfirm(token, nickname, age, sex, description))
+                {
+                    TempData["Success"] = "Ha confirmado Su cuenta Correctamente.";
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+           
             ViewBag.Error = "Se ha producido un error.";
             return RedirectToAction("UserConfirm","Account",new {token = token});
         }

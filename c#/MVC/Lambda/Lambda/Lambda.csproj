@@ -130,6 +130,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EmpController.cs" />
+    <Compile Include="Controllers\EnfermosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,6 +138,9 @@
       <DependentUpon>EntidadHospital.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EMP.cs">
+      <DependentUpon>EntidadHospital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ENFERMO.cs">
       <DependentUpon>EntidadHospital.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EntidadHospital.Context.cs">
@@ -155,6 +159,13 @@
       <DependentUpon>EntidadHospital.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HelperEmp.cs" />
+    <Compile Include="Models\HelperEnfermos.cs" />
+    <Compile Include="Models\MOSTRAREMPLEADOPAGINADO_Result.cs">
+      <DependentUpon>EntidadHospital.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MOSTRAREMPLEADO_Result.cs">
+      <DependentUpon>EntidadHospital.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ResumenEmp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -169,6 +180,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Emp\Oficios.cshtml" />
     <Content Include="Views\Emp\Departamentos.cshtml" />
+    <Content Include="Views\Enfermos\Enfermos.cshtml" />
+    <Content Include="Views\Emp\Empleados.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
