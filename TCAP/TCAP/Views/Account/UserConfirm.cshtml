@@ -14,6 +14,11 @@
                 {
                     //formulario de client
                     <h5 class="black-text">Hola Cliente @Model.NAME_USER</h5>
+
+                    if (!(ViewBag.Error is null))
+                    {
+                        <p class="red-text">@ViewBag.Error</p>
+                    }
                     <form class="col s12" method="post">
                         <input type='hidden' name='rol' id='rol' value="@Model.ID_ROL" />
                         <input type='hidden' name='token' id='token' value="@ViewBag.Token" />
@@ -22,7 +27,7 @@
                             </div>
                             <div class="col s8">
                                 <div class='input-field col s12'>
-                                    <input class='validate' type='text' name='dni' id='dni' required />
+                                    <input class='validate' type='text' name='dni' id='dni' value="@ViewBag.OldDni" required />
                                     <label for='dni'>DNI</label>
                                 </div>
                             </div>
@@ -32,13 +37,13 @@
                         <div class='row'>
                             <div class="col s6">
                                 <div class='input-field col s12'>
-                                    <input class='validate' type='tel' name='telephone' id='telephone' />
+                                    <input class='validate' type='tel' name='telephone' value="@ViewBag.OldTel" id='telephone' />
                                     <label for='telephone'>Teléfono</label>
                                 </div>
                             </div>
                             <div class="col s6">
                                 <div class='input-field col s12'>
-                                    <input class='validate' type='tel' name='mobile' id='mobile' />
+                                    <input class='validate' type='tel' name='mobile' value="@ViewBag.OldMob" id='mobile' />
                                     <label for='mobile'>Móvil</label>
                                 </div>
                             </div>
@@ -56,6 +61,10 @@
                 {
                     //formulario  de player
                     <h5 class="black-text">Hola Jugador @Model.NAME_USER</h5>
+                     if (!(ViewBag.Error is null))
+                        {
+                        <p class="red-text">@ViewBag.Error</p>
+                    }
                     <form class="col s12" method="post">
                         <input type='hidden' name='rol' id='rol' value="@Model.ID_ROL" />
                         <input type='hidden' name='token' id='token' value="@ViewBag.Token" />
@@ -64,7 +73,7 @@
                             </div>
                             <div class="col s6">
                                 <div class='input-field col s12'>
-                                    <input class='validate' type='text' name='nickname' id='nickname' required />
+                                    <input class='validate' type='text' name='nickname' id='nickname' value="@ViewBag.OldNick" required />
                                     <label for='nickname'>Nick</label>
                                 </div>
                             </div>
@@ -74,14 +83,22 @@
                         <div class='row'>
                             <div class="col s6">
                                 <div class='input-field col s12'>
-                                    <input class='validate' type='number' name='age' id='age' />
+                                    <input class='validate' type='number' name='age' id='age' value="@ViewBag.OldAge" />
                                     <label for='age'>Edad</label>
                                 </div>
                             </div>
                             <div class="col s6">
                                 <div class='input-field col s12'>
                                     <label>
-                                        <input type='radio' name='sex' value="F" />
+                                        @if (ViewBag.OldSex == "F")
+                                        {
+                                            <input type='radio' name='sex' value="F" checked />
+                                        }
+                                        else
+                                        {
+                                            <input type='radio' name='sex' value="F" />
+                                        }
+
                                         <span>Mujer</span>
                                     </label>
                                 </div>
@@ -89,7 +106,14 @@
                             <div class="col s6">
                                 <div class='input-field col s12'>
                                     <label>
-                                        <input type='radio' name='sex' value="M" />
+                                        @if (ViewBag.OldSex == "M")
+                                        {
+                                            <input type='radio' name='sex' value="M" checked />
+                                        }
+                                        else
+                                        {
+                                            <input type='radio' name='sex' value="M" />
+                                        }
                                         <span>Hombre</span>
                                     </label>
                                 </div>
@@ -99,6 +123,7 @@
                             <div class="col s12">
                                 <div class='input-field col s12'>
                                     <textarea name='description' id='description' style="width: 492px; height: 112px;">
+                                       @ViewBag.OldDesc
                                     </textarea>
                                     <label for='description'>Descripción Personal</label>
                                 </div>

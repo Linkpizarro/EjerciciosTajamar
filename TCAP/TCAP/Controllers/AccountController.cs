@@ -12,8 +12,7 @@ namespace TCAP.Controllers
     public class AccountController : Controller
     {
 
-        //NO HAY VALIDACIONES FIABLES
-        //SOLO PUEDO CONFIRMAR JUGADORES.
+        //***HAY VALIDACIONES EN EL REGISTRO UNICAMENTE*****
 
         HelperAccount h = new HelperAccount();
         // GET: Login
@@ -30,23 +29,24 @@ namespace TCAP.Controllers
         [HttpPost]
         public ActionResult Login(String email, String password)
         {
-            List<Object> result = h.Login(email,password);
+            String error = null;
+            USERS result = h.Login(email,password,ref error);
 
-            if (!(result[0] is null))
+            if (!(result is null))
             {
-                if (((USERS)result[0]).ID_ROL == 1)
+                if (result.ID_ROL == 1)
                 {
-                    TempData["Client"] = result[0];
+                    TempData["Client"] = result;
                     return RedirectToAction("Home", "Client");
                 }
                 else
                 {
-                    TempData["Player"] = result[0];
+                    TempData["Player"] = result;
                     return RedirectToAction("Home", "Player");
                 }
             }
 
-            ViewBag.Error = result[1];
+            ViewBag.Error = error;
             return View();
         }
         // GET: Register
@@ -58,32 +58,57 @@ namespace TCAP.Controllers
         [HttpPost]
         public ActionResult Register(String user, String name, String surname, String email, String password)
         {
-            if (h.Register(user,name,surname,email,password))
+            String error = null;
+
+            if (h.ValidateRegister(user, name, surname, email, password,ref error))
             {
                 TempData["Success"] = "Registro completado.Se ha enviado un email de confirmación.";
                 return RedirectToAction("Login", "Account");
             }
-            ViewBag.Error = "Se ha producido un error en el registro.";
+
+            ViewBag.Error = error;
+
             ViewBag.OldUser = user;
             ViewBag.OldName = name;
             ViewBag.OldSurname = surname;
             ViewBag.OldEmail = email;
+
             return View();
         }
         //GET: UserConfirm
         public ActionResult UserConfirm(String token = null)
         {
-            List<Object> result = h.Confirm(token);
-            if (result[0] is null)
+            String error = null;
+            USERS result = h.Confirm(token,ref error);
+            if (result is null)
             {
-                ViewBag.Error = result[1];
+                ViewBag.Error = error;
             }
             else
             {
                 ViewBag.Token = token;
             }
-           
-            return View(result[0]);
+
+            if (!(TempData["OldClient"] is null))
+            {
+                ViewBag.OldDni = ((List<String>)TempData["OldClient"])[0];
+                ViewBag.OldTel = ((List<String>)TempData["OldClient"])[1];
+                ViewBag.OldMob = ((List<String>)TempData["OldClient"])[2];
+            }
+
+            if (!(TempData["OldPlayer"] is null))
+            {
+                ViewBag.OldNick = ((List<String>)TempData["OldPlayer"])[0];
+                ViewBag.OldAge = ((List<String>)TempData["OldPlayer"])[1];
+                ViewBag.OldSex = ((List<String>)TempData["OldPlayer"])[2];
+                ViewBag.OldDesc = ((List<String>)TempData["OldPlayer"])[3];
+            }
+            if(!(TempData["Error"] is null))
+            {
+                ViewBag.Error = TempData["Error"];
+            }
+
+            return View(result);
            
         }
         //POST: UserConfirm
@@ -93,28 +118,41 @@ namespace TCAP.Controllers
         {
             //Faltan los old...
 
+            String error = null;
             if (rol == "1")
             {
-                //Falta validaciones de los campos aquí...
-
+                
                 if (h.ClientConfirm(token, dni, telephone, mobile))
                 {
                     TempData["Success"] = "Ha confirmado Su cuenta Correctamente.";
                     return RedirectToAction("Login", "Account");
                 }
+
+                TempData["OldClient"] = new List<String>() {
+                   dni,
+                   telephone,
+                   mobile
+                };
             }
             else
             {
-                //Falta validaciones de los campos aquí...
 
-                if (h.PlayerConfirm(token, nickname, age, sex, description))
+                if (h.ValidatePlayerConfirm(token, nickname, age, sex, description,ref error))
                 {
                     TempData["Success"] = "Ha confirmado Su cuenta Correctamente.";
                     return RedirectToAction("Login", "Account");
                 }
+
+                TempData["OldPlayer"] = new List<String>() {
+                   nickname,
+                   age,
+                   sex,
+                   description
+                 };
+
             }
            
-            ViewBag.Error = "Se ha producido un error.";
+            TempData["Error"]= error;
             return RedirectToAction("UserConfirm","Account",new {token = token});
         }
     }
