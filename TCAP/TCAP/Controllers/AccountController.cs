@@ -12,7 +12,8 @@ namespace TCAP.Controllers
     public class AccountController : Controller
     {
 
-        //***HAY VALIDACIONES EN EL REGISTRO UNICAMENTE*****
+       //****falta validaciones en el tel y mob de cliente****
+       //***NECESITO VIEWS Y PROCEDURES PARA TODO****
 
         HelperAccount h = new HelperAccount();
         // GET: Login
@@ -122,7 +123,7 @@ namespace TCAP.Controllers
             if (rol == "1")
             {
                 
-                if (h.ClientConfirm(token, dni, telephone, mobile))
+                if (h.ValidateClientConfirm(token, dni, telephone, mobile,ref error))
                 {
                     TempData["Success"] = "Ha confirmado Su cuenta Correctamente.";
                     return RedirectToAction("Login", "Account");

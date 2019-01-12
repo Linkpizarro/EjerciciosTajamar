@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TCAPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TCAPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CLIENTS">
           <Key>
             <PropertyRef Name="ID_CLIENT" />
@@ -110,6 +110,7 @@
           <Property Name="CREATED_USER" Type="datetime" Nullable="false" />
           <Property Name="UPDATED_USER" Type="datetime" Nullable="false" />
           <Property Name="STATUS_USER" Type="int" Nullable="false" />
+          <Property Name="TOKEN_SESSION" Type="text" />
         </EntityType>
         <Association Name="FK__CLIENTS__ID_USER__47DBAE45">
           <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
@@ -219,18 +220,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERS__ID_ROL__3C69FB99">
-          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
-          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ROLES">
-              <PropertyRef Name="ID_ROL" />
-            </Principal>
-            <Dependent Role="USERS">
-              <PropertyRef Name="ID_ROL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__USERS__STATUS_US__3D5E1FD2">
           <End Role="STATUSES" Type="Self.STATUSES" Multiplicity="1" />
           <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
@@ -240,6 +229,18 @@
             </Principal>
             <Dependent Role="USERS">
               <PropertyRef Name="STATUS_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__TOKEN_SES__3C69FB99">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="ID_ROL" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -290,19 +291,117 @@
             <End Role="USERS" EntitySet="USERS" />
             <End Role="TOKENS" EntitySet="TOKENS" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERS__ID_ROL__3C69FB99" Association="Self.FK__USERS__ID_ROL__3C69FB99">
-            <End Role="ROLES" EntitySet="ROLES" />
-            <End Role="USERS" EntitySet="USERS" />
-          </AssociationSet>
           <AssociationSet Name="FK__USERS__STATUS_US__3D5E1FD2" Association="Self.FK__USERS__STATUS_US__3D5E1FD2">
             <End Role="STATUSES" EntitySet="STATUSES" />
             <End Role="USERS" EntitySet="USERS" />
           </AssociationSet>
+          <AssociationSet Name="FK__USERS__TOKEN_SES__3C69FB99" Association="Self.FK__USERS__TOKEN_SES__3C69FB99">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TCAPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLIENTS">
+          <Key>
+            <PropertyRef Name="ID_CLIENT" />
+          </Key>
+          <Property Name="ID_CLIENT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USER" Type="Int32" Nullable="false" />
+          <Property Name="DNI_CLIENT" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOBILE_CLIENT" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TELEPHONE_CLIENT" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__CLIENTS__ID_USER__47DBAE45" FromRole="CLIENTS" ToRole="USERS" />
+          <NavigationProperty Name="PUBS" Relationship="Self.FK__PUBS__ID_CLIENT__4D94879B" FromRole="CLIENTS" ToRole="PUBS" />
+        </EntityType>
+        <EntityType Name="PARTICPANTS">
+          <Key>
+            <PropertyRef Name="ID_PARTICPANT" />
+          </Key>
+          <Property Name="ID_PARTICPANT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PARTY" Type="Int32" Nullable="false" />
+          <Property Name="ID_PLAYER" Type="Int32" Nullable="false" />
+          <Property Name="LEADER_PARTICIPANT" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PARTIES" Relationship="Self.FK__PARTICPAN__ID_PA__5812160E" FromRole="PARTICPANTS" ToRole="PARTIES" />
+          <NavigationProperty Name="PLAYERS" Relationship="Self.FK__PARTICPAN__ID_PL__59063A47" FromRole="PARTICPANTS" ToRole="PLAYERS" />
+        </EntityType>
+        <EntityType Name="PARTIES">
+          <Key>
+            <PropertyRef Name="ID_PARTY" />
+          </Key>
+          <Property Name="ID_PARTY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PUB" Type="Int32" Nullable="false" />
+          <Property Name="BOARDGAME_PARTY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="START_PARTY" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CURRENT_PARTICIPANT_PARTY" Type="Int32" Nullable="false" />
+          <Property Name="MAX_PARTICIPANT_PARTY" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PARTICPANTS" Relationship="Self.FK__PARTICPAN__ID_PA__5812160E" FromRole="PARTIES" ToRole="PARTICPANTS" />
+          <NavigationProperty Name="PUBS" Relationship="Self.FK__PARTIES__ID_PUB__5441852A" FromRole="PARTIES" ToRole="PUBS" />
+        </EntityType>
+        <EntityType Name="PLAYERS">
+          <Key>
+            <PropertyRef Name="ID_PLAYER" />
+          </Key>
+          <Property Name="ID_PLAYER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USER" Type="Int32" Nullable="false" />
+          <Property Name="NICK_PLAYER" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGE_PLAYER" Type="Int32" />
+          <Property Name="SEX_PLAYER" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION_PLAYER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PP_PLAYER" Type="Int32" Nullable="false" />
+          <Property Name="NP_PLAYER" Type="Int32" Nullable="false" />
+          <Property Name="SEALS_PLAYER" Type="Int32" Nullable="false" />
+          <Property Name="LEVEL_PLAYER" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PARTICPANTS" Relationship="Self.FK__PARTICPAN__ID_PL__59063A47" FromRole="PLAYERS" ToRole="PARTICPANTS" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__PLAYERS__ID_USER__44FF419A" FromRole="PLAYERS" ToRole="USERS" />
+          <NavigationProperty Name="TICKETS" Relationship="Self.FK__TICKETS__ID_PLAY__5070F446" FromRole="PLAYERS" ToRole="TICKETS" />
+        </EntityType>
+        <EntityType Name="PUBS">
+          <Key>
+            <PropertyRef Name="ID_PUB" />
+          </Key>
+          <Property Name="ID_PUB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CLIENT" Type="Int32" Nullable="false" />
+          <Property Name="NAME_PUB" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ADDRESS_PUB" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CP_PUB" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PHONE_PUB" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STATUS_PUB" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CLIENTS" Relationship="Self.FK__PUBS__ID_CLIENT__4D94879B" FromRole="PUBS" ToRole="CLIENTS" />
+          <NavigationProperty Name="PARTIES" Relationship="Self.FK__PARTIES__ID_PUB__5441852A" FromRole="PUBS" ToRole="PARTIES" />
+          <NavigationProperty Name="TICKETS" Relationship="Self.FK__TICKETS__ID_PUB__5165187F" FromRole="PUBS" ToRole="TICKETS" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_ROL" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__USERS__TOKEN_SES__3C69FB99" FromRole="ROLES" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="STATUSES">
+          <Key>
+            <PropertyRef Name="ID_STATUS" />
+          </Key>
+          <Property Name="ID_STATUS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_STATUS" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__USERS__STATUS_US__3D5E1FD2" FromRole="STATUSES" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="TICKETS">
+          <Key>
+            <PropertyRef Name="ID_TICKET" />
+          </Key>
+          <Property Name="ID_TICKET" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PLAYER" Type="Int32" Nullable="false" />
+          <Property Name="ID_PUB" Type="Int32" Nullable="false" />
+          <Property Name="CREATED_TICKET" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QUANTITY_TICKET" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PLAYERS" Relationship="Self.FK__TICKETS__ID_PLAY__5070F446" FromRole="TICKETS" ToRole="PLAYERS" />
+          <NavigationProperty Name="PUBS" Relationship="Self.FK__TICKETS__ID_PUB__5165187F" FromRole="TICKETS" ToRole="PUBS" />
+        </EntityType>
         <EntityType Name="TOKENS">
           <Key>
             <PropertyRef Name="ID_TOKEN" />
@@ -328,12 +427,133 @@
           <Property Name="CREATED_USER" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UPDATED_USER" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="STATUS_USER" Type="Int32" Nullable="false" />
+          <Property Name="TOKEN_SESSION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLIENTS" Relationship="Self.FK__CLIENTS__ID_USER__47DBAE45" FromRole="USERS" ToRole="CLIENTS" />
+          <NavigationProperty Name="PLAYERS" Relationship="Self.FK__PLAYERS__ID_USER__44FF419A" FromRole="USERS" ToRole="PLAYERS" />
+          <NavigationProperty Name="ROLES" Relationship="Self.FK__USERS__TOKEN_SES__3C69FB99" FromRole="USERS" ToRole="ROLES" />
+          <NavigationProperty Name="STATUSES" Relationship="Self.FK__USERS__STATUS_US__3D5E1FD2" FromRole="USERS" ToRole="STATUSES" />
           <NavigationProperty Name="TOKENS" Relationship="Self.FK__TOKENS__ID_USER__4AB81AF0" FromRole="USERS" ToRole="TOKENS" />
-          <NavigationProperty Name="CLIENTS" Relationship="TCAPModel.FK__CLIENTS__ID_USER__47DBAE45" FromRole="USERS" ToRole="CLIENTS" />
-          <NavigationProperty Name="PLAYERS" Relationship="TCAPModel.FK__PLAYERS__ID_USER__44FF419A" FromRole="USERS" ToRole="PLAYERS" />
-          <NavigationProperty Name="ROLES" Relationship="TCAPModel.FK__USERS__ID_ROL__3C69FB99" FromRole="USERS" ToRole="ROLES" />
-          <NavigationProperty Name="STATUSES" Relationship="TCAPModel.FK__USERS__STATUS_US__3D5E1FD2" FromRole="USERS" ToRole="STATUSES" />
         </EntityType>
+        <Association Name="FK__CLIENTS__ID_USER__47DBAE45">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="CLIENTS" Type="Self.CLIENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="CLIENTS">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PUBS__ID_CLIENT__4D94879B">
+          <End Role="CLIENTS" Type="Self.CLIENTS" Multiplicity="1" />
+          <End Role="PUBS" Type="Self.PUBS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTS">
+              <PropertyRef Name="ID_CLIENT" />
+            </Principal>
+            <Dependent Role="PUBS">
+              <PropertyRef Name="ID_CLIENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARTICPAN__ID_PA__5812160E">
+          <End Role="PARTIES" Type="Self.PARTIES" Multiplicity="1" />
+          <End Role="PARTICPANTS" Type="Self.PARTICPANTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PARTIES">
+              <PropertyRef Name="ID_PARTY" />
+            </Principal>
+            <Dependent Role="PARTICPANTS">
+              <PropertyRef Name="ID_PARTY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARTICPAN__ID_PL__59063A47">
+          <End Role="PLAYERS" Type="Self.PLAYERS" Multiplicity="1" />
+          <End Role="PARTICPANTS" Type="Self.PARTICPANTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAYERS">
+              <PropertyRef Name="ID_PLAYER" />
+            </Principal>
+            <Dependent Role="PARTICPANTS">
+              <PropertyRef Name="ID_PLAYER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PARTIES__ID_PUB__5441852A">
+          <End Role="PUBS" Type="Self.PUBS" Multiplicity="1" />
+          <End Role="PARTIES" Type="Self.PARTIES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUBS">
+              <PropertyRef Name="ID_PUB" />
+            </Principal>
+            <Dependent Role="PARTIES">
+              <PropertyRef Name="ID_PUB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PLAYERS__ID_USER__44FF419A">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="PLAYERS" Type="Self.PLAYERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="PLAYERS">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TICKETS__ID_PLAY__5070F446">
+          <End Role="PLAYERS" Type="Self.PLAYERS" Multiplicity="1" />
+          <End Role="TICKETS" Type="Self.TICKETS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAYERS">
+              <PropertyRef Name="ID_PLAYER" />
+            </Principal>
+            <Dependent Role="TICKETS">
+              <PropertyRef Name="ID_PLAYER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TICKETS__ID_PUB__5165187F">
+          <End Role="PUBS" Type="Self.PUBS" Multiplicity="1" />
+          <End Role="TICKETS" Type="Self.TICKETS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUBS">
+              <PropertyRef Name="ID_PUB" />
+            </Principal>
+            <Dependent Role="TICKETS">
+              <PropertyRef Name="ID_PUB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__TOKEN_SES__3C69FB99">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__STATUS_US__3D5E1FD2">
+          <End Role="STATUSES" Type="Self.STATUSES" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATUSES">
+              <PropertyRef Name="ID_STATUS" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="STATUS_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__TOKENS__ID_USER__4AB81AF0">
           <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
           <End Role="TOKENS" Type="Self.TOKENS" Multiplicity="*" />
@@ -347,284 +567,156 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TcapContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTS" EntityType="Self.CLIENTS" />
+          <EntitySet Name="PARTICPANTS" EntityType="Self.PARTICPANTS" />
+          <EntitySet Name="PARTIES" EntityType="Self.PARTIES" />
+          <EntitySet Name="PLAYERS" EntityType="Self.PLAYERS" />
+          <EntitySet Name="PUBS" EntityType="Self.PUBS" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" />
+          <EntitySet Name="STATUSES" EntityType="Self.STATUSES" />
+          <EntitySet Name="TICKETS" EntityType="Self.TICKETS" />
           <EntitySet Name="TOKENS" EntityType="Self.TOKENS" />
           <EntitySet Name="USERS" EntityType="Self.USERS" />
+          <AssociationSet Name="FK__CLIENTS__ID_USER__47DBAE45" Association="Self.FK__CLIENTS__ID_USER__47DBAE45">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="CLIENTS" EntitySet="CLIENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PUBS__ID_CLIENT__4D94879B" Association="Self.FK__PUBS__ID_CLIENT__4D94879B">
+            <End Role="CLIENTS" EntitySet="CLIENTS" />
+            <End Role="PUBS" EntitySet="PUBS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARTICPAN__ID_PA__5812160E" Association="Self.FK__PARTICPAN__ID_PA__5812160E">
+            <End Role="PARTIES" EntitySet="PARTIES" />
+            <End Role="PARTICPANTS" EntitySet="PARTICPANTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARTICPAN__ID_PL__59063A47" Association="Self.FK__PARTICPAN__ID_PL__59063A47">
+            <End Role="PLAYERS" EntitySet="PLAYERS" />
+            <End Role="PARTICPANTS" EntitySet="PARTICPANTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PARTIES__ID_PUB__5441852A" Association="Self.FK__PARTIES__ID_PUB__5441852A">
+            <End Role="PUBS" EntitySet="PUBS" />
+            <End Role="PARTIES" EntitySet="PARTIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PLAYERS__ID_USER__44FF419A" Association="Self.FK__PLAYERS__ID_USER__44FF419A">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PLAYERS" EntitySet="PLAYERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TICKETS__ID_PLAY__5070F446" Association="Self.FK__TICKETS__ID_PLAY__5070F446">
+            <End Role="PLAYERS" EntitySet="PLAYERS" />
+            <End Role="TICKETS" EntitySet="TICKETS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TICKETS__ID_PUB__5165187F" Association="Self.FK__TICKETS__ID_PUB__5165187F">
+            <End Role="PUBS" EntitySet="PUBS" />
+            <End Role="TICKETS" EntitySet="TICKETS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__TOKEN_SES__3C69FB99" Association="Self.FK__USERS__TOKEN_SES__3C69FB99">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__STATUS_US__3D5E1FD2" Association="Self.FK__USERS__STATUS_US__3D5E1FD2">
+            <End Role="STATUSES" EntitySet="STATUSES" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
           <AssociationSet Name="FK__TOKENS__ID_USER__4AB81AF0" Association="Self.FK__TOKENS__ID_USER__4AB81AF0">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="TOKENS" EntitySet="TOKENS" />
           </AssociationSet>
-          <EntitySet Name="CLIENTS" EntityType="TCAPModel.CLIENTS" />
-          <EntitySet Name="PARTICPANTS" EntityType="TCAPModel.PARTICPANTS" />
-          <EntitySet Name="PARTIES" EntityType="TCAPModel.PARTIES" />
-          <EntitySet Name="PLAYERS" EntityType="TCAPModel.PLAYERS" />
-          <EntitySet Name="PUBS" EntityType="TCAPModel.PUBS" />
-          <EntitySet Name="ROLES" EntityType="TCAPModel.ROLES" />
-          <EntitySet Name="STATUSES" EntityType="TCAPModel.STATUSES" />
-          <EntitySet Name="TICKETS" EntityType="TCAPModel.TICKETS" />
-          <AssociationSet Name="FK__CLIENTS__ID_USER__47DBAE45" Association="TCAPModel.FK__CLIENTS__ID_USER__47DBAE45">
-            <End Role="USERS" EntitySet="USERS" />
-            <End Role="CLIENTS" EntitySet="CLIENTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PUBS__ID_CLIENT__4D94879B" Association="TCAPModel.FK__PUBS__ID_CLIENT__4D94879B">
-            <End Role="CLIENTS" EntitySet="CLIENTS" />
-            <End Role="PUBS" EntitySet="PUBS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PARTICPAN__ID_PA__5812160E" Association="TCAPModel.FK__PARTICPAN__ID_PA__5812160E">
-            <End Role="PARTIES" EntitySet="PARTIES" />
-            <End Role="PARTICPANTS" EntitySet="PARTICPANTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PARTICPAN__ID_PL__59063A47" Association="TCAPModel.FK__PARTICPAN__ID_PL__59063A47">
-            <End Role="PLAYERS" EntitySet="PLAYERS" />
-            <End Role="PARTICPANTS" EntitySet="PARTICPANTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PARTIES__ID_PUB__5441852A" Association="TCAPModel.FK__PARTIES__ID_PUB__5441852A">
-            <End Role="PUBS" EntitySet="PUBS" />
-            <End Role="PARTIES" EntitySet="PARTIES" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PLAYERS__ID_USER__44FF419A" Association="TCAPModel.FK__PLAYERS__ID_USER__44FF419A">
-            <End Role="USERS" EntitySet="USERS" />
-            <End Role="PLAYERS" EntitySet="PLAYERS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TICKETS__ID_PLAY__5070F446" Association="TCAPModel.FK__TICKETS__ID_PLAY__5070F446">
-            <End Role="PLAYERS" EntitySet="PLAYERS" />
-            <End Role="TICKETS" EntitySet="TICKETS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TICKETS__ID_PUB__5165187F" Association="TCAPModel.FK__TICKETS__ID_PUB__5165187F">
-            <End Role="PUBS" EntitySet="PUBS" />
-            <End Role="TICKETS" EntitySet="TICKETS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERS__ID_ROL__3C69FB99" Association="TCAPModel.FK__USERS__ID_ROL__3C69FB99">
-            <End Role="ROLES" EntitySet="ROLES" />
-            <End Role="USERS" EntitySet="USERS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERS__STATUS_US__3D5E1FD2" Association="TCAPModel.FK__USERS__STATUS_US__3D5E1FD2">
-            <End Role="STATUSES" EntitySet="STATUSES" />
-            <End Role="USERS" EntitySet="USERS" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="CLIENTS">
-          <Key>
-            <PropertyRef Name="ID_CLIENT" />
-          </Key>
-          <Property Name="ID_CLIENT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_USER" Type="Int32" Nullable="false" />
-          <Property Name="DNI_CLIENT" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="MOBILE_CLIENT" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="TELEPHONE_CLIENT" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="USERS" Relationship="TCAPModel.FK__CLIENTS__ID_USER__47DBAE45" FromRole="CLIENTS" ToRole="USERS" />
-          <NavigationProperty Name="PUBS" Relationship="TCAPModel.FK__PUBS__ID_CLIENT__4D94879B" FromRole="CLIENTS" ToRole="PUBS" />
-        </EntityType>
-        <EntityType Name="PARTICPANTS">
-          <Key>
-            <PropertyRef Name="ID_PARTICPANT" />
-          </Key>
-          <Property Name="ID_PARTICPANT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_PARTY" Type="Int32" Nullable="false" />
-          <Property Name="ID_PLAYER" Type="Int32" Nullable="false" />
-          <Property Name="LEADER_PARTICIPANT" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="PARTIES" Relationship="TCAPModel.FK__PARTICPAN__ID_PA__5812160E" FromRole="PARTICPANTS" ToRole="PARTIES" />
-          <NavigationProperty Name="PLAYERS" Relationship="TCAPModel.FK__PARTICPAN__ID_PL__59063A47" FromRole="PARTICPANTS" ToRole="PLAYERS" />
-        </EntityType>
-        <EntityType Name="PARTIES">
-          <Key>
-            <PropertyRef Name="ID_PARTY" />
-          </Key>
-          <Property Name="ID_PARTY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_PUB" Type="Int32" Nullable="false" />
-          <Property Name="BOARDGAME_PARTY" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="START_PARTY" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CURRENT_PARTICIPANT_PARTY" Type="Int32" Nullable="false" />
-          <Property Name="MAX_PARTICIPANT_PARTY" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PARTICPANTS" Relationship="TCAPModel.FK__PARTICPAN__ID_PA__5812160E" FromRole="PARTIES" ToRole="PARTICPANTS" />
-          <NavigationProperty Name="PUBS" Relationship="TCAPModel.FK__PARTIES__ID_PUB__5441852A" FromRole="PARTIES" ToRole="PUBS" />
-        </EntityType>
-        <EntityType Name="PLAYERS">
-          <Key>
-            <PropertyRef Name="ID_PLAYER" />
-          </Key>
-          <Property Name="ID_PLAYER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_USER" Type="Int32" Nullable="false" />
-          <Property Name="NICK_PLAYER" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="AGE_PLAYER" Type="Int32" />
-          <Property Name="SEX_PLAYER" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="DESCRIPTION_PLAYER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="PP_PLAYER" Type="Int32" Nullable="false" />
-          <Property Name="NP_PLAYER" Type="Int32" Nullable="false" />
-          <Property Name="SEALS_PLAYER" Type="Int32" Nullable="false" />
-          <Property Name="LEVEL_PLAYER" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PARTICPANTS" Relationship="TCAPModel.FK__PARTICPAN__ID_PL__59063A47" FromRole="PLAYERS" ToRole="PARTICPANTS" />
-          <NavigationProperty Name="USERS" Relationship="TCAPModel.FK__PLAYERS__ID_USER__44FF419A" FromRole="PLAYERS" ToRole="USERS" />
-          <NavigationProperty Name="TICKETS" Relationship="TCAPModel.FK__TICKETS__ID_PLAY__5070F446" FromRole="PLAYERS" ToRole="TICKETS" />
-        </EntityType>
-        <EntityType Name="PUBS">
-          <Key>
-            <PropertyRef Name="ID_PUB" />
-          </Key>
-          <Property Name="ID_PUB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_CLIENT" Type="Int32" Nullable="false" />
-          <Property Name="NAME_PUB" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="ADDRESS_PUB" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CP_PUB" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="PHONE_PUB" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="STATUS_PUB" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CLIENTS" Relationship="TCAPModel.FK__PUBS__ID_CLIENT__4D94879B" FromRole="PUBS" ToRole="CLIENTS" />
-          <NavigationProperty Name="PARTIES" Relationship="TCAPModel.FK__PARTIES__ID_PUB__5441852A" FromRole="PUBS" ToRole="PARTIES" />
-          <NavigationProperty Name="TICKETS" Relationship="TCAPModel.FK__TICKETS__ID_PUB__5165187F" FromRole="PUBS" ToRole="TICKETS" />
-        </EntityType>
-        <EntityType Name="ROLES">
-          <Key>
-            <PropertyRef Name="ID_ROL" />
-          </Key>
-          <Property Name="ID_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME_ROL" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="USERS" Relationship="TCAPModel.FK__USERS__ID_ROL__3C69FB99" FromRole="ROLES" ToRole="USERS" />
-        </EntityType>
-        <EntityType Name="STATUSES">
-          <Key>
-            <PropertyRef Name="ID_STATUS" />
-          </Key>
-          <Property Name="ID_STATUS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME_STATUS" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="USERS" Relationship="TCAPModel.FK__USERS__STATUS_US__3D5E1FD2" FromRole="STATUSES" ToRole="USERS" />
-        </EntityType>
-        <EntityType Name="TICKETS">
-          <Key>
-            <PropertyRef Name="ID_TICKET" />
-          </Key>
-          <Property Name="ID_TICKET" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_PLAYER" Type="Int32" Nullable="false" />
-          <Property Name="ID_PUB" Type="Int32" Nullable="false" />
-          <Property Name="CREATED_TICKET" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="QUANTITY_TICKET" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <NavigationProperty Name="PLAYERS" Relationship="TCAPModel.FK__TICKETS__ID_PLAY__5070F446" FromRole="TICKETS" ToRole="PLAYERS" />
-          <NavigationProperty Name="PUBS" Relationship="TCAPModel.FK__TICKETS__ID_PUB__5165187F" FromRole="TICKETS" ToRole="PUBS" />
-        </EntityType>
-        <Association Name="FK__CLIENTS__ID_USER__47DBAE45">
-          <End Type="TCAPModel.USERS" Role="USERS" Multiplicity="1" />
-          <End Type="TCAPModel.CLIENTS" Role="CLIENTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERS">
-              <PropertyRef Name="ID_USER" />
-            </Principal>
-            <Dependent Role="CLIENTS">
-              <PropertyRef Name="ID_USER" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PUBS__ID_CLIENT__4D94879B">
-          <End Type="TCAPModel.CLIENTS" Role="CLIENTS" Multiplicity="1" />
-          <End Type="TCAPModel.PUBS" Role="PUBS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CLIENTS">
-              <PropertyRef Name="ID_CLIENT" />
-            </Principal>
-            <Dependent Role="PUBS">
-              <PropertyRef Name="ID_CLIENT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PARTICPAN__ID_PA__5812160E">
-          <End Type="TCAPModel.PARTIES" Role="PARTIES" Multiplicity="1" />
-          <End Type="TCAPModel.PARTICPANTS" Role="PARTICPANTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PARTIES">
-              <PropertyRef Name="ID_PARTY" />
-            </Principal>
-            <Dependent Role="PARTICPANTS">
-              <PropertyRef Name="ID_PARTY" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PARTICPAN__ID_PL__59063A47">
-          <End Type="TCAPModel.PLAYERS" Role="PLAYERS" Multiplicity="1" />
-          <End Type="TCAPModel.PARTICPANTS" Role="PARTICPANTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PLAYERS">
-              <PropertyRef Name="ID_PLAYER" />
-            </Principal>
-            <Dependent Role="PARTICPANTS">
-              <PropertyRef Name="ID_PLAYER" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PARTIES__ID_PUB__5441852A">
-          <End Type="TCAPModel.PUBS" Role="PUBS" Multiplicity="1" />
-          <End Type="TCAPModel.PARTIES" Role="PARTIES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PUBS">
-              <PropertyRef Name="ID_PUB" />
-            </Principal>
-            <Dependent Role="PARTIES">
-              <PropertyRef Name="ID_PUB" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PLAYERS__ID_USER__44FF419A">
-          <End Type="TCAPModel.USERS" Role="USERS" Multiplicity="1" />
-          <End Type="TCAPModel.PLAYERS" Role="PLAYERS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERS">
-              <PropertyRef Name="ID_USER" />
-            </Principal>
-            <Dependent Role="PLAYERS">
-              <PropertyRef Name="ID_USER" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TICKETS__ID_PLAY__5070F446">
-          <End Type="TCAPModel.PLAYERS" Role="PLAYERS" Multiplicity="1" />
-          <End Type="TCAPModel.TICKETS" Role="TICKETS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PLAYERS">
-              <PropertyRef Name="ID_PLAYER" />
-            </Principal>
-            <Dependent Role="TICKETS">
-              <PropertyRef Name="ID_PLAYER" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TICKETS__ID_PUB__5165187F">
-          <End Type="TCAPModel.PUBS" Role="PUBS" Multiplicity="1" />
-          <End Type="TCAPModel.TICKETS" Role="TICKETS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PUBS">
-              <PropertyRef Name="ID_PUB" />
-            </Principal>
-            <Dependent Role="TICKETS">
-              <PropertyRef Name="ID_PUB" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERS__ID_ROL__3C69FB99">
-          <End Type="TCAPModel.ROLES" Role="ROLES" Multiplicity="1" />
-          <End Type="TCAPModel.USERS" Role="USERS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ROLES">
-              <PropertyRef Name="ID_ROL" />
-            </Principal>
-            <Dependent Role="USERS">
-              <PropertyRef Name="ID_ROL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERS__STATUS_US__3D5E1FD2">
-          <End Type="TCAPModel.STATUSES" Role="STATUSES" Multiplicity="1" />
-          <End Type="TCAPModel.USERS" Role="USERS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="STATUSES">
-              <PropertyRef Name="ID_STATUS" />
-            </Principal>
-            <Dependent Role="USERS">
-              <PropertyRef Name="STATUS_USER" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TCAPModelStoreContainer" CdmEntityContainer="TcapContext">
+          <EntitySetMapping Name="CLIENTS">
+            <EntityTypeMapping TypeName="TCAPModel.CLIENTS">
+              <MappingFragment StoreEntitySet="CLIENTS">
+                <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="DNI_CLIENT" ColumnName="DNI_CLIENT" />
+                <ScalarProperty Name="MOBILE_CLIENT" ColumnName="MOBILE_CLIENT" />
+                <ScalarProperty Name="TELEPHONE_CLIENT" ColumnName="TELEPHONE_CLIENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARTICPANTS">
+            <EntityTypeMapping TypeName="TCAPModel.PARTICPANTS">
+              <MappingFragment StoreEntitySet="PARTICPANTS">
+                <ScalarProperty Name="ID_PARTICPANT" ColumnName="ID_PARTICPANT" />
+                <ScalarProperty Name="ID_PARTY" ColumnName="ID_PARTY" />
+                <ScalarProperty Name="ID_PLAYER" ColumnName="ID_PLAYER" />
+                <ScalarProperty Name="LEADER_PARTICIPANT" ColumnName="LEADER_PARTICIPANT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARTIES">
+            <EntityTypeMapping TypeName="TCAPModel.PARTIES">
+              <MappingFragment StoreEntitySet="PARTIES">
+                <ScalarProperty Name="ID_PARTY" ColumnName="ID_PARTY" />
+                <ScalarProperty Name="ID_PUB" ColumnName="ID_PUB" />
+                <ScalarProperty Name="BOARDGAME_PARTY" ColumnName="BOARDGAME_PARTY" />
+                <ScalarProperty Name="START_PARTY" ColumnName="START_PARTY" />
+                <ScalarProperty Name="CURRENT_PARTICIPANT_PARTY" ColumnName="CURRENT_PARTICIPANT_PARTY" />
+                <ScalarProperty Name="MAX_PARTICIPANT_PARTY" ColumnName="MAX_PARTICIPANT_PARTY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLAYERS">
+            <EntityTypeMapping TypeName="TCAPModel.PLAYERS">
+              <MappingFragment StoreEntitySet="PLAYERS">
+                <ScalarProperty Name="ID_PLAYER" ColumnName="ID_PLAYER" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="NICK_PLAYER" ColumnName="NICK_PLAYER" />
+                <ScalarProperty Name="AGE_PLAYER" ColumnName="AGE_PLAYER" />
+                <ScalarProperty Name="SEX_PLAYER" ColumnName="SEX_PLAYER" />
+                <ScalarProperty Name="DESCRIPTION_PLAYER" ColumnName="DESCRIPTION_PLAYER" />
+                <ScalarProperty Name="PP_PLAYER" ColumnName="PP_PLAYER" />
+                <ScalarProperty Name="NP_PLAYER" ColumnName="NP_PLAYER" />
+                <ScalarProperty Name="SEALS_PLAYER" ColumnName="SEALS_PLAYER" />
+                <ScalarProperty Name="LEVEL_PLAYER" ColumnName="LEVEL_PLAYER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUBS">
+            <EntityTypeMapping TypeName="TCAPModel.PUBS">
+              <MappingFragment StoreEntitySet="PUBS">
+                <ScalarProperty Name="ID_PUB" ColumnName="ID_PUB" />
+                <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
+                <ScalarProperty Name="NAME_PUB" ColumnName="NAME_PUB" />
+                <ScalarProperty Name="ADDRESS_PUB" ColumnName="ADDRESS_PUB" />
+                <ScalarProperty Name="CP_PUB" ColumnName="CP_PUB" />
+                <ScalarProperty Name="PHONE_PUB" ColumnName="PHONE_PUB" />
+                <ScalarProperty Name="STATUS_PUB" ColumnName="STATUS_PUB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="TCAPModel.ROLES">
+              <MappingFragment StoreEntitySet="ROLES">
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="NAME_ROL" ColumnName="NAME_ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATUSES">
+            <EntityTypeMapping TypeName="TCAPModel.STATUSES">
+              <MappingFragment StoreEntitySet="STATUSES">
+                <ScalarProperty Name="ID_STATUS" ColumnName="ID_STATUS" />
+                <ScalarProperty Name="NAME_STATUS" ColumnName="NAME_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TICKETS">
+            <EntityTypeMapping TypeName="TCAPModel.TICKETS">
+              <MappingFragment StoreEntitySet="TICKETS">
+                <ScalarProperty Name="ID_TICKET" ColumnName="ID_TICKET" />
+                <ScalarProperty Name="ID_PLAYER" ColumnName="ID_PLAYER" />
+                <ScalarProperty Name="ID_PUB" ColumnName="ID_PUB" />
+                <ScalarProperty Name="CREATED_TICKET" ColumnName="CREATED_TICKET" />
+                <ScalarProperty Name="QUANTITY_TICKET" ColumnName="QUANTITY_TICKET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TOKENS">
             <EntityTypeMapping TypeName="TCAPModel.TOKENS">
               <MappingFragment StoreEntitySet="TOKENS">
@@ -649,95 +741,7 @@
                 <ScalarProperty Name="CREATED_USER" ColumnName="CREATED_USER" />
                 <ScalarProperty Name="UPDATED_USER" ColumnName="UPDATED_USER" />
                 <ScalarProperty Name="STATUS_USER" ColumnName="STATUS_USER" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CLIENTS">
-            <EntityTypeMapping TypeName="TCAPModel.CLIENTS">
-              <MappingFragment StoreEntitySet="CLIENTS">
-                <ScalarProperty Name="TELEPHONE_CLIENT" ColumnName="TELEPHONE_CLIENT" />
-                <ScalarProperty Name="MOBILE_CLIENT" ColumnName="MOBILE_CLIENT" />
-                <ScalarProperty Name="DNI_CLIENT" ColumnName="DNI_CLIENT" />
-                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
-                <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PARTICPANTS">
-            <EntityTypeMapping TypeName="TCAPModel.PARTICPANTS">
-              <MappingFragment StoreEntitySet="PARTICPANTS">
-                <ScalarProperty Name="LEADER_PARTICIPANT" ColumnName="LEADER_PARTICIPANT" />
-                <ScalarProperty Name="ID_PLAYER" ColumnName="ID_PLAYER" />
-                <ScalarProperty Name="ID_PARTY" ColumnName="ID_PARTY" />
-                <ScalarProperty Name="ID_PARTICPANT" ColumnName="ID_PARTICPANT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PARTIES">
-            <EntityTypeMapping TypeName="TCAPModel.PARTIES">
-              <MappingFragment StoreEntitySet="PARTIES">
-                <ScalarProperty Name="MAX_PARTICIPANT_PARTY" ColumnName="MAX_PARTICIPANT_PARTY" />
-                <ScalarProperty Name="CURRENT_PARTICIPANT_PARTY" ColumnName="CURRENT_PARTICIPANT_PARTY" />
-                <ScalarProperty Name="START_PARTY" ColumnName="START_PARTY" />
-                <ScalarProperty Name="BOARDGAME_PARTY" ColumnName="BOARDGAME_PARTY" />
-                <ScalarProperty Name="ID_PUB" ColumnName="ID_PUB" />
-                <ScalarProperty Name="ID_PARTY" ColumnName="ID_PARTY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PLAYERS">
-            <EntityTypeMapping TypeName="TCAPModel.PLAYERS">
-              <MappingFragment StoreEntitySet="PLAYERS">
-                <ScalarProperty Name="LEVEL_PLAYER" ColumnName="LEVEL_PLAYER" />
-                <ScalarProperty Name="SEALS_PLAYER" ColumnName="SEALS_PLAYER" />
-                <ScalarProperty Name="NP_PLAYER" ColumnName="NP_PLAYER" />
-                <ScalarProperty Name="PP_PLAYER" ColumnName="PP_PLAYER" />
-                <ScalarProperty Name="DESCRIPTION_PLAYER" ColumnName="DESCRIPTION_PLAYER" />
-                <ScalarProperty Name="SEX_PLAYER" ColumnName="SEX_PLAYER" />
-                <ScalarProperty Name="AGE_PLAYER" ColumnName="AGE_PLAYER" />
-                <ScalarProperty Name="NICK_PLAYER" ColumnName="NICK_PLAYER" />
-                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
-                <ScalarProperty Name="ID_PLAYER" ColumnName="ID_PLAYER" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PUBS">
-            <EntityTypeMapping TypeName="TCAPModel.PUBS">
-              <MappingFragment StoreEntitySet="PUBS">
-                <ScalarProperty Name="STATUS_PUB" ColumnName="STATUS_PUB" />
-                <ScalarProperty Name="PHONE_PUB" ColumnName="PHONE_PUB" />
-                <ScalarProperty Name="CP_PUB" ColumnName="CP_PUB" />
-                <ScalarProperty Name="ADDRESS_PUB" ColumnName="ADDRESS_PUB" />
-                <ScalarProperty Name="NAME_PUB" ColumnName="NAME_PUB" />
-                <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
-                <ScalarProperty Name="ID_PUB" ColumnName="ID_PUB" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ROLES">
-            <EntityTypeMapping TypeName="TCAPModel.ROLES">
-              <MappingFragment StoreEntitySet="ROLES">
-                <ScalarProperty Name="NAME_ROL" ColumnName="NAME_ROL" />
-                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="STATUSES">
-            <EntityTypeMapping TypeName="TCAPModel.STATUSES">
-              <MappingFragment StoreEntitySet="STATUSES">
-                <ScalarProperty Name="NAME_STATUS" ColumnName="NAME_STATUS" />
-                <ScalarProperty Name="ID_STATUS" ColumnName="ID_STATUS" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TICKETS">
-            <EntityTypeMapping TypeName="TCAPModel.TICKETS">
-              <MappingFragment StoreEntitySet="TICKETS">
-                <ScalarProperty Name="QUANTITY_TICKET" ColumnName="QUANTITY_TICKET" />
-                <ScalarProperty Name="CREATED_TICKET" ColumnName="CREATED_TICKET" />
-                <ScalarProperty Name="ID_PUB" ColumnName="ID_PUB" />
-                <ScalarProperty Name="ID_PLAYER" ColumnName="ID_PLAYER" />
-                <ScalarProperty Name="ID_TICKET" ColumnName="ID_TICKET" />
+                <ScalarProperty Name="TOKEN_SESSION" ColumnName="TOKEN_SESSION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -758,7 +762,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

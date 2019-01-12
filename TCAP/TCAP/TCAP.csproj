@@ -159,6 +159,7 @@
     <Compile Include="Models\CLIENTS.cs">
       <DependentUpon>TcapContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Helpers\HelperPlayer.cs" />
     <Compile Include="Models\Helpers\HelperAccount.cs" />
     <Compile Include="Models\Hashing.cs" />
     <Compile Include="Models\PARTICPANTS.cs">

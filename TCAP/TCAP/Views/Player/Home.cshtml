@@ -1,4 +1,4 @@
-﻿@model TCAP.Models.USERS
+﻿@model TCAP.Models.PLAYERS
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
@@ -10,12 +10,12 @@
                 <a href="#">
                     <div class="chip user">
                         <img src="~/Media/img/user/noImage.png" alt="Contact Person">
-                        @Model.NAME_USER @Model.SURNAME_USER
+                        @Model.NICKNAME_PLAYER
                     </div>
                 </a>
             </li>
             <li><a href="">Partidas</a></li>
-            <li><a href="">Conexión</a></li>
+            <li><a href="">Social</a></li>
         </ul>
     </div>
     <main>

@@ -286,7 +286,21 @@ namespace TCAP.Models.Helpers
             {
                 if (ValidateField(dni, @"^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$"))
                 {
-                    //quedan validaciones
+                    if (ValidateField(telephone, @"^$"))
+                    {
+                        if (ValidateField(mobile, @"^$"))
+                        {
+
+                        }
+                        else
+                        {
+                            error = "El número de movil no es válido.";
+                        }
+                    }
+                    else
+                    {
+                        error = "El número de teléfono no es válido.";
+                    }
                 }
                 else
                 {
@@ -347,6 +361,8 @@ namespace TCAP.Models.Helpers
                         if (Hashing.ValidatePassword(password, linq.PASSWORD_USER))
                         {
                             u = linq;
+                            u.TOKEN_SESSION = CreateToken();
+                            c.SaveChanges();
                             return u;
                         }
                     }        

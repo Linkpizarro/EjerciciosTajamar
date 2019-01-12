@@ -4,28 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="23727d4fa18b46929d2513ec46519aa4" Name="Diagram1">
-        <EntityTypeShape EntityType="TCAPModel.TOKENS" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TCAPModel.USERS" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="d3b384af34a14ea7ade3c642834e2026" Name="Diagram1">
+        <EntityTypeShape EntityType="TCAPModel.CLIENTS" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCAPModel.PARTICPANTS" Width="1.5" PointX="12" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCAPModel.PARTIES" Width="1.5" PointX="9.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCAPModel.PLAYERS" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCAPModel.PUBS" Width="1.5" PointX="7.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCAPModel.ROLES" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCAPModel.STATUSES" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCAPModel.TICKETS" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCAPModel.TOKENS" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCAPModel.USERS" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="TCAPModel.FK__CLIENTS__ID_USER__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="TCAPModel.FK__PUBS__ID_CLIENT__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="TCAPModel.FK__PARTICPAN__ID_PA__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="TCAPModel.FK__PARTICPAN__ID_PL__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="TCAPModel.FK__PARTIES__ID_PUB__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="TCAPModel.FK__PLAYERS__ID_USER__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="TCAPModel.FK__TICKETS__ID_PLAY__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="TCAPModel.FK__TICKETS__ID_PUB__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="TCAPModel.FK__USERS__TOKEN_SES__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="TCAPModel.FK__USERS__STATUS_US__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="TCAPModel.FK__TOKENS__ID_USER__4AB81AF0" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="TCAPModel.CLIENTS" Width="1.5" PointX="3" PointY="10.375" />
-        <EntityTypeShape EntityType="TCAPModel.PARTICPANTS" Width="1.5" PointX="9.75" PointY="9.875" />
-        <EntityTypeShape EntityType="TCAPModel.PARTIES" Width="1.5" PointX="7.5" PointY="13.5" />
-        <EntityTypeShape EntityType="TCAPModel.PLAYERS" Width="1.5" PointX="3" PointY="5.875" />
-        <EntityTypeShape EntityType="TCAPModel.PUBS" Width="1.5" PointX="5.25" PointY="10.125" />
-        <EntityTypeShape EntityType="TCAPModel.ROLES" Width="1.5" PointX="0.75" PointY="6" />
-        <EntityTypeShape EntityType="TCAPModel.STATUSES" Width="1.5" PointX="0.75" PointY="9.375" />
-        <EntityTypeShape EntityType="TCAPModel.TICKETS" Width="1.5" PointX="7.5" PointY="8.25" />
-        <AssociationConnector Association="TCAPModel.FK__CLIENTS__ID_USER__47DBAE45" />
-        <AssociationConnector Association="TCAPModel.FK__PUBS__ID_CLIENT__4D94879B" />
-        <AssociationConnector Association="TCAPModel.FK__PARTICPAN__ID_PA__5812160E" />
-        <AssociationConnector Association="TCAPModel.FK__PARTICPAN__ID_PL__59063A47" />
-        <AssociationConnector Association="TCAPModel.FK__PARTIES__ID_PUB__5441852A" />
-        <AssociationConnector Association="TCAPModel.FK__PLAYERS__ID_USER__44FF419A" />
-        <AssociationConnector Association="TCAPModel.FK__TICKETS__ID_PLAY__5070F446" />
-        <AssociationConnector Association="TCAPModel.FK__TICKETS__ID_PUB__5165187F" />
-        <AssociationConnector Association="TCAPModel.FK__USERS__ID_ROL__3C69FB99" />
-        <AssociationConnector Association="TCAPModel.FK__USERS__STATUS_US__3D5E1FD2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
