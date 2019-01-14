@@ -1,0 +1,43 @@
+﻿@model List<List<Lambda.Models.DOCTOR>>
+@{
+    ViewBag.Title = "Index";
+}
+
+<center>
+    <h2>Consulta Doctores</h2>
+    <hr />
+    <form method="post">
+        <label class="control-label">Hospitales</label>
+        <select multiple name="hospitales" class="form-control">
+            @foreach (Lambda.Models.HOSPITAL item in ViewBag.Hospitales)
+            {
+                <option value="@item.HOSPITAL_COD">@item.NOMBRE</option>
+            }
+        </select>
+        <input type="submit" class="btn form-control btn-primary" value="Buscar" />
+    </form>
+    @if (!(Model is null))
+    {
+        <hr />
+        <h2>Doctores</h2>
+        <table class="table table-hover">
+            <tr>
+                <th>Apellido</th>
+                <th>Salario</th>
+            </tr>
+            @foreach (List<Lambda.Models.DOCTOR> lista in Model)
+            {
+                foreach (Lambda.Models.DOCTOR item in lista)
+                {
+                    <tr>
+                        <td>@item.APELLIDO</td>
+                        <td>@item.SALARIO</td>
+                    </tr>
+                }
+            }
+        </table>
+    }
+</center>
+
+
+

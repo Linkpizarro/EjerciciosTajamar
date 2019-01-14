@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "ContenidoJS";
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#btnImage").click(function () {
+                $.getScript("/Contenidos/CodigoJS")
+            });
+        });
+    </script>
+}
+
+<h2>Contenido JavaScript</h2>
+<button typeof="button" id="btnImage">Cambiar Imagen</button>
+<img src="~/Images/img1.jpg" style="width:150px;height:150px;" id="imagen" />
+

@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{904CE08A-4CB6-463C-A268-BD95EE32DCA8}</ProjectGuid>
+    <ProjectGuid>{A87E0FB6-6908-48AC-9CFA-0C65300FA815}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lambda</RootNamespace>
-    <AssemblyName>Lambda</AssemblyName>
+    <RootNamespace>ConceptosMVC</RootNamespace>
+    <AssemblyName>ConceptosMVC</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -102,81 +102,67 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\EntidadHospital.Context.tt">
+    <Content Include="Images\img1.jpg" />
+    <Content Include="Images\img2.jpg" />
+    <Content Include="Models\HospitalEntity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EntidadHospital.Context.cs</LastGenOutput>
-      <DependentUpon>EntidadHospital.edmx</DependentUpon>
+      <LastGenOutput>HospitalEntity.Context.cs</LastGenOutput>
+      <DependentUpon>HospitalEntity.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\EntidadHospital.tt">
+    <Content Include="Models\HospitalEntity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntidadHospital.edmx</DependentUpon>
-      <LastGenOutput>EntidadHospital.cs</LastGenOutput>
+      <DependentUpon>HospitalEntity.edmx</DependentUpon>
+      <LastGenOutput>HospitalEntity.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\EntidadHospital.edmx">
+    <EntityDeploy Include="Models\HospitalEntity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EntidadHospital.Designer.cs</LastGenOutput>
+      <LastGenOutput>HospitalEntity.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\EntidadHospital.edmx.diagram">
-      <DependentUpon>EntidadHospital.edmx</DependentUpon>
+    <Content Include="Models\HospitalEntity.edmx.diagram">
+      <DependentUpon>HospitalEntity.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Contenidos\Index.cshtml" />
+    <Content Include="Views\Contenidos\ContenidoJS.cshtml" />
+    <Content Include="Views\Scaffolding\Index.cshtml" />
+    <Content Include="Views\Scaffolding\Create.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Scaffolding\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\DoctorController.cs" />
-    <Compile Include="Controllers\EmpController.cs" />
-    <Compile Include="Controllers\EnfermosController.cs" />
-    <Compile Include="Controllers\ValidacionesController.cs" />
+    <Compile Include="Controllers\ContenidosController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ScaffoldingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DEPT.cs">
-      <DependentUpon>EntidadHospital.tt</DependentUpon>
+      <DependentUpon>HospitalEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DOCTOR.cs">
-      <DependentUpon>EntidadHospital.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EMP.cs">
-      <DependentUpon>EntidadHospital.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ENFERMO.cs">
-      <DependentUpon>EntidadHospital.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EntidadHospital.Context.cs">
+    <Compile Include="Models\HelperDepartamento.cs" />
+    <Compile Include="Models\HospitalEntity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntidadHospital.Context.tt</DependentUpon>
+      <DependentUpon>HospitalEntity.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EntidadHospital.cs">
+    <Compile Include="Models\HospitalEntity.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntidadHospital.tt</DependentUpon>
+      <DependentUpon>HospitalEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EntidadHospital.Designer.cs">
+    <Compile Include="Models\HospitalEntity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntidadHospital.edmx</DependentUpon>
+      <DependentUpon>HospitalEntity.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\HelperDoctor.cs" />
-    <Compile Include="Models\HelperEmp.cs" />
-    <Compile Include="Models\HelperEnfermos.cs" />
-    <Compile Include="Models\HOSPITAL.cs">
-      <DependentUpon>EntidadHospital.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MOSTRAREMPLEADOPAGINADO_Result.cs">
-      <DependentUpon>EntidadHospital.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MOSTRAREMPLEADO_Result.cs">
-      <DependentUpon>EntidadHospital.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Persona.cs" />
-    <Compile Include="Models\ResumenEmp.cs" />
+    <Compile Include="Models\Personaje.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,14 +173,8 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Contenidos\ContenidoContent.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Emp\Oficios.cshtml" />
-    <Content Include="Views\Emp\Departamentos.cshtml" />
-    <Content Include="Views\Enfermos\Enfermos.cshtml" />
-    <Content Include="Views\Emp\Empleados.cshtml" />
-    <Content Include="Views\Doctor\Index.cshtml" />
-    <Content Include="Views\Validaciones\Correcto.cshtml" />
-    <Content Include="Views\Validaciones\InsertarPersona.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -221,9 +201,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50936</DevelopmentServerPort>
+          <DevelopmentServerPort>63943</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50936/</IISUrl>
+          <IISUrl>http://localhost:63943/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

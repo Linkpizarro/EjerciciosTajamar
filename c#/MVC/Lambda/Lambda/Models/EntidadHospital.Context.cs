@@ -30,6 +30,8 @@ namespace Lambda.Models
         public virtual DbSet<EMP> EMP { get; set; }
         public virtual DbSet<DEPT> DEPT { get; set; }
         public virtual DbSet<ENFERMO> ENFERMO { get; set; }
+        public virtual DbSet<DOCTOR> DOCTOR { get; set; }
+        public virtual DbSet<HOSPITAL> HOSPITAL { get; set; }
     
         public virtual int ELIMINARENFERMO(Nullable<int> iNSCRIPCION)
         {

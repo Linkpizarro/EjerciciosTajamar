@@ -1,0 +1,55 @@
+﻿@using Lambda.Models
+@model Persona
+    @{
+        ViewBag.Title = "InsertarPersona";
+    }
+<center>
+    <h2>Insertar Personas</h2>
+
+    <div class="alert-danger">
+        <p>@Html.ValidationMessageFor(z => z.Nombre, null, new { @class = "text-danger" })</p>
+
+        <p>@Html.ValidationMessageFor(z => z.Email, null, new { @class = "text-danger" })</p>
+
+        <p>@Html.ValidationMessageFor(z => z.Password, null, new { @class = "text-danger" })</p>
+    </div>
+    @using (Html.BeginForm())
+    {
+        Html.ValidationSummary(true);
+        <div>
+            @Html.LabelFor(z => z.Nombre)
+            @Html.EditorFor(z => z.Nombre, new { @class = "form-control" })
+           
+        </div>
+        <div>
+            @Html.LabelFor(z => z.Apellido)
+            @Html.EditorFor(z => z.Apellido)
+            @Html.ValidationMessageFor(z => z.Apellido)
+        </div>
+        <div>
+            @Html.LabelFor(z => z.FechaNac)
+            @Html.EditorFor(z => z.FechaNac)
+            @Html.ValidationMessageFor(z => z.FechaNac)
+        </div>
+        <div>
+            @Html.LabelFor(z => z.Email)
+            @Html.EditorFor(z => z.Email)
+          
+        </div>
+        <div>
+            @Html.LabelFor(z => z.Password)
+            @Html.EditorFor(z => z.Password)
+            
+        </div>
+        <div>
+            @Html.LabelFor(z => z.RepPassword)
+            @Html.EditorFor(z => z.RepPassword)
+            @Html.ValidationMessageFor(z => z.RepPassword)
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Añadir</button>
+        </div>
+    }
+</center>
+
+

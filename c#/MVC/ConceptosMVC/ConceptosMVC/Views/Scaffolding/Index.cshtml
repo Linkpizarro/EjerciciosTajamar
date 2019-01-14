@@ -1,0 +1,24 @@
+﻿@using ConceptosMVC.Models
+@model List<DEPT>
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+<div class="form-group">
+    <select name="dept" class="form-control">
+        @foreach (var item in Model)
+        {
+            <option value="@item.DEPT_NO">@item.DNOMBRE</option>
+            }
+    </select>
+</div>
+<div class="form-group">
+    <button type="button" class="btn btn-success" name="action" value="create">@Html.ActionLink("Añadir", "Create", "Scaffolding",new {@style = "color:white;text-decoration:none;" })</button>
+    <button type="submit" class="btn btn-warning" name="action" value="update">Modificar</button>
+</div>
+}
+   

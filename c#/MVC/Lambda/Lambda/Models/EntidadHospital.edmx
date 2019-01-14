@@ -13,6 +13,16 @@
           <Property Name="DNOMBRE" Type="nvarchar" MaxLength="50" />
           <Property Name="LOC" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="DOCTOR">
+          <Key>
+            <PropertyRef Name="DOCTOR_NO" />
+          </Key>
+          <Property Name="HOSPITAL_COD" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOCTOR_NO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDO" Type="nvarchar" MaxLength="50" />
+          <Property Name="ESPECIALIDAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALARIO" Type="int" />
+        </EntityType>
         <EntityType Name="EMP">
           <Key>
             <PropertyRef Name="EMP_NO" />
@@ -37,6 +47,16 @@
           <Property Name="S" Type="nvarchar" MaxLength="50" />
           <Property Name="NSS" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="HOSPITAL">
+          <Key>
+            <PropertyRef Name="HOSPITAL_COD" />
+          </Key>
+          <Property Name="HOSPITAL_COD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" />
+          <Property Name="DIRECCION" Type="nvarchar" MaxLength="50" />
+          <Property Name="TELEFONO" Type="nvarchar" MaxLength="50" />
+          <Property Name="NUM_CAMA" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <Function Name="ELIMINARENFERMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="INSCRIPCION" Type="int" Mode="In" />
         </Function>
@@ -48,8 +68,10 @@
         <Function Name="MOSTRARENFERMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="HOSPITALModelStoreContainer">
           <EntitySet Name="DEPT" EntityType="Self.DEPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EMP" EntityType="Self.EMP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ENFERMO" EntityType="Self.ENFERMO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOSPITAL" EntityType="Self.HOSPITAL" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -81,6 +103,8 @@
             <Parameter Name="MAX" Mode="In" Type="Int32" />
             <Parameter Name="MIN" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="DOCTOR" EntityType="HOSPITALModel.DOCTOR" />
+          <EntitySet Name="HOSPITAL" EntityType="HOSPITALModel.HOSPITAL" />
         </EntityContainer>
         <EntityType Name="DEPT">
           <Key>
@@ -116,6 +140,26 @@
           <Property Type="String" Name="DNOMBRE" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="LOC" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="DOCTOR">
+          <Key>
+            <PropertyRef Name="DOCTOR_NO" />
+          </Key>
+          <Property Name="HOSPITAL_COD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOCTOR_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ESPECIALIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALARIO" Type="Int32" />
+        </EntityType>
+        <EntityType Name="HOSPITAL">
+          <Key>
+            <PropertyRef Name="HOSPITAL_COD" />
+          </Key>
+          <Property Name="HOSPITAL_COD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DIRECCION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TELEFONO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NUM_CAMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -182,6 +226,28 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="DOCTOR">
+            <EntityTypeMapping TypeName="HOSPITALModel.DOCTOR">
+              <MappingFragment StoreEntitySet="DOCTOR">
+                <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
+                <ScalarProperty Name="ESPECIALIDAD" ColumnName="ESPECIALIDAD" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="DOCTOR_NO" ColumnName="DOCTOR_NO" />
+                <ScalarProperty Name="HOSPITAL_COD" ColumnName="HOSPITAL_COD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOSPITAL">
+            <EntityTypeMapping TypeName="HOSPITALModel.HOSPITAL">
+              <MappingFragment StoreEntitySet="HOSPITAL">
+                <ScalarProperty Name="NUM_CAMA" ColumnName="NUM_CAMA" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="HOSPITAL_COD" ColumnName="HOSPITAL_COD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

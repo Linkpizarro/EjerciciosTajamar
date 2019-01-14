@@ -8,6 +8,8 @@
         <EntityTypeShape EntityType="HOSPITALModel.EMP" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HOSPITALModel.DEPT" Width="1.5" PointX="3" PointY="1.75" />
         <EntityTypeShape EntityType="HOSPITALModel.ENFERMO" Width="1.5" PointX="5.125" PointY="0.875" />
+        <EntityTypeShape EntityType="HOSPITALModel.DOCTOR" Width="1.5" PointX="0.875" PointY="3.625" />
+        <EntityTypeShape EntityType="HOSPITALModel.HOSPITAL" Width="1.5" PointX="2.875" PointY="3.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
