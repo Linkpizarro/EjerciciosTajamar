@@ -33,8 +33,9 @@ namespace ConceptosMVC.Models
 
         public DEPT GetDept(String dept_no)
         {
+            int no = int.Parse(dept_no);
             DEPT dept = (from data in e.DEPT
-                        where data.DEPT_NO == int.Parse(dept_no)
+                        where data.DEPT_NO == no
                         select data).FirstOrDefault();
 
             return dept;
@@ -42,7 +43,12 @@ namespace ConceptosMVC.Models
 
         public void Update(DEPT dept)
         {
-            e.DEPT.Add(dept);
+            DEPT d = (from data in e.DEPT
+                      where data.DEPT_NO == dept.DEPT_NO
+                      select data).FirstOrDefault();
+
+            d.DNOMBRE = dept.DNOMBRE;
+            d.LOC = dept.LOC;
             e.SaveChanges();
         }
     }

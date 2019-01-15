@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Image";
+}
+
+<h2>Image</h2>
+<form method="post">
+    <input type="file" id="path" name="path" />
+    <img id="img" name="img" />
+    <input type="submit" value="guardar" />
+</form>
+@section scripts{
+    <script type="text/javascript">
+
+        $('input[type=file]').change(function () {
+            console.log(this.files[0].mozFullPath);
+        });
+
+    </script>
+}

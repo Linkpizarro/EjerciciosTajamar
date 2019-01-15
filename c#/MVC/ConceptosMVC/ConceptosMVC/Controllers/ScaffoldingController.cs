@@ -15,10 +15,12 @@ namespace ConceptosMVC.Controllers
         {
             return View(h.GetDepts());
         }
+
         // POST: Index
+        [HttpPost]
         public ActionResult Index(String dept)
         {
-            return RedirectToAction("Update","Scaffolding",new {dept = dept });
+            return RedirectToAction("Update","Scaffolding",h.GetDept(dept));
         }
 
         // GET: Create
@@ -38,16 +40,17 @@ namespace ConceptosMVC.Controllers
             }
             return View(dept);
         }
-
         //GET: Update
-        public ActionResult Update(String dept)
-        {
-            return View(h.GetDept(dept));
-        }
-        //POST: Update
-        [HttpPost]
         public ActionResult Update(DEPT dept)
         {
+            return View(dept);
+        }
+
+        //POST: Update
+        [HttpPost]
+        public ActionResult Update(DEPT dept, String aux = null)
+        {
+            
             if (ModelState.IsValid)
             {
                 h.Update(dept);

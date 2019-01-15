@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace ConceptosMVC.Controllers
 {
@@ -63,6 +64,19 @@ namespace ConceptosMVC.Controllers
             return Json(p, JsonRequestBehavior.AllowGet);
         }
 
+        // GET: Image
+        public ActionResult Image()
+        {
+            return View();
+        }
+
+
+        // POST: Image
+        [HttpPost]
+        public ActionResult Image(String path)
+        {
+            return View();
+        }
 
     }
 }
