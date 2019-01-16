@@ -1,0 +1,41 @@
+﻿@using InyeccionEntity.Models
+@model List<Departamento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Departamentos</h2>
+<hr />
+<p>
+    @Html.ActionLink("Añadir Departamento", "Create","Departamentos")
+</p>
+<table class="table table-bordered text-center">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Localidad
+        </th>
+        <th>
+            Opciones
+        </th>
+    </tr>
+
+@foreach (Departamento item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Localidad)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", "Departamentos", new { id = item.Id }, new { @class = "text-warning" }) |
+            @Html.ActionLink("Eliminar", "Delete", "Departamentos", new { id = item.Id }, new { @class = "text-danger" })
+        </td>
+    </tr>
+}
+
+</table>

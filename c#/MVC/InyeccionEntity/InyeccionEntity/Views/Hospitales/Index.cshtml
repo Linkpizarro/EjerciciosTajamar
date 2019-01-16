@@ -1,0 +1,54 @@
+﻿@using InyeccionEntity.Models
+@model List<Hospital>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hospitales</h2>
+<hr />
+<p>
+    @Html.ActionLink("Añadir Hospital", "Create","Hospitales")
+</p>
+
+<table class="table table-bordered text-center">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+           Dirección
+        </th>
+        <th>
+            Teléfono
+        </th>
+        <th>
+          Camas
+        </th>
+        <th> 
+          Opciones
+        </th>
+    </tr>
+
+@foreach (Hospital item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Camas)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit","Hospitales",new { id=item.Id },new {@class = "text-warning" }) |
+            @Html.ActionLink("Eliminar", "Delete","Hospitales",new { id=item.Id },new { @class = "text-danger" })
+        </td>
+    </tr>
+}
+
+</table>
