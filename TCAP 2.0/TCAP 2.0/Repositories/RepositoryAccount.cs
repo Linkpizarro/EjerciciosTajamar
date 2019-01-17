@@ -23,10 +23,11 @@ namespace TCAP_2._0.Repositories
 
             //Si no hay errores:
             //aqui se inserta el usuario en la base de datos.
+            user.Id_User = 21;
             user.Created_User = DateTime.Now;
             user.Updated_User = DateTime.Now;
             user.Status_User = 1;
-            user.Session_User = null;
+            user.Session_User = "aaa";
 
             context.Users.Add(user);
             context.SaveChanges();
