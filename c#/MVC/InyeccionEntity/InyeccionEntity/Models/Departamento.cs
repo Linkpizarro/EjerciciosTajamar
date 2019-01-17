@@ -7,7 +7,7 @@ using System.Web;
 
 namespace InyeccionEntity.Models
 {
-    [Table("DEPT")]
+    [Table("SYSTEM.DEPT")]
     public class Departamento
     {
         [Key]

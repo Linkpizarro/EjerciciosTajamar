@@ -1,0 +1,51 @@
+﻿@using TCAP_2._0.Models.Class
+@model User
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Registro</h2>
+<hr />
+<div class="alert-danger">
+    <p>@Html.ValidationMessageFor(z => z.Name_User, null, new { @class = "text-danger" })</p>
+    <p>@Html.ValidationMessageFor(z => z.Surname_User, null, new { @class = "text-danger" })</p>
+    <p>@Html.ValidationMessageFor(z => z.Email_User, null, new { @class = "text-danger" })</p>
+    <p>@Html.ValidationMessageFor(z => z.Password_User, null, new { @class = "text-danger" })</p>
+    <p>@Html.ValidationMessageFor(z => z.RepPassword_User, null, new { @class = "text-danger" })</p>
+    <p>@Html.ValidationMessageFor(z => z.Id_Rol, null, new { @class = "text-danger" })</p>
+</div>
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.LabelFor(model => model.Name_User)
+    @Html.EditorFor(model => model.Name_User)
+    <br />
+    @Html.LabelFor(model => model.Surname_User)
+    @Html.EditorFor(model => model.Surname_User)
+    <br />
+    @Html.LabelFor(model => model.Email_User)
+    @Html.EditorFor(model => model.Email_User)
+    <br />
+    @Html.LabelFor(model => model.Password_User)
+    @Html.EditorFor(model => model.Password_User)
+    <br />
+    @Html.LabelFor(model => model.RepPassword_User)
+    @Html.EditorFor(model => model.RepPassword_User)
+    <br />
+    @Html.LabelFor(model => model.File_User)
+    @Html.TextBoxFor(m => m.File_User, new { type = "file" })
+    <br />
+    @Html.LabelFor(model => model.Id_Rol)
+    @Html.RadioButtonFor(model => model.Id_Rol, 1)
+    @Html.RadioButtonFor(model => model.Id_Rol, 2)
+    <br />
+    <input type="submit" value="registrar" />
+}
+
+@if (!(ViewBag.image is null))
+{
+    <img src="~/Images/@ViewBag.image" />
+}
+
+

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace InyeccionEntity.Models
 {
-    [Table("HOSPITAL")]
+    [Table("SYSTEM.HOSPITAL")]
     public class Hospital
     {
         [Key]
