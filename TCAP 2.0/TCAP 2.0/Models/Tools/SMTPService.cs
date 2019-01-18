@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Net.Mail;
-
 using System.Net;
 
-namespace TCAP.Models
+namespace TCAP_2._0.Models.Tools
 {
     public class SMTPService
     {
         SmtpClient smtp;
 
-       public SMTPService()
+        public SMTPService()
         {
-            smtp = new SmtpClient("smtp.gmail.com", 587) {
+            smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
                 Credentials = new NetworkCredential("daniel.pizarro@iberpixel.com", "Iberpixel123"),
                 EnableSsl = true
             };
         }
 
-        public void SendEmail(String to,String token)
+        public void SendEmail(String to, String token)
         {
             MailMessage email = new MailMessage();
-            email.To.Add( new MailAddress(to));
+            email.To.Add(new MailAddress(to));
             email.From = new MailAddress("daniel.pizarro@iberpixel.com");
             email.Subject = "Verificación de Cuenta TCAP";
-            email.Body = "<p>Para verificar su cuenta haga click <a href='servidor/Account/UserConfirm?token=" + token+"'>aquí</a></p>";
+            email.Body = "<h1>The Coins Are Points?</h1><hr /><h2>Verificación de Cuenta</h2><p>Para verificar su cuenta haga click <a href='servidor/Account/UserConfirm?token=" + token + "'>aquí</a></p>";
             email.IsBodyHtml = true;
             email.Priority = MailPriority.Normal;
             String output = null;

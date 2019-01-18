@@ -21,35 +21,99 @@ namespace TCAP_2._0.Controllers
         // GET: Register
         public ActionResult Register()
         {
-            if (!(TempData["image"] is null))
-            {
-                ViewBag.image = TempData["image"];
-            }
             return View();
         }
+
         // POST: Register
         [HttpPost]
         public ActionResult Register(User user)
         {
             if (ModelState.IsValid) {
-
                 if (user.File_User != null && user.File_User.ContentLength > 0)
                 {
-                    
-                    String name = "random" + user.File_User.FileName;
-                    string path = Path.Combine(Server.MapPath("~/Images"),
-                                                Path.GetFileName(name));
-                    user.File_User.SaveAs(path);
-                    user.Image_User = name;
-                    TempData["image"] = user.Image_User;
+                    user.Image_User = Server.MapPath("~/Media/Img/Avatars");
                 }
+                String error = null;
+                if (repo.Register(user,ref error))
+                {
+                    return RedirectToAction("Register", "Account");
+                }
+                ViewBag.Error = error;   
+            }
+            return View(user);
+        }
 
-                repo.Register(user);
-                return RedirectToAction("Register", "Account");
+        //GET : Confirm
+        public ActionResult Confirm(String token)
+        {
+            User user = repo.Confirm(token);
 
+            switch (user.Id_User)
+            {
+                case 0: /*error*/;break;
+                case -1: /*error*/;break;
             }
 
-            return View(user);
+            if (user.Id_Rol == 1)
+            {
+                TempData["Client"] = user.Id_User;
+                return RedirectToAction("ClientConfirm","Account");
+            }
+
+            TempData["Player"] = user.Id_User;
+            return RedirectToAction("PlayerConfirm", "Account");
+        }
+
+        //GET : ClientConfirm
+        public ActionResult ClientConfirm()
+        {
+            if (TempData["Client"] is null)
+            {
+                //redireccionar a pagina de error.
+            }
+            Client client = new Client()
+            {
+                Id_User = int.Parse(TempData["Client"].ToString())
+            };
+            return View(client);
+        }
+
+        //POST : ClientConfirm
+        [HttpPost]
+        public ActionResult ClientConfirm(Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                //ok
+            }
+
+            return View(client);
+        }
+
+        //GET : PlayerConfirm
+        public ActionResult PlayerConfirm()
+        {
+            if (TempData["Player"] is null)
+            {
+                //redireccionar a pagina de error.
+            }
+            Player player = new Player()
+            {
+                Id_User = int.Parse(TempData["Player"].ToString())
+            };
+            return View(player);
+        }
+
+        //POST : PlayerConfirm
+        [HttpPost]
+        public ActionResult PlayerConfirm(Player player)
+        {
+            if (ModelState.IsValid)
+            {
+                //ok
+            }
+
+            return View(player);
         }
     }
 }

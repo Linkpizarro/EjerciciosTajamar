@@ -9,6 +9,7 @@ namespace TCAP_2._0.Interfaces
 {
     public interface IRepositoryAccount
     {
-        void Register(User user);
+        Boolean Register(User user,ref String error);
+        User Confirm(String token);
     }
 }

@@ -16,10 +16,11 @@ namespace TCAP_2._0.Models
             base.OnModelCreating(modelBuilder);
         }
 
-        //Constructor (Obtiene cadena de conexión).
         public TCAPContext() : base("name=TCAPString") { }
 
-        //Metodo para poder registrar usuarios.
         public DbSet<User> Users { get; set; }
+        public DbSet<Token> Tokens { get; set; }
+        public DbSet<Token> Clients { get; set; }
+        public DbSet<Token> Players { get; set; }
     }
 }

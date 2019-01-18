@@ -1,0 +1,93 @@
+html {
+    width: 100%;
+    background-image: url('../Media/Img/fondo_tcap.jpg');
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1240px;
+    margin: auto;
+    background-color: #ffffff;
+}
+.transparent{
+    color:transparent;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.row{
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+hr{
+   width: 90%;
+}
+
+nav{
+    position: relative;
+    top: 0;
+    transition: background-color .3s, opacity .2s, visibility 0s;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    z-index: 10;
+}
+nav .nav-background .pattern {
+    -webkit-filter: none;
+    filter: none;
+    top: 0;
+    bottom: 0;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    max-width: 100%;
+    transition: opacity .7s;
+}
+
+nav .nav-background {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    opacity: .3;
+}
+
+.menu{
+    height: 60px;
+    background-color: #7cb342;
+    color: #ffffff;
+}
+.menu ul li a{
+    color: #000000;
+}
+
+.menu ul li{
+    display: inline-block;
+    margin: 0px 10px;
+}
+
+.grab {
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+.user{
+    background-color: #D96D00 !important ;
+}
+
+.client{
+    background-color: #FFC926 !important;
+}
+
+
+
