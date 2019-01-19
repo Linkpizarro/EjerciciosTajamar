@@ -84,7 +84,11 @@ namespace TCAP_2._0.Controllers
         {
             if (ModelState.IsValid)
             {
-                //ok
+                String error = null;
+                if (repo.ClientConfirm(client,ref error))
+                {
+                    return RedirectToAction("Register", "Account");
+                }
             }
 
             return View(client);

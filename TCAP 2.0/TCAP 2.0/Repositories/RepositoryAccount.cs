@@ -128,5 +128,24 @@ namespace TCAP_2._0.Repositories
             
             return user;
         }
+
+        public Boolean ClientConfirm(Client client, ref String error)
+        {
+            //***Validamos que no se haya modificado el id***
+
+            //Insertamos los datos del cliente.
+            context.Clients.Add(client);
+            context.SaveChanges();
+
+            //Eliminamos el token de confirmación.
+            Token token = (from data in context.Tokens
+                           where data.Id_User == client.Id_User
+                           select data).FirstOrDefault();
+            context.Tokens.Remove(token);
+            context.SaveChanges();
+
+            return true;
+
+        } 
     }
 }

@@ -20,7 +20,7 @@ namespace TCAP_2._0.Models
 
         public DbSet<User> Users { get; set; }
         public DbSet<Token> Tokens { get; set; }
-        public DbSet<Token> Clients { get; set; }
-        public DbSet<Token> Players { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Player> Players { get; set; }
     }
 }
