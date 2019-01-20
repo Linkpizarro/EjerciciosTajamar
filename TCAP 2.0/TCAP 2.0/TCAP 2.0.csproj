@@ -156,6 +156,7 @@
     <Content Include="Views\Shared\_LayoutNoHeaderFooter.cshtml" />
     <Content Include="Views\Account\ClientConfirm.cshtml" />
     <Content Include="Views\Account\PlayerConfirm.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

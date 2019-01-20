@@ -12,5 +12,6 @@ namespace TCAP_2._0.Interfaces
         Boolean Register(User user,ref String error);
         User Confirm(String token);
         Boolean ClientConfirm(Client client, ref String error);
+        Boolean PlayerConfirm(Player player, ref String error);
     }
 }

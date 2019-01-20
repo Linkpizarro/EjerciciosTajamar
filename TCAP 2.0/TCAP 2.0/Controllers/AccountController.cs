@@ -36,7 +36,8 @@ namespace TCAP_2._0.Controllers
                 String error = null;
                 if (repo.Register(user,ref error))
                 {
-                    return RedirectToAction("Register", "Account");
+                    TempData["Success"] = "Se ha registrado correctamente. Se le ha enviado un correo de confirmación.";
+                    return RedirectToAction("Login", "Account");
                 }
                 ViewBag.Error = error;   
             }
@@ -56,24 +57,24 @@ namespace TCAP_2._0.Controllers
 
             if (user.Id_Rol == 1)
             {
-                TempData["Client"] = user.Id_User;
+                Session["Client"] = user.Id_User;
                 return RedirectToAction("ClientConfirm","Account");
             }
 
-            TempData["Player"] = user.Id_User;
+            Session["Player"] = user.Id_User;
             return RedirectToAction("PlayerConfirm", "Account");
         }
 
         //GET : ClientConfirm
         public ActionResult ClientConfirm()
         {
-            if (TempData["Client"] is null)
+            if (Session["Client"] is null)
             {
                 //redireccionar a pagina de error.
             }
             Client client = new Client()
             {
-                Id_User = int.Parse(TempData["Client"].ToString())
+                Id_User = int.Parse(Session["Client"].ToString())
             };
             return View(client);
         }
@@ -85,10 +86,18 @@ namespace TCAP_2._0.Controllers
             if (ModelState.IsValid)
             {
                 String error = null;
+
+                //Aseguramos que el id no ha sido cambiado.
+                client.Id_User = int.Parse(Session["Client"].ToString());
+
                 if (repo.ClientConfirm(client,ref error))
                 {
-                    return RedirectToAction("Register", "Account");
+                    Session["Client"] = null;
+                    TempData["Success"] = "Ha confirmado la cuenta correctamente.";
+                    return RedirectToAction("Login", "Account");
                 }
+
+                ViewBag.Error = error;
             }
 
             return View(client);
@@ -97,13 +106,13 @@ namespace TCAP_2._0.Controllers
         //GET : PlayerConfirm
         public ActionResult PlayerConfirm()
         {
-            if (TempData["Player"] is null)
+            if (Session["Player"] is null)
             {
                 //redireccionar a pagina de error.
             }
             Player player = new Player()
             {
-                Id_User = int.Parse(TempData["Player"].ToString())
+                Id_User = int.Parse(Session["Player"].ToString())
             };
             return View(player);
         }
@@ -114,10 +123,34 @@ namespace TCAP_2._0.Controllers
         {
             if (ModelState.IsValid)
             {
-                //ok
+
+                String error = null;
+
+                //Aseguramos que el id no ha sido cambiado.
+                player.Id_User = int.Parse(Session["Player"].ToString());
+
+                if (repo.PlayerConfirm(player, ref error))
+                {
+                    Session["Player"] = null;
+                    TempData["Success"] = "Ha confirmado la cuenta correctamente.";
+                    return RedirectToAction("Login", "Account");
+                }
+
+                ViewBag.Error = error;
             }
 
             return View(player);
+        }
+
+        //GET: Login
+        public ActionResult Login()
+        {
+            if (!(TempData["Success"] is null))
+            {
+                ViewBag.Success = TempData["Success"].ToString();
+            }
+
+            return View();
         }
     }
 }
