@@ -51,8 +51,8 @@ namespace TCAP_2._0.Controllers
 
             switch (user.Id_User)
             {
-                case 0: /*error*/;break;
-                case -1: /*error*/;break;
+                case 0: return RedirectToAction("NotFound","Error");
+                case -1: return RedirectToAction("TimeOut", "Error");
             }
 
             if (user.Id_Rol == 1)
@@ -70,7 +70,7 @@ namespace TCAP_2._0.Controllers
         {
             if (Session["Client"] is null)
             {
-                //redireccionar a pagina de error.
+                 return RedirectToAction("NotFound", "Error");
             }
             Client client = new Client()
             {
@@ -108,7 +108,7 @@ namespace TCAP_2._0.Controllers
         {
             if (Session["Player"] is null)
             {
-                //redireccionar a pagina de error.
+               return RedirectToAction("NotFound", "Error");
             }
             Player player = new Player()
             {
@@ -150,6 +150,32 @@ namespace TCAP_2._0.Controllers
                 ViewBag.Success = TempData["Success"].ToString();
             }
 
+            return View();
+        }
+
+        //POST: Login
+        [HttpPost]
+        public ActionResult Login(String email,String password)
+        {
+            User user = new User()
+            {
+                Email_User = email,
+                Password_User = password
+            };
+            User session = new User();
+            String error = null;
+            if(repo.Login(user,ref session,ref error))
+            {
+                Session["token"] = session.Session_User;
+                if(session.Id_Rol == 1)
+                {
+                    return RedirectToAction("Index","Client");
+                }
+
+                return RedirectToAction("Index", "Player");
+            }
+
+            ViewBag.Error = error;
             return View();
         }
     }

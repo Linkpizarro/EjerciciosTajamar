@@ -31,6 +31,83 @@ namespace TCAP_2._0.Repositories
             }
             return true;
         }
+        //Comprueba si el nick existe en la base de datos.
+        private Boolean ExistsNick(String nick)
+        {
+            int linq = (from d in context.Players
+                        where d.Nick_Player == nick
+                        select d.Id_User).FirstOrDefault();
+
+            if (linq == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        //Comprueba si el DNI existe en la base de datos.
+        private Boolean ExistsDNI(String dni)
+        {
+            int linq = (from d in context.Clients
+                        where d.DNI_Client == dni
+                        select d.Id_User).FirstOrDefault();
+
+            if (linq == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        //Se encarga de validar el Token de confirmación.
+        private int ValidateToken(String token)
+        {
+
+            var exists = (from data in context.Tokens
+                          where data.Value_Token.Contains(token)
+                          select data.Id_User).FirstOrDefault();
+
+            if (exists != 0)
+            {
+                var time = (from data in context.Tokens
+                            where data.Id_User == exists
+                            && data.End_Token > DateTime.Now
+                            select data.Id_User).FirstOrDefault();
+
+                if (time != 0)
+                {
+                    return time;
+                }
+
+                return -1;
+            }
+
+            return 0;
+        }
+        //Se encarga de verificar y establecer el token de session para el usuario logeado.
+        private Boolean ValidateLogin(User user,ref User session)
+        {
+            if (ExistsEmail(user.Email_User))
+            {
+                User correctUser = (from data in context.Users
+                                    where data.Email_User == user.Email_User
+                                    && data.Status_User == 2
+                                    select data).FirstOrDefault();
+
+
+                if(!(correctUser is null) && Hashing.ValidatePassword(user.Password_User, correctUser.TruePassword_User))
+                {
+                    ToolAccount tool = new ToolAccount();
+                    correctUser.Session_User = tool.CreateToken();
+                    correctUser.Password_User = "Default00$";
+                    correctUser.RepPassword_User = "Default00$";
+                    context.SaveChanges();
+
+                    session.Session_User = correctUser.Session_User;
+                    session.Id_Rol = correctUser.Id_Rol;
+                    return true;
+                }
+            }
+            return false;
+        }
 
         //Se encarga de introducir a un nuevo usuario en la Base de datos.
         public Boolean Register(User user,ref String error)
@@ -79,32 +156,6 @@ namespace TCAP_2._0.Repositories
             return false;
         }
 
-        //Se encarga de validar el Token de confirmación.
-        private int ValidateToken(String token)
-        {
-
-            var exists = (from data in context.Tokens
-                          where data.Value_Token.Contains(token)
-                          select data.Id_User).FirstOrDefault();
-
-            if (exists != 0)
-            {
-                var time = (from data in context.Tokens
-                            where data.Id_User == exists
-                            && data.End_Token > DateTime.Now
-                            select data.Id_User).FirstOrDefault();
-
-                if (time != 0)
-                {
-                    return time;
-                }
-
-                return -1;
-            }
-
-            return 0;
-        }
-
         //Obtenemos el usuario para confirmar su cuenta.
         public User Confirm(String token)
         {
@@ -132,38 +183,78 @@ namespace TCAP_2._0.Repositories
         //Confirma a un Cliente.
         public Boolean ClientConfirm(Client client, ref String error)
         {
-            //Insertamos los datos del cliente.
-            context.Clients.Add(client);
-            context.SaveChanges();
+            if (!(ExistsDNI(client.DNI_Client))){
+                //Insertamos los datos del cliente.
+                context.Clients.Add(client);
+                context.SaveChanges();
 
-            //Eliminamos el token de confirmación.
-            Token token = (from data in context.Tokens
-                           where data.Id_User == client.Id_User
-                           select data).FirstOrDefault();
-            context.Tokens.Remove(token);
-            context.SaveChanges();
+                //Eliminamos el token de confirmación.
+                Token token = (from data in context.Tokens
+                               where data.Id_User == client.Id_User
+                               select data).FirstOrDefault();
+                context.Tokens.Remove(token);
+                context.SaveChanges();
 
-            return true;
+                //Cambiamos el estado al usuario.
+                User user = (from data in context.Users
+                             where data.Id_User == client.Id_User
+                             select data).FirstOrDefault();
+                user.Status_User = 2;
+                context.SaveChanges();
+
+                return true;
+            }
+
+            error = "El DNI ya está en uso.";
+            return false;
 
         }
 
         //Confirma a un Jugador.
         public Boolean PlayerConfirm(Player player, ref String error)
         {
-            //******Falta validar nick*******
-            //Insertamos los datos del cliente.
-            context.Players.Add(player);
-            context.SaveChanges();
+            if (!(ExistsNick(player.Nick_Player)))
+            {
+                //Insertamos los datos del cliente.
+                player.Level_Player = 1;
+                context.Players.Add(player);
+                context.SaveChanges();
 
-            //Eliminamos el token de confirmación.
-            Token token = (from data in context.Tokens
-                           where data.Id_User == player.Id_User
-                           select data).FirstOrDefault();
-            context.Tokens.Remove(token);
-            context.SaveChanges();
+                //Eliminamos el token de confirmación.
+                Token token = (from data in context.Tokens
+                               where data.Id_User == player.Id_User
+                               select data).FirstOrDefault();
+                context.Tokens.Remove(token);
+                context.SaveChanges();
 
-            return true;
+                //Cambiamos el estado al usuario.
+                User user = (from data in context.Users
+                             where data.Id_User == player.Id_User
+                             select data).FirstOrDefault();
+                user.Status_User = 2;
+                context.SaveChanges();
 
+                return true;
+            }
+
+            error = "El nick ya está en uso.";
+            return false;
+            
+
+        }
+
+        //Inicia la sesión del usuario correspondiente.
+        public Boolean Login(User user,ref User session,ref String error)
+        {
+            if (ExistsEmail(user.Email_User))
+            {
+                if (ValidateLogin(user,ref session))
+                {
+                    return true;
+                }
+            }
+            error = "El Email o la Contraseña son incorrectos.";
+            return false;
         }
     }
 }

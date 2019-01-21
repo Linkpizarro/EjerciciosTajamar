@@ -17,13 +17,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Contenidos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Contenidos", "Index", "Contenidos")</li>
-                    <li>@Html.ActionLink("Scaffolding", "Index", "Scaffolding")</li>
-                    <li>@Html.ActionLink("Caching", "Index", "Caching")</li>
                 </ul>
             </div>
         </div>
@@ -37,9 +34,7 @@
         </footer>
     </div>
 
-    @using System.Web.Optimization
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    @RenderSection("scripts",false)
 </body>
 </html>

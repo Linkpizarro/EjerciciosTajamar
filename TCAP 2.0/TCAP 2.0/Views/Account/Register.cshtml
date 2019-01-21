@@ -95,8 +95,9 @@
                     </button>
                 </div>
             }
-            <a href="~/Account/Login" class="orange-text">¿Ya tienes una cuenta? Inicia sesión ahora.</a><br />
-            <a href="~/Home/Index" class="green-text">Volver a Home</a>
+            @Html.ActionLink("¿Ya tienes una cuenta? Inicia sesión ahora.", "Login", "Account", null, new { @class = "orange-text" })
+            <br />
+            @Html.ActionLink("Volver a Home", "Index", "Home", null, new { @class = "green-text" })
         </div>
         <div class="row"></div>
     </div>

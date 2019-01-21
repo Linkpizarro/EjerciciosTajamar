@@ -16,7 +16,8 @@
                 <p class="green-text">@ViewBag.Success</p>
             }
             <h5 class="black-text">@ViewBag.Title</h5>
-            <form class="col s12" method="post">
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+            {
                 <div class='row'>
                     <div class='input-field col s12'>
                         <input class='validate' type='email' name='email' id='email' required />
@@ -39,9 +40,10 @@
                         Iniciar
                     </button>
                 </div>
-            </form>
-            <a href="~/Account/Register" class="orange-text">¿Aún sin cuenta? Regístrate ahora</a><br />
-            <a href="~/Home/Index" class="green-text">Volver a Home</a>
+            }
+            @Html.ActionLink("¿Aún sin cuenta? Regístrate ahora.", "Register", "Account", null, new { @class = "orange-text" })
+            <br />
+            @Html.ActionLink("Volver a Home", "Index", "Home", null, new { @class = "green-text" })
         </div>
         <div class="row"></div>
     </div>
