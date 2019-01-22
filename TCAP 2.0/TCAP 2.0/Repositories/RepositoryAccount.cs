@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using TCAP_2._0.Interfaces;
 using TCAP_2._0.Models;
@@ -82,71 +83,106 @@ namespace TCAP_2._0.Repositories
 
             return 0;
         }
-        //Se encarga de verificar y establecer el token de session para el usuario logeado.
-        private Boolean ValidateLogin(User user,ref User session)
+        //Genera un token aleatorio.
+        private String CreateToken()
         {
-            if (ExistsEmail(user.Email_User))
+            int longitud = 12;
+            const string alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            String key = "";
+            Random rnd = new Random();
+
+            for (int i = 0; i < longitud; i++)
             {
-                User correctUser = (from data in context.Users
-                                    where data.Email_User == user.Email_User
-                                    && data.Status_User == 2
-                                    select data).FirstOrDefault();
+                int indice = rnd.Next(alfabeto.Length);
+                key += alfabeto[indice];
+            }
 
+            String token = Hashing.HashPassword(key);
 
-                if(!(correctUser is null) && Hashing.ValidatePassword(user.Password_User, correctUser.TruePassword_User))
-                {
-                    ToolAccount tool = new ToolAccount();
-                    correctUser.Session_User = tool.CreateToken();
-                    correctUser.Password_User = "Default00$";
-                    correctUser.RepPassword_User = "Default00$";
-                    context.SaveChanges();
-
-                    session.Session_User = correctUser.Session_User;
-                    session.Id_Rol = correctUser.Id_Rol;
-                    return true;
-                }
+            return token;
+        }
+        //Se encarga de subir la imagen al servidor.
+        private String UploadImage(String image_user, HttpPostedFileBase file)
+        {
+            String name = null;
+            if (!(image_user is null))
+            {
+                DateTime s = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                TimeSpan t = (DateTime.Now - s);
+                name = String.Concat("AvatarUser" + t.TotalMilliseconds.ToString(), ".", file.FileName.Split('.')[1]);
+                string path = Path.Combine(image_user, Path.GetFileName(name));
+                file.SaveAs(path);
+            }
+            return name;
+        }
+        private Boolean ValidatePassword(String pass)
+        {
+            Regex r = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$");
+            if (r.IsMatch(pass))
+            {
+                return true;
+            }
+            return false;
+        }
+        private Boolean EqualPassword(String pass,String repPass)
+        {
+            if (pass == repPass)
+            {
+                return true;
             }
             return false;
         }
 
         //Se encarga de introducir a un nuevo usuario en la Base de datos.
-        public Boolean Register(User user,ref String error)
+        public Boolean Register(User user,String pass,String repPass,HttpPostedFileBase file,ref String error)
         {
-            //Instancia de la clase validationAccount.
-            ToolAccount tool = new ToolAccount();
-
             //Valida la existencia del email.
             if (!ExistsEmail(user.Email_User))
             {
-                //Rellena los campos adicionales.
-                user.Image_User = tool.UploadImage(user);
-                user.TruePassword_User = Hashing.HashPassword(user.Password_User);
-                user.Created_User = DateTime.Now;
-                user.Updated_User = DateTime.Now;
-                user.Status_User = 1;
-
-                //Inserta el usuario.
-                context.Users.Add(user);
-                context.SaveChanges();
-
-                //Generamos el Token de Confirmación de la cuenta.
-                Token token = new Token()
+                if (ValidatePassword(pass))
                 {
-                    Id_User = user.Id_User,
-                    Value_Token = tool.CreateToken(),
-                    Start_Token = DateTime.Now,
-                    End_Token = DateTime.Now.AddMinutes(15)
-                };
+                    if (EqualPassword(pass,repPass))
+                    {
+                        //Rellena los campos adicionales.
+                        user.Image_User = UploadImage(user.Image_User,file);
+                        user.Password_User = Hashing.HashPassword(pass);
+                        user.Created_User = DateTime.Now;
+                        user.Updated_User = DateTime.Now;
+                        user.Status_User = 1;
 
-                //Inserta el token.
-                context.Tokens.Add(token);
-                context.SaveChanges();
+                        //Inserta el usuario.
+                        context.Users.Add(user);
+                        context.SaveChanges();
 
-                //Enviamos el email de confirmación.
-                SMTPService smtp = new SMTPService();
-                smtp.SendEmail(user.Email_User, token.Value_Token);
+                        //Generamos el Token de Confirmación de la cuenta.
+                        Token token = new Token()
+                        {
+                            Id_User = user.Id_User,
+                            Value_Token = CreateToken(),
+                            Start_Token = DateTime.Now,
+                            End_Token = DateTime.Now.AddMinutes(15)
+                        };
 
-                return true;
+                        //Inserta el token.
+                        context.Tokens.Add(token);
+                        context.SaveChanges();
+
+                        //Enviamos el email de confirmación.
+                        SMTPService smtp = new SMTPService();
+                        smtp.SendEmail(user.Email_User, token.Value_Token);
+
+                        return true;
+                    }
+                    else
+                    {
+                        error = "Las contraseñas no coinciden.";
+                    }
+                }
+                else
+                {
+                    error = "La Contraseña debe estar compuesta de entre 8 y 15 caracteres, por lo menos un digito y un alfanumérico, y un caracter espacial.";
+                }
+               
             }
             else
             {
@@ -244,17 +280,24 @@ namespace TCAP_2._0.Repositories
         }
 
         //Inicia la sesión del usuario correspondiente.
-        public Boolean Login(User user,ref User session,ref String error)
+        public User Login(String email,String password,ref String error)
         {
-            if (ExistsEmail(user.Email_User))
+            if (ExistsEmail(email))
             {
-                if (ValidateLogin(user,ref session))
-                {
-                    return true;
+                User correctUser = (from data in context.Users
+                                    where data.Email_User == email
+                                    && data.Status_User == 2
+                                    select data).FirstOrDefault();
+
+
+                if (!(correctUser is null) && Hashing.ValidatePassword(password, correctUser.Password_User))
+                {     
+                    return correctUser;
                 }
             }
+
             error = "El Email o la Contraseña son incorrectos.";
-            return false;
+            return null;
         }
     }
 }

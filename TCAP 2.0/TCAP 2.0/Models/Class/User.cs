@@ -43,7 +43,7 @@ namespace TCAP_2._0.Models.Class
         public String Email_User { get; set; }
 
         [Column("PASSWORD_USER")]
-        public String TruePassword_User { get; set; }
+        public String Password_User { get; set; }
 
         [Column("IMAGE_USER")]
         public String Image_User { get; set; }
@@ -54,29 +54,26 @@ namespace TCAP_2._0.Models.Class
         [Column("UPDATED_USER")]
         public DateTime Updated_User { get; set; }
 
-        [Column("TOKEN_SESSION")]
-        public String Session_User { get; set; }
-
         [Column("STATUS_USER")]
         public int Status_User { get; set; }
 
 
-        [DataType(DataType.Password)]
-        [Required(ErrorMessage = "El campo Contraseña es obligatório.")]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$", ErrorMessage = "La Contraseña debe estar compuesta de entre 8 y 15 caracteres, por lo menos un digito y un alfanumérico, y un caracter espacial.")]
-        [Display(Name = "Contraseña")]
-        [NotMapped]
-        public String Password_User { get; set; }
+        //[DataType(DataType.Password)]
+        //[Required(ErrorMessage = "El campo Contraseña es obligatório.")]
+        //[RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$", ErrorMessage = "La Contraseña debe estar compuesta de entre 8 y 15 caracteres, por lo menos un digito y un alfanumérico, y un caracter espacial.")]
+        //[Display(Name = "Contraseña")]
+        //[NotMapped]
+        //public String Password_User { get; set; }
 
-        [Compare("Password_User", ErrorMessage = "Las Contraseñas no coinciden.")]
-        [DataType(DataType.Password)]
-        [Required(ErrorMessage = "El campo Contraseña es Obligatorio.")]
-        [Display(Name = "Repetir Contraseña")]
-        [NotMapped]
-        public String RepPassword_User { get; set; }
+        //[Compare("Password_User", ErrorMessage = "Las Contraseñas no coinciden.")]
+        //[DataType(DataType.Password)]
+        //[Required(ErrorMessage = "El campo Contraseña es Obligatorio.")]
+        //[Display(Name = "Repetir Contraseña")]
+        //[NotMapped]
+        //public String RepPassword_User { get; set; }
 
-        [Display(Name = "Avatar")]
-        [NotMapped]
-        public HttpPostedFileBase File_User { get; set; }
+        //[Display(Name = "Avatar")]
+        //[NotMapped]
+        //public HttpPostedFileBase File_User { get; set; }
     }
 }

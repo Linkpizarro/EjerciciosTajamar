@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using TCAP_2._0.Interfaces;
 using TCAP_2._0.Models.Class;
 
@@ -26,15 +27,15 @@ namespace TCAP_2._0.Controllers
 
         // POST: Register
         [HttpPost]
-        public ActionResult Register(User user)
+        public ActionResult Register(User user,String pass,String repPass, HttpPostedFileBase file)
         {
             if (ModelState.IsValid) {
-                if (user.File_User != null && user.File_User.ContentLength > 0)
+                if (file != null && file.ContentLength > 0)
                 {
                     user.Image_User = Server.MapPath("~/Media/Img/Avatars");
                 }
                 String error = null;
-                if (repo.Register(user,ref error))
+                if (repo.Register(user,pass,repPass,file,ref error))
                 {
                     TempData["Success"] = "Se ha registrado correctamente. Se le ha enviado un correo de confirmación.";
                     return RedirectToAction("Login", "Account");
@@ -157,19 +158,19 @@ namespace TCAP_2._0.Controllers
         [HttpPost]
         public ActionResult Login(String email,String password)
         {
-            User user = new User()
-            {
-                Email_User = email,
-                Password_User = password
-            };
-            User session = new User();
             String error = null;
-            if(repo.Login(user,ref session,ref error))
+            User user = repo.Login(email, password, ref error);
+            
+            if( user != null)
             {
-                Session["token"] = session.Session_User;
-                if(session.Id_Rol == 1)
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, user.Id_User.ToString(), DateTime.Now, DateTime.Now.AddMinutes(60), true,user.Id_Rol.ToString());
+                String encryp = FormsAuthentication.Encrypt(ticket);
+                HttpCookie cookie = new HttpCookie("TicketUser", encryp);
+                Response.Cookies.Add(cookie);
+
+                if (user.Id_Rol == 1)
                 {
-                    return RedirectToAction("Index","Client");
+                    return RedirectToAction("Index", "Client");
                 }
 
                 return RedirectToAction("Index", "Player");

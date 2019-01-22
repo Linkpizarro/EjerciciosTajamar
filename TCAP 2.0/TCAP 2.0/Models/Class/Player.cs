@@ -20,12 +20,11 @@ namespace TCAP_2._0.Models.Class
 
         [Column("NICK_PLAYER")]
         [Required(ErrorMessage = "El nick es obligatorio.")]
-        //[RegularExpression(@"^(?=.{8, 20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$", ErrorMessage = "El nick tiene que estar comprendido entre 8 y 20 caracteres.")]
+        [RegularExpression(@"^[a-zA-Z0-9ü][a-zA-Z0-9ü_]{1,20}$", ErrorMessage = "El nick tiene que tener un máximo de 20 caracteres.")]
         [Display(Name = "Nick")]
         public string Nick_Player { get; set; }
 
         [Column("AGE_PLAYER")]
-        [Required(ErrorMessage = "La edad es obligatoria.")]
         [Display(Name = "Edad")]
         public int Age_Player { get; set; }
 

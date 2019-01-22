@@ -12,7 +12,7 @@
             <p class="red-text">@Html.ValidationMessageFor(z => z.Surname_User)</p>
             <p class="red-text">@Html.ValidationMessageFor(z => z.Email_User)</p>
             <p class="red-text">@Html.ValidationMessageFor(z => z.Password_User)</p>
-            <p class="red-text">@Html.ValidationMessageFor(z => z.RepPassword_User)</p>
+            @*<p class="red-text">@Html.ValidationMessageFor(z => z.RepPassword_User)</p>*@
             <p class="red-text">@Html.ValidationMessageFor(z => z.Id_Rol)</p>
             @if (!(ViewBag.Error is null))
             {
@@ -45,8 +45,10 @@
                     </div>
                     <div class="col s6">
                         <div class='input-field col s12'>
-                            @Html.LabelFor(model => model.Password_User)
-                            @Html.EditorFor(model => model.Password_User)
+                            <label for="pass">Contraseña</label>
+                            <input type="password" name="pass" />
+                            @*@Html.LabelFor(model => model.Password_User)
+                            @Html.EditorFor(model => model.Password_User)*@
                         </div>
                     </div>
                 </div>
@@ -55,7 +57,8 @@
                         <div class="file-field input-field col s12">
                             <div class="btn amber">
                                 <span class="black-text">Avatar</span>
-                                @Html.TextBoxFor(m => m.File_User, new { type = "file" })
+                                <input type="file" name="file" />
+                                @*@Html.TextBoxFor(m => m.File_User, new { type = "file" })*@
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path" type="text" placeholder="Upload one files">
@@ -64,8 +67,10 @@
                     </div>
                     <div class="col s6">
                         <div class='input-field col s12'>
-                            @Html.LabelFor(model => model.RepPassword_User)
-                            @Html.EditorFor(model => model.RepPassword_User)
+                            <label for="repPass">Repetir Contraseña</label>
+                            <input type="password" name="repPass" />
+                            @*@Html.LabelFor(model => model.RepPassword_User)
+                            @Html.EditorFor(model => model.RepPassword_User)*@
                         </div>
                     </div>
                 </div>
