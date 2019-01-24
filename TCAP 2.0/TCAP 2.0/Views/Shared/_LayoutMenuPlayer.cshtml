@@ -2,16 +2,18 @@
 <div class="menu">
     <ul>
         <li>
-            <a href="#">
-                <div class="chip client">
-                    <img src="~/Media/Img/Avatars/@(((Client)Session["Client"]).GeneralData.Image_User)" alt="Contact Person">
-                    @(((Client)Session["Client"]).GeneralData.Name_User)
-                    @(((Client)Session["Client"]).GeneralData.Surname_User)
+            <a>
+                <div class="chip user">
+                    <img src="~/Media/Img/Avatars/@(((Player)Session["Player"]).GeneralData.Image_User)" alt="Contact Person">
+                    @(((Player)Session["Player"]).Nick_Player)
                 </div>
             </a>
         </li>
+        <li>@Html.ActionLink("Opciones", "Options", "Player")</li>
         <li>@Html.ActionLink("Inicio", "Index", "Player")</li>
         <li>@Html.ActionLink("Partidas", "Parties", "Player")</li>
         <li>@Html.ActionLink("Cerrar Sesion", "Logout", "Account")</li>
+
     </ul>
 </div>
+

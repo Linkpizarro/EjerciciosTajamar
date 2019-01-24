@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Principal";
 }
-@section carousel
+@section Script
 {
     <script>
         $(document).ready(function () {
@@ -12,6 +12,7 @@
         });
     </script>
 }
+@Html.Partial("_LayoutHeader")
 <div class="carousel carousel-slider">
     <a class="carousel-item grab" href=""><img src="~/Media/img/nav.jpg" /></a>
     <a class="carousel-item grab" href=""><img src="~/Media/img/img1.png" /></a>
@@ -93,3 +94,4 @@
         </div>
     </div>
 </main>
+@Html.Partial("_LayoutFooter")
