@@ -22,6 +22,8 @@ namespace TCAP_2._0.App_Start
         private static void RegistrarRepositorios(ContainerBuilder builder)
         {
             builder.RegisterType<RepositoryAccount>().As<IRepositoryAccount>().InstancePerRequest();
+            builder.RegisterType<RepositoryClient>().As<IRepositoryClient>().InstancePerRequest();
+            builder.RegisterType<RepositoryPlayer>().As<IRepositoryPlayer>().InstancePerRequest();
         }
 
         private static void RegistrarClases(ContainerBuilder builder)

@@ -1,0 +1,39 @@
+﻿@using SeguridadPlantilla.Models
+@model List<Plantilla>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Cerrar Sesión","LogOut","Validation")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].Funcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].Salario)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Funcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario)
+        </td>
+    </tr>
+}
+
+</table>

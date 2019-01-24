@@ -34,5 +34,8 @@ namespace TCAP_2._0.Models.Class
         [RegularExpression(@"^(\+34|0034|34)?[89]\d{8}$",ErrorMessage = "El número de teléfono no es válido.")]
         [Display(Name = "Número de Teléfono")]
         public string Telephone_Client { get; set; }
+
+        [NotMapped]
+        public User GeneralData { get; set; }
     }
 }

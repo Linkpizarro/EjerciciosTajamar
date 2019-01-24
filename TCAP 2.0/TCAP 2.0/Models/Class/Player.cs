@@ -47,5 +47,8 @@ namespace TCAP_2._0.Models.Class
 
         [Column("LEVEL_PLAYER")]
         public int Level_Player { get; set; }
+
+        [NotMapped]
+        public User GeneralData { get; set; }
     }
 }

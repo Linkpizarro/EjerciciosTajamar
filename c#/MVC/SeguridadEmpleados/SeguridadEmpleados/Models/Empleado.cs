@@ -36,22 +36,12 @@ namespace SeguridadEmpleados.Models
 
         public IIdentity Identity { get; set; }
 
-        //private String[] Roles;
-
-
         public bool IsInRole(string role)
         {
             if (this.Oficio.ToUpper() == role.ToUpper())
             {
                 return true;
             }
-            //foreach (String item in this.Roles)
-            //{
-            //    if (item == role)
-            //    {
-            //        return true;
-            //    }
-            //}
             return false ;
         }
     }
