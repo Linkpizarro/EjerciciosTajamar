@@ -2,14 +2,13 @@
 <div class="menu">
     <ul>
         <li>
-            <a>
+            <a href="@Url.Action("Options", "Player")">
                 <div class="chip user">
-                    <img src="~/Media/Img/Avatars/@(((Player)Session["Player"]).GeneralData.Image_User)" alt="Contact Person">
-                    @(((Player)Session["Player"]).Nick_Player)
+                    <img src="~/Media/Img/Avatars/@(((Player)Session["Player"]).GeneralData.Image_User)">
+                    @(((Player)Session["Player"]).Nick_Player) Lvl :  @(((Player)Session["Player"]).Level_Player)
                 </div>
             </a>
         </li>
-        <li>@Html.ActionLink("Opciones", "Options", "Player")</li>
         <li>@Html.ActionLink("Inicio", "Index", "Player")</li>
         <li>@Html.ActionLink("Partidas", "Parties", "Player")</li>
         <li>@Html.ActionLink("Cerrar Sesion", "Logout", "Account")</li>

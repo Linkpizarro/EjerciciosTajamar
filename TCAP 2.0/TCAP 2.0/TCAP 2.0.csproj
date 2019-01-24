@@ -146,6 +146,7 @@
     <Compile Include="Models\Class\Token.cs" />
     <Compile Include="Models\Class\User.cs" />
     <Compile Include="Models\TCAPContext.cs" />
+    <Compile Include="Models\Tools\ToolFile.cs" />
     <Compile Include="Models\Tools\Hashing.cs" />
     <Compile Include="Models\Tools\SMTPService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -176,6 +177,7 @@
     <Content Include="Views\Shared\_LayoutHeader.cshtml" />
     <Content Include="Views\Shared\_LayoutFooter.cshtml" />
     <Content Include="Views\Shared\_LayoutMenu.cshtml" />
+    <Content Include="Views\Shared\_LayoutParties.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

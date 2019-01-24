@@ -2,13 +2,13 @@
 <div class="menu">
     <ul>
         <li>
-            <a href="#">
-                <div class="chip client">
-                    <img src="~/Media/Img/Avatars/@(((Client)Session["Client"]).GeneralData.Image_User)" alt="Contact Person">
-                    @(((Client)Session["Client"]).GeneralData.Name_User)
-                    @(((Client)Session["Client"]).GeneralData.Surname_User)
-                </div>
-            </a>
+            @Html.ActionLink("Opciones", "Options", "Clients"){
+            <div class="chip client">
+                <img src="~/Media/Img/Avatars/@(((Client)Session["Client"]).GeneralData.Image_User)" alt="Contact Person">
+                @(((Client)Session["Client"]).GeneralData.Name_User)
+                @(((Client)Session["Client"]).GeneralData.Surname_User)
+            </div>
+            }
         </li>
         <li>@Html.ActionLink("Inicio", "Index", "Client")</li>
         <li>@Html.ActionLink("Establecimientos", "Pubs", "Client")</li>
