@@ -10,5 +10,6 @@ namespace TCAP_2._0.Interfaces
     public interface IRepositoryPlayer
     {
         Player GetDataPlayer(int id_user);
+        List<Party> GetDataParties(int id_player);
     }
 }

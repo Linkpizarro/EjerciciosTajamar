@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TCAP_2._0.Attribute;
 using TCAP_2._0.Interfaces;
+using TCAP_2._0.Models.Class;
 
 namespace TCAP_2._0.Controllers
 {
@@ -17,11 +18,12 @@ namespace TCAP_2._0.Controllers
             this.repo = repo;
         }
 
-        // GET: Index
-        public ActionResult Index()
+        // GET: Parties
+        public ActionResult Parties()
         {
-            Session["Player"] = repo.GetDataPlayer(int.Parse(HttpContext.User.Identity.Name));
-            return View();
+            Player player = repo.GetDataPlayer(int.Parse(HttpContext.User.Identity.Name));
+            Session["Player"] = player;
+            return View(repo.GetDataParties(player.Id_Player));
         }
     }
 }

@@ -1,0 +1,31 @@
+﻿@using TCAP_2._0.Models.Class
+@model List<Party>
+@{
+    ViewBag.Title = "Partidas";
+}
+@Html.Partial("_LayoutHeader")
+
+<main>
+    @if (Model != null && Model.Count() > 0)
+    {
+        @Html.Partial("_LayoutTableActiveParty", Model)
+        <hr />
+        @Html.Partial("_LayoutTableCloseParty", Model)
+    }
+    else
+    {
+        <p class="red-text">NO TIENES NINGUNA PARTIDA</p>
+    }
+</main>
+
+@section Script
+{
+    <script>
+            $(document).ready(function(){
+                $('.modal').modal();
+            });
+    </script>
+
+}
+@Html.Partial("_LayoutFooter")
+

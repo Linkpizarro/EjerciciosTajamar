@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -170,14 +171,25 @@ namespace TCAP_2._0.Controllers
 
                 if (user.Id_Rol == 1)
                 {
-                    return RedirectToAction("Index", "Client");
+                    return RedirectToAction("Pubs", "Client");
                 }
 
-                return RedirectToAction("Index", "Player");
+                return RedirectToAction("Parties", "Player");
             }
 
             ViewBag.Error = error;
             return View();
+        }
+
+        // GET: LogOut
+        public ActionResult Logout()
+        {
+            HttpContext.User = new GenericPrincipal(new GenericIdentity(""), null);
+            FormsAuthentication.SignOut();
+            HttpCookie cookie = Request.Cookies["TicketUser"];
+            cookie.Expires = DateTime.Now.AddYears(-1);
+            Response.Cookies.Add(cookie);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

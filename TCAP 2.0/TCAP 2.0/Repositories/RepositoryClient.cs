@@ -29,5 +29,13 @@ namespace TCAP_2._0.Repositories
 
             return client;
         }
+        public List<Pub> GetPubs(int id_client)
+        {
+            List<Pub> pubs = (from data in context.Pubs
+                              where data.Id_Client == id_client
+                              select data).ToList();
+
+            return pubs;
+        }
     }
 }

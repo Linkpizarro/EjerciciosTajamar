@@ -1,15 +1,39 @@
 ﻿@using TCAP_2._0.Models.Class
-<tr data-target="info" class="modal-trigger" style="cursor: pointer;">
-    <td>04/05/2018</td>
-    <td>BAR Los jardines</td>
-    <td class="red-text"><i class="fas fa-times"></i></td>
-    <div id="info" class="modal">
+@model Party
+<tr data-target='info_@Model.Id_Party' class="modal-trigger" style="cursor: pointer;">
+    <td>@Model.Start_Party</td>
+    <td>@Model.Pub.Name_Pub</td>
+    <td>@Model.Current_Participant_Party / @Model.Max_Participant_Party</td>
+    <td>
+        @if (Model.Status_Party == 3)
+        {
+            <i class="red-text fas fa-lock"></i>
+        }
+        else
+        {
+            <i class="green-text fas fa-lock-open"></i>
+        }
+    </td>
+    <div id="info_@Model.Id_Party" class="modal">
         <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
+            <h3>@Model.Pub.Name_Pub</h3>
+            <h4>Juego: @Model.Boargame_Party</h4>
+            <ul>
+                @foreach (Participant item in Model.Participants)
+                {
+                    if (item.Leader_Participant)
+                    {
+                        <li>@item.Player.Nick_Player <i class="yellow-text fas fa-crown"></i></li>
+                    }
+                    else
+                    {
+                        <li>@item.Player.Nick_Player</li>
+                    }
+                }
+            </ul>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
         </div>
     </div>
 </tr>

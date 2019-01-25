@@ -142,7 +142,10 @@
     <Compile Include="Interfaces\IRepositoryClient.cs" />
     <Compile Include="Interfaces\IRepositoryPlayer.cs" />
     <Compile Include="Models\Class\Client.cs" />
+    <Compile Include="Models\Class\Participant.cs" />
+    <Compile Include="Models\Class\Party.cs" />
     <Compile Include="Models\Class\Player.cs" />
+    <Compile Include="Models\Class\Pub.cs" />
     <Compile Include="Models\Class\Token.cs" />
     <Compile Include="Models\Class\User.cs" />
     <Compile Include="Models\TCAPContext.cs" />
@@ -170,14 +173,19 @@
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\TimeOut.cshtml" />
-    <Content Include="Views\Player\Index.cshtml" />
-    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Player\Parties.cshtml" />
+    <Content Include="Views\Client\Pubs.cshtml" />
     <Content Include="Views\Shared\_LayoutMenuPlayer.cshtml" />
     <Content Include="Views\Shared\_LayoutMenuClient.cshtml" />
     <Content Include="Views\Shared\_LayoutHeader.cshtml" />
     <Content Include="Views\Shared\_LayoutFooter.cshtml" />
     <Content Include="Views\Shared\_LayoutMenu.cshtml" />
     <Content Include="Views\Shared\_LayoutParties.cshtml" />
+    <Content Include="Views\Shared\_LayoutTableActiveParty.cshtml" />
+    <Content Include="Views\Shared\_LayoutTableCloseParty.cshtml" />
+    <Content Include="Views\Shared\_LayoutTableActivePub.cshtml" />
+    <Content Include="Views\Shared\_LayoutTableClosePub.cshtml" />
+    <Content Include="Views\Shared\_LayoutPubs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

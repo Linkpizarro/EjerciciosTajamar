@@ -22,5 +22,8 @@ namespace TCAP_2._0.Models
         public DbSet<Token> Tokens { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Player> Players { get; set; }
+        public DbSet<Party> Parties { get; set; }
+        public DbSet<Participant> Participants { get; set; }
+        public DbSet<Pub> Pubs { get; set; }
     }
 }
