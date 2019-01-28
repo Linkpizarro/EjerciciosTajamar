@@ -94,3 +94,6 @@ hr{
     border-bottom: 1px solid #fff !important;
 }
 
+.modal {
+    width : 30% !important;
+}

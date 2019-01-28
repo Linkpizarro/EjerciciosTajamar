@@ -1,0 +1,7 @@
+﻿@using AjaxEmpleados.Models
+@model EMP
+<h3>@Model.APELLIDO</h3>
+<p>Fecha Alta: @Model.FECHA_ALT</p>
+<p>Oficio: @Model.OFICIO</p>
+<p>Salario: @Model.SALARIO</p>
+@Html.ActionLink("Eliminar","Borrar","Empleado",new { id = Model.EMP_NO},null)

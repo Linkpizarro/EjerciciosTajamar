@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{39FDE46B-F0DB-47F7-9CBF-78963023C8D8}</ProjectGuid>
+    <ProjectGuid>{341ECD9F-6568-4ED3-AE7A-B4244DED6DCB}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TCAP_2._0</RootNamespace>
-    <AssemblyName>TCAP 2.0</AssemblyName>
+    <RootNamespace>Criptografia</RootNamespace>
+    <AssemblyName>Criptografia</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -44,24 +44,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
-      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="DevOne.Security.Cryptography.BCrypt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BCrypt.1.0.0.0\lib\DevOne.Security.Cryptography.BCrypt.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -107,55 +89,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\materialize.css" />
-    <Content Include="Content\materialize.min.css" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Media\Img\fondo_tcap.jpg" />
-    <Content Include="Media\Img\img-Box.png" />
-    <Content Include="Media\Img\img-Box2.png" />
-    <Content Include="Media\Img\img1.png" />
-    <Content Include="Media\Img\nav.jpg" />
-    <Content Include="Media\Img\tcap_logo.png" />
-    <Content Include="Media\Img\tcap_logo_black.png" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\materialize.js" />
-    <Content Include="Scripts\materialize.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Cifrado\DesCifrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\IoCConfiguration.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Attribute\AuthorizeClientAttribute.cs" />
-    <Compile Include="Attribute\AuthorizePlayerAttribute.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ClientController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Controllers\CifradoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IRepositoryAccount.cs" />
-    <Compile Include="Interfaces\IRepositoryClient.cs" />
-    <Compile Include="Interfaces\IRepositoryPlayer.cs" />
-    <Compile Include="Models\Class\Client.cs" />
-    <Compile Include="Models\Class\Participant.cs" />
-    <Compile Include="Models\Class\Party.cs" />
-    <Compile Include="Models\Class\Player.cs" />
-    <Compile Include="Models\Class\Pub.cs" />
-    <Compile Include="Models\Class\Token.cs" />
-    <Compile Include="Models\Class\User.cs" />
-    <Compile Include="Models\TCAPContext.cs" />
-    <Compile Include="Models\Tools\ToolFile.cs" />
-    <Compile Include="Models\Tools\Hashing.cs" />
-    <Compile Include="Models\Tools\SMTPService.cs" />
+    <Compile Include="Models\Crypt.cs" />
+    <Compile Include="Models\RepositoryCifrado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\RepositoryAccount.cs" />
-    <Compile Include="Repositories\RepositoryClient.cs" />
-    <Compile Include="Repositories\RepositoryPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -165,26 +121,8 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ClientConfirm.cshtml" />
-    <Content Include="Views\Account\PlayerConfirm.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Error\Error.cshtml" />
-    <Content Include="Views\Error\NotFound.cshtml" />
-    <Content Include="Views\Error\TimeOut.cshtml" />
-    <Content Include="Views\Player\Parties.cshtml" />
-    <Content Include="Views\Client\Pubs.cshtml" />
-    <Content Include="Views\Shared\_LayoutMenuPlayer.cshtml" />
-    <Content Include="Views\Shared\_LayoutMenuClient.cshtml" />
-    <Content Include="Views\Shared\_LayoutHeader.cshtml" />
-    <Content Include="Views\Shared\_LayoutFooter.cshtml" />
-    <Content Include="Views\Shared\_LayoutMenu.cshtml" />
-    <Content Include="Views\Shared\_LayoutTableActivePub.cshtml" />
-    <Content Include="Views\Shared\_LayoutPubs.cshtml" />
-    <Content Include="Views\Shared\_LayoutActiveParty.cshtml" />
-    <Content Include="Views\Shared\_LayoutCloseParty.cshtml" />
-    <Content Include="Views\Shared\_LayoutModalParty.cshtml" />
+    <Content Include="Views\Cifrado\Cifrar.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -194,7 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Media\Img\Avatars\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -209,9 +147,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51044</DevelopmentServerPort>
+          <DevelopmentServerPort>52294</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51044/</IISUrl>
+          <IISUrl>http://localhost:52294/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

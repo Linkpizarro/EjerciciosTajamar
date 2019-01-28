@@ -1,0 +1,30 @@
+﻿@using AjaxEmpleados.Models
+@model List<EMP>
+@{
+    ViewBag.Title = "Index";
+}
+
+@section script{ 
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
+<h2>Empleados</h2>
+<div class="row">
+    <div class="col-md-9">
+        <ul>
+            @foreach (EMP item in Model)
+            {
+            <li>
+                @item.APELLIDO | @Ajax.ActionLink("Detalles", "_DetalleEmpleado"
+                                    , new { id = item.EMP_NO }
+                                    , new AjaxOptions { HttpMethod = "GET"
+                                    , UpdateTargetId = "datos"}
+                                    , null)
+            </li>
+            }
+        </ul>
+    </div>
+    <div id="datos" class="col-md-3">
+    </div>
+</div>
+
+

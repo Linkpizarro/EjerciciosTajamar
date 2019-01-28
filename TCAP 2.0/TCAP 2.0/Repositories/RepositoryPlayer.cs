@@ -61,7 +61,14 @@ namespace TCAP_2._0.Repositories
                                 Player player = (from data in context.Players
                                                  where data.Id_Player == x.Id_Player
                                                  select data).FirstOrDefault();
-                                    x.Player = player;
+
+                                User user = (from data in context.Users
+                                             where data.Id_User == player.Id_User
+                                             select data).FirstOrDefault();
+
+                                player.GeneralData = user;
+
+                                x.Player = player;
                             }
                         }
                     

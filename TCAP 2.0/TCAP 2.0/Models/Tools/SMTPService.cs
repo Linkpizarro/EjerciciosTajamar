@@ -26,7 +26,12 @@ namespace TCAP_2._0.Models.Tools
             email.To.Add(new MailAddress(to));
             email.From = new MailAddress("daniel.pizarro@iberpixel.com");
             email.Subject = "Verificación de Cuenta TCAP";
-            email.Body = "<h1>The Coins Are Points?</h1><hr /><h2>Verificación de Cuenta</h2><p>Para verificar su cuenta haga click <a href='servidor/Account/UserConfirm?token=" + token + "'>aquí</a></p>";
+            email.Body = "<h1>The Coins Are Points?</h1>" +
+                "<hr />" +
+                "<h2>Verificación de Cuenta</h2>" +
+                "<p>Para verificar su cuenta haga click " +
+                "<a href='servidor/Account/UserConfirm?token=" + token + "'>aquí</a>" +
+                "</p>";
             email.IsBodyHtml = true;
             email.Priority = MailPriority.Normal;
             String output = null;
