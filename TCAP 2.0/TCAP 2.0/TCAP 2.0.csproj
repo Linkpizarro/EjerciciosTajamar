@@ -180,7 +180,6 @@
     <Content Include="Views\Shared\_LayoutHeader.cshtml" />
     <Content Include="Views\Shared\_LayoutFooter.cshtml" />
     <Content Include="Views\Shared\_LayoutMenu.cshtml" />
-    <Content Include="Views\Shared\_LayoutTableActivePub.cshtml" />
     <Content Include="Views\Shared\_LayoutPubs.cshtml" />
     <Content Include="Views\Shared\_LayoutActiveParty.cshtml" />
     <Content Include="Views\Shared\_LayoutCloseParty.cshtml" />

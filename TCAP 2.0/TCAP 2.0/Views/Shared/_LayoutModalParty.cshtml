@@ -4,10 +4,9 @@
     <div class="modal-content">
         <div class="row">
             <div class="col s3 m3"></div>
-            <div class="col s16 m6">
-                <p><h3>@Model.Boargame_Party</h3> @Model.Start_Party</p>
+            <div class="col s6 m6">
+                <p><b>@Model.Boargame_Party</b><span class="right-align">@Model.Start_Party</span></p>
                 <p><b>@Model.Pub.Name_Pub</b></p>
-
                 <p>@Model.Current_Participant_Party / @Model.Max_Participant_Party</p>
                 <h4>Paticipantes</h4>
                 <ul class="collection">
@@ -15,13 +14,17 @@
                     {
                         <li class="collection-item avatar">
                             <img src="~/Media/Img/Avatars/@participant.Player.GeneralData.Image_User" class="circle" style="width:50px;height:50px;"/>
-                            <span class="title">@participant.Player.Nick_Player</span> 
-                            <p><b>Nivel:</b>@participant.Player.Level_Player</p>
-                            <p class="secondary-content">
+                            <span class="title">
+                                @participant.Player.Nick_Player
                                 @if (participant.Leader_Participant)
                                 {
                                     <i class="yellow-text fas fa-crown"></i>
                                 }
+                            </span>
+                            <p><b>Nivel:</b>@participant.Player.Level_Player</p>
+                            <p class="secondary-content">
+                                <i class="fas fa-thumbs-up"></i>
+                                <i class="fas fa-thumbs-down"></i>
                             </p>
                         </li>
                     }
@@ -30,7 +33,7 @@
             <div class="col s3 m3"></div>
         </div>
     </div>
-    <div class="modal-footer">
+    <div class="row">
         <div class="col s5 m5"></div>
         <div class="col s2 m2">
             @foreach (Participant participant in Model.Participants)

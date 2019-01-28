@@ -83,5 +83,22 @@ namespace TCAP_2._0.Repositories
             }
             return null;
         }
+        public List<Pub> GetPubs(int cp)
+        {
+            int min = (from data in context.Pubs
+                       where data.CP_Pub < cp
+                       select data.CP_Pub).FirstOrDefault();
+
+            int max = (from data in context.Pubs
+                       where data.CP_Pub > cp
+                       select data.CP_Pub).FirstOrDefault();
+
+            List<Pub> pubs = (from data in context.Pubs
+                              where data.CP_Pub >= min
+                              && data.CP_Pub <= max
+                              select data).ToList();
+
+            return pubs;
+        }
     }
 }

@@ -25,5 +25,19 @@ namespace TCAP_2._0.Controllers
             Session["Player"] = player;
             return View(repo.GetDataParties(player.Id_Player));
         }
+
+        //GET: CreateParty
+        public ActionResult CreateParty()
+        {
+            return View();
+        }
+
+        //POST: CreateParty
+        [HttpPost]
+        public ActionResult CreateParty(Party party)
+        {
+            return View();
+        }
+
     }
 }

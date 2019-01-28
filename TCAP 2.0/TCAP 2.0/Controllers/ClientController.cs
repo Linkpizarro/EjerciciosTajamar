@@ -17,6 +17,7 @@ namespace TCAP_2._0.Controllers
         {
             this.repo = repo;
         }
+
         // GET: Pubs
         public ActionResult Pubs()
         {
@@ -24,5 +25,19 @@ namespace TCAP_2._0.Controllers
             Session["Client"] = client;
             return View(repo.GetPubs(client.Id_Client));
         }
+
+        //GET: CreatePub
+        public ActionResult CreatePub()
+        {
+            return View();
+        }
+
+        //POST: CreatePub
+        [HttpPost]
+        public ActionResult CreatePub(Pub pub)
+        {
+            return View();
+        }
+
     }
 }

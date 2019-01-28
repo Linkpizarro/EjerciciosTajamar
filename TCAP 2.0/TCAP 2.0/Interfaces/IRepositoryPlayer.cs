@@ -11,5 +11,6 @@ namespace TCAP_2._0.Interfaces
     {
         Player GetDataPlayer(int id_user);
         List<Party> GetDataParties(int id_player);
+        List<Pub> GetPubs(int cp);
     }
 }
