@@ -1,30 +1,29 @@
-﻿using System;
+﻿using Routing.Handlers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace ConceptosMVC
+namespace Routing
 {
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute(
-                  name: "RoutingBuscar",
-                  url: "Routing/{tipoaccion}/{iddato}",
-                  defaults: new
-                  {
-                      controller = "Routing"
-                  ,
-                      action = "Buscar"
-                  ,
-                      tipoaccion = ""
-                  ,
-                      iddato = ""
-             });
+
+            List<String> Ban = new List<String>();
+            Ban.Add("Pamplona");
+            Ban.Add("Barcelona");
+            Ban.Add("Salamanca");
+            Ban.Add("Murcia");
+
+            RouteTable.Routes.Add("WikiProvinces",
+                new Route("Provinces/{ProvinceName}",
+                    new RouteWiki(Ban)));
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

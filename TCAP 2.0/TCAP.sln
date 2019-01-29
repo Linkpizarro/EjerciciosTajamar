@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCAP 2.0", "TCAP 2.0\TCAP 2.0.csproj", "{39FDE46B-F0DB-47F7-9CBF-78963023C8D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCAP", "TCAP 2.0\TCAP.csproj", "{39FDE46B-F0DB-47F7-9CBF-78963023C8D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

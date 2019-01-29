@@ -1,0 +1,23 @@
+﻿<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <div class="dropdown show bg-dark">
+                <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <img src="~/Media/img/avatar/sdsds.jng"class="rounded-circle"/> usuario
+                </a>
+
+                <div class="dropdown-menu bg-warning" aria-labelledby="dropdownMenuLink">
+                    @Html.ActionLink("Opciones", "Options", "Client", null, new { @class = "dropdown-item" })
+                    <hr />
+                    @Html.ActionLink("Cerrar Sesión", "LogOut", "Account", null, new { @class = "dropdown-item" })
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Establecimientos", "Pubs", "Client", null, new { @class = "nav-link" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Estadísticas", "Stadistic", "Client", null, new { @class = "nav-link" })
+        </li>
+    </ul>
+</div>
