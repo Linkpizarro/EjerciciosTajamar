@@ -1,3 +1,30 @@
-﻿.card {
+﻿body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.card {
     margin:5px;
+}
+.logo{
+    width:100px;
+    height:60px;
+}
+.logo_title {
+    margin: 0px 0px 0px -15px;
+}
+
+.bg-green {
+    background-color:#7cb342;
+}
+.text-coins {
+    color: #D96D00;
+}
+.text-points {
+    color: #FFC926;
 }

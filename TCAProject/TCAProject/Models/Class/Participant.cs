@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace TCAP_2._0.Models.Class
+namespace TCAProject.Models.Class
 {
     [Table("PARTICIPANTS")]
     public class Participant
