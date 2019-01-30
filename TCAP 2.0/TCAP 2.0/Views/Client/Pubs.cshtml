@@ -4,47 +4,47 @@
     ViewBag.Title = "Establecimientos";
 }
 @Html.Partial("_LayoutHeader")
-
 <main>
     <div class="row">
-        <div class="col s12 center-align">
-            @if (Model != null)
-            {
-                <h3>Establecimientos Activos</h3>
-                <div class="row">
-                    <div class="col s12">
-                        <table class="highlight s10">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (Pub item in Model)
-                                {
-                                    @Html.Partial("_LayoutPubs", item)
-                                }
-                            </tbody>
-                         </table>
-                      </div>
-                  </div>
-                }
-                else
-                {
-                    <h2 class="red-text">NO TIENES NINGÚN ESTABLECIMIENTO</h2>
-                }
-            </div>
+        <div class="col s2">
+            <a href="@Url.Action("CreatePub", "Client")" class="btn-floating btn-large waves-effect waves-light user"><i class='material-icons'>add</i></a>
         </div>
-    </main>
-
-@section Script
+        <div class="col s8 center-align">
+            <h3>Tus Establecimientos</h3>
+        </div>
+        <div class="col s2"></div>
+    </div>
+    <div class="row">
+        <div class="col s12 center-align">
+            @if (Model != null && Model.Count > 0)
+            {
+                <table class="highlight s10">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Estado</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Pub item in Model)
+                        {
+                            @Html.Partial("_LayoutPubs", item)
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h3 class="red-text">No tiene ningún establecimiento.</h3>
+            }
+        </div>
+    </div>
+</main>
+@section script
 {
     <script>
-            $(document).ready(function(){
-                $('.modal').modal();
-            });
+        $('.dropdown-trigger').dropdown();
     </script>
-
 }
 @Html.Partial("_LayoutFooter")

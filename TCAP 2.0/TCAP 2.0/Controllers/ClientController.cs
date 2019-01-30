@@ -36,7 +36,13 @@ namespace TCAP_2._0.Controllers
         [HttpPost]
         public ActionResult CreatePub(Pub pub)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                repo.CreatePub(pub);
+                return RedirectToAction("Pubs", "Client");
+            }
+
+            return View(pub);
         }
 
     }

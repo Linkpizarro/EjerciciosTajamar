@@ -184,6 +184,7 @@
     <Content Include="Views\Shared\_LayoutActiveParty.cshtml" />
     <Content Include="Views\Shared\_LayoutCloseParty.cshtml" />
     <Content Include="Views\Shared\_LayoutModalParty.cshtml" />
+    <Content Include="Views\Client\CreatePub.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

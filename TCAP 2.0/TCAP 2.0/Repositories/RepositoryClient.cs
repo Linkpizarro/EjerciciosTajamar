@@ -37,7 +37,12 @@ namespace TCAP_2._0.Repositories
 
             return pubs;
         }
-
-
+        public void CreatePub(Pub pub)
+        {
+            pub.Status_Pub = 2;
+            pub.Id_Client = int.Parse(HttpContext.Current.User.Identity.Name);
+            context.Pubs.Add(pub);
+            context.SaveChanges();
+        }
     }
 }

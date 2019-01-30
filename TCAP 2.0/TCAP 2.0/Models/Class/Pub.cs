@@ -10,6 +10,7 @@ namespace TCAP_2._0.Models.Class
     [Table("PUBS")]
     public class Pub
     {
+        //****FALTAN VALIDACIONES****
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("ID_PUB")]
@@ -17,12 +18,16 @@ namespace TCAP_2._0.Models.Class
         [Column("ID_CLIENT")]
         public int Id_Client { get; set; }
         [Column("NAME_PUB")]
+        [Display(Name = "Nombre")]
         public String Name_Pub { get; set; }
         [Column("ADDRESS_PUB")]
+        [Display(Name = "Dirección")]
         public String Address_Pub { get; set; }
         [Column("CP_PUB")]
-        public int CP_Pub { get; set; }
+        [Display(Name = "Código Postal")]
+        public String CP_Pub { get; set; }
         [Column("PHONE_PUB")]
+        [Display(Name = "Número de Teléfono")]
         public String Phone_Pub { get; set; }
         [Column("STATUS_PUB")]
         public int Status_Pub { get; set; }

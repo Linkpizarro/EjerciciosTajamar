@@ -2,24 +2,24 @@
 @model Pub
 <tr data-target='info_@Model.Id_Pub' class="modal-trigger" style="cursor: pointer;">
     <td>@Model.Name_Pub</td>
-    <td>
-        @if (Model.Status_Pub == 1)
-        {
+    @if (Model.Status_Pub == 1)
+    {
+        <td>
             <i class="red-text fas fa-lock"></i>
-        }
-        else
-        {
+        </td>
+        <td>
+            @Html.ActionLink("Abrir", "OpenPub", "Client", new { id = Model.Id_Pub }, new { @class = "btn waves-effect green black-text" })
+        </td>
+    }
+    else
+    {
+        <td>
             <i class="green-text fas fa-lock-open"></i>
-        }
-    </td>
-    <div id="info_@Model.Id_Pub" class="modal">
-        <div class="modal-content">
-            <h3>@Model.Name_Pub</h3>
-            <h4>Dirección: @Model.Address_Pub</h4>
-        </div>
-        <div class="modal-footer">
-            <a class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-        </div>
-    </div>
+        </td>
+        <td>
+            @Html.ActionLink("Cerrar","ClosePub","Client",new { id = Model.Id_Pub},new { @class = "btn waves-effect red black-text" })
+        </td>
+
+    }
 </tr>
 
