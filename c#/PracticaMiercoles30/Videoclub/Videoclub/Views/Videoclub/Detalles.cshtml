@@ -1,0 +1,44 @@
+﻿@using Videoclub.Models
+@model Pelicula
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h3>Detalles</h3>
+<table class="table-bordered col-md-12 text-center">
+    <tr>
+        <th class="text-center" colspan="3">Título</th>
+    <tr>
+    <tr>
+        <td colspan="3">@Model.Titulo</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><img src="~/Images/CARTELES/@Model.Cartel" style="width:100px;height:150px;" /></td>
+        <th class="text-center" colspan="2">Actores</th>
+    </tr>
+    <tr>
+        <td colspan="2">@Model.Actores</td>
+    </tr>
+    <tr>
+        <th class="text-center" colspan="3">Argumento</th>
+    </tr>
+    <tr>
+        <td colspan="3">@Model.Argumento</td>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Volver", "Peliculas", "Videoclub")</td>
+        @if (ViewBag.Compras != null)
+        {
+            if (((List<int>)ViewBag.Compras).Contains(Model.Id)) { }
+            else
+            {
+                <td colspan="2">@Html.ActionLink("Comprar", "Comprar", "Videoclub", new { idPelicula = Model.Id },null)</td>
+            }
+        }
+        else
+        {
+            <td colspan="2">@Html.ActionLink("Comprar", "Comprar", "Videoclub", new { idPelicula = Model.Id },null)</td>
+        }
+    </tr>
+</table>
+

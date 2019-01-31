@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "CreateParty";
+}
+<main>
+    <div class="row">
+        <div class="col s12 center-align">
+            <h3>Crear Partida</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col s12 center-align">
+            <form method="post">
+                <div class='row'>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <input type='number' name='participant' id='participant' />
+                            <label for='participant'>Nº participantes</label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <input type='text' name='participant' id='participant' />
+                            <label for='participant'>Juego</label>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class="col s6">
+                        <div class="input-field col s12">
+                            <input type="text" class="datepicker">
+                            <label>Fecha del evento</label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class='input-field col s12'>
+                            <input type="text" class="timepicker">
+                            <label>Hora del evento</label>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class="col s3"></div>
+                    <div class="col s6">
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="">Seleccione un Establecimiento</option>
+                                    <option value="1">Bar Patam</option>
+                                    <option value="2">Bar Los Remos</option>
+                            </select>
+                            <label>Establecimiento</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3"></div>
+                <div class='row'>
+                    <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect user black-text'>Crear Partida</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+@section script{
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+            $('.datepicker').datepicker();
+            $('.timepicker').timepicker();
+        });
+    </script>
+}

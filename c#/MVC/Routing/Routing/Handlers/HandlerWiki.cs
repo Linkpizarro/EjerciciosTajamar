@@ -21,9 +21,6 @@ namespace Routing.Handlers
 
         public void ProcessRequest(HttpContext context)
         {
-            //String rawUrl = context.Request.RawUrl;
-            //int lastSlash = rawUrl.LastIndexOf("/") + 1;
-            //String province = rawUrl.Substring(lastSlash);
             RouteValueDictionary rutes = this.requestcontext.RouteData.Values;
             String province = rutes["ProvinceName"].ToString();
             if (this.provinces.Contains(province))

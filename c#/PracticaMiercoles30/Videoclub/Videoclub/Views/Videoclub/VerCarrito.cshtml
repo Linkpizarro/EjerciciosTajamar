@@ -1,0 +1,41 @@
+﻿@using Videoclub.Models
+@model List<Pelicula>
+@{
+    ViewBag.Title = "Tus Peliculas";
+}
+
+<h3>Tus Peliculas</h3>
+@if (Model != null && Model.Count > 0)
+{
+<table class="table-bordered col-md-12 text-center">
+    <tr>
+        <th>Cartel</th>
+        <th>Título</th>
+        <th>Precio</th>
+        <th>Opciones</th>
+    </tr>
+    @foreach (Pelicula item in Model)
+    {
+
+    <tr>
+        <td>
+            <img src="~/Images/CARTELES/@item.Cartel" style="width:100px;height:150px;" />
+        </td>
+        <td>@item.Titulo</td>
+        <td>@item.Precio €</td>
+        <td>@Html.ActionLink("Eliminar", "Eliminar","Videoclub",new { idPelicula = item.Id},null)</td>
+    </tr>
+
+
+    }
+    <tr>
+    <th>Precio total: @Model.Sum(model => model.Precio)€</th>
+    </tr>
+</table>
+    @Html.ActionLink("Finalizar Compra", "FinalizarCompra","Videoclub")
+}
+else
+{
+    <h4 class="text-danger">No tienes ninguna película.</h4>
+}
+

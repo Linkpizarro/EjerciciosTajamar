@@ -1,0 +1,41 @@
+﻿@using TCAP_2._0.Models.Class
+@model Player
+<div class="menu">
+    <ul class="left hide-on-med-and-down">
+        <li>
+            <ul id='dropdown' class='dropdown-content drop-user'>
+                <li>@Html.ActionLink("Opciones", "Settings", "Player")</li>
+                <li>@Html.ActionLink("Cerrar Sesion", "Logout", "Account", null, new { @class = "red-text" })</li>
+            </ul>
+            <div class="dropdown-trigger chip user btn" data-target='dropdown'>
+                <img class="circle" src="~/Media/Img/Avatars/@Model.GeneralData.Image_User" style="width:50px;height:30px;" />
+                <span>@Model.Nick_Player</span>
+            </div>
+        </li>
+    </ul>
+    <ul class="right">
+        <li class="hide-on-med-and-up show-on-medium-and-down"><i class="sidenav-trigger left fas fa-bars bars-menu" data-target="slide-out"></i></li>
+        <li class="hide-on-med-and-down">@Html.ActionLink("Partidas", "Parties", "Player")</li>
+        <li class="hide-on-med-and-down">@Html.ActionLink("Canjear Ticket", "Tickets", "Palyer")</li>
+    </ul>
+</div>
+<ul id="slide-out" class="sidenav">
+    <li>
+        <div class="user-view">
+            <a href="#user"> <img src="~/Media/Img/Avatars/@Model.GeneralData.Image_User" style="width:150px;height:150px;" class="circle" /></a>
+            <a href="#name">
+                <span class="black-text name">
+                    @Model.Nick_Player
+                </span>
+            </a>
+            <a href="#email"><span class="black-text email">@Model.GeneralData.Email_User</span></a>
+        </div>
+    </li>
+
+    <li>@Html.ActionLink("Opciones", "Settings", "Player")</li>
+    <li><div class="divider"></div></li>
+    <li>@Html.ActionLink("Partidas", "Parties", "Player")</li>
+    <li>@Html.ActionLink("Canjear Ticket", "Tickets", "Palyer")</li>
+    <li><div class="divider"></div></li>
+    <li>@Html.ActionLink("Cerrar Sesion", "Logout", "Account", null, new { @class = "red-text" })</li>
+</ul>

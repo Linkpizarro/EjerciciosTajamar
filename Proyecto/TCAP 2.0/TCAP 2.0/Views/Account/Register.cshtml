@@ -1,0 +1,106 @@
+﻿@using TCAP_2._0.Models.Class
+@model User
+@{
+    ViewBag.Title = "Registro";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+<center>
+    <div class="container">
+        <div class="row"></div>
+        <div class="z-depth-1 grey lighten-4" style="display: inline-block; padding: 35px; border: 1px solid #EEE;">
+            <h5 class="black-text">@ViewBag.Title</h5>
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true)
+            <div class='row'>
+                <div class="col s12 m6">
+                    <div class='input-field col s12 m12'>
+                        @Html.LabelFor(model => model.Name_User)
+                        @Html.EditorFor(model => model.Name_User)
+                        <span class="helper-text red-text">@Html.ValidationMessageFor(z => z.Name_User)</span>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class='input-field col s12 m12'>
+                        @Html.LabelFor(model => model.Surname_User)
+                        @Html.EditorFor(model => model.Surname_User)
+                        <span class="helper-text red-text">@Html.ValidationMessageFor(z => z.Surname_User)</span>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class='input-field col s12 m12'>
+                        @Html.LabelFor(model => model.Email_User)
+                        @Html.EditorFor(model => model.Email_User)
+                        <span class="helper-text red-text">@Html.ValidationMessageFor(z => z.Email_User)</span>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class='input-field col s12 m12'>
+                        <input type="password" name="pass" id="pass" />
+                        <label for="pass">Contraseña</label>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class='input-field col s12 m12'>
+                        <input type="password" name="repPass" id="repPass" />
+                        <label for="repPass">Repetir Contraseña</label>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="file-field  col s12 m12 file">
+                        <div class="btn client">
+                            <span class="black-text">Avatar</span>
+                            <input type="file" name="file" />
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path" type="text" placeholder="Upload one files">
+                        </div>
+                    </div>
+                </div>
+              </div>
+            <div class="row">
+                <div class="col s12 m6 center-align">
+                    <div class='input-field col s6 m6'>
+                        <label class="col s6 m6">
+                            @Html.RadioButtonFor(model => model.Id_Rol, 2)
+                            <span>Jugador</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col s12 m6 center-align">
+                    <div class='input-field col s6 m6'>
+                        <label class="left-align col s6 m6">
+                            @Html.RadioButtonFor(model => model.Id_Rol, 1)
+                            <span>Cliente</span>
+                        </label>
+                    </div>
+                </div>
+                <br />
+                <div class="col s12 m12">
+                    <span class="helper-text red-text">@Html.ValidationMessageFor(z => z.Id_Rol)</span>
+                </div>
+            </div>
+            if (!(ViewBag.Error is null))
+            {
+                <div class="row">
+                    <span class="helper-text red-text">@ViewBag.Error</span>
+                </div>
+             }
+            <div class='row'>
+                <div class="col m3 s1"></div>
+                <button type='submit' name='btn_login' class='col s10 m6 btn btn-large waves-effect client black-text'
+                        style="font-family: 'ZCOOL KuaiLe', cursive !important;">
+                    Registrarse
+                </button>
+                <div class="col m3 s1"></div>
+            </div>
+            }
+            @Html.ActionLink("¿Ya tienes una cuenta? Inicia sesión ahora.", "Login", "Account", null, new { @class = "orange-text" })
+            <br />
+            @Html.ActionLink("Volver a Home", "Index", "Home", null, new { @class = "green-text" })
+        </div>
+        <div class="row"></div>
+    </div>
+</center>
+

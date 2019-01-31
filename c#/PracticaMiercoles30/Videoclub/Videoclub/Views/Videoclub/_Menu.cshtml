@@ -1,0 +1,18 @@
+﻿@using Videoclub.Models
+@model List<Genero>
+
+    <h3>Géneros</h3>
+    <hr />
+    <ul>
+        @foreach (Genero item in Model)
+        {
+            <li>@Html.ActionLink(item.Nombre, "Peliculas", "Videoclub", new { idGenero = item.Id }, null)</li>
+        }
+    </ul>
+    <h3>
+        Compras:<span>@ViewBag.NCompras</span>
+    </h3>
+
+    @Html.ActionLink("Ver Carrito", "VerCarrito", "VideoClub")
+
+

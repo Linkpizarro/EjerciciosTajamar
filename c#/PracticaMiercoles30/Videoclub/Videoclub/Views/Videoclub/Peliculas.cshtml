@@ -1,0 +1,31 @@
+﻿@using Videoclub.Models
+@model List<Pelicula>
+@{
+    ViewBag.Title = "Peliculas";
+}
+
+<h3>Peliculas</h3>
+<table class="table-bordered col-md-12 text-center">
+    <tr>
+        <th>Título</th>
+        <th>Precio</th>
+        <th>Cartel</th>
+    </tr>
+    @foreach (Pelicula item in Model)
+    {
+    
+    <tr>
+        <td>@item.Titulo</td>
+        <td>@item.Precio €</td>
+        <td>
+            <a href="@Url.Action("Detalles","Videoclub",new { id = item.Id},null)">
+                <img src="~/Images/CARTELES/@item.Cartel" style="width:100px;height:150px;" />
+            </a>
+        </td>
+    </tr>
+  
+       
+    }
+</table>
+
+

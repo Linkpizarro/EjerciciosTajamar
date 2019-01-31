@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Routing.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,27 @@ namespace Routing
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_Error()
+        {
+            Exception ex = Server.GetLastError();
+            HttpException exhttp = ex as HttpException;
+            String action = "";
+            Context.ClearError();
+            if(exhttp.GetHttpCode() == 404)
+            {
+                action = "NotFound";
+            }
+            else
+            {
+                action = "Error";
+            }
+            RouteData rute = new RouteData();
+            rute.Values.Add("controller", "Error");
+            rute.Values.Add("action", action);
+            IController controller = new ErrorController();
+            controller.Execute(new RequestContext(new HttpContextWrapper(Context),rute));
         }
     }
 }

@@ -1,0 +1,316 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B14C57CE-C72A-4638-8501-CBBC7EAA2D3A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Videoclub</RootNamespace>
+    <AssemblyName>Videoclub</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\BANDERAS\Alemania.jpg" />
+    <Content Include="Images\BANDERAS\CA.jpg" />
+    <Content Include="Images\BANDERAS\EEUU.jpg" />
+    <Content Include="Images\BANDERAS\ES.jpg" />
+    <Content Include="Images\BANDERAS\IT.jpg" />
+    <Content Include="Images\BANDERAS\UK.jpg" />
+    <Content Include="Images\CARTELES\ABRE_LOS_OJOS.JPG" />
+    <Content Include="Images\CARTELES\Al_Final_De_La_Escalera.jpg" />
+    <Content Include="Images\CARTELES\avatar.jpg" />
+    <Content Include="Images\CARTELES\A_Todo_Gas.jpg" />
+    <Content Include="Images\CARTELES\bella_y_bestia.jpg" />
+    <Content Include="Images\CARTELES\Buscando_a_Nemo.jpg" />
+    <Content Include="Images\CARTELES\Cadena_Perpetua.jpg" />
+    <Content Include="Images\CARTELES\cometieron_dos_errores.jpg" />
+    <Content Include="Images\CARTELES\conan_el_barbaro.jpg" />
+    <Content Include="Images\CARTELES\depredador.jpg" />
+    <Content Include="Images\CARTELES\dirtydancing.jpg" />
+    <Content Include="Images\CARTELES\dostontosmuytontos.jpg" />
+    <Content Include="Images\CARTELES\elefectomariposa.jpg" />
+    <Content Include="Images\CARTELES\EL_IMPERIO_CONTRAATACA.jpg" />
+    <Content Include="Images\CARTELES\El_Resplandor.jpg" />
+    <Content Include="Images\CARTELES\El_Rey_Leon.jpg" />
+    <Content Include="Images\CARTELES\Gangs_Of_New_York.jpg" />
+    <Content Include="Images\CARTELES\historia_interminable.jpg" />
+    <Content Include="Images\CARTELES\Indiana_Jones_y_el_Templo_Maldito.jpg" />
+    <Content Include="Images\CARTELES\juegos_de_guerra.jpg" />
+    <Content Include="Images\CARTELES\karate_kid.jpg" />
+    <Content Include="Images\CARTELES\lascronicasderiddick.jpg" />
+    <Content Include="Images\CARTELES\Las_aventuras_de_Ford_Fairlane.jpg" />
+    <Content Include="Images\CARTELES\La_Guerra_de_las_galaxias.jpg" />
+    <Content Include="Images\CARTELES\La_Princesa_Prometida.jpg" />
+    <Content Include="Images\CARTELES\La_Roca.jpg" />
+    <Content Include="Images\CARTELES\la_sirenita.jpg" />
+    <Content Include="Images\CARTELES\lellamanbodhi.jpg" />
+    <Content Include="Images\CARTELES\Leyendas_de_Pasion.jpg" />
+    <Content Include="Images\CARTELES\los_bingueros.jpg" />
+    <Content Include="Images\CARTELES\Los_Goonies.jpg" />
+    <Content Include="Images\CARTELES\Los_Otros.jpg" />
+    <Content Include="Images\CARTELES\Los_Padres_de_ella.jpg" />
+    <Content Include="Images\CARTELES\Matrix.jpg" />
+    <Content Include="Images\CARTELES\Mejor_Imposible.jpg" />
+    <Content Include="Images\CARTELES\Piratas_Del_Caribe.jpg" />
+    <Content Include="Images\CARTELES\porkys.jpg" />
+    <Content Include="Images\CARTELES\rambo.jpg" />
+    <Content Include="Images\CARTELES\Regreso_al_futuro.jpg" />
+    <Content Include="Images\CARTELES\Snatch.jpg" />
+    <Content Include="Images\CARTELES\sospechosos_habituales.jpg" />
+    <Content Include="Images\CARTELES\spiderman2.jpg" />
+    <Content Include="Images\CARTELES\terminator2.jpg" />
+    <Content Include="Images\CARTELES\THEITALIANJOB.jpg" />
+    <Content Include="Images\CARTELES\top_gun.jpg" />
+    <Content Include="Images\CARTELES\torrente.jpg" />
+    <Content Include="Images\CARTELES\tron.jpg" />
+    <Content Include="Images\CARTELES\volar_por_los_aires.jpg" />
+    <Content Include="Images\CARTELES\willow.jpg" />
+    <Content Include="Images\CARTELES\y_si_no_nos_enfadamos.jpg" />
+    <Content Include="Images\CLIENTES\90210.jpg" />
+    <Content Include="Images\CLIENTES\Albundy.jpg" />
+    <Content Include="Images\CLIENTES\aldoraine.jpg" />
+    <Content Include="Images\CLIENTES\arenales.jpg" />
+    <Content Include="Images\CLIENTES\axelfoley.jpg" />
+    <Content Include="Images\CLIENTES\balki.jpg" />
+    <Content Include="Images\CLIENTES\Barney_Stinson.png" />
+    <Content Include="Images\CLIENTES\bastian2.jpg" />
+    <Content Include="Images\CLIENTES\BiffTannen.jpg" />
+    <Content Include="Images\CLIENTES\braddock.jpg" />
+    <Content Include="Images\CLIENTES\buzzlightyear.jpg" />
+    <Content Include="Images\CLIENTES\carltonbanks.jpg" />
+    <Content Include="Images\CLIENTES\ChesterCopperpot.jpg" />
+    <Content Include="Images\CLIENTES\cuco.jpg" />
+    <Content Include="Images\CLIENTES\delorian.jpg" />
+    <Content Include="Images\CLIENTES\domtoretto.jpg" />
+    <Content Include="Images\CLIENTES\Dory.gif" />
+    <Content Include="Images\CLIENTES\EllenRipley.jpg" />
+    <Content Include="Images\CLIENTES\gaylofollen.jpg" />
+    <Content Include="Images\CLIENTES\harrycallahan.jpg" />
+    <Content Include="Images\CLIENTES\highway.jpg" />
+    <Content Include="Images\CLIENTES\ianmalcolm.jpg" />
+    <Content Include="Images\CLIENTES\iceman.jpg" />
+    <Content Include="Images\CLIENTES\ivandrago.jpg" />
+    <Content Include="Images\CLIENTES\jackburton.jpg" />
+    <Content Include="Images\CLIENTES\jacksparrow.jpg" />
+    <Content Include="Images\CLIENTES\jesusquintana.gif" />
+    <Content Include="Images\CLIENTES\johnconnor.jpg" />
+    <Content Include="Images\CLIENTES\johnnycastle.jpg" />
+    <Content Include="Images\CLIENTES\kaisersoze.jpg" />
+    <Content Include="Images\CLIENTES\larusso.jpg" />
+    <Content Include="Images\CLIENTES\macfly.jpg" />
+    <Content Include="Images\CLIENTES\Madmartigan.jpg" />
+    <Content Include="Images\CLIENTES\mahoney.jpg" />
+    <Content Include="Images\CLIENTES\marcusbrody.gif" />
+    <Content Include="Images\CLIENTES\marklenders.jpg" />
+    <Content Include="Images\CLIENTES\matthooper.jpg" />
+    <Content Include="Images\CLIENTES\melvinudall.jpg" />
+    <Content Include="Images\CLIENTES\michaelknight.jpg" />
+    <Content Include="Images\CLIENTES\mikewalls.jpg" />
+    <Content Include="Images\CLIENTES\mike_donovan.jpg" />
+    <Content Include="Images\CLIENTES\neo.jpg" />
+    <Content Include="Images\CLIENTES\obi_wan_kenobi.jpg" />
+    <Content Include="Images\CLIENTES\optimusprime.jpg" />
+    <Content Include="Images\CLIENTES\paulpfeiffer.jpg" />
+    <Content Include="Images\CLIENTES\peeweemorris.jpg" />
+    <Content Include="Images\CLIENTES\pinky.jpg" />
+    <Content Include="Images\CLIENTES\princesabuttercup.jpg" />
+    <Content Include="Images\CLIENTES\scodfield.jpg" />
+    <Content Include="Images\CLIENTES\sonnycrockett.jpg" />
+    <Content Include="Images\CLIENTES\stanleygoodspeed.jpg" />
+    <Content Include="Images\CLIENTES\templetonpecks.jpg" />
+    <Content Include="Images\CLIENTES\tubbs.jpg" />
+    <Content Include="Images\CLIENTES\utah.jpg" />
+    <Content Include="Images\CLIENTES\waldofaldo.jpg" />
+    <Content Include="Images\CLIENTES\zackmorris.jpg" />
+    <Content Include="Images\CLIENTES\zuco.jpg" />
+    <Content Include="Images\DISTRIBUIDORAS\buenavista.jpg" />
+    <Content Include="Images\DISTRIBUIDORAS\century.jpg" />
+    <Content Include="Images\DISTRIBUIDORAS\columbia.jpg" />
+    <Content Include="Images\DISTRIBUIDORAS\filmax.jpg" />
+    <Content Include="Images\DISTRIBUIDORAS\laurenfilms.jpg" />
+    <Content Include="Images\DISTRIBUIDORAS\mangafilms.jpg" />
+    <Content Include="Images\DISTRIBUIDORAS\pixar.jpg" />
+    <Content Include="Images\DISTRIBUIDORAS\SonyPictures.jpg" />
+    <Content Include="Images\DISTRIBUIDORAS\tripictures.jpg" />
+    <Content Include="Images\DISTRIBUIDORAS\warner.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Videoclub\Peliculas.cshtml" />
+    <Content Include="Views\Videoclub\Detalles.cshtml" />
+    <Content Include="Views\Videoclub\VerCarrito.cshtml" />
+    <Content Include="Views\User\_Nav.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Pedidos.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\AuthorizeClienteAttribute.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VideoclubController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Genero.cs" />
+    <Compile Include="Models\Pedido.cs" />
+    <Compile Include="Models\Pelicula.cs" />
+    <Compile Include="Models\VideoclubContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\RepositoryUser.cs" />
+    <Compile Include="Repositories\RepositoryVideoclub.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Videoclub\_Menu.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50587</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50587/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

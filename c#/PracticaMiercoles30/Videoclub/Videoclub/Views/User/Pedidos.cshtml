@@ -1,0 +1,31 @@
+﻿@using Videoclub.Models
+@model List<Pedido>
+@{
+    ViewBag.Title = "Pedidos";
+}
+
+<h2>Pedidos</h2>
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table-bordered col-md-12 text-center">
+        <tr>
+            <th>Película</th>
+            <th>Fecha</th>
+            <th>Precio</th>
+        </tr>
+        @foreach (Pedido item in Model)
+        {
+            <tr>
+                <td>@item.IdPelicula</td>
+                <td>@item.Fecha</td>
+                <td>@item.Precio €</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h4 class="text-danger">No tienes ningún pedido.</h4>
+}
+
+
