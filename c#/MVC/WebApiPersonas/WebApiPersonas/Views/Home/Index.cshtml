@@ -1,0 +1,32 @@
+﻿@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "/api/personas",
+                dataType: "json",
+                success: function (data) {
+                    $(data).each(function (key,value) {
+                        var tr = $("<tr>")
+                        var nombre = $("<td>").html(value.Nombre)
+                        var email = $("<td>").html(value.Email)
+                        var edad = $("<td>").html(value.Edad)
+                        tr.append([nombre, email, edad])
+                        $("#personas").append(tr)
+                    });
+
+                }
+
+            });
+        });
+    </script>
+}
+<h1>Personas</h1>
+<table id="personas" class="table-hover table">
+    <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Edad</th>
+    </tr>
+</table>
