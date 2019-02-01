@@ -16,7 +16,7 @@
                             <img src="~/Media/Img/Avatars/@participant.Player.GeneralData.Image_User" class="circle" style="width:50px;height:50px;"/>
                             <span class="title">
                                 @participant.Player.Nick_Player
-                                @if (participant.Leader_Participant)
+                                @if (participant.Leader_Participant == 1)
                                 {
                                     <i class="yellow-text fas fa-crown"></i>
                                 }
@@ -38,8 +38,8 @@
         <div class="col s2 m2">
             @foreach (Participant participant in Model.Participants)
             {
-                if (((Player)Session["Player"]).Id_Player == participant.Id_Player && participant.Leader_Participant
-                    && Model.Status_Party == 4)
+                if (((Player)Session["User"]).Id_Player == participant.Id_Player && participant.Leader_Participant == 1
+                    && Model.Status_Party == 2)
                 {
                     <button class="red btn">Cancelar Partida</button>
                 }

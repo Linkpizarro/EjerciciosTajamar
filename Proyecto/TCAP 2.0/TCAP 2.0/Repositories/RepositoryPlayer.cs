@@ -83,12 +83,32 @@ namespace TCAP_2._0.Repositories
             }
             return null;
         }
-        public List<Pub> GetPubs(int cp)
+        public List<Pub> GetPubs()
         {
             List<Pub> pubs = (from data in context.Pubs
                               select data).ToList();
 
             return pubs;
+        }
+        public void CreateParty(Party party,int id_player)
+        {
+            party.Current_Participant_Party = 0;
+            party.Status_Party = 2;
+            context.Parties.Add(party);
+            context.SaveChanges();
+
+            AddParticipant(party.Id_Party, id_player, 1);
+        }
+        public void AddParticipant(int id_party, int id_player,int leader = 0)
+        {
+            Participant participant = new Participant()
+            {
+                Id_Party = id_party,
+                Id_Player = id_player,
+                Leader_Participant = leader
+            };
+            context.Participants.Add(participant);
+            context.SaveChanges();
         }
     }
 }

@@ -3,12 +3,12 @@
 <div class="menu">
     <ul class="left hide-on-med-and-down">
         <li>
-            <ul id='dropdown' class='dropdown-content drop-user'>
+            <ul id='dropdown' class='dropdown-content client'>
                 <li>@Html.ActionLink("Opciones", "Settings", "Client")</li>
-                <li>@Html.ActionLink("Cerrar Sesion", "Logout", "Account", null, new { @class = "red-text" })</li>
+                <li>@Html.ActionLink("Cerrar Sesion", "Logout", "Account", null, new { @class = "close-session" })</li>
             </ul>
-            <div class="dropdown-trigger chip user btn" data-target='dropdown'>
-                <img class="circle" src="~/Media/Img/Avatars/@Model.GeneralData.Image_User" style="width:50px;height:30px;" />
+            <div class="dropdown-trigger chip client btn" data-target='dropdown'>
+                <img class="circle" src="~/Media/Img/Avatars/@Model.GeneralData.Image_User"/>
                 <span>@Model.GeneralData.Name_User @Model.GeneralData.Surname_User</span>
             </div>
         </li>

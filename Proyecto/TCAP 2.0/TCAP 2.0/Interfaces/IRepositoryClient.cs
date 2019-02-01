@@ -11,6 +11,6 @@ namespace TCAP_2._0.Interfaces
     {
         Client GetDataClient(int id_user);
         List<Pub> GetPubs(int id_client);
-        void CreatePub(Pub pub);
+        void CreatePub(Pub pub,int id_client);
     }
 }

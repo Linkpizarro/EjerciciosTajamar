@@ -18,11 +18,11 @@ namespace TCAP_2._0.Models.Class
         public int Id_Pub { get; set; }
         [Column("BOARDGAME_PARTY")]
         [Required(ErrorMessage ="El nombre del juego es obligatiorio.")]
-        [RegularExpression(@"^\d\w+$",ErrorMessage ="No se admiten caracteres especiales.")]
+        //[RegularExpression(@"^\d\w+$",ErrorMessage ="No se admiten caracteres especiales.")]
         [Display(Name = "Juego de Mesa")]
         public String Boargame_Party { get; set; }
         [Column("START_PARTY")]
-        [Required(ErrorMessage = "El día de inicio es obligatiorio.")]
+        //[Required(ErrorMessage = "El día de inicio es obligatiorio.")]
         [Display(Name = "Día de Inicio")]
         public DateTime Start_Party { get; set; }
         [Column("CURRENT_PARTICIPANT_PARTY")]

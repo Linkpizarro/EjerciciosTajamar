@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using TCAP_2._0.Attribute;
 using TCAP_2._0.Interfaces;
 using TCAP_2._0.Models.Class;
+using TCAP_2._0.Models.Tools;
 
 namespace TCAP_2._0.Controllers
 {
-    //[AuthorizePlayer]
+    [AuthorizePlayer]
     public class PlayerController : Controller
     {
         IRepositoryPlayer repo;
@@ -29,14 +30,26 @@ namespace TCAP_2._0.Controllers
         //GET: CreateParty
         public ActionResult CreateParty()
         {
+            ViewBag.Pubs = repo.GetPubs();
             return View();
         }
 
         //POST: CreateParty
         [HttpPost]
-        public ActionResult CreateParty(Party party)
+        public ActionResult CreateParty(Party party,String datadate,String datatime,String pub)
         {
-            return View();
+            DateTime datetime = DateTime.Parse(datadate + " " + datatime);
+            
+            //if (ModelState.IsValid){}
+         
+                party.Start_Party = datetime;
+                party.Id_Pub = int.Parse(pub);
+                repo.CreateParty(party, ((Player)Session["User"]).Id_Player);
+                return RedirectToAction("Parties", "Player");
+            
+
+            //ViewBag.Pubs = repo.GetPubs();
+            //return View(party);
         }
 
     }

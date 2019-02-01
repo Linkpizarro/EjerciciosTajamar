@@ -105,11 +105,13 @@ hr{
     font-size: 35px;
     color: black;
 }
+
 .dropdown-content {
     border-radius: 15px;
     overflow: hidden;
-    background-color: orange;
+    background-color: #FFC926;
 }
+
 ul li a:hover {
     color: #8c8b8b;
     background-color: transparent;
@@ -125,4 +127,10 @@ ul li a:hover {
 }
 .select-wrapper .dropdown-content li span {
     color: black;
+}
+.close-session{
+    background-color:black;
+}
+.close-session:hover{
+    background-color:#ff0000;
 }

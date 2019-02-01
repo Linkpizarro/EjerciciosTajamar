@@ -7,6 +7,11 @@
 <main>
     <div class="row">
         <div class="col s12 center-align">
+            <h3>Crear Establecimiento</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 center-align">
             @using (Html.BeginForm("CreatePub", "Client", FormMethod.Post))
             {
                 @Html.ValidationSummary(true)

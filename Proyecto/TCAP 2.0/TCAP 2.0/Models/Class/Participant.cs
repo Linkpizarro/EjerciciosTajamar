@@ -19,7 +19,7 @@ namespace TCAP_2._0.Models.Class
         [Column("ID_PLAYER")]
         public int Id_Player { get; set; }
         [Column("LEADER_PARTICIPANT")]
-        public Boolean Leader_Participant { get; set; }
+        public int Leader_Participant { get; set; }
         [NotMapped]
         public Player Player { get; set; }
     }

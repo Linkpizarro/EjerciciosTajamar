@@ -38,7 +38,7 @@ namespace TCAP_2._0.Controllers
         {
             if (ModelState.IsValid)
             {
-                repo.CreatePub(pub);
+                repo.CreatePub(pub,((Client)Session["User"]).Id_Client);
                 return RedirectToAction("Pubs", "Client");
             }
 
