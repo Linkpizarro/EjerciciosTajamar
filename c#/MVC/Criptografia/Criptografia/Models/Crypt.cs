@@ -24,6 +24,7 @@ namespace Criptografia.Models
                 Array.Resize(ref iv, ivSize);
                 return iv;
             }
+
             public static void encryptToFile(String plainMessage, String filename, byte[] Key, byte[] IV)
             {
                 // Crear un flujo para el archivo a generarse
