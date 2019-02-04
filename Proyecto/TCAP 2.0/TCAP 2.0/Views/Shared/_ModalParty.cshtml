@@ -3,8 +3,7 @@
 <div id="info_@Model.Id_Party" class="modal">
     <div class="modal-content">
         <div class="row">
-            <div class="col s3 m3"></div>
-            <div class="col s6 m6">
+            <div class="col s12 m12">
                 <p><b>@Model.Boargame_Party</b><span class="right-align">@Model.Start_Party</span></p>
                 <p><b>@Model.Pub.Name_Pub</b></p>
                 <p>@Model.Current_Participant_Party / @Model.Max_Participant_Party</p>
@@ -23,29 +22,30 @@
                             </span>
                             <p><b>Nivel:</b>@participant.Player.Level_Player</p>
                             <p class="secondary-content">
-                                <i class="fas fa-thumbs-up"></i>
-                                <i class="fas fa-thumbs-down"></i>
+                                @if (((Player)Session["User"]).Id_Player != participant.Id_Player)
+                                {
+                                    <i class="fas fa-thumbs-up"></i>
+                                    <i class="fas fa-thumbs-down"></i>
+                                }
                             </p>
                         </li>
                     }
                 </ul>
             </div>
-            <div class="col s3 m3"></div>
         </div>
     </div>
     <div class="row">
-        <div class="col s5 m5"></div>
-        <div class="col s2 m2">
+        <div class="col s12 m12 center-align">
             @foreach (Participant participant in Model.Participants)
             {
                 if (((Player)Session["User"]).Id_Player == participant.Id_Player && participant.Leader_Participant == 1
                     && Model.Status_Party == 2)
                 {
-                    <button class="red btn">Cancelar Partida</button>
+                    <button class="user waves-effect btn col s6 m6">Cerrar Partida</button>
+                    <button class="red waves-effect btn col s6 m6">Eliminar Partida</button>
                 }
             }
         </div>
-        <div class="col s5 m5"></div>
     </div>
 </div>
 
