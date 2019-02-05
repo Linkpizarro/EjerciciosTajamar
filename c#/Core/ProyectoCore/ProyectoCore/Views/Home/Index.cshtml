@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function(){
+            $("#boton").click(function () {
+                $("#titulo").text("Funciona JQuery en Core!!!");
+            });
+        });
+    </script>
+}
+
+<h2>Estoy en Casa!!</h2>
+
+<h2 id="titulo" style="color:blue"></h2>
+<button type="button" class=btn-success id="boton">
+    Voy a tener suerte...
+</button>
+<img src="~/images/2.jpg" style="width:100px; height: 150px" />
+
