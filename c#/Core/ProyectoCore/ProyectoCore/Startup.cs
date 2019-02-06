@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.AzureAppServices;
+using Microsoft.Extensions.Logging.Console;
 using ProyectoCore.Data;
 using ProyectoCore.Repositories;
 
@@ -26,25 +29,36 @@ namespace ProyectoCore
         public void ConfigureServices(IServiceCollection services)
         {
             //INVERSION DE CONTROL IoC
-            services.AddTransient<RepositoryHospital>();
-            services.AddDbContext<HospitalContext>(options => options.UseSqlServer(configuration.GetConnectionString("CadenaHospital")));
-
+            services.AddTransient<IRepositoryHospital,RepositoryHospital>();
+            services.AddDbContext<IHospitalContext, Hospital>(options => options.UseSqlServer(configuration.GetConnectionString("CadenaHospitalAzure")));
+           
             //DEBEMOS INDICAR QUE ARRANQUE EL SERVICIO DEL 
             //MIDELWARE
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app,IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            //LOGGER
+
+            loggerFactory.AddAzureWebAppDiagnostics(
+            new AzureAppServicesDiagnosticsSettings
+            {
+            OutputTemplate =
+                "{Timestamp:dd-MM-yyyy HH:mm:ss zzz} [{Level}] {RequestId}-{SourceContext}: {Message}{NewLine}{Exception}"
+            }
+            );
+            //loggerFactory.AddProvider(new ConsoleLoggerProvider((categoria, nivel) => nivel >= LogLevel.Information,false));
+            //ILogger log = loggerFactory.CreateLogger<ConsoleLogger>();
+            //log.LogInformation("Hello world!!");
+
             //1.COTROL DE ERRORES
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-
-
+            
             //4.UTILIZAMOS ARCHIVOS DE WWWROOT
             app.UseStaticFiles();
 

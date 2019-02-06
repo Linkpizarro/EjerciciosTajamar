@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProyectoCore.Data
 {
-    public class HospitalContext : DbContext
+    public interface IHospitalContext
     {
-        public HospitalContext(DbContextOptions options) : base(options) { }
-        public DbSet<Departamento> Departamentos { get; set; }
+        DbSet<Departamento> Departamentos { get; set; }
     }
 }

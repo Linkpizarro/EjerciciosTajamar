@@ -9,8 +9,8 @@ namespace ProyectoCore.Controllers
 {
     public class DepartamentosController : Controller
     {
-        RepositoryHospital repo;
-        public DepartamentosController(RepositoryHospital repo)
+        IRepositoryHospital repo;
+        public DepartamentosController(IRepositoryHospital repo)
         {
             this.repo = repo;
         }

@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace ProyectoCore.Repositories
 {
-    public class RepositoryHospital
+    public class RepositoryHospital : IRepositoryHospital
     {
-        HospitalContext context;
-        public RepositoryHospital(HospitalContext context)
+        IHospitalContext context;
+        public RepositoryHospital(IHospitalContext context)
         {
             this.context = context;
         }
+
         public List<Departamento> GetDepartamentos()
         {
             return context.Departamentos.ToList();

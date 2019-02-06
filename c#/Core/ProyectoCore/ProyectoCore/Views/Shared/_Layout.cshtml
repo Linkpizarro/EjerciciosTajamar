@@ -12,7 +12,7 @@
         <link href="~/css/bootstrap.css" rel="stylesheet" />
         <link href="~/css/starter-template.css" rel="stylesheet" />
     </environment>
-    <environment exclude="Production">
+    <environment include="Production">
         <link href="~/css/bootstrap.css" rel="stylesheet" />
         <link href="~/css/starter-template.css" rel="stylesheet" />
     </environment>
@@ -20,7 +20,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Core</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,10 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("About", "About", "Home", new { usuario = "Daniel" }, new { @class = "nav-link" })
@@ -41,17 +38,6 @@
                 </li>
                 <li class="nav-item">
                     <a asp-action="Index" asp-controller="Departamentos" class="nav-link">Departamentos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -63,12 +49,12 @@
 
     <main role="main" class="container">
         @RenderBody()
-        <div class="starter-template">
-            <h1>Bootstrap starter template</h1>
-            <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-        </div>
     </main>
     <environment include="Development">
+        <script src="~/js/jquery-3.3.1.min.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+    </environment>
+    <environment include="Production">
         <script src="~/js/jquery-3.3.1.min.js"></script>
         <script src="~/js/bootstrap.js"></script>
     </environment>
