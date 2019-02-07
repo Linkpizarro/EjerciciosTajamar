@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -11,11 +12,15 @@
     <environment include="Development">
         <link href="~/css/bootstrap.css" rel="stylesheet" />
         <link href="~/css/starter-template.css" rel="stylesheet" />
+        <link href="~/css/cookiealert.css" rel="stylesheet" />
     </environment>
     <environment include="Production">
         <link href="~/css/bootstrap.css" rel="stylesheet" />
         <link href="~/css/starter-template.css" rel="stylesheet" />
+        <link href="~/css/cookiealert.css" rel="stylesheet" />
     </environment>
+    @RenderSection("css",false)
+    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 
 <body>
@@ -39,6 +44,12 @@
                 <li class="nav-item">
                     <a asp-action="Index" asp-controller="Departamentos" class="nav-link">Departamentos</a>
                 </li>
+                <li class="nav-item">
+                    <a asp-action="Donativos" asp-controller="Home" class="nav-link">Donativos</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-action="MySesion" asp-controller="Home" class="nav-link">Sesión</a>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -48,15 +59,18 @@
     </nav>
 
     <main role="main" class="container">
+        <partial name="_CookieConsent" />
         @RenderBody()
     </main>
     <environment include="Development">
         <script src="~/js/jquery-3.3.1.min.js"></script>
         <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/cookiealert.js"></script>
     </environment>
     <environment include="Production">
         <script src="~/js/jquery-3.3.1.min.js"></script>
         <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/cookiealert.js"></script>
     </environment>
     @RenderSection("scripts", false)
 </body>

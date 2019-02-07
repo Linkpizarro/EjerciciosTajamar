@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace ProyectoCore
+namespace TheCoinsArePoints
 {
     public class Program
     {
@@ -19,7 +19,6 @@ namespace ProyectoCore
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseApplicationInsights()
                 .UseStartup<Startup>();
     }
 }
