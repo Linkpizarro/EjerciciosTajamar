@@ -12,7 +12,9 @@
 
 <p style="color:blue;">@ViewData["Message"]</p>
 <div id="time"></div>
-<p style="color:red;">Nombre: @ViewData["Name"], Edad: @ViewData["Year"]</p>
+<p style="color:red;">Nombre: @ViewData["Name"]</p>
+<p style="color:red;">Email: @ViewData["Email"]</p>
+<p style="color:red;">Edad: @ViewData["Year"]</p>
 
 <a asp-controller="Home" asp-action="MySesion" asp-route-accion="guardar">Guardar</a>|
 <a asp-controller="Home" asp-action="MySesion" asp-route-accion="mostar">Mostrar</a>

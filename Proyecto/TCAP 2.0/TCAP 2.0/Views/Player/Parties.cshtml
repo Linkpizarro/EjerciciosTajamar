@@ -11,7 +11,9 @@
         <div class="col s8 center-align">
             <h3>Tus Partidas</h3>
         </div>
-        <div class="col s2"></div>
+        <div class="col s2">
+            <a href="@Url.Action("SearchParty", "Player")" class="btn-floating btn-large waves-effect waves-light client"><i class='material-icons'>search</i></a>
+        </div>
     </div>
     @if (Model != null && Model.Count > 0)
     {

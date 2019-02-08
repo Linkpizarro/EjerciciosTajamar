@@ -1,6 +1,31 @@
-﻿.complement-color {
-    color:#c6ff00;
+﻿.text-complement{
+    color: #B576AD;
 }
 .complement {
-    background-color: #c6ff00;
+    background-color: #B576AD;
+}
+.text-principal{
+   color: #555E7B;
+}
+.principal {
+    background-color: #555E7B;
+}
+
+body {
+    background-color: #555E7B;
+    color: white;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.nav-link{
+    color:white;
+    text-decoration:none;
+}
+.nav-link:hover {
+    color: #555E7B;
+    text-decoration: none;
+}
+
+.logo {
+    width:90px;
 }

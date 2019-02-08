@@ -70,10 +70,10 @@ namespace TCAP_2._0.Repositories
             {
                 var time = (from data in context.Tokens
                             where data.Id_User == exists
-                            && data.End_Token > DateTime.Now
+                            && data.End_Token >= DateTime.Now
                             select data.Id_User).FirstOrDefault();
 
-                if (time != 0)
+                if (time > 0)
                 {
                     return time;
                 }

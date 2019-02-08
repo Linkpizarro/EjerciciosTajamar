@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProyectoCore.Extensions;
+using ProyectoCore.Models;
 
 namespace ProyectoCore.Controllers
 {
@@ -62,14 +63,23 @@ namespace ProyectoCore.Controllers
             if (accion == null || accion == "guardar")
             {
                 ViewData["Message"] = "Guardando sesión";
-                HttpContext.Session.SetString("Name", "Daniel");
-                HttpContext.Session.SetInt32("Year", 23);         
+
+                Persona person = new Persona()
+                {
+                    Name = "Daniel",
+                    Email = "algo@algo.algo",
+                    Year = 23
+                };
+
+                HttpContext.Session.SetObject<Persona>("Persona", person);   
             }
             else
             {
                 ViewData["Message"] = "Almacenando sesión";
-                ViewData["Name"] = HttpContext.Session.GetString("Name");
-                ViewData["Year"] = HttpContext.Session.GetInt32("Year");
+                Persona person = HttpContext.Session.GetObject<Persona>("Persona");
+                ViewData["Name"] = person.Name;
+                ViewData["Email"] = person.Email;
+                ViewData["Year"] = person.Year;
             }
             return View();
         }

@@ -1,0 +1,51 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>@ViewData["Title"]</title>
+    <environment include="Development">
+        <link href="~/css/bootstrap.css" rel="stylesheet" />
+    </environment>
+    <environment include="Production">
+        <link href="~/css/bootstrap.css" rel="stylesheet" />
+    </environment>
+    @RenderSection("css",false)
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Seguridad con Microsoft</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-action="PerfilUsuario" asp-controller="Usuario" class="nav-link">Perfil</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+        @RenderBody()
+    </main>
+    <environment include="Development">
+        <script src="~/js/jquery-3.3.1.min.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+    </environment>
+    <environment include="Production">
+        <script src="~/js/jquery-3.3.1.min.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+    </environment>
+    @RenderSection("scripts", false)
+</body>
+</html>
