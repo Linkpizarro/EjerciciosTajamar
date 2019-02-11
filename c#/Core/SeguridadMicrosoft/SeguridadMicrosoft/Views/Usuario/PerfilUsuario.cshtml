@@ -1,0 +1,15 @@
+﻿@inject UserManager<IdentityUser> usuario;
+@{
+    ViewData["Title"] = "PerfilUsuario";
+}
+
+<h2>Perfil Usuario</h2>
+<h1 style="color:blue;">
+   Hola, @usuario.GetUserName(User)
+</h1>
+<ul>
+    @foreach(var claim in User.Claims)
+    {
+        <li>Asunto: @claim.Subject,Valor: @claim.Value</li>
+    }
+</ul>

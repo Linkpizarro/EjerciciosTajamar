@@ -1,0 +1,25 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form class="form-inline my-2 my-lg-0"
+          asp-area="Identity" asp-page="/Account/Logout"
+          asp-route-returnUrl="@Url.Action("Index", "Home")"
+          method="post" id="logoutForm">
+        <span style="color:white">
+            <img src="~/images/micro.jpg"
+            class="img-thumbnail"
+            style="width:50px;height:50px;" />
+        </span>
+        <span style="color:white; padding-left: 10px;">
+            @UserManager.GetUserName(User)
+        </span>
+        <button class="btn btn-outline-success my-2 my-sm-0"
+                style="padding-left: 10px;"
+                type="submit">
+            Cerrar sesión
+        </button>
+    </form>
+}
+
