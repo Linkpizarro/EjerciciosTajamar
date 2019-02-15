@@ -47,7 +47,7 @@ namespace ProyectoCore
 
             //INVERSION DE CONTROL IoC
             services.AddTransient<IRepositoryHospital,RepositoryHospital>();
-            services.AddDbContext<IHospitalContext, Hospital>(options => options.UseSqlServer(configuration.GetConnectionString("CadenaHospitalAzure")));
+            services.AddDbContext<IHospitalContext, Hospital>(options => options.UseMySql(configuration.GetConnectionString("CadenaHospitalMySQL")));
            
             //DEBEMOS INDICAR QUE ARRANQUE EL SERVICIO DEL 
             //MIDELWARE
