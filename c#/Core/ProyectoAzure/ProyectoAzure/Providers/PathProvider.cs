@@ -9,7 +9,8 @@ namespace ProyectoAzure.Providers
 {
     public enum Folders{
         Images = 0,
-        Documents =1
+        Documents = 1,
+        Clientes = 2     
     }
 
     public class PathProvider
@@ -29,6 +30,10 @@ namespace ProyectoAzure.Providers
             }else if (folder == Folders.Images)
             {
                 carpeta = "images";
+            }
+            else if (folder == Folders.Clientes)
+            {
+                carpeta = "images/clientes";
             }
             String path = Path.Combine(this.environment.WebRootPath, carpeta, filename);
             return path;

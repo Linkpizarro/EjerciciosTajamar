@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ProyectoAzure.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h2>Clientes</h2>
+<a asp-controller="DocumentXML" asp-action="AddCliente">Añadir</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Nombre
+            </td>
+            <td>
+                @item.Direccion
+            </td>
+            <td>
+                <img src="~/images/clientes/@item.Imagen" style="width:200px;"/>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

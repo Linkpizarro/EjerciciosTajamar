@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<clientes>
+  <cliente idcliente="1">
+    <nombre>DELORIAN</nombre>
+    <direccion>C/ Paseo Castellana, 150</direccion>
+    <imagen_cliente>delorian.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="2">
+    <nombre>RICARDO TUBBS</nombre>
+    <direccion>C/ Islas Canarias, 19</direccion>
+    <imagen_cliente>tubbs.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="4">
+    <nombre>JOHNNY UTAH</nombre>
+    <direccion>C/ Piratas, 78</direccion>
+    <imagen_cliente>utah.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="5">
+    <nombre>PINKY WINKI</nombre>
+    <direccion>C/ Olimpo, 25</direccion>
+    <imagen_cliente>pinky.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="6">
+    <nombre>OPTIMUS PRIME</nombre>
+    <direccion>C/ Transformers, 1</direccion>
+    <imagen_cliente>optimusprime.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="7">
+    <nombre>MICHAEL SCOFIELD</nombre>
+    <direccion>C/ Anton, 16</direccion>
+    <imagen_cliente>scodfield.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="8">
+    <nombre>CORONEL BRADDOCK</nombre>
+    <direccion>C/ Desaparecido, 80</direccion>
+    <imagen_cliente>braddock.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="9">
+    <nombre>JESUS QUINTANA</nombre>
+    <direccion>C/ Lebowsky, 19</direccion>
+    <imagen_cliente>jesusquintana.gif</imagen_cliente>
+  </cliente>
+  <cliente idcliente="10">
+    <nombre>MICHAEL KNIGHT</nombre>
+    <direccion>C/ Fantastic car, 21</direccion>
+    <imagen_cliente>michaelknight.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="11">
+    <nombre>MARTY MACFLY</nombre>
+    <direccion>C/ Emmet brown, 20</direccion>
+    <imagen_cliente>macfly.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="12">
+    <nombre>CUCO</nombre>
+    <direccion>C/ Franco, 19</direccion>
+    <imagen_cliente>cuco.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="13">
+    <nombre>ICE MAN</nombre>
+    <direccion>C/ Miramar, 1</direccion>
+    <imagen_cliente>iceman.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="14">
+    <nombre>JACK BURTON</nombre>
+    <direccion>C/ China, 90</direccion>
+    <imagen_cliente>jackburton.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="15">
+    <nombre>TOM HIGHWAY</nombre>
+    <direccion>C/ Seccion reconocimiento, 46</direccion>
+    <imagen_cliente>highway.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="16">
+    <nombre>MARK LENDERS</nombre>
+    <direccion>C/ Tiro mortal, 42</direccion>
+    <imagen_cliente>marklenders.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="17">
+    <nombre>CARLTON BANKS</nombre>
+    <direccion>C/ Bel Air, 21</direccion>
+    <imagen_cliente>carltonbanks.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="18">
+    <nombre>TEMPLETON PECK</nombre>
+    <direccion>C/ Fenix, 45</direccion>
+    <imagen_cliente>templetonpecks.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="19">
+    <nombre>BIFF TANNEN</nombre>
+    <direccion>C/ Estiercol, 56</direccion>
+    <imagen_cliente>bifftannen.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="20">
+    <nombre>BARNEY STINSON</nombre>
+    <direccion>C/ MacLarens</direccion>
+    <imagen_cliente>Barney_Stinson.png</imagen_cliente>
+  </cliente>
+  <cliente idcliente="21">
+    <nombre>ALDO RAINE</nombre>
+    <direccion>C/ Apache</direccion>
+    <imagen_cliente>aldoraine.jpg</imagen_cliente>
+  </cliente>
+  <cliente idcliente="120">
+    <nombre>RIJNDAEL</nombre>
+    <direccion>C\TAJAMAR365</direccion>
+    <imagen_cliente>pantalla inicial.png</imagen_cliente>
+  </cliente>
+  <cliente idcliente="120">
+    <nombre>RIJNDAEL</nombre>
+    <direccion>C\TAJAMAR365</direccion>
+    <imagen_cliente>pantalla inicial.png</imagen_cliente>
+  </cliente>
+</clientes>
