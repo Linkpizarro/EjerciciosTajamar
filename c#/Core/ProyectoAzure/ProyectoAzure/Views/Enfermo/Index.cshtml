@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProyectoAzure.Models.Enfermo>
+
+@{
+    ViewData["Title"] = "Enfermos";
+}
+
+<h2>Enfermos</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Inscripcion
+            </th>
+            <th>
+                Apellido
+            </th>
+            <th>
+                Direccion
+            </th>
+            <th>
+                Sexo
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Enfermo item in Model) {
+        <tr>
+            <td>
+                @item.Inscripcion
+                
+            </td>
+            <td>
+                @item.Apellido
+            </td>
+            <td>
+                @item.Direccion
+            </td>
+            <td>
+                @item.Sexo
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<br />
+<hr />
+<div>
+    <form method="post">
+        <input type="text" name="inscripcion" class="form-control"
+               placeholder="Inscripción" />
+        <button type="submit" class="bg-danger text-white">Eliminar</button>
+    </form>
+</div>
+<h3 style="color:red">@ViewData["sms"]</h3>

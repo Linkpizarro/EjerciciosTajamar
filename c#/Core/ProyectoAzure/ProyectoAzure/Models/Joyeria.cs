@@ -10,5 +10,6 @@ namespace ProyectoAzure.Models
         public String Nombre { get; set; }
         public String Direccion { get; set; }
         public String Telefono { get; set; }
+        public String Cif { get; set; }
     }
 }

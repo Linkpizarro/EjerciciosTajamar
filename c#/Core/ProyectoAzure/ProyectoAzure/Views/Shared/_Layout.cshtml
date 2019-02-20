@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="~/images/icons/cloud.png">
+    <link rel="icon" href="favicon.ico">
 
-    <title>@ViewData["Title"]</title>
+    <title>Mi Aplicación Core Azure</title>
     <environment include="Development">
         <link href="~/css/bootstrap.css" rel="stylesheet" />
         <link href="~/css/starter-template.css" rel="stylesheet" />
@@ -16,37 +16,47 @@
         <link href="~/css/bootstrap.css" rel="stylesheet" />
         <link href="~/css/starter-template.css" rel="stylesheet" />
     </environment>
-    @RenderSection("css", false)
+    @RenderSection("styles", false)
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-        <a class="navbar-brand text-dark">
-            <span style="font-size:35px;">Proyecto</span>
-            <img src="~/images/logoAzure.png" style="height: 5vh;margin: -30px 0px 0px 0px;"/>
-        </a>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Mi Core Azure</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                <li class="nav-item active">
+                    <a asp-action="Index"
+                       asp-controller="Home"
+                       class="nav-link">Home</a>
                 </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Joyerias", "Joyerias", "DocumentXML", null, new { @class = "nav-link" })
+                <li class="nav-item active">
+                    <a asp-action="ListaJoyerias"
+                       asp-controller="DocumentsXml"
+                       class="nav-link">Joyerias</a>
                 </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Clientes", "Clientes", "DocumentXML", null, new { @class = "nav-link" })
+                <li class="nav-item active">
+                    <a asp-action="Index"
+                       asp-controller="Alumnos"
+                       class="nav-link">Alumnos</a>
+                </li>
+                <li class="nav-item active">
+                    <a asp-action="Index"
+                       asp-controller="Enfermo"
+                       class="nav-link">Enfermos</a>
                 </li>
             </ul>
         </div>
     </nav>
-
     <main role="main" class="container">
-        @RenderBody()
-    </main>
+        <div class="starter-template">
+            @RenderBody()
+        </div>
+    </main><!-- /.container -->
+    <!-- Bootstrap core JavaScript -->
     <environment include="Development">
         <script src="~/js/jquery-3.3.1.min.js"></script>
         <script src="~/js/bootstrap.js"></script>

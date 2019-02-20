@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AzureMVC.Models.Enfermo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Apellido
+        </th>
+        <th>
+            Direccion
+        </th>
+        <th>
+            Sexo
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Apellido
+        </td>
+        <td>
+            @item.Direccion
+        </td>
+        <td>
+            @item.Sexo
+        </td>
+    </tr>
+}
+
+</table>
+<hr />
+<br />
+<form method="post">
+    <input type="text" name="inscripcion" placeholder="Inscripción" class="form-control" />
+    <button class="btn-danger">Eliminar</button>
+</form>
+<h2 class="text-danger">@ViewBag.sms</h2>

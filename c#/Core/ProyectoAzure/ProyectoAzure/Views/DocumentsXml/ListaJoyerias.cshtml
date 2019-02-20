@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Joyeria>
+
+@{
+    ViewData["Title"] = "ListaJoyerias";
+}
+
+<h2>Lista de Joyerias XML</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>NOMBRE</th>
+            <th>DIRECCION</th>
+            <th>TELEFONO</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var joyeria in Model) {
+        <tr>
+            <td>@joyeria.Nombre</td>
+            <td>@joyeria.Direccion</td>
+            <td>@joyeria.Telefono</td>
+        </tr>
+}
+    </tbody>
+</table>

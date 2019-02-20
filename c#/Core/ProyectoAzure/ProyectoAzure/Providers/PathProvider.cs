@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace ProyectoAzure.Providers
 {
-    public enum Folders{
-        Images = 0,
-        Documents = 1,
-        Clientes = 2     
+    public enum Folders
+    {
+        Images = 0, Documents = 1
     }
 
     public class PathProvider
     {
         IHostingEnvironment environment;
+
         public PathProvider(IHostingEnvironment environment)
         {
             this.environment = environment;
         }
 
-        public String MapPath(String filename,Folders folder)
+        public String MapPath(String filename, Folders folder)
         {
             String carpeta = "";
             if (folder == Folders.Documents)
@@ -31,11 +31,8 @@ namespace ProyectoAzure.Providers
             {
                 carpeta = "images";
             }
-            else if (folder == Folders.Clientes)
-            {
-                carpeta = "images/clientes";
-            }
-            String path = Path.Combine(this.environment.WebRootPath, carpeta, filename);
+            String path = Path.Combine(this.environment.WebRootPath
+                , carpeta, filename);
             return path;
         }
     }
