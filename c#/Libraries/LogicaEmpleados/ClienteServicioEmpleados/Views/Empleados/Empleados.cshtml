@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ClienteServicioEmpleados.ServiceEmpleados.Empleado>
+
+@{
+    ViewBag.Title = "Empleados";
+}
+<h1>Empleados - Oficio</h1>
+<form method="POST">
+    <div class="form-group">
+        <label class="control-label">Oficios</label>
+        <select name="oficio" class="form-control">
+            <option value="">Seleccione un Oficio</option>
+            @foreach (String oficio in ViewBag.Oficios)
+            {
+                if (oficio == ViewBag.LastOficio)
+                {
+                    <option value="@oficio" selected>@oficio</option>
+                }
+                else
+                {
+                    <option value="@oficio">@oficio</option>
+                }
+
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn bg-info">Buscar</button>
+</form>
+<hr />
+@if (Model != null)
+{
+    <h2>Empleados</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oficio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salario)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oficio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salario)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
