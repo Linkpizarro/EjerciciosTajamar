@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ClienteApiDepartamentos.Models.Empleado>
+
+@{
+    ViewData["Title"] = "EmpleadosDepartamento";
+}
+@{ List<Departamento> departamentos = (List<Departamento>)ViewData["Departamentos"];} 
+<form method="POST">
+    <div>
+        <label>Departamentos</label>
+        <select name="dept_no" class="form-control" multiple>
+            @foreach (Departamento dept in departamentos)
+            {
+                <option value="@dept.Numero">@dept.Nombre</option>
+            }
+        </select>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-info">Buscar</button>
+    </div>
+</form>
+
+@if (Model != null)
+{
+    <hr />
+    <h2>Empleados Departamento</h2>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ofice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dept)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ofice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dept)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

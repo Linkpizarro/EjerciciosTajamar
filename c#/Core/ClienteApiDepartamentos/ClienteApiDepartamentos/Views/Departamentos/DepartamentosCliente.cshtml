@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewData["Title"] = "DepartamentosCliente";
+}
+
+<h2>DepartamentosCliente</h2>
+<div class="row">
+    <div class="col-sm-8">
+        <div>
+            <label>Número:</label>
+            <input type="text" id="numero" class="form-control" />
+        </div>
+        <div>
+            <label>Nombre:</label>
+            <input type="text" id="nombre" class="form-control" />
+        </div>
+        <div>
+            <label>Localidad:</label>
+            <input type="text" id="localidad" class="form-control" />
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="col-sm-12 text-center">
+            <button type="button" id="btn-insert" class="btn btn-info col-sm-6 actions">Insertar</button>
+        </div>
+        <div  class="col-sm-12 text-center">
+            <button type="button" id="btn-update" class="btn btn-warning col-sm-6 actions">Modificar</button>
+        </div>
+        <div  class="col-sm-12 text-center">
+            <button type="button" id="btn-delete" class="btn btn-danger col-sm-6 actions">Eliminar</button>
+        </div>
+    </div>
+</div>
+
+<hr />
+<p class="text-success" id="mensaje"></p>
+<table class="table table-bordered" id="response-table">
+    <thead>
+        <tr>
+            <th>Número</th>
+            <th>Nombre</th>
+            <th>Localidad</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+@section Scripts{ 
+    <script>
+        $(document).ready(function(){
+            cargarDepartamentos();
+            $("#btn-insert").click(function () {
+                var numero = $("#numero").val();
+                var nombre = $("#nombre").val();
+                var localidad = $("#localidad").val();
+                insertDepartamento(numero,nombre,localidad);
+            });
+            $("#btn-update").click(function () {
+                var numero = $("#numero").val();
+                var nombre = $("#nombre").val();
+                var localidad = $("#localidad").val();
+                updateDepartamento(numero, nombre, localidad);
+            });
+        });
+        function cargarDepartamentos() {
+            var url = "https://apidepartamentosdpc.azurewebsites.net/api/Departamentos";
+            $.ajax({
+                url : url,
+                type : "GET",
+                success : function (data) {
+                    var html = "";
+                    $.each(data, function (key, value) {
+                        html += "<tr>";
+                        html += "<td>" + value.Numero + "</td>";
+                        html += "<td>" + value.Nombre + "</td>";
+                        html += "<td>" + value.Localidad + "</td>";
+                        html += "</tr>";
+                    });
+                    $("#response-table tbody").html(html);
+                }
+            });
+        }
+        function insertDepartamento(numero,nombre,localidad) {
+            var dept = new Object();
+            dept.Numero = numero;
+            dept.Nombre = nombre;
+            dept.Localidad = localidad;
+            var json = JSON.stringify(dept);
+            var url = "https://apidepartamentosdpc.azurewebsites.net/api/Departamentos";
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: json,
+                contentType:"application/json",
+                success: function () {
+                    $("#mensaje").html("Se ha añadido el departamento");
+                    cargarDepartamentos();
+                }
+            });
+
+        }
+        function updateDepartamento(numero, nombre, localidad) {
+            var dept = new Object();
+            dept.Numero = numero;
+            dept.Nombre = nombre;
+            dept.Localidad = localidad;
+            var json = JSON.stringify(dept);
+            var url = "https://apidepartamentosdpc.azurewebsites.net/api/Departamentos/"+numero;
+            $.ajax({
+                url: url,
+                type: "PUT",
+                data: json,
+                contentType: "application/json",
+                success: function () {
+                    $("#mensaje").html("Se ha Modificado el departamento");
+                    cargarDepartamentos();
+                }
+            });
+        }
+    </script>
+}

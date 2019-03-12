@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ClienteApiDepartamentos.Models.Departamento>
+
+@{
+    ViewData["Title"] = "DepartamentosServidor";
+}
+
+<h2>DepartamentosServidor</h2>
+
+<p>
+    <a asp-action="InsertarDepartamento">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localidad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidad)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "ModificarDepartamento"
+               , new { deptno=item.Numero }) |
+                @Html.ActionLink("Details", "DetallesDepartamento"
+               , new { deptno=item.Numero }) |
+                @Html.ActionLink("Delete", "EliminarDepartamento"
+               , new { deptno=item.Numero }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

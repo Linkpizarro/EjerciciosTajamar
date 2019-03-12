@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "EmpleadosCliente";
+}
+
+@section Scripts
+{ 
+    <script>
+        $(document).ready(function () {
+            cargarEmpleados();
+            $("#botonbuscar").click(function () {
+                var salario =
+                    $("#cajasalario").val();
+                var apiurl =
+          "https://apiempleadospgs.azurewebsites.net/api/EmpleadosSalario/"
+                    + salario;
+                $.ajax({
+                    url: apiurl
+                    , method: "GET"
+                    , dataType: "json"
+                    , success: function (data) {
+                        var html = "";
+                        $.each(data, function (indice, empleado) {
+                            html += "<tr>";
+                            html += "<td>" + empleado.Apellido + "</td>";
+                            html += "<td>" + empleado.Oficio + "</td>";
+                            html += "<td>" + empleado.Salario + "</td>";
+                            html += "</tr>";
+                        });
+                        $("#tablaempleados tbody").html(html);
+                    }
+                });
+            });
+        });
+
+        function cargarEmpleados() {
+            var apiurl =
+                "https://apiempleadospgs.azurewebsites.net/api/Empleados";
+            $.ajax({
+                url: apiurl
+                , dataType: "json"
+                , success: function (data) {
+                    var html = "";
+                    $.each(data, function (indice, empleado) {
+                        html += "<tr>";
+                        html += "<td>" + empleado.Apellido + "</td>";
+                        html += "<td>" + empleado.Oficio + "</td>";
+                        html += "<td>" + empleado.Salario + "</td>";
+                        html += "</tr>";
+                    });
+                    $("#tablaempleados tbody").html(html);
+                }
+            });
+        }
+    </script>    
+}
+
+<h2>Consumo Api Empleados Cliente</h2>
+
+<div>
+    <label>Introduzca un salario: </label>
+    <input type="text" id="cajasalario" class="form-control"/>
+    <button type="button" id="botonbuscar" class="btn-success">
+        Buscar empleados
+    </button>
+</div>
+
+<table class="table table-bordered" id="tablaempleados">
+    <thead>
+        <tr>
+            <th>APELLIDO</th>
+            <th>OFICIO</th>
+            <th>SALARIO</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+

@@ -1,0 +1,34 @@
+﻿@using ClienteApiEmpleados.Models
+@model IEnumerable<Empleado>
+
+@{
+    ViewData["Title"] = "EmpleadosServidor";
+}
+
+<h2>Empleados Api Servidor C#</h2>
+<form method="post">
+    <div>
+        <label>Salario: </label>
+        <input type="text" name="salario" class="form-control" />
+        <button type="submit" class="btn-info">Buscar Empelados</button>
+    </div>
+</form>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>APELLIDO</th>
+            <th>OFICIO</th>
+            <th>SALARIO</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (Empleado emp in Model) {
+            <tr>
+                <td>@emp.Apellido</td>
+                <td>@emp.Oficio</td>
+                <td>@emp.Salario</td>
+                <td><a asp-controller="Empleados" asp-action="DetalleEmpleado" asp-route-idempleado=@emp.IdEmpleado>Ver detalles</a></td>
+            </tr>
+    }
+    </tbody>
+</table>
