@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login de empleados</h2>
+<a asp-action="Subordinados">Ir a Subordinados</a>
+
+<form method="post">
+    <div>
+        <label>Apellido: </label>
+        <input type="text" name="usuario" class="form-control"/>
+    </div>
+    <div>
+        <label>Id empleado:</label>
+        <input type="text" name="password" class="form-control"/>
+    </div>
+    <div>
+        <button type="submit" class="btn-info">
+            Login de empleados
+        </button>
+    </div>
+</form>
+<h2 style="color:blue">@ViewData["MENSAJE"]</h2>
+

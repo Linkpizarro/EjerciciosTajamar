@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login de Empleados</h2>
+<form method="post">
+    <div>
+        <label>Apellido: </label>
+        <input type="text" name="usuario" class="form-control" />
+    </div>
+    <div>
+        <label>Número empleado: </label>
+        <input type="text" name="password" class="form-control" />
+    </div>
+    <div>
+        <button type="submit" class="btn-success">Log In</button>
+    </div>
+</form>
+<h2 style="color:red">
+    @ViewBag.Mensaje
+</h2>

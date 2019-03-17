@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ClienteApiSeguridad.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Subordinados";
+}
+
+<h2>Subordinados</h2>
+<a asp-action="Login">Ir a Login</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oficio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Director)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Oficio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salario)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "DetallesEmpleado"
+               , new { empno=item.IdEmpleado  }) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
