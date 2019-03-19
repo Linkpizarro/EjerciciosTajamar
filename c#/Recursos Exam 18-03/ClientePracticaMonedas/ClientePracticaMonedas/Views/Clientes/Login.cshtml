@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+<form method="Post">
+    <div>
+        <label>UserName</label>
+        <input type="text" class="form-control" name="usuario"/>
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" />
+    </div>
+    <div>
+       <button type="submit" class="btn btn-info">Entrar</button>
+    </div>
+</form>
+<div>
+    <h4 class="text-danger">@ViewData["Error"]</h4>
+</div>
+

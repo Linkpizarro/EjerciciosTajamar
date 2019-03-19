@@ -1,0 +1,67 @@
+﻿@model ClientePracticaMonedas.Models.Moneda
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+@if (Model != null)
+{
+    <h2>Detalles</h2>
+
+    <div>
+        <h4>Moneda</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Pais
+            </dt>
+            <dd>
+                @Model.Pais
+            </dd>
+            <dt>
+                Año
+            </dt>
+            <dd>
+                @Model.Anyo
+            </dd>
+            <dt>
+                Descripción
+            </dt>
+            <dd>
+                @Model.Descripcion
+            </dd>
+            <dt>
+                Precio
+            </dt>
+            <dd>
+                @Model.Precio
+            </dd>
+            <dt>
+                Imagen
+            </dt>
+            <dd>
+                <img src="@Model.Foto" style="width:100px;height:100px;"/>
+            </dd>
+            <dt>
+               Dirección
+            </dt>
+            <dd>
+                @Model.Direccion
+            </dd>
+            <dt>
+               Teléfono
+            </dt>
+            <dd>
+                @Model.Telefono
+            </dd>
+        </dl>
+    </div>
+    <a asp-controller="Pedidos" asp-action="Comprar" asp-all-route-id_moneda="@Model.Id">Comprar</a>
+}
+else
+{
+    <p>No hay información para esta moneda...</p>
+}
+<div>
+    <a asp-action="Index">Volver</a>
+</div>

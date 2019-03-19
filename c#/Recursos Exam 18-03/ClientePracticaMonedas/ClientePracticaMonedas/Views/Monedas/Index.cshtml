@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ClientePracticaMonedas.Models.Moneda>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (Model != null)
+{
+    <h2>Monedas</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Pais
+                </th>
+                <th>
+                    Año
+                </th>
+                <th>
+                    Descripción
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Imagen
+                </th>
+                <th>
+                    Dirección
+                </th>
+                <th>
+                    Teléfono
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Pais
+                    </td>
+                    <td>
+                        @item.Anyo
+                    </td>
+                    <td>
+                        @item.Descripcion
+                    </td>
+                    <td>
+                        @item.Precio
+                    </td>
+                    <td>
+                        <img src="@item.Foto" style="width:150px;height:150px;" />
+                    </td>
+                    <td>
+                        @item.Direccion
+                    </td>
+                    <td>
+                        @item.Telefono
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalles", "Detalles", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay monedas...</p>
+}
+
