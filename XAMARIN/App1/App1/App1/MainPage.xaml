@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App1"
+             x:Class="App1.MainPage">
+
+    <StackLayout
+        BackgroundColor="White">
+        <StackLayout BackgroundColor="Black" HeightRequest="50">
+            <Label Text="BoardApp" TextColor="White" FontSize="20"/>
+        </StackLayout>
+        <!-- Place new controls here -->
+        <Label Text="Hello World" 
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="CenterAndExpand" 
+           x:Name="lb1"    />
+        <Button Text="Touch me!" 
+           BackgroundColor="#6200ea"
+           TextColor="White"
+           FontSize="Large"
+           x:Name="btn1"/>
+    </StackLayout>
+
+</ContentPage>
