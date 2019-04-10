@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PersonalizarDispositivo.PaginaCSS">
+    <ContentPage.Resources>
+        <StyleSheet Source="../Styles/Estilo.css"/>
+        <Style TargetType="Frame">
+            <Setter Property="BorderColor" Value="Red" />
+            <Setter Property="CornerRadius" Value="20" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Text" Value="Saber mas..." />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView Orientation="Both">
+            <FlexLayout>
+                <Frame>
+                    <FlexLayout Direction="Column">
+                        <Label StyleClass="header"
+                               Text="Regreso al fututo"
+                               />
+                        <Label Text="El Protagonista es Marty Macfly"/>
+                        <Image Source="https://images-na.ssl-images-amazon.com/images/I/71EymRm6ngL._SX425_.jpg" />
+                        <Label Text="&#x2022; Michael J. Fox" />
+                        <Label Text="&#x2022; Película de 1985" />
+                        <Label Text="&#x2022; Piensa MacFly, piensa..." />
+                        <Label StyleClass="empty" />
+                        <Button />
+                    </FlexLayout>
+                </Frame>
+                <Frame>
+                    <FlexLayout Direction="Column">
+                        <Label Text="Gremlins" StyleClass="header" />
+                        <Label Text="Gizmo" />
+                        <Label Text="  &#x2022; Mogwai" />
+                        <Label Text="  &#x2022; No dar de comer después de las 00:00" />
+                        <Label Text="  &#x2022; No mojar" />
+                        <Label Text="  &#x2022; No exponerlo a la luz" />
+                        <Image Source="https://cloud10.todocoleccion.online/reproducciones-figuras-accion/tc/2019/02/05/10/149926614.jpg" />
+                        <Label StyleClass="empty" />
+                        <Button />
+                    </FlexLayout>
+                </Frame>
+                 
+                <Frame>
+                    <FlexLayout Direction="Column">
+                        <Label Text="Batman" StyleClass="header" />
+                        <Label Text="Batman es un superheroe sin poderes, pero con pasta..." />
+                        <Label Text="  &#x2022; Bruce Wayne" />
+                        <Label Text="  &#x2022; Bat cueva" />
+                        <Label Text="  &#x2022; Yo soy Batman" />
+                        <Image Source="https://img.brickowl.com/files/image_cache/larger/lego-batman-crooked-angry-mouth-with-yellow-utility-belt-minifigure-25.jpg" />
+                        <Label StyleClass="empty" />
+                        <Button />
+                    </FlexLayout>
+                </Frame>
+
+            </FlexLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TiposAlert"
+             x:Class="TiposAlert.MainPage">
+    <ContentPage.Content>
+        <StackLayout Margin="0,40,0,0">
+            <Label Text="Alertas" 
+               HorizontalOptions="Center"
+               Font="40"
+               TextColor="Black"
+               />
+            <Button x:Name="btnsimple"
+                Text="Mensaje Simple"
+                HorizontalOptions="CenterAndExpand" 
+                TextColor="White"
+                BackgroundColor="Black"
+                WidthRequest="200"
+                />
+            <Button x:Name="btncancel"
+                Text="Mensaje OK/Cancel"
+                HorizontalOptions="CenterAndExpand" 
+                TextColor="White"
+                BackgroundColor="Black"
+                WidthRequest="200"
+                />
+            <Button x:Name="btnoptions"
+                Text="Mensaje Opciones"
+                HorizontalOptions="CenterAndExpand" 
+                TextColor="White"
+                BackgroundColor="Black"
+                WidthRequest="200"
+                />
+            <Button x:Name="btnmodal"
+                Text="Mensaje Modal"
+                HorizontalOptions="CenterAndExpand" 
+                TextColor="White"
+                BackgroundColor="Black"
+                WidthRequest="200"
+                />
+            <Label x:Name="result"
+                   Font="20"
+                   TextColor="Black"
+                   HorizontalOptions="CenterAndExpand"
+                   />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

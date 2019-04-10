@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiposLayouts.XamlViews.CollatzButtons">
+    <ContentPage.Content>
+        <StackLayout Margin="0,40,0,0">
+            <Label Text="Collatz" 
+               HorizontalOptions="Center"
+               Font="25"
+               TextColor="Black"
+               />
+            <Button Text="Iniciar"
+                    BackgroundColor="BlueViolet"
+                    TextColor="White"
+                    Font="18"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    x:Name="btnstart"
+                    />
+            <ScrollView HorizontalOptions="Center"
+                        HorizontalScrollBarVisibility="Never"
+                        Orientation="Horizontal"
+                        WidthRequest="320"
+                        Margin="0,40,0,0">
+                <FlexLayout AlignContent="Center"
+                            AlignItems="Start"
+                            JustifyContent="Start"
+                            x:Name="buttons">
+                </FlexLayout>
+            </ScrollView>
+            <ScrollView HorizontalOptions="Center"
+                        WidthRequest="320"
+                        HeightRequest="200"
+                        Margin="0,40,0,0">
+                <FlexLayout AlignContent="Center"
+                        AlignItems="Center"
+                        Direction="Column"
+                        x:Name="result">
+                </FlexLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

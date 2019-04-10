@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiposControles.EntryEditor">
+    <ContentPage.Content>
+        <StackLayout Margin="0,40,0,0">
+            <Label Text="Entry"
+                   HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
+                   TextColor="Blue"
+                   Font="40"
+                   />
+            <Entry Placeholder="I'm a Entry"/>
+            <Label Text="Editor"
+                   HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
+                   TextColor="Blue"
+                   Font="40"
+                   />
+            <Editor Placeholder="I´m a Editor" 
+                    VerticalOptions="FillAndExpand"
+                    />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TiposControles"
+             x:Class="TiposControles.MainPage">
+    <ContentPage.Content>
+        
+        <StackLayout Margin="0,40,0,0">
+            <Label FontAttributes="Bold"
+                   FontSize="40"
+                   Text="ActivityIndicator"
+                   TextColor="Blue"
+                   HorizontalOptions="CenterAndExpand"
+                   />
+            <ActivityIndicator IsRunning="True" Color="Purple"
+                               HorizontalOptions="CenterAndExpand"   
+                               />
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiposLayouts.XamlViews.StackLayoutView">
+    <ContentPage.Content>
+        <StackLayout Margin="0,40,0,0">
+            <Label Text="StackLayout View" 
+               HorizontalOptions="Center"
+               Font="25"
+               TextColor="Black"
+               />
+            <Label Text="Start" 
+               HorizontalOptions="Start"
+               Font="25"
+               TextColor="Black"
+               BackgroundColor="Yellow"
+               />
+            <Label Text="End" 
+               HorizontalOptions="End"
+               Font="25"
+               TextColor="Black"
+               BackgroundColor="Yellow"
+               />
+            <Label Text="Center" 
+               HorizontalOptions="Center"
+               Font="25"
+               TextColor="Black"
+               BackgroundColor="Yellow"
+               />
+            <Label Text="Fill" 
+               HorizontalOptions="Fill"
+               Font="25"
+               TextColor="Black"
+               BackgroundColor="Yellow"
+               />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiposLayouts.XamlViews.Collatz">
+    <ContentPage.Content>
+        <StackLayout Margin="0,40,0,0">
+            <Label Text="Collatz" 
+               HorizontalOptions="Center"
+               Font="25"
+               TextColor="Black"
+               />
+            <Entry Placeholder="Introzuca un número entero y real..." 
+                   HorizontalOptions="CenterAndExpand"
+                   WidthRequest="320"
+                   FontAttributes="Bold"
+                   FontSize="18" 
+                   x:Name="num"
+                   />
+            <Button Text="Mostrar"
+                    BackgroundColor="BlueViolet"
+                    TextColor="White"
+                    Font="18"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                    x:Name="btnshow"
+                    />
+            <ScrollView HorizontalOptions="Center"
+                        WidthRequest="320"
+                        HeightRequest="200"
+                        Margin="0,40,0,0">
+                <FlexLayout AlignContent="Center"
+                        AlignItems="Center"
+                        Direction="Column"
+                        x:Name="result">
+                </FlexLayout>
+            </ScrollView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

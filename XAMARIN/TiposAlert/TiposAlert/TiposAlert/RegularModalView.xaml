@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TiposAlert.RegularModalView">
+    <ContentPage.Content>
+        <StackLayout Margin="0,40,0,0">
+            <Label Text="Modal tipo ventana" 
+               HorizontalOptions="Center"
+               Font="40"
+               TextColor="Black"
+               />
+            <Entry x:Name="dataentry"
+                   HorizontalOptions="Center"
+                   WidthRequest="200"         
+                   />
+            <Button x:Name="btnclose"
+                Text="Cerrar Modal"
+                HorizontalOptions="CenterAndExpand" 
+                TextColor="White"
+                BackgroundColor="Black"
+                WidthRequest="200"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

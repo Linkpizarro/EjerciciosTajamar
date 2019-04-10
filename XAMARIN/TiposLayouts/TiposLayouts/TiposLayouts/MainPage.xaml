@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TiposLayouts"
+             x:Class="TiposLayouts.MainPage">
+
+    <ContentPage.Content>
+        <StackLayout Margin="0,40,0,0">
+            <Label Text="Tipos de Layouts" 
+               HorizontalOptions="Center"
+               Font="25"
+               TextColor="Black"
+               />
+            <Button Text="StackLayout"
+                    x:Name="btnstack"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                />
+            <Button Text="Frame"
+                    x:Name="btnframe"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                />
+            <Button Text="FlexLayout"
+                    x:Name="btnflex"
+                    BackgroundColor="Black"
+                    TextColor="White"                   
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                />
+            <Button Text="AbsoluteLayout"
+                    x:Name="btnabsolute"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                />
+            <Button Text="ScrollLayaut"
+                    x:Name="btnscroll"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                />
+            <Button Text="Collatz"
+                    x:Name="btncollatz"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                />
+            <Button Text="Collatz Buttons"
+                    x:Name="btncollatzbtn"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="200"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

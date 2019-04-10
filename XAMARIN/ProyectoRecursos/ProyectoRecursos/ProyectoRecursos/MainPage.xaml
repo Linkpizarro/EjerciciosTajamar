@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ProyectoRecursos"
+             x:Class="ProyectoRecursos.MainPage">
+    <ContentPage.Resources>
+        <Color x:Key="ColorLetra">Black</Color>
+        <Color x:Key="ColorFondo">White</Color>
+        <Color x:Key="ColorLetraBtn">White</Color>
+        <Color x:Key="ColorfondoBtn">Purple</Color>
+        <Style x:Key="margenInicial" TargetType="StackLayout">
+            <Setter Property="Margin" Value="0,40,0,0" />
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout Style="{StaticResource margenInicial}">
+        <Label Text="Resources" 
+              TextColor="{StaticResource ColorLetra}"
+              Font="40"
+              HorizontalOptions="Center"
+               />
+        <Button Text="Soy un botón" 
+                TextColor="{StaticResource ColorLetraBtn}"
+                BackgroundColor="{StaticResource ColorfondoBtn}"
+                FontSize="20"
+                HorizontalOptions="CenterAndExpand"
+                WidthRequest="200"
+                />
+        <Button Text="Soy un Botón"
+                Style="{StaticResource botonrosa}"
+                />
+    </StackLayout>
+
+</ContentPage>
